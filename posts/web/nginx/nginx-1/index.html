@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>开篇之作</title>
+<title>Nginx - 1 - 单页面静态网站配置</title>
 
 
 
@@ -10,28 +10,26 @@
 <meta name="google-site-verification" content="">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
-<meta name="description" content="第一篇，先立一个Flag">
+<meta name="description" content="静态网站配置">
 <meta name="renderer" content="webkit">
 <meta name="theme-color" content="#ffffff">
 
 
 
-<meta property="og:title" content="开篇之作" />
-<meta property="og:description" content="第一篇，先立一个Flag" />
+<meta property="og:title" content="Nginx - 1 - 单页面静态网站配置" />
+<meta property="og:description" content="静态网站配置" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://terryren.github.io/posts/my-dao-post/" /><meta property="og:image" content="https://terryren.github.io/images/dao.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-01T10:00:00+08:00" />
-<meta property="article:modified_time" content="2023-03-01T10:00:00+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="https://terryren.github.io/posts/web/nginx/nginx-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-10T17:56:00+08:00" />
+<meta property="article:modified_time" content="2023-03-10T17:56:00+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
 
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://terryren.github.io/images/dao.jpg"/>
-
-<meta name="twitter:title" content="开篇之作"/>
-<meta name="twitter:description" content="第一篇，先立一个Flag"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nginx - 1 - 单页面静态网站配置"/>
+<meta name="twitter:description" content="静态网站配置"/>
 
 
 
@@ -183,44 +181,37 @@
             
             
             
-                
-            
 
-            <div class="post-head-wrapper"
-                
-                    
-                    
-                    style="background-image: url('https://terryren.github.io/images/dao.jpg')"
-                    
+            <div class="post-head-wrapper-text-only"
                 
             >
                 <div class="post-title">
-                    开篇之作
+                    Nginx - 1 - 单页面静态网站配置
                     
                     <div class="post-subtitle">
-                        第一篇，先立一个Flag
+                        静态网站配置
                     </div>
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2023-03-01 10:00
+                            2023-03-10 17:56
                         </time>
                         
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/%E9%81%93">道</a>
+                                <a href="/categories/web">Web</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/%E9%81%93">道</a>
+                                <a href="/tags/web">Web</a>
                                 &nbsp;
                             
-                                <a href="/tags/%E5%93%B2%E5%AD%A6">哲学</a>
+                                <a href="/tags/nginx">Nginx</a>
                                 &nbsp;
                             
                         
@@ -233,57 +224,40 @@
                 
                 <div class="post-body" v-pre>
                 
-                    <p>为人</p>
-<ul>
-<li>至真</li>
-<li>至善</li>
-<li>至美</li>
-</ul>
-<hr>
-<p>处事</p>
-<ul>
-<li>
-<p>道 (本质论)</p>
-<ul>
-<li>道生一、一生二、二生三、三生万物</li>
-</ul>
-</li>
-<li>
-<p>法 (方法论)</p>
-<ul>
-<li>术之根本</li>
-</ul>
-</li>
-<li>
-<p>术 (技术论)</p>
-<ul>
-<li>闻道有先后、术业有专攻</li>
-</ul>
-</li>
-<li>
-<p>器 (工具论)</p>
-<ul>
-<li>工欲善其事、必先利其器</li>
-</ul>
-</li>
-<li>
-<p>势</p>
-<ul>
-<li>顺势: 顺应行业发展</li>
-<li>造势: 引领行业发展</li>
-</ul>
-</li>
-<li>
-<p>志</p>
-<ul>
-<li>目标导向</li>
-</ul>
-</li>
-</ul>
+                    <p>刷新页面，默认重定向到Index.html</p>
+<p>静态目录(static)，找不到默认404</p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">server {
+  listen       8080;
+  server_name  localhost;
+
+  client_max_body_size 10m;
+  client_header_buffer_size 256k;
+  large_client_header_buffers 4 256k;
+
+  root /opt/vue;
+
+  location /faq {
+      default_type text/html;
+      return 200 &#39;&lt;!--faq--&gt;&#39;;
+  }
+
+  location /static/ {
+      try_files \$uri \$uri =404;
+  }
+
+  location / {
+      add_header Cache-Control &#39;no-cache&#39;;
+      try_files \$uri \$uri /index.html;
+  }
+}
+</code></pre><blockquote>
+<p>附加问题</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/sh2018/article/details/103430125">400 Bad Request Request Header Or Cookie Too Large</a></p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2023-03-01</p>
+		    <p style="color:#777;">最后修改于 2023-03-10</p>
                     
                 </div>
             </div>
@@ -292,14 +266,14 @@
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/posts/web/nginx/nginx-1/">
-			下回<br>Nginx - 1 - 单页面静态网站配置
+                <a class="newer-posts">
+			下回<br>已经到头啦。
                 </a>
                 
                 
                 
-                <a class="older-posts">
-			上回<br>这是最旧的文章了。
+                <a class="older-posts" href="/posts/my-dao-post/">
+			上回<br>开篇之作
                 </a>
                 
             </nav>

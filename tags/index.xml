@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 真.善.美</title>
+    <title>Tags on The Sound of Music</title>
     <link>https://terryren.github.io/tags/</link>
-    <description>Recent content in Tags on 真.善.美</description>
+    <description>Recent content in Tags on The Sound of Music</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 01 Mar 2023 10:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Mar 2023 17:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx</title>
+      <link>https://terryren.github.io/tags/nginx/</link>
+      <pubDate>Fri, 10 Mar 2023 17:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://terryren.github.io/tags/web/</link>
+      <pubDate>Fri, 10 Mar 2023 17:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>道</title>
       <link>https://terryren.github.io/tags/%E9%81%93/</link>
@@ -23,24 +41,6 @@
       <pubDate>Wed, 01 Mar 2023 10:00:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/tags/%E5%93%B2%E5%AD%A6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Chinese</title>
-      <link>https://terryren.github.io/tags/chinese/</link>
-      <pubDate>Thu, 14 Nov 2019 11:25:05 -0400</pubDate>
-      
-      <guid>https://terryren.github.io/tags/chinese/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>text</title>
-      <link>https://terryren.github.io/tags/text/</link>
-      <pubDate>Thu, 14 Nov 2019 11:25:05 -0400</pubDate>
-      
-      <guid>https://terryren.github.io/tags/text/</guid>
       <description></description>
     </item>
     
