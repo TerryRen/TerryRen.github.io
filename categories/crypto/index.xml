@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web on The Sound of Music</title>
-    <link>https://terryren.github.io/tags/web/</link>
-    <description>Recent content in Web on The Sound of Music</description>
+    <title>Crypto on The Sound of Music</title>
+    <link>https://terryren.github.io/categories/crypto/</link>
+    <description>Recent content in Crypto on The Sound of Music</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Sat, 14 Oct 2023 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Oct 2023 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/crypto/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>密码学 - 数字证书</title>
       <link>https://terryren.github.io/posts/web/crypto/certification/</link>
@@ -24,18 +24,6 @@ pkcs1 PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Ke
 openssl genrsa -out key.pem Private Key Format
 -----BEGIN RSA PRIVATE KEY-----BASE64Encoded-----END RSA PRIVATE KEY----- Public Key Format
 -----BEGIN RSA PUBLIC KEY-----BASE64Encoded-----END RSA PUBLIC KEY----- pkcs7 参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。 其中，包含了S/MIME与CMS。 主要用来存储签名或者加密后的数据,如证书或者CRL。 PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用.p7b文件扩展名</description>
-    </item>
-    
-    <item>
-      <title>Nginx - 1 - 单页面静态网站配置</title>
-      <link>https://terryren.github.io/posts/web/nginx/nginx-1/</link>
-      <pubDate>Fri, 10 Mar 2023 17:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
-      <description>刷新页面，默认重定向到Index.html
-静态目录(static)，找不到默认404
-server {listen 8080;server_name localhost;client_max_body_size 10m;client_header_buffer_size 256k;large_client_header_buffers 4 256k;root /opt/vue;location /faq {default_type text/html;return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;;}location /static/ {try_files \$uri \$uri =404;}location / {add_header Cache-Control &amp;#39;no-cache&amp;#39;;try_files \$uri \$uri /index.html;}} 附加问题
-400 Bad Request Request Header Or Cookie Too Large</description>
     </item>
     
   </channel>

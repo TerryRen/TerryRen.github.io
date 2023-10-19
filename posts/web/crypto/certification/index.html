@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>一周减脂餐</title>
+<title>密码学 - 数字证书</title>
 
 
 
@@ -10,26 +10,26 @@
 <meta name="google-site-verification" content="">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
-<meta name="description" content="减脂餐">
+<meta name="description" content="密码学 - X.509 与 PKCS 系列">
 <meta name="renderer" content="webkit">
 <meta name="theme-color" content="#ffffff">
 
 
 
-<meta property="og:title" content="一周减脂餐" />
-<meta property="og:description" content="减脂餐" />
+<meta property="og:title" content="密码学 - 数字证书" />
+<meta property="og:description" content="密码学 - X.509 与 PKCS 系列" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://terryren.github.io/posts/misc/health/health-eat-1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-04T14:38:00+08:00" />
-<meta property="article:modified_time" content="2023-04-04T14:38:00+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="https://terryren.github.io/posts/web/crypto/certification/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-14T13:56:00+08:00" />
+<meta property="article:modified_time" content="2023-10-14T13:56:00+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="一周减脂餐"/>
-<meta name="twitter:description" content="减脂餐"/>
+<meta name="twitter:title" content="密码学 - 数字证书"/>
+<meta name="twitter:description" content="密码学 - X.509 与 PKCS 系列"/>
 
 
 
@@ -151,20 +151,10 @@
 						
 						
 						
-							
-								
-									<ul>
-								
-							
-								
-									<ul>
-								
-							
-						
 						
 							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%b8%80" class="nav-星期一">
-									星期一
+								<a href="#pki" class="nav-pki">
+									PKI
 								</a>
 							</li>
 						
@@ -187,8 +177,8 @@
 						
 						
 							<li>
-								<a href="#%e6%97%a9%e9%a4%90" class="nav-早餐">
-									早餐
+								<a href="#ca" class="nav-ca">
+									CA
 								</a>
 							</li>
 						
@@ -205,8 +195,140 @@
 						
 						
 							<li>
-								<a href="#%e6%99%9a%e9%a4%90" class="nav-晚餐">
-									晚餐
+								<a href="#csr" class="nav-csr">
+									CSR
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#crl" class="nav-crl">
+									CRL
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#ocsp" class="nav-ocsp">
+									OCSP
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs" class="nav-pkcs">
+									PKCS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#pkcs1" class="nav-pkcs1">
+									pkcs1
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs7" class="nav-pkcs7">
+									pkcs7
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs8" class="nav-pkcs8">
+									pkcs8
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs12" class="nav-pkcs12">
+									pkcs12
 								</a>
 							</li>
 						
@@ -227,8 +349,26 @@
 						
 						
 							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%ba%8c" class="nav-星期二">
-									星期二
+								<a href="#x509" class="nav-x509">
+									X509
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#asn1" class="nav-asn1">
+									ASN.1
 								</a>
 							</li>
 						
@@ -251,8 +391,8 @@
 						
 						
 							<li>
-								<a href="#%e6%97%a9%e9%a4%90-1" class="nav-早餐-1">
-									早餐
+								<a href="#pem" class="nav-pem">
+									PEM
 								</a>
 							</li>
 						
@@ -269,8 +409,8 @@
 						
 						
 							<li>
-								<a href="#%e6%99%9a%e9%a4%90-1" class="nav-晚餐-1">
-									晚餐
+								<a href="#der" class="nav-der">
+									DER
 								</a>
 							</li>
 						
@@ -287,328 +427,14 @@
 							
 								</ul>
 							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%b8%89" class="nav-星期三">
-									星期三
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-2" class="nav-早餐-2">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-2" class="nav-晚餐-2">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
 								</ul>
 							
 						
 						
 						
 							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e5%9b%9b" class="nav-星期四">
-									星期四
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-3" class="nav-早餐-3">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-3" class="nav-晚餐-3">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%ba%94" class="nav-星期五">
-									星期五
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-4" class="nav-早餐-4">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-4" class="nav-晚餐-4">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e5%85%ad" class="nav-星期六">
-									星期六
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-5" class="nav-早餐-5">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-5" class="nav-晚餐-5">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e6%97%a5" class="nav-星期日">
-									星期日
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-6" class="nav-早餐-6">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%8d%88%e9%a4%90" class="nav-午餐">
-									午餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-6" class="nav-晚餐-6">
-									晚餐
+								<a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" class="nav-参考文档">
+									参考文档
 								</a>
 							</li>
 						
@@ -671,32 +497,32 @@
                 
             >
                 <div class="post-title">
-                    一周减脂餐
+                    密码学 - 数字证书
                     
                     <div class="post-subtitle">
-                        减脂餐
+                        密码学 - X.509 与 PKCS 系列
                     </div>
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2023-04-04 14:38
+                            2023-10-14 13:56
                         </time>
                         
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/%E5%81%A5%E5%BA%B7">健康</a>
+                                <a href="/categories/crypto">Crypto</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/%E5%81%A5%E5%BA%B7">健康</a>
+                                <a href="/tags/web">Web</a>
                                 &nbsp;
                             
-                                <a href="/tags/%E5%90%83">吃</a>
+                                <a href="/tags/crypto">Crypto</a>
                                 &nbsp;
                             
                         
@@ -709,106 +535,145 @@
                 
                 <div class="post-body" v-pre>
                 
-                    <blockquote>
-<p>中午工作餐，一碗米饭，油腻少吃</p>
+                    <h1 id="pki">PKI</h1>
+<blockquote>
+<p>公开密钥基础建设（Public Key Infrastructure），是一组由硬件、软件、参与者、管理政策与流程组成的基础架构，其目的在于创造、管理、分配、使用、存储以及撤销数字证书，
+从而建立一个安全的网络环境，数字证书最常见的格式有X.509，X.509又称之为PKIX。
+在计算机界，有各种密码学标准，它们表示了如何在计算机中计算、存储、传输（等）各种算法，这些标准由 RSA、IEFT、PKIX、ITU-T、ISO 等标准组织机构编写, CA中心普遍采用的规范是X.509系列和PKCS系列</p>
 </blockquote>
-<h3 id="星期一">星期一</h3>
-<h4 id="早餐">早餐</h4>
-<ul>
-<li><code>1</code>杯牛奶</li>
-<li><code>2</code>片全麦面包</li>
-<li><code>1</code>个水煮蛋 | 五谷膳食</li>
-</ul>
-<h4 id="晚餐">晚餐</h4>
-<ul>
-<li><code>1</code>份蔬菜 | <code>1</code>个玉米</li>
-<li>苹果</li>
-</ul>
-<h3 id="星期二">星期二</h3>
-<h4 id="早餐-1">早餐</h4>
-<ul>
-<li>五谷杂粮 (大米 | 小麦 | 高粱 | 大豆 | 玉米)</li>
-</ul>
-<h4 id="晚餐-1">晚餐</h4>
-<ul>
-<li><code>1</code>地瓜</li>
-<li>橙子</li>
-</ul>
-<h3 id="星期三">星期三</h3>
-<h4 id="早餐-2">早餐</h4>
-<ul>
-<li><code>1</code>杯牛奶</li>
-<li><code>1</code>个蒸玉米</li>
-<li><code>1</code>个水煮蛋 | 荷包蛋</li>
-</ul>
-<h4 id="晚餐-2">晚餐</h4>
-<ul>
-<li><code>1</code>份蔬份菜</li>
-<li><code>1</code>份山药泥</li>
-<li>鸭梨</li>
-</ul>
-<h3 id="星期四">星期四</h3>
-<h4 id="早餐-3">早餐</h4>
-<ul>
-<li><code>1</code>大米粥</li>
-<li><code>1</code>个包子</li>
-<li><code>1</code>个水煮蛋</li>
-</ul>
-<h4 id="晚餐-3">晚餐</h4>
-<ul>
-<li><code>1</code>份土豆泥</li>
-<li>火龙果</li>
-<li>橘子</li>
-</ul>
-<h3 id="星期五">星期五</h3>
-<h4 id="早餐-4">早餐</h4>
-<ul>
-<li><code>1</code>杯牛奶</li>
-<li><code>1</code>份煎鸡蛋</li>
-<li><code>1</code>个地瓜 | 南瓜</li>
-</ul>
-<h4 id="晚餐-4">晚餐</h4>
-<ul>
-<li><code>1</code>份五谷杂粮</li>
-<li>猕猴桃</li>
-</ul>
-<h3 id="星期六">星期六</h3>
-<h4 id="早餐-5">早餐</h4>
-<ul>
-<li><code>1</code>杯牛奶</li>
-<li><code>1</code>份煎鸡蛋</li>
-<li><code>1</code>个地瓜 | 南瓜</li>
-</ul>
-<h4 id="晚餐-5">晚餐</h4>
-<ul>
-<li><code>1</code>个玉米</li>
-<li><code>1</code>份蔬份菜</li>
-<li>核桃 | 杏仁</li>
-<li>火龙果</li>
-</ul>
-<h3 id="星期日">星期日</h3>
-<h4 id="早餐-6">早餐</h4>
-<ul>
-<li><code>1</code>份纯燕麦片</li>
-<li><code>1</code>份煎鸡蛋</li>
-<li><code>1</code>个地瓜 | 南瓜</li>
-</ul>
-<h4 id="午餐">午餐</h4>
-<ul>
-<li>白虾 | 基围虾</li>
-<li><code>2</code>份蔬份菜</li>
-</ul>
-<h4 id="晚餐-6">晚餐</h4>
-<ul>
-<li><code>1</code>个玉米</li>
-<li><code>1</code>份蔬份菜</li>
-<li>橙子</li>
-<li>火龙果</li>
-</ul>
+<h2 id="ca">CA</h2>
+<blockquote>
+<p>证书颁发机构</p>
+</blockquote>
+<h2 id="csr">CSR</h2>
+<blockquote>
+<p>证书签名请求</p>
+</blockquote>
+<h2 id="crl">CRL</h2>
+<blockquote>
+<p>证书吊销列表</p>
+</blockquote>
+<h2 id="ocsp">OCSP</h2>
+<blockquote>
+<p>在线证书状态协议</p>
+</blockquote>
+<h2 id="pkcs">PKCS</h2>
+<blockquote>
+<p>公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 <code>RSA</code> 资讯安全公司（英语：RSA Security）所制定
+包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准</p>
+</blockquote>
+<h3 id="pkcs1">pkcs1</h3>
+<blockquote>
+<p>PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见<a href="https://datatracker.ietf.org/doc/html/rfc8017">RFC8017</a>
+定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击</p>
+</blockquote>
+<pre tabindex="0"><code>openssl genrsa -out key.pem
+</code></pre><p><strong>Private Key Format</strong></p>
+<pre tabindex="0"><code>-----BEGIN RSA PRIVATE KEY-----
+BASE64Encoded
+-----END RSA PRIVATE KEY-----
+</code></pre><p><strong>Public Key Format</strong></p>
+<pre tabindex="0"><code>-----BEGIN RSA PUBLIC KEY-----
+BASE64Encoded
+-----END RSA PUBLIC KEY-----
+</code></pre><h3 id="pkcs7">pkcs7</h3>
+<blockquote>
+<p>参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。
+其中，包含了S/MIME与CMS。
+主要用来存储签名或者加密后的数据,如证书或者CRL。
+PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用<code>.p7b</code>文件扩展名</p>
+</blockquote>
+<p><strong>Format</strong></p>
+<pre tabindex="0"><code>‑‑‑‑‑BEGIN PKCS7‑‑‑‑‑
+
+‑‑‑‑‑END PKCS7‑‑‑‑‑
+</code></pre><p><strong>PKCS7的文件从PEM格式转换成为DER格式</strong></p>
+<pre tabindex="0"><code>openssl pkcs7 -in file.pem -outform DER -out file.der
+</code></pre><p><strong>文件中提取出所有的证书到另外一个文件</strong></p>
+<pre tabindex="0"><code>openssl pkcs7 -in file.pem -print_certs -out certs.pem
+</code></pre><h3 id="pkcs8">pkcs8</h3>
+<blockquote>
+<p>PKCS #8，Private-Key Information Syntax Standard，详细的描述了私钥的存储格式。用于加密、非加密地存储Private Certificate Keypairs（不限于RSA），详见<a href="https://datatracker.ietf.org/doc/html/rfc5958">RFC5858</a>
+Apache读取证书私钥的标准。主要用来存储私钥。私钥首先会使用PKCS #5的标准进行加密，然后<code>Base64</code>编码，转换成为<code>PEM</code>格式存储</p>
+</blockquote>
+<p><strong>一个非加密 ECC 私钥的 PKCS#8</strong></p>
+<pre tabindex="0"><code>-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQglQanBRiYVPX7F2Rd
+4CqyjEN0K4qfHw4tM/yMIh21wamhRANCAARsxaI4jT1b8zbDlFziuLngPcExbYzz
+ePAHUmgWL/ZCeqlODF/l/XvimkjaWC2huu1OSWB9EKuG+mKFY2Y5k+vF
+-----END PRIVATE KEY-----
+</code></pre><p><strong>一个加密 PKCS#8 私钥的 PEM 格式</strong></p>
+<pre tabindex="0"><code>-----BEGIN ENCRYPTED PRIVATE KEY-----
+Base64 xxxxxx
+-----END ENCRYPTED PRIVATE KEY-----
+</code></pre><p><strong>RSA 私钥转换为 PKCS#8</strong></p>
+<pre tabindex="0"><code>openssl pkcs8 -topk8 -inform PEM -in rsa-private-key.pem -outform PEM -nocrypt -out rsa-private-key-pkcs8.pem
+</code></pre><p><strong>ECC 私钥转换为 PKCS#8</strong></p>
+<pre tabindex="0"><code>openssl pkcs8 -topk8 -inform PEM -in ecc-private-key.pem -outform PEM -nocrypt -out ecc-private-key-pkcs8.pem
+</code></pre><h3 id="pkcs12">pkcs12</h3>
+<blockquote>
+<p>定义了包含私钥（Private Keys）与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。PKCS12文件的扩展名是<code>.p12</code>、<code>.pfx</code>、<code>.jks</code>。
+PKCS12可以看做是PKCS7的扩展，PKCS12可以额外存储私钥、证书、私钥、CRL
+Private Keys和Public Key Certificates是复数形式，这意味着PKCS #12文件实际上是一个Keystore，PKCS #12文件可以被用做Java Key Store（JKS），详见<a href="https://datatracker.ietf.org/doc/html/rfc7292">RFC7292</a></p>
+</blockquote>
+<p><strong>将PKCS12格式转换成为PEM</strong></p>
+<pre tabindex="0"><code>openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem
+</code></pre><p><strong>从PEM到PKCS12</strong></p>
+<pre tabindex="0"><code>openssl pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem
+</code></pre><h2 id="x509">X509</h2>
+<blockquote>
+<p>X.509是ITU-T标准化部门基于他们之前的ASN.1定义的一套证书标准，在X.500基础上进行了功能增强
+X.509是在1988年发布的。X.509证书由用户公共密钥和用户标识符组成。此外还包括版本号、证书序列号、CA标识符、签名算法标识、签发者名称、证书有效期等信息</p>
+</blockquote>
+<p><strong>Certificate Format</strong></p>
+<pre tabindex="0"><code>-----BEGIN CERTIFICATE-----
+BASE64Encoded
+-----END CERTIFICATE-----
+</code></pre><p><strong>Certificate Subject Public Key Info</strong></p>
+<pre tabindex="0"><code>-----BEGIN PUBLIC KEY-----
+BASE64Encoded
+-----END PUBLIC KEY-----
+</code></pre><h2 id="asn1">ASN.1</h2>
+<blockquote>
+<p>在电信和计算机网络领域，ASN.1（Abstract Syntax Notation One) 是一套标准，是描述数据的表示、编码、传输、解码的灵活的记法。
+它提供了一套正式、无歧义和精确的规则以描述独立于特定计算机硬件的对象结构。
+ASN.1是ISO和ITU-T的联合标准，最初是1984年的CCITT X.409:1984的一部分。由于其广泛应用，1988年ASN.1移到独立标准X.208，1995年进行全面修订后变成X.680系列标准</p>
+</blockquote>
+<h3 id="pem">PEM</h3>
+<blockquote>
+<p>PEM文件是一个文本文件，其内容是以“ – BEGIN -” 开头，中间内容是DER文件的Base64编码</p>
+</blockquote>
+<p><strong>查看文本证书内容</strong></p>
+<pre tabindex="0"><code>openssl x509 -in cert.pem -text -noout
+openssl x509 -in cert.cer -text -noout
+openssl x509 -in cert.crt -text -noout
+</code></pre><p><strong>PEM-To-DER</strong></p>
+<pre tabindex="0"><code>openssl x509 -in cert.crt -outform der-out cert.der
+openssl rsa -in key.pem -outform der -out key.der
+</code></pre><h3 id="der">DER</h3>
+<blockquote>
+<p>DER表示证书的内容是用二进制进行编码的</p>
+</blockquote>
+<p><strong>查看二进制证书内容</strong></p>
+<pre tabindex="0"><code>openssl x509 -in cert.der -inform der -text -noout
+</code></pre><p><strong>DER-To-PEM</strong></p>
+<pre tabindex="0"><code>openssl x509 -in cert.crt -inform der -outform pem -out cert.pem
+</code></pre><h1 id="参考文档">参考文档</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/543707056">密码学标准 - X.509 与 PKCS 系列</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0%E5%9F%BA%E7%A4%8E%E5%BB%BA%E8%A8%AD">PKI-1</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/30136885">PKI-2</a></p>
+<p><a href="https://zh.wikipedia.org/zh-cn/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A0%87%E5%87%86#">PKCS</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/X.509">X.509</a></p>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1">X.509-RFC5280</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/Pem%E6%A0%BC%E5%BC%8F">Pem</a></p>
+<p><a href="https://zh.wikipedia.org/zh-cn/ASN.1">ASN.1</a></p>
+<p><a href="https://www.cnblogs.com/HKnight/p/16851786.html">证书认证原理</a></p>
+<p><a href="https://chanjarster.github.io/post/x509-pkcs-file-formats/">X.509、PKCS文件格式介绍</a></p>
+<p><a href="https://www.jianshu.com/p/bc32cbfe49e7">常见的PKI标准(X.509、PKCS)及证书相关介绍</a></p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2023-04-04</p>
+		    <p style="color:#777;">最后修改于 2023-10-14</p>
                     
                 </div>
             </div>
@@ -817,14 +682,14 @@
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/posts/misc/english/grammar/verb-tenses/">
-			下回<br>英语时态
+                <a class="newer-posts">
+			下回<br>已经到头啦。
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/posts/misc/his/his-table/">
-			上回<br>中国历史纪年简表
+                <a class="older-posts" href="/posts/misc/english/grammar/verb-tenses/">
+			上回<br>英语时态
                 </a>
                 
             </nav>
@@ -942,20 +807,10 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 						
-							
-								
-									<ul>
-								
-							
-								
-									<ul>
-								
-							
-						
 						
 							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%b8%80" class="nav-星期一">
-									星期一
+								<a href="#pki" class="nav-pki">
+									PKI
 								</a>
 							</li>
 						
@@ -978,8 +833,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#%e6%97%a9%e9%a4%90" class="nav-早餐">
-									早餐
+								<a href="#ca" class="nav-ca">
+									CA
 								</a>
 							</li>
 						
@@ -996,8 +851,140 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#%e6%99%9a%e9%a4%90" class="nav-晚餐">
-									晚餐
+								<a href="#csr" class="nav-csr">
+									CSR
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#crl" class="nav-crl">
+									CRL
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#ocsp" class="nav-ocsp">
+									OCSP
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs" class="nav-pkcs">
+									PKCS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#pkcs1" class="nav-pkcs1">
+									pkcs1
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs7" class="nav-pkcs7">
+									pkcs7
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs8" class="nav-pkcs8">
+									pkcs8
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#pkcs12" class="nav-pkcs12">
+									pkcs12
 								</a>
 							</li>
 						
@@ -1018,8 +1005,26 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%ba%8c" class="nav-星期二">
-									星期二
+								<a href="#x509" class="nav-x509">
+									X509
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#asn1" class="nav-asn1">
+									ASN.1
 								</a>
 							</li>
 						
@@ -1042,8 +1047,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#%e6%97%a9%e9%a4%90-1" class="nav-早餐-1">
-									早餐
+								<a href="#pem" class="nav-pem">
+									PEM
 								</a>
 							</li>
 						
@@ -1060,8 +1065,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#%e6%99%9a%e9%a4%90-1" class="nav-晚餐-1">
-									晚餐
+								<a href="#der" class="nav-der">
+									DER
 								</a>
 							</li>
 						
@@ -1078,328 +1083,14 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 							
 								</ul>
 							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%b8%89" class="nav-星期三">
-									星期三
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-2" class="nav-早餐-2">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-2" class="nav-晚餐-2">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
 								</ul>
 							
 						
 						
 						
 							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e5%9b%9b" class="nav-星期四">
-									星期四
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-3" class="nav-早餐-3">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-3" class="nav-晚餐-3">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e4%ba%94" class="nav-星期五">
-									星期五
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-4" class="nav-早餐-4">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-4" class="nav-晚餐-4">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e5%85%ad" class="nav-星期六">
-									星期六
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-5" class="nav-早餐-5">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-5" class="nav-晚餐-5">
-									晚餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%98%9f%e6%9c%9f%e6%97%a5" class="nav-星期日">
-									星期日
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e6%97%a9%e9%a4%90-6" class="nav-早餐-6">
-									早餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%8d%88%e9%a4%90" class="nav-午餐">
-									午餐
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%99%9a%e9%a4%90-6" class="nav-晚餐-6">
-									晚餐
+								<a href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3" class="nav-参考文档">
+									参考文档
 								</a>
 							</li>
 						

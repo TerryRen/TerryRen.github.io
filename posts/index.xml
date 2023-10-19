@@ -7,13 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Sat, 12 Aug 2023 15:19:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Oct 2023 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>密码学 - 数字证书</title>
+      <link>https://terryren.github.io/posts/web/crypto/certification/</link>
+      <pubDate>Sat, 14 Oct 2023 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/crypto/certification/</guid>
+      <description>PKI 公开密钥基础建设（Public Key Infrastructure），是一组由硬件、软件、参与者、管理政策与流程组成的基础架构，其目的在于创造、管理、分配、使用、存储以及撤销数字证书， 从而建立一个安全的网络环境，数字证书最常见的格式有X.509，X.509又称之为PKIX。 在计算机界，有各种密码学标准，它们表示了如何在计算机中计算、存储、传输（等）各种算法，这些标准由 RSA、IEFT、PKIX、ITU-T、ISO 等标准组织机构编写, CA中心普遍采用的规范是X.509系列和PKCS系列
+CA 证书颁发机构
+CSR 证书签名请求
+CRL 证书吊销列表
+OCSP 在线证书状态协议
+PKCS 公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 RSA 资讯安全公司（英语：RSA Security）所制定 包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准
+pkcs1 PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见RFC8017 定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击
+openssl genrsa -out key.pem Private Key Format
+-----BEGIN RSA PRIVATE KEY-----BASE64Encoded-----END RSA PRIVATE KEY----- Public Key Format
+-----BEGIN RSA PUBLIC KEY-----BASE64Encoded-----END RSA PUBLIC KEY----- pkcs7 参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。 其中，包含了S/MIME与CMS。 主要用来存储签名或者加密后的数据,如证书或者CRL。 PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用.p7b文件扩展名</description>
+    </item>
+    
     <item>
       <title>英语时态</title>
-      <link>https://terryren.github.io/posts/misc/english/grammer/verb-tenses/</link>
+      <link>https://terryren.github.io/posts/misc/english/grammar/verb-tenses/</link>
       <pubDate>Sat, 12 Aug 2023 15:19:00 +0800</pubDate>
       
-      <guid>https://terryren.github.io/posts/misc/english/grammer/verb-tenses/</guid>
+      <guid>https://terryren.github.io/posts/misc/english/grammar/verb-tenses/</guid>
       <description>12 Tensens
 Simple Continuous Perfect Perfect Continuous Past 1.1 1.2 1.3 1.4 Present 2.1 2.2 2.3 2.4 Future 3.1 3.2 3.3 3.4 1 Past What has happened.
 1.1 Past Simple Summary

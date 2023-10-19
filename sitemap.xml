@@ -3,18 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://terryren.github.io/categories/</loc>
-    <lastmod>2023-08-12T15:19:00+08:00</lastmod>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
   </url><url>
-    <loc>https://terryren.github.io/categories/english/</loc>
-    <lastmod>2023-08-12T15:19:00+08:00</lastmod>
+    <loc>https://terryren.github.io/tags/crypto/</loc>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/crypto/</loc>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/posts/</loc>
-    <lastmod>2023-08-12T15:19:00+08:00</lastmod>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/</loc>
-    <lastmod>2023-08-12T15:19:00+08:00</lastmod>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/</loc>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/web/</loc>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/web/crypto/certification/</loc>
+    <lastmod>2023-10-14T13:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/english/</loc>
     <lastmod>2023-08-12T15:19:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/%E8%8B%B1%E8%AF%AD/</loc>
@@ -23,7 +35,7 @@
     <loc>https://terryren.github.io/tags/%E8%8B%B1%E8%AF%AD%E6%97%B6%E6%80%81/</loc>
     <lastmod>2023-08-12T15:19:00+08:00</lastmod>
   </url><url>
-    <loc>https://terryren.github.io/posts/misc/english/grammer/verb-tenses/</loc>
+    <loc>https://terryren.github.io/posts/misc/english/grammar/verb-tenses/</loc>
     <lastmod>2023-08-12T15:19:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/</loc>
@@ -57,9 +69,6 @@
     <lastmod>2023-03-10T17:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/posts/web/nginx/nginx-1/</loc>
-    <lastmod>2023-03-10T17:56:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/tags/web/</loc>
     <lastmod>2023-03-10T17:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/categories/web/</loc>
