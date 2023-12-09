@@ -202,7 +202,7 @@ openssl rsa -in key.pem -outform der -out key.der
 &lt;/table&gt;
 &lt;h1 id=&#34;1-past&#34;&gt;1 Past&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;What has happened.&lt;/p&gt;
+&lt;p&gt;What happened.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;11-past-simple&#34;&gt;1.1 Past Simple&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
