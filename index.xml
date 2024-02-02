@@ -179,7 +179,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix-dashboard&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apache/apisix-dashboard:3.0.1-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apache/apisix-dashboard:3.0.0-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro&lt;span style=&#34;color:#bbb&#34;&gt;
@@ -1882,6 +1882,8 @@ You will have been cooking for 3 hours when i get back.
 &lt;p&gt;附加问题&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/sh2018/article/details/103430125&#34;&gt;400 Bad Request Request Header Or Cookie Too Large&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/4855?time__1311=n4%2BxnD0D9DBDy7DRDR2DBqOoUPqWq0QGTzreG4D&#34;&gt;Nginx配置不当可能导致的安全问题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ghosind.com/2020/08/14/react-404-after-reload&#34;&gt;React部署于Nginx环境中刷新后404解决方案&lt;/a&gt;&lt;/p&gt;
 - https://terryren.github.io/posts/web/nginx/nginx-1/ - Terry</description>
         </item>
     
