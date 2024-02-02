@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web on The Sound of Music</title>
-    <link>https://terryren.github.io/categories/web/</link>
-    <description>Recent content in Web on The Sound of Music</description>
+    <title>APISIX on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/apisix/</link>
+    <description>Recent content in APISIX on The Sound of Music</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Thu, 01 Feb 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Feb 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/apisix/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>APISIX - 1 - 网关搭建</title>
       <link>https://terryren.github.io/posts/web/nginx/apisix-1/</link>
@@ -19,18 +19,6 @@
 cd ~ git clone https://github.com/apache/apisix-docker.git cd apisix-docker/example mkdir dashboard_conf cd ~ cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf mkdir apisix cp -r apisix-docker/example/* apisix rm -rf apisix-docker 2. apisix-dashboard 注意修改conf.etcd.endpoints为apisix可访问的地址
 dashboard_conf/config.yaml，内容如下：
 # # Licensed to the Apache Software Foundation (ASF) under one or more # contributor license agreements. See the NOTICE file distributed with # this work for additional information regarding copyright ownership.</description>
-    </item>
-    
-    <item>
-      <title>Nginx - 1 - 单页面静态网站配置</title>
-      <link>https://terryren.github.io/posts/web/nginx/nginx-1/</link>
-      <pubDate>Fri, 10 Mar 2023 17:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
-      <description>刷新页面，默认重定向到Index.html
-静态目录(static)，找不到默认404
-server {listen 8080;server_name localhost;client_max_body_size 10m;client_header_buffer_size 256k;large_client_header_buffers 4 256k;root /opt/vue;location /faq {default_type text/html;return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;;}location /static/ {try_files \$uri \$uri =404;}location / {add_header Cache-Control &amp;#39;no-cache&amp;#39;;try_files \$uri \$uri /index.html;}} 附加问题
-400 Bad Request Request Header Or Cookie Too Large</description>
     </item>
     
   </channel>

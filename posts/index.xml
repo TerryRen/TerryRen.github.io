@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Sat, 14 Oct 2023 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Feb 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>APISIX - 1 - 网关搭建</title>
+      <link>https://terryren.github.io/posts/web/nginx/apisix-1/</link>
+      <pubDate>Thu, 01 Feb 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/nginx/apisix-1/</guid>
+      <description>前置条件 已安装 Docker，Docker Compose 用于部署 etcd 和 APISIX 已安装 curl，用于验证 APISIX 是否安装成功
+安装 1. 下载文件 初始化相关配置，添加apisix-dashboard配置文件夹以及文件
+cd ~ git clone https://github.com/apache/apisix-docker.git cd apisix-docker/example mkdir dashboard_conf cd ~ cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf mkdir apisix cp -r apisix-docker/example/* apisix rm -rf apisix-docker 2. apisix-dashboard 注意修改conf.etcd.endpoints为apisix可访问的地址
+dashboard_conf/config.yaml，内容如下：
+# # Licensed to the Apache Software Foundation (ASF) under one or more # contributor license agreements. See the NOTICE file distributed with # this work for additional information regarding copyright ownership.</description>
+    </item>
+    
     <item>
       <title>密码学 - 数字证书</title>
       <link>https://terryren.github.io/posts/web/crypto/certification/</link>
