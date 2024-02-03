@@ -701,7 +701,13 @@
 <h4 id="7-停止">7. 停止</h4>
 <p><code>docker-compose -p APISIX down</code></p>
 <h4 id="8-清理">8. 清理</h4>
-<p><a href="https://github.com/gtamas/etcdmanager/releases/tag/1.2.0">etcd manager</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker rm apisix-dashboard
+</span></span><span style="display:flex;"><span>docker rm apisix
+</span></span><span style="display:flex;"><span>docker rm etcd
+</span></span><span style="display:flex;"><span>docker rm web1
+</span></span><span style="display:flex;"><span>docker rm web2
+</span></span><span style="display:flex;"><span>docker network rm apisix
+</span></span></code></pre></div><p><a href="https://github.com/gtamas/etcdmanager/releases/tag/1.2.0">etcd manager</a></p>
 <h3 id="参考文档">参考文档</h3>
 <p><a href="https://apisix.apache.org/zh/docs/apisix/getting-started/README/">官方入门文档</a></p>
 <p><a href="https://apisix.apache.org/zh/docs/apisix/installation-guide/">APISIX 安装指南</a></p>
