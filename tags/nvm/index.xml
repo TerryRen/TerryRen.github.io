@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NVM on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/nvm/</link>
+    <description>Recent content in NVM on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Sat, 03 Feb 2024 16:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/nvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/lang/nodejs/node-install-1/</link>
+      <pubDate>Sat, 03 Feb 2024 16:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/nodejs/node-install-1/</guid>
+      <description>存储优化
+如下windows平台shell，修改采用加速地址，调整cache以及本地存储目录
+npm config set registry https://{hosts}/artifactory/api/npm/ echo %AppData% npm config get prefix npm config set prefix D:\AppData\npm npm config get cache npm config set cache D:\AppData\npm-cache @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm&amp;#34; @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm-cache&amp;#34; 默认全局配置文件${home}/.npmrc参考如下：
+registry=https://{hosts}/artifactory/api/npm/sass_binary_site=https://{hosts}/artifactory/node-sass-remote/download/_auth=&amp;#34;{basic auth}&amp;#34;email=xxx@yyy.zzzalways-auth=trueprefix=D:\AppData\npmcache=D:\AppData\npm-cache NVM 注意事项
+NVM的安装目录，不要有空格，否则导致莫名的错误
+切换当前node版本，整个node全部通过nvm控制，新旧版本的安装也通过nvm操作
+nvm list nvm install v14.15.4 nvm use v14.15.4 base64-encode
+NVM Issue</description>
+    </item>
+    
+  </channel>
+</rss>

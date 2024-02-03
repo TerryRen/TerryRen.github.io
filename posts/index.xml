@@ -7,7 +7,44 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Thu, 01 Feb 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Feb 2024 16:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/lang/nodejs/node-install-1/</link>
+      <pubDate>Sat, 03 Feb 2024 16:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/nodejs/node-install-1/</guid>
+      <description>存储优化
+如下windows平台shell，修改采用加速地址，调整cache以及本地存储目录
+npm config set registry https://{hosts}/artifactory/api/npm/ echo %AppData% npm config get prefix npm config set prefix D:\AppData\npm npm config get cache npm config set cache D:\AppData\npm-cache @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm&amp;#34; @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm-cache&amp;#34; 默认全局配置文件${home}/.npmrc参考如下：
+registry=https://{hosts}/artifactory/api/npm/sass_binary_site=https://{hosts}/artifactory/node-sass-remote/download/_auth=&amp;#34;{basic auth}&amp;#34;email=xxx@yyy.zzzalways-auth=trueprefix=D:\AppData\npmcache=D:\AppData\npm-cache NVM 注意事项
+NVM的安装目录，不要有空格，否则导致莫名的错误
+切换当前node版本，整个node全部通过nvm控制，新旧版本的安装也通过nvm操作
+nvm list nvm install v14.15.4 nvm use v14.15.4 base64-encode
+NVM Issue</description>
+    </item>
+    
+    <item>
+      <title>Windows - 系统 - 垃圾清理 - 脚本</title>
+      <link>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</link>
+      <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</guid>
+      <description>清理系统垃圾
+@echo off echo 正在清除系统垃圾文件，请稍等...... del /f /s /q %systemdrive%\Windows\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\NetworkService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\LocalService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\*._mp del /f /s /q %systemdrive%\*.log del /f /s /q %systemdrive%\*.gid del /f /s /q %systemdrive%\*.chk del /f /s /q %systemdrive%\*.old del /f /s /q %systemdrive%\recycled\*.* del /f /s /q %windir%\*.bak del /f /s /q %windir%\prefetch\*.* rd /s /q %windir%\temp &amp;amp; md %windir%\temp del /f /q %userprofile%\cookies\*.</description>
+    </item>
+    
+    <item>
+      <title>Maven - 优化</title>
+      <link>https://terryren.github.io/posts/lang/java/maven/</link>
+      <pubDate>Sat, 03 Feb 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/java/maven/</guid>
+      <description>优化本地仓库地址
+默认情况下，Maven本地包存放在${home}/.m2/repository，一般在Windows系统的C盘，会影响系统性能，建议迁移到其他磁盘
+修改repository配置，可采用aliyun等加速网站</description>
+    </item>
+    
     <item>
       <title>APISIX - 1 - 网关搭建</title>
       <link>https://terryren.github.io/posts/web/nginx/apisix-1/</link>

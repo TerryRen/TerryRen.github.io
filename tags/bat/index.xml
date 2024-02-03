@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bat on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/bat/</link>
+    <description>Recent content in Bat on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Sat, 03 Feb 2024 15:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/bat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows - 系统 - 垃圾清理 - 脚本</title>
+      <link>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</link>
+      <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</guid>
+      <description>清理系统垃圾
+@echo off echo 正在清除系统垃圾文件，请稍等...... del /f /s /q %systemdrive%\Windows\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\NetworkService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\LocalService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\*._mp del /f /s /q %systemdrive%\*.log del /f /s /q %systemdrive%\*.gid del /f /s /q %systemdrive%\*.chk del /f /s /q %systemdrive%\*.old del /f /s /q %systemdrive%\recycled\*.* del /f /s /q %windir%\*.bak del /f /s /q %windir%\prefetch\*.* rd /s /q %windir%\temp &amp;amp; md %windir%\temp del /f /q %userprofile%\cookies\*.</description>
+    </item>
+    
+  </channel>
+</rss>

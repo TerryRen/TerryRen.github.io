@@ -2,22 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://terryren.github.io/categories/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/node/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/lang/nodejs/node-install-1/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/node-npm-nvm/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/npm/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/nvm/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/</loc>
+    <lastmod>2024-02-03T16:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/bat/</loc>
+    <lastmod>2024-02-03T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/bat-shell-windows/</loc>
+    <lastmod>2024-02-03T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/shell/</loc>
+    <lastmod>2024-02-03T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/windows/</loc>
+    <lastmod>2024-02-03T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</loc>
+    <lastmod>2024-02-03T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/java/</loc>
+    <lastmod>2024-02-03T13:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/java/</loc>
+    <lastmod>2024-02-03T13:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/maven/</loc>
+    <lastmod>2024-02-03T13:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/lang/java/maven/</loc>
+    <lastmod>2024-02-03T13:56:00+08:00</lastmod>
+  </url><url>
     <loc>https://terryren.github.io/tags/apisix/</loc>
     <lastmod>2024-02-01T13:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/posts/web/nginx/apisix-1/</loc>
-    <lastmod>2024-02-01T13:56:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/categories/</loc>
-    <lastmod>2024-02-01T13:56:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/posts/</loc>
-    <lastmod>2024-02-01T13:56:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/tags/</loc>
-    <lastmod>2024-02-01T13:56:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/</loc>
     <lastmod>2024-02-01T13:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/web/</loc>

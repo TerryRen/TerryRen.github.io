@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Thu, 01 Feb 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Feb 2024 16:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node, NPM, NVM</title>
+      <link>https://terryren.github.io/categories/node-npm-nvm/</link>
+      <pubDate>Sat, 03 Feb 2024 16:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/categories/node-npm-nvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bat, Shell, Windows</title>
+      <link>https://terryren.github.io/categories/bat-shell-windows/</link>
+      <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/categories/bat-shell-windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://terryren.github.io/categories/java/</link>
+      <pubDate>Sat, 03 Feb 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/categories/java/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Web</title>
       <link>https://terryren.github.io/categories/web/</link>
