@@ -14,11 +14,11 @@
       <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</guid>
-      <description>windows平台shell
-nvm install v16.20.2 nvm use v16.20.2 npm install -g pnpm MacOS平台Shell
-brew install pnpm 修改用户全局配置文件${home}/.npmrc，设置store-dir目录，其他配置与NPM共用
+      <description>windows 平台shell
+nvm install v16.20.2 nvm use v16.20.2 npm install -g pnpm MacOS 平台Shell
+brew install pnpm 修改用户全局配置文件 ${home}/.npmrc ，设置 store-dir 目录，其他配置与NPM共用
 store-dir=D:\AppData\pnpm 查看 pnpm config list
-安装 pnpm install
+安装 pnpm install or pnpm install --registry https://registry.npmmirror.com
 运行 pnpm serve
 打包 pnpm build
 参考文档
@@ -35,18 +35,15 @@ NODE 优化 教程</description>
       
       <guid>https://terryren.github.io/posts/lang/nodejs/node-install-1/</guid>
       <description>存储优化
-windows平台shell，修改采用加速地址，调整registry，cache，prefix全局包目录;
+windows 平台shell，修改采用加速地址，调整 registry，cache，prefix 全局包目录;
 npm config get registry npm config set registry https://{hosts}/artifactory/api/npm/ echo %AppData% npm config get prefix npm config set prefix D:\AppData\npm npm config get cache npm config set cache D:\AppData\npm-cache @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm&amp;#34; @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm-cache&amp;#34; hosts
 淘宝镜像地址
 腾讯云镜像地址
 华为云镜像地址
-添加路径D:\AppData\npm到环境变量PATH，全局安装的命令才能生效
-查看 npm config list
-用户全局配置文件${home}/.npmrc参考如下：
-registry=https://{hosts}/artifactory/api/npm/ sass_binary_site=https://{hosts}/artifactory/node-sass-remote/download/ _auth=&amp;#34;{basic auth}&amp;#34; email=xxx@yyy.zzz always-auth=true prefix=D:\AppData\npm cache=D:\AppData\npm-cache NVM 注意事项
-NVM的安装目录，不要有空格，否则导致莫名的错误
-切换当前node版本，整个node全部通过nvm控制，新旧版本的安装也通过nvm操作
-nvm list nvm install v14.15.4 nvm use v14.15.4 参考文档</description>
+添加路径 D:\AppData\npm 到环境变量 PATH ，全局安装的命令才能生效
+查看 npm config list or npm install --registry https://registry.npmmirror.com
+用户全局配置文件 ${home}/.npmrc 参考如下：
+registry=https://{hosts}/artifactory/api/npm/ sass_binary_site=https://{hosts}/artifactory/node-sass-remote/download/ _auth=&amp;#34;{basic auth}&amp;#34; email=xxx@yyy.zzz always-auth=true prefix=D:\AppData\npm cache=D:\AppData\npm-cache NVM 注意事项</description>
     </item>
     
     <item>

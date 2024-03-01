@@ -201,7 +201,7 @@
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/node-npm-nvm">Node, NPM, NVM</a>
+                                <a href="/categories/node">Node</a>
                                 &nbsp;
                         
 
@@ -228,7 +228,7 @@
                 <div class="post-body" v-pre>
                 
                     <p><strong>存储优化</strong></p>
-<p><code>windows</code>平台shell，修改采用加速地址，调整<code>registry</code>，<code>cache</code>，<code>prefix</code>全局包目录;</p>
+<p><code>windows</code> 平台shell，修改采用加速地址，调整 <code>registry</code>，<code>cache</code>，<code>prefix</code> 全局包目录;</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>npm config get registry
 </span></span><span style="display:flex;"><span>npm config set registry https://{hosts}/artifactory/api/npm/
 </span></span><span style="display:flex;"><span>
@@ -245,9 +245,9 @@
 <p><a href="https://registry.npmmirror.com">淘宝镜像地址</a></p>
 <p><a href="http://mirrors.cloud.tencent.com/npm/">腾讯云镜像地址</a></p>
 <p><a href="https://mirrors.huaweicloud.com/repository/npm/">华为云镜像地址</a></p>
-<p>添加路径<code>D:\AppData\npm</code>到环境变量<code>PATH</code>，全局安装的命令才能生效</p>
-<p>查看 <code>npm config list</code></p>
-<p>用户全局配置文件<code>${home}/.npmrc</code>参考如下：</p>
+<p>添加路径 <code>D:\AppData\npm</code> 到环境变量 <code>PATH</code> ，全局安装的命令才能生效</p>
+<p>查看 <code>npm config list</code> or <code>npm install --registry https://registry.npmmirror.com</code></p>
+<p>用户全局配置文件 <code>${home}/.npmrc</code> 参考如下：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#658b00">registry</span>=<span style="color:#cd5555">https://{hosts}/artifactory/api/npm/</span>
 </span></span><span style="display:flex;"><span><span style="color:#658b00">sass_binary_site</span>=<span style="color:#cd5555">https://{hosts}/artifactory/node-sass-remote/download/</span>
 </span></span><span style="display:flex;"><span><span style="color:#658b00">_auth</span>=<span style="color:#cd5555">&#34;{basic auth}&#34;</span>
@@ -256,7 +256,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#658b00">prefix</span>=<span style="color:#cd5555">D:\AppData\npm</span>
 </span></span><span style="display:flex;"><span><span style="color:#658b00">cache</span>=<span style="color:#cd5555">D:\AppData\npm-cache</span>
 </span></span></code></pre></div><p><strong>NVM 注意事项</strong></p>
-<p><code>NVM</code>的安装目录，<code>不要有空格</code>，否则导致莫名的错误</p>
+<p><code>NVM</code> 的安装目录，<code>不要有空格</code>，否则导致莫名的错误</p>
 <p>切换当前node版本，整个node全部通过nvm控制，新旧版本的安装也通过nvm操作</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nvm list
 </span></span><span style="display:flex;"><span>nvm install v14.15.4

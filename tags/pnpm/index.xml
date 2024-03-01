@@ -14,11 +14,11 @@
       <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</guid>
-      <description>windows平台shell
-nvm install v16.20.2 nvm use v16.20.2 npm install -g pnpm MacOS平台Shell
-brew install pnpm 修改用户全局配置文件${home}/.npmrc，设置store-dir目录，其他配置与NPM共用
+      <description>windows 平台shell
+nvm install v16.20.2 nvm use v16.20.2 npm install -g pnpm MacOS 平台Shell
+brew install pnpm 修改用户全局配置文件 ${home}/.npmrc ，设置 store-dir 目录，其他配置与NPM共用
 store-dir=D:\AppData\pnpm 查看 pnpm config list
-安装 pnpm install
+安装 pnpm install or pnpm install --registry https://registry.npmmirror.com
 运行 pnpm serve
 打包 pnpm build
 参考文档

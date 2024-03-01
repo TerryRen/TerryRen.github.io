@@ -9,29 +9,20 @@
     <copyright>Terry</copyright>
     <lastBuildDate>Fri, 01 Mar 2024 10:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Node, PNPM, NVM</title>
-      <link>https://terryren.github.io/categories/node-pnpm-nvm/</link>
+      <title>Node</title>
+      <link>https://terryren.github.io/categories/node/</link>
       <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
       
-      <guid>https://terryren.github.io/categories/node-pnpm-nvm/</guid>
+      <guid>https://terryren.github.io/categories/node/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Node, NPM, NVM</title>
-      <link>https://terryren.github.io/categories/node-npm-nvm/</link>
-      <pubDate>Sat, 03 Feb 2024 16:06:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/categories/node-npm-nvm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bat, Shell, Windows</title>
-      <link>https://terryren.github.io/categories/bat-shell-windows/</link>
+      <title>Shell</title>
+      <link>https://terryren.github.io/categories/shell/</link>
       <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
       
-      <guid>https://terryren.github.io/categories/bat-shell-windows/</guid>
+      <guid>https://terryren.github.io/categories/shell/</guid>
       <description></description>
     </item>
     

@@ -19,24 +19,24 @@
         <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
         
         <guid>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/ -&lt;p&gt;&lt;code&gt;windows&lt;/code&gt;平台shell&lt;/p&gt;
+        <description>The Sound of Music https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/ -&lt;p&gt;&lt;code&gt;windows&lt;/code&gt; 平台shell&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm install v16.20.2
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm use v16.20.2
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install -g pnpm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;MacOS&lt;/code&gt;平台Shell&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;MacOS&lt;/code&gt; 平台Shell&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install pnpm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改用户全局配置文件&lt;code&gt;${home}/.npmrc&lt;/code&gt;，设置&lt;code&gt;store-dir&lt;/code&gt;目录，其他配置与NPM共用&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改用户全局配置文件 &lt;code&gt;${home}/.npmrc&lt;/code&gt; ，设置 &lt;code&gt;store-dir&lt;/code&gt; 目录，其他配置与NPM共用&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;store-dir&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;D:\AppData\pnpm&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 &lt;code&gt;pnpm config list&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;安装 &lt;code&gt;pnpm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装 &lt;code&gt;pnpm install&lt;/code&gt; or &lt;code&gt;pnpm install --registry https://registry.npmmirror.com&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;运行 &lt;code&gt;pnpm serve&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;打包 &lt;code&gt;pnpm build&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/7121386382936768542&#34;&gt;PNPM 安装&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/it_xcr/article/details/114655778&#34;&gt;PNPM 使用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pnpm.io/zh/next/npmrc#hoist&#34;&gt;PNPM 配置优化&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;node-install-1.md&#34;&gt;NODE 优化 教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/posts/lang/nodejs/node-install-1&#34;&gt;NODE 优化 教程&lt;/a&gt;&lt;/p&gt;
 - https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/ - Terry</description>
         </item>
     
@@ -49,7 +49,7 @@
         
         <guid>https://terryren.github.io/posts/lang/nodejs/node-install-1/</guid>
         <description>The Sound of Music https://terryren.github.io/posts/lang/nodejs/node-install-1/ -&lt;p&gt;&lt;strong&gt;存储优化&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;windows&lt;/code&gt;平台shell，修改采用加速地址，调整&lt;code&gt;registry&lt;/code&gt;，&lt;code&gt;cache&lt;/code&gt;，&lt;code&gt;prefix&lt;/code&gt;全局包目录;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;windows&lt;/code&gt; 平台shell，修改采用加速地址，调整 &lt;code&gt;registry&lt;/code&gt;，&lt;code&gt;cache&lt;/code&gt;，&lt;code&gt;prefix&lt;/code&gt; 全局包目录;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config get registry
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config set registry https://{hosts}/artifactory/api/npm/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -66,9 +66,9 @@
 &lt;p&gt;&lt;a href=&#34;https://registry.npmmirror.com&#34;&gt;淘宝镜像地址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://mirrors.cloud.tencent.com/npm/&#34;&gt;腾讯云镜像地址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://mirrors.huaweicloud.com/repository/npm/&#34;&gt;华为云镜像地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;添加路径&lt;code&gt;D:\AppData\npm&lt;/code&gt;到环境变量&lt;code&gt;PATH&lt;/code&gt;，全局安装的命令才能生效&lt;/p&gt;
-&lt;p&gt;查看 &lt;code&gt;npm config list&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;用户全局配置文件&lt;code&gt;${home}/.npmrc&lt;/code&gt;参考如下：&lt;/p&gt;
+&lt;p&gt;添加路径 &lt;code&gt;D:\AppData\npm&lt;/code&gt; 到环境变量 &lt;code&gt;PATH&lt;/code&gt; ，全局安装的命令才能生效&lt;/p&gt;
+&lt;p&gt;查看 &lt;code&gt;npm config list&lt;/code&gt; or &lt;code&gt;npm install --registry https://registry.npmmirror.com&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;用户全局配置文件 &lt;code&gt;${home}/.npmrc&lt;/code&gt; 参考如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;registry&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;https://{hosts}/artifactory/api/npm/&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;sass_binary_site&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;https://{hosts}/artifactory/node-sass-remote/download/&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;_auth&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;{basic auth}&amp;#34;&lt;/span&gt;
@@ -77,7 +77,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;prefix&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;D:\AppData\npm&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cache&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;D:\AppData\npm-cache&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;NVM 注意事项&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;NVM&lt;/code&gt;的安装目录，&lt;code&gt;不要有空格&lt;/code&gt;，否则导致莫名的错误&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;NVM&lt;/code&gt; 的安装目录，&lt;code&gt;不要有空格&lt;/code&gt;，否则导致莫名的错误&lt;/p&gt;
 &lt;p&gt;切换当前node版本，整个node全部通过nvm控制，新旧版本的安装也通过nvm操作&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm list
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm install v14.15.4
