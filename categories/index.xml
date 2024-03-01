@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Sat, 03 Feb 2024 16:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Mar 2024 10:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node, PNPM, NVM</title>
+      <link>https://terryren.github.io/categories/node-pnpm-nvm/</link>
+      <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/categories/node-pnpm-nvm/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Node, NPM, NVM</title>
       <link>https://terryren.github.io/categories/node-npm-nvm/</link>

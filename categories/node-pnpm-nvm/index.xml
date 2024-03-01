@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node, PNPM, NVM on The Sound of Music</title>
+    <link>https://terryren.github.io/categories/node-pnpm-nvm/</link>
+    <description>Recent content in Node, PNPM, NVM on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Fri, 01 Mar 2024 10:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/node-pnpm-nvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PNPM - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</link>
+      <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</guid>
+      <description>windows平台shell
+nvm install v16.20.2 nvm use v16.20.2 npm install -g pnpm MacOS平台Shell
+brew install pnpm 修改用户全局配置文件${home}/.npmrc，设置store-dir目录，其他配置与NPM共用
+store-dir=D:\AppData\pnpm 查看 pnpm config list
+安装 pnpm install
+运行 pnpm serve
+打包 pnpm build
+参考文档
+PNPM 安装
+PNPM 使用
+PNPM 配置优化
+NODE 优化 教程</description>
+    </item>
+    
+  </channel>
+</rss>
