@@ -7,7 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Fri, 01 Mar 2024 10:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/node/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Mar 2024 16:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/node/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue Vben Admin - 入坑记</title>
+      <link>https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/</link>
+      <pubDate>Fri, 01 Mar 2024 16:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/</guid>
+      <description>官方文档
+简介
+入坑记
+PNPM 安装
+安装 时, 指定安装源 pnpm install --registry https://registry.npmmirror.com
+启动 时，提示 400（Error: Request failed with status code 400） 参考Issue
+修改 package.json
+{ &amp;#34;scripts&amp;#34;: { // 其他配置... &amp;#34;dev&amp;#34;: &amp;#34;vite --https false&amp;#34;, // 其他配置... } } 提交 时，注意git commit规范 </description>
+    </item>
+    
     <item>
       <title>PNPM - 安装 - 优化</title>
       <link>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</link>

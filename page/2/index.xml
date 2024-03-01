@@ -7,9 +7,52 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Fri, 01 Mar 2024 10:06:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2024 16:06:00 +0800</lastBuildDate>
     
         <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Nginx - 1 - 单页面静态网站配置</title>
+        <link>https://terryren.github.io/posts/web/nginx/nginx-1/</link>
+        <pubDate>Fri, 10 Mar 2023 17:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/web/nginx/nginx-1/ -&lt;p&gt;刷新页面，默认重定向到Index.html&lt;/p&gt;
+&lt;p&gt;静态目录(static)，找不到默认404&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;server {
+  listen       8080;
+  server_name  localhost;
+
+  client_max_body_size 10m;
+  client_header_buffer_size 256k;
+  large_client_header_buffers 4 256k;
+
+  root /opt/vue;
+
+  location /faq {
+      default_type text/html;
+      return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;;
+  }
+
+  location /static/ {
+      try_files \$uri \$uri =404;
+  }
+
+  location / {
+      add_header Cache-Control &amp;#39;no-cache&amp;#39;;
+      try_files \$uri \$uri /index.html;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;附加问题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/sh2018/article/details/103430125&#34;&gt;400 Bad Request Request Header Or Cookie Too Large&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/4855?time__1311=n4%2BxnD0D9DBDy7DRDR2DBqOoUPqWq0QGTzreG4D&#34;&gt;Nginx配置不当可能导致的安全问题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ghosind.com/2020/08/14/react-404-after-reload&#34;&gt;React部署于Nginx环境中刷新后404解决方案&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/web/nginx/nginx-1/ - Terry</description>
+        </item>
     
     
     
