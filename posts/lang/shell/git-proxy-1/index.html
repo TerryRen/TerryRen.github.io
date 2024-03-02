@@ -251,8 +251,26 @@
 						
 						
 							<li>
-								<a href="#windows-%e7%8e%af%e5%a2%83" class="nav-windows-环境">
-									windows 环境
+								<a href="#windows" class="nav-windows">
+									windows
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#macos" class="nav-macos">
+									MacOS
 								</a>
 							</li>
 						
@@ -367,9 +385,8 @@
 </span></span><span style="display:flex;"><span>	<span style="color:#658b00">proxy</span> = <span style="color:#cd5555">socks5://127.0.0.1:1080</span>
 </span></span></code></pre></div><p><strong>取消</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global --unset http.https://github.com.proxy
-</span></span></code></pre></div><p>Git <code>http/https 模式</code> 设置 <code>socks5</code> 代理</p>
-<h3 id="ssh-模式">ssh 模式</h3>
-<h4 id="windows-环境">windows 环境</h4>
+</span></span></code></pre></div><h3 id="ssh-模式">ssh 模式</h3>
+<h4 id="windows">windows</h4>
 <p><code>新增</code> 或者 <code>修改</code> 此文件 <code>{home}/.ssh/config</code></p>
 <p><strong>文件内容-添加</strong></p>
 <pre tabindex="0"><code class="language-conf" data-lang="conf"># Read more about SSH config files: https://linux.die.net/man/5/ssh_config
@@ -383,8 +400,19 @@ Host github.com
   IdentityFile &#34;C:\Users\{you_name}\.ssh\id_rsa&#34;
   # 需要通过MINGW64的shell执行git命令
   ProxyCommand connect -S 127.0.0.1:1080 -a none %h %p
-</code></pre><p>必须通过 <code>MINGW64</code> 的 <code>git bash shell</code> 才能成功，否则找不到 <code>connect</code> 程序</p>
-<p><a href="https://www.cnblogs.com/CnKker/p/11957813.html">http/https模式 socks5代理 参考文档</a></p>
+</code></pre><p><code>windows</code> 环境下必须通过 <code>MINGW64</code> 的 <code>git bash shell</code> 才能成功，否则找不到 <code>connect</code> 程序</p>
+<h4 id="macos">MacOS</h4>
+<p><code>新增</code> 或者 <code>修改</code> 此文件 <code>{home}/.ssh/config</code></p>
+<p><strong>文件内容-添加</strong></p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+
+Host github.com
+   User git
+   HostName github.com
+   # socks5
+   ProxyCommand nc -v -x 127.0.0.1:1080 %h %p
+</code></pre><p><a href="https://www.cnblogs.com/CnKker/p/11957813.html">http/https模式 socks5代理 参考文档</a></p>
+<p><a href="https://gist.github.com/b159732000/51db367b506a76877fa6fbee52c24383">macos ssh模式 socks5代理 参考文档</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/481574024">http 代理 参考文档</a></p>
 
                     
@@ -623,8 +651,26 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#windows-%e7%8e%af%e5%a2%83" class="nav-windows-环境">
-									windows 环境
+								<a href="#windows" class="nav-windows">
+									windows
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#macos" class="nav-macos">
+									MacOS
 								</a>
 							</li>
 						

@@ -36,9 +36,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#658b00&#34;&gt;proxy&lt;/span&gt; = &lt;span style=&#34;color:#cd5555&#34;&gt;socks5://127.0.0.1:1080&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;取消&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global --unset http.https://github.com.proxy
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Git &lt;code&gt;http/https 模式&lt;/code&gt; 设置 &lt;code&gt;socks5&lt;/code&gt; 代理&lt;/p&gt;
-&lt;h3 id=&#34;ssh-模式&#34;&gt;ssh 模式&lt;/h3&gt;
-&lt;h4 id=&#34;windows-环境&#34;&gt;windows 环境&lt;/h4&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ssh-模式&#34;&gt;ssh 模式&lt;/h3&gt;
+&lt;h4 id=&#34;windows&#34;&gt;windows&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;新增&lt;/code&gt; 或者 &lt;code&gt;修改&lt;/code&gt; 此文件 &lt;code&gt;{home}/.ssh/config&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;文件内容-添加&lt;/strong&gt;&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
@@ -52,8 +51,19 @@ Host github.com
   IdentityFile &amp;#34;C:\Users\{you_name}\.ssh\id_rsa&amp;#34;
   # 需要通过MINGW64的shell执行git命令
   ProxyCommand connect -S 127.0.0.1:1080 -a none %h %p
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;必须通过 &lt;code&gt;MINGW64&lt;/code&gt; 的 &lt;code&gt;git bash shell&lt;/code&gt; 才能成功，否则找不到 &lt;code&gt;connect&lt;/code&gt; 程序&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/CnKker/p/11957813.html&#34;&gt;http/https模式 socks5代理 参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;windows&lt;/code&gt; 环境下必须通过 &lt;code&gt;MINGW64&lt;/code&gt; 的 &lt;code&gt;git bash shell&lt;/code&gt; 才能成功，否则找不到 &lt;code&gt;connect&lt;/code&gt; 程序&lt;/p&gt;
+&lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;新增&lt;/code&gt; 或者 &lt;code&gt;修改&lt;/code&gt; 此文件 &lt;code&gt;{home}/.ssh/config&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;文件内容-添加&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+
+Host github.com
+   User git
+   HostName github.com
+   # socks5
+   ProxyCommand nc -v -x 127.0.0.1:1080 %h %p
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/CnKker/p/11957813.html&#34;&gt;http/https模式 socks5代理 参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/b159732000/51db367b506a76877fa6fbee52c24383&#34;&gt;macos ssh模式 socks5代理 参考文档&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/481574024&#34;&gt;http 代理 参考文档&lt;/a&gt;&lt;/p&gt;
 - https://terryren.github.io/posts/lang/shell/git-proxy-1/ - Terry</description>
         </item>
