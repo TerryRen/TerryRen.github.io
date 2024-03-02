@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Vue Vben Admin - 入坑记</title>
+<title>GIT 设置 socks5 代理</title>
 
 
 
@@ -10,26 +10,26 @@
 <meta name="google-site-verification" content="">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
-<meta name="description" content="Vue Vben Admin - 入坑记">
+<meta name="description" content="GIT 设置 socks5 代理">
 <meta name="renderer" content="webkit">
 <meta name="theme-color" content="#ffffff">
 
 
 
-<meta property="og:title" content="Vue Vben Admin - 入坑记" />
-<meta property="og:description" content="Vue Vben Admin - 入坑记" />
+<meta property="og:title" content="GIT 设置 socks5 代理" />
+<meta property="og:description" content="GIT 设置 socks5 代理" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-03-01T16:06:00+08:00" />
-<meta property="article:modified_time" content="2024-03-01T16:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="https://terryren.github.io/posts/lang/shell/git-proxy-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-02T15:56:00+08:00" />
+<meta property="article:modified_time" content="2024-03-02T15:56:00+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Vue Vben Admin - 入坑记"/>
-<meta name="twitter:description" content="Vue Vben Admin - 入坑记"/>
+<meta name="twitter:title" content="GIT 设置 socks5 代理"/>
+<meta name="twitter:description" content="GIT 设置 socks5 代理"/>
 
 
 
@@ -134,6 +134,135 @@
             <div class="toc">
 
 
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#httphttps-%e6%a8%a1%e5%bc%8f" class="nav-httphttps-模式">
+									http/https 模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%85%a8%e5%b1%80%e4%bb%a3%e7%90%86" class="nav-全局代理">
+									全局代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#githubcom-%e4%b8%93%e7%94%a8%e4%bb%a3%e7%90%86" class="nav-githubcom-专用代理">
+									github.com 专用代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#ssh-%e6%a8%a1%e5%bc%8f" class="nav-ssh-模式">
+									ssh 模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#windows-%e7%8e%af%e5%a2%83" class="nav-windows-环境">
+									windows 环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
 </div>
             
         </div>
@@ -186,35 +315,29 @@
                 
             >
                 <div class="post-title">
-                    Vue Vben Admin - 入坑记
+                    GIT 设置 socks5 代理
                     
                     <div class="post-subtitle">
-                        Vue Vben Admin - 入坑记
+                        GIT 设置 socks5 代理
                     </div>
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2024-03-01 16:06
+                            2024-03-02 15:56
                         </time>
                         
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/node">Node</a>
+                                <a href="/categories/shell">Shell</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/node">Node</a>
-                                &nbsp;
-                            
-                                <a href="/tags/vue3.0">Vue3.0</a>
-                                &nbsp;
-                            
-                                <a href="/tags/vben">Vben</a>
+                                <a href="/tags/git">Git</a>
                                 &nbsp;
                             
                         
@@ -227,33 +350,46 @@
                 
                 <div class="post-body" v-pre>
                 
-                    <p><strong>官方文档</strong></p>
-<p><a href="https://doc.vvbin.cn/guide/introduction.html">简介</a></p>
-<p><strong>入坑记</strong></p>
-<p><a href="/posts/lang/nodejs/pnpm-install-1">PNPM 安装</a></p>
-<ol>
-<li><code>安装</code> 时, 指定安装源</li>
-</ol>
-<p><code>pnpm install --registry https://registry.npmmirror.com</code></p>
-<ol start="2">
-<li><code>启动</code> 时，提示 <code>400（Error: Request failed with status code 400）</code></li>
-</ol>
-<p><a href="https://github.com/vbenjs/vue-vben-admin/discussions/2210">参考Issue</a></p>
-<p>修改 <code>package.json</code></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">&#34;scripts&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#228b22">// 其他配置...
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>        <span style="color:#8b008b;font-weight:bold">&#34;dev&#34;</span>: <span style="color:#cd5555">&#34;vite --https false&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#228b22">// 其他配置...
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ol start="3">
-<li><code>提交</code> 时，注意<code>git commit</code>规范</li>
-</ol>
+                    <p><strong>Http代理，容易受到DNS污染；建议Socks5代理</strong></p>
+<h3 id="httphttps-模式">http/https 模式</h3>
+<h4 id="全局代理">全局代理</h4>
+<p><strong>设置</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global http.proxy <span style="color:#cd5555">&#39;socks5://127.0.0.1:1080&#39;</span>
+</span></span><span style="display:flex;"><span>git config --global https.proxy <span style="color:#cd5555">&#39;socks5://127.0.0.1:1080&#39;</span>
+</span></span></code></pre></div><p><strong>取消</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global --unset http.proxy
+</span></span><span style="display:flex;"><span>git config --global --unset https.proxy
+</span></span></code></pre></div><h4 id="githubcom-专用代理">github.com 专用代理</h4>
+<p><strong>设置</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+</span></span></code></pre></div><p><code>{home}/.gitconfig</code> <strong>文件变化</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">[http &#34;https://github.com&#34;]</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#658b00">proxy</span> = <span style="color:#cd5555">socks5://127.0.0.1:1080</span>
+</span></span></code></pre></div><p><strong>取消</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global --unset http.https://github.com.proxy
+</span></span></code></pre></div><p>Git <code>http/https 模式</code> 设置 <code>socks5</code> 代理</p>
+<h3 id="ssh-模式">ssh 模式</h3>
+<h4 id="windows-环境">windows 环境</h4>
+<p><code>新增</code> 或者 <code>修改</code> 此文件 <code>{home}/.ssh/config</code></p>
+<p><strong>文件内容-添加</strong></p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+
+Host github.com
+  User git
+  Hostname github.com
+  Port 22
+  TCPKeepAlive yes
+  # 注意修改为您的 SSH 密钥文件的路径
+  IdentityFile &#34;C:\Users\{you_name}\.ssh\id_rsa&#34;
+  # 需要通过MINGW64的shell执行git命令
+  ProxyCommand connect -S 127.0.0.1:1080 -a none %h %p
+</code></pre><p>必须通过 <code>MINGW64</code> 的 <code>git bash shell</code> 才能成功，否则找不到 <code>connect</code> 程序</p>
+<p><a href="https://www.cnblogs.com/CnKker/p/11957813.html">http/https模式 socks5代理 参考文档</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/481574024">http 代理 参考文档</a></p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2024-03-01</p>
+		    <p style="color:#777;">最后修改于 2024-03-02</p>
                     
                 </div>
             </div>
@@ -262,14 +398,14 @@
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/posts/lang/shell/git-proxy-1/">
-			下回<br>GIT 设置 socks5 代理
+                <a class="newer-posts">
+			下回<br>已经到头啦。
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/posts/lang/nodejs/pnpm-install-1/">
-			上回<br>PNPM - 安装 - 优化
+                <a class="older-posts" href="/posts/lang/nodejs/vue-vben-admin-1/">
+			上回<br>Vue Vben Admin - 入坑记
                 </a>
                 
             </nav>
@@ -369,6 +505,135 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
         
         <div class="toc">
 
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#httphttps-%e6%a8%a1%e5%bc%8f" class="nav-httphttps-模式">
+									http/https 模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%85%a8%e5%b1%80%e4%bb%a3%e7%90%86" class="nav-全局代理">
+									全局代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#githubcom-%e4%b8%93%e7%94%a8%e4%bb%a3%e7%90%86" class="nav-githubcom-专用代理">
+									github.com 专用代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#ssh-%e6%a8%a1%e5%bc%8f" class="nav-ssh-模式">
+									ssh 模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#windows-%e7%8e%af%e5%a2%83" class="nav-windows-环境">
+									windows 环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
 
 </div>
         

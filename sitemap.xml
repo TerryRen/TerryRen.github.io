@@ -3,21 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://terryren.github.io/categories/</loc>
-    <lastmod>2024-03-01T16:06:00+08:00</lastmod>
+    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/git/</loc>
+    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/lang/shell/git-proxy-1/</loc>
+    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/</loc>
+    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/shell/</loc>
+    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/</loc>
+    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/</loc>
+    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/node/</loc>
     <lastmod>2024-03-01T16:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/categories/node/</loc>
-    <lastmod>2024-03-01T16:06:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/posts/</loc>
-    <lastmod>2024-03-01T16:06:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/tags/</loc>
-    <lastmod>2024-03-01T16:06:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/</loc>
     <lastmod>2024-03-01T16:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/vben/</loc>
@@ -48,9 +57,6 @@
     <lastmod>2024-02-03T15:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/shell/</loc>
-    <lastmod>2024-02-03T15:56:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/categories/shell/</loc>
     <lastmod>2024-02-03T15:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/windows/</loc>

@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Fri, 01 Mar 2024 16:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 15:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GIT 设置 socks5 代理</title>
+      <link>https://terryren.github.io/posts/lang/shell/git-proxy-1/</link>
+      <pubDate>Sat, 02 Mar 2024 15:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/git-proxy-1/</guid>
+      <description>Http代理，容易受到DNS污染；建议Socks5代理
+http/https 模式 全局代理 设置
+git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; 取消
+git config --global --unset http.proxy git config --global --unset https.proxy github.com 专用代理 设置
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1080 {home}/.gitconfig 文件变化
+[http &amp;#34;https://github.com&amp;#34;] proxy = socks5://127.0.0.1:1080 取消
+git config --global --unset http.https://github.com.proxy Git http/https 模式 设置 socks5 代理
+ssh 模式 windows 环境 新增 或者 修改 此文件 {home}/.ssh/config
+文件内容-添加
+# Read more about SSH config files: https://linux.</description>
+    </item>
+    
     <item>
       <title>Vue Vben Admin - 入坑记</title>
       <link>https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/</link>
