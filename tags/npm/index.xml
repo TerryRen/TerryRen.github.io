@@ -16,7 +16,7 @@
       <guid>https://terryren.github.io/posts/lang/nodejs/node-install-1/</guid>
       <description>存储优化
 windows 平台shell，修改采用加速地址，调整 registry，cache，prefix 全局包目录;
-npm config get registry npm config set registry https://{hosts}/artifactory/api/npm/ echo %AppData% npm config get prefix npm config set prefix D:\AppData\npm npm config get cache npm config set cache D:\AppData\npm-cache @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm&amp;#34; @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm-cache&amp;#34; hosts
+npm config get registry npm config set registry {registry} echo %AppData% npm config get prefix npm config set prefix D:\AppData\npm npm config get cache npm config set cache D:\AppData\npm-cache @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm&amp;#34; @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm-cache&amp;#34; registry hosts
 淘宝镜像地址
 腾讯云镜像地址
 华为云镜像地址

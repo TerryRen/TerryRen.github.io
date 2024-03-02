@@ -230,7 +230,7 @@
                     <p><strong>存储优化</strong></p>
 <p><code>windows</code> 平台shell，修改采用加速地址，调整 <code>registry</code>，<code>cache</code>，<code>prefix</code> 全局包目录;</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>npm config get registry
-</span></span><span style="display:flex;"><span>npm config set registry https://{hosts}/artifactory/api/npm/
+</span></span><span style="display:flex;"><span>npm config set registry {registry}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">echo</span> <span style="color:#00688b">%AppData%</span>
 </span></span><span style="display:flex;"><span>npm config get prefix
@@ -241,7 +241,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>@<span style="color:#8b008b;font-weight:bold">RD</span> /S /Q <span style="color:#cd5555">&#34;C:\Users\xxx\AppData\Roaming\npm&#34;</span>
 </span></span><span style="display:flex;"><span>@<span style="color:#8b008b;font-weight:bold">RD</span> /S /Q <span style="color:#cd5555">&#34;C:\Users\xxx\AppData\Roaming\npm-cache&#34;</span>
-</span></span></code></pre></div><p><strong>hosts</strong></p>
+</span></span></code></pre></div><p><strong>registry hosts</strong></p>
 <p><a href="https://registry.npmmirror.com">淘宝镜像地址</a></p>
 <p><a href="http://mirrors.cloud.tencent.com/npm/">腾讯云镜像地址</a></p>
 <p><a href="https://mirrors.huaweicloud.com/repository/npm/">华为云镜像地址</a></p>
@@ -261,6 +261,28 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nvm list
 </span></span><span style="display:flex;"><span>nvm install v14.15.4
 </span></span><span style="display:flex;"><span>nvm use v14.15.4
+</span></span></code></pre></div><p><code>MacOS</code> 平台shell，通过 <code>brew</code> 命令安装 <code>nvm</code> , <code>node</code></p>
+<p>卸载已经安装的 <code>node</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew uninstall --ignore-dependencies node
+</span></span><span style="display:flex;"><span>brew uninstall --force node
+</span></span></code></pre></div><p>安装 <code>nvm</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew install nvm
+</span></span></code></pre></div><p>创建 <code>.nvm</code> 目录</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir ~/.nvm
+</span></span></code></pre></div><p>配置环境 <code>.bash_profile</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># nvm</span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">NVM_DIR</span>=<span style="color:#cd5555">&#34;</span><span style="color:#00688b">$HOME</span><span style="color:#cd5555">/.nvm&#34;</span>
+</span></span><span style="display:flex;"><span>[ -s <span style="color:#cd5555">&#34;/usr/local/opt/nvm/nvm.sh&#34;</span> ] &amp;&amp; <span style="color:#cd5555">\.</span> <span style="color:#cd5555">&#34;/usr/local/opt/nvm/nvm.sh&#34;</span>
+</span></span><span style="display:flex;"><span>[ -s <span style="color:#cd5555">&#34;/usr/local/opt/nvm/etc/bash_completion&#34;</span> ] &amp;&amp; <span style="color:#cd5555">\.</span> <span style="color:#cd5555">&#34;/usr/local/opt/nvm/etc/bash_completion&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># nvm end</span>
+</span></span></code></pre></div><p>配置生效</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.bash_profile
+</span></span></code></pre></div><p>安装 <code>node</code> <code>v20.11.1</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nvm ls-remote
+</span></span><span style="display:flex;"><span>nvm install v20.11.1
+</span></span><span style="display:flex;"><span>nvm use v20.11.1
+</span></span><span style="display:flex;"><span>nvm ls
+</span></span><span style="display:flex;"><span>node -v
 </span></span></code></pre></div><p><strong>参考文档</strong></p>
 <p><a href="https://www.base64encode.org/">base64-encode</a></p>
 <p><a href="https://segmentfault.com/a/1190000040688010">NVM Issue</a></p>
