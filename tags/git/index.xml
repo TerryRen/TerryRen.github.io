@@ -20,10 +20,9 @@ git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git con
 git config --global --unset http.proxy git config --global --unset https.proxy github.com 专用代理 设置
 git config --global http.https://github.com.proxy socks5://127.0.0.1:1080 {home}/.gitconfig 文件变化
 [http &amp;#34;https://github.com&amp;#34;] proxy = socks5://127.0.0.1:1080 取消
-git config --global --unset http.https://github.com.proxy Git http/https 模式 设置 socks5 代理
-ssh 模式 windows 环境 新增 或者 修改 此文件 {home}/.ssh/config
+git config --global --unset http.https://github.com.proxy ssh 模式 windows 新增 或者 修改 此文件 {home}/.ssh/config
 文件内容-添加
-# Read more about SSH config files: https://linux.</description>
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_configHost github.comUser gitHostname github.comPort 22TCPKeepAlive yes# 注意修改为您的 SSH 密钥文件的路径IdentityFile &amp;#34;C:\Users\{you_name}\.</description>
     </item>
     
   </channel>

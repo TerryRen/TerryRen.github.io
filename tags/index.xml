@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Sat, 02 Mar 2024 15:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Mar 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java</title>
+      <link>https://terryren.github.io/tags/java/</link>
+      <pubDate>Fri, 08 Mar 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Git</title>
       <link>https://terryren.github.io/tags/git/</link>
@@ -95,15 +104,6 @@
       <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/tags/windows/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Java</title>
-      <link>https://terryren.github.io/tags/java/</link>
-      <pubDate>Sat, 03 Feb 2024 13:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/java/</guid>
       <description></description>
     </item>
     
