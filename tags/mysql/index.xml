@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/mysql/</link>
+    <description>Recent content in Mysql on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Tue, 12 Mar 2024 09:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JDBC Mysql 时区问题</title>
+      <link>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</link>
+      <pubDate>Tue, 12 Mar 2024 09:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</guid>
+      <description>JDBC 链接 Mysql 提示：时区不识别 错误日志 c.m.c.e.InvalidConnectionAttributeException: The server time zone value &amp;#39;PDT&amp;#39; is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specific time zone value if you want to utilize time zone support. 原因 由于 Client 端连接字符串没有设置 serverTimezone=America/Los_Angeles 参数, 同时 Mysql 端也没有设置时区 time_zone, 此时 Mysql 采用 OS 操作系统 的 system_time_zone, 当这个值无法被 JDBC SDK 识别时，就会提示如上错误</description>
+    </item>
+    
+  </channel>
+</rss>
