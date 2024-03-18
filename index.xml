@@ -1,4 +1,4 @@
-<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The Sound of Music</title>
@@ -7,930 +7,223 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Tue, 12 Mar 2024 09:56:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Mar 2024 09:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JDBC Mysql 时区问题</title>
+      <link>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</link>
+      <pubDate>Tue, 12 Mar 2024 09:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</guid>
+      <description>JDBC 链接 Mysql 提示：时区不识别 错误日志 c.m.c.e.InvalidConnectionAttributeException: The server time zone value &amp;#39;PDT&amp;#39; is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specific time zone value if you want to utilize time zone support. 原因 由于 Client 端连接字符串没有设置 serverTimezone=America/Los_Angeles 参数, 同时 Mysql 端也没有设置时区 time_zone, 此时 Mysql 采用 OS 操作系统 的 system_time_zone, 当这个值无法被 JDBC SDK 识别时，就会提示如上错误</description>
+    </item>
     
-        <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JDK 多版本 安装</title>
+      <link>https://terryren.github.io/posts/lang/java/jdk/</link>
+      <pubDate>Fri, 08 Mar 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/java/jdk/</guid>
+      <description>MacOS 查看 JDK 版本
+/usr/libexec/java_home -V
+协助 Oracle jdk 8
+sudo rm -rf /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin sudo rm -rf /Library/PreferencePanes/JavaControlPanel.prefPane # 进入 JDK 目录 cd /Library/Java/JavaVirtualMachines # 查看所有JDK ls sudo rm -rf /Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk sudo rm -rf /Library/Java/JavaVirtualMachines/openjdk.jdk # 移除环境变量 &amp;amp; 并生效 cd ~ code .bash_profile source .bash_profile 通过 brew 卸载 open jdk
+brew uninstall openjdk@8 brew uninstall openjdk@17 通过 brew 安装 open jdk
+brew install openjdk@8 brew install openjdk@17 java 安装 目录</description>
+    </item>
     
+    <item>
+      <title>GIT 设置 socks5 代理</title>
+      <link>https://terryren.github.io/posts/lang/shell/git-proxy-1/</link>
+      <pubDate>Sat, 02 Mar 2024 15:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/git-proxy-1/</guid>
+      <description>Http代理，容易受到DNS污染；建议Socks5代理
+http/https 模式 全局代理 设置
+git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; 取消
+git config --global --unset http.proxy git config --global --unset https.proxy github.com 专用代理 设置
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1080 {home}/.gitconfig 文件变化
+[http &amp;#34;https://github.com&amp;#34;] proxy = socks5://127.0.0.1:1080 取消
+git config --global --unset http.https://github.com.proxy ssh 模式 windows 新增 或者 修改 此文件 {home}/.ssh/config
+文件内容-添加
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_config Host github.com User git Hostname github.com Port 22 TCPKeepAlive yes # 注意修改为您的 SSH 密钥文件的路径 IdentityFile &amp;#34;C:\Users\{you_name}\.</description>
+    </item>
     
+    <item>
+      <title>Vue Vben Admin - 入坑记</title>
+      <link>https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/</link>
+      <pubDate>Fri, 01 Mar 2024 16:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/</guid>
+      <description>官方文档
+简介
+入坑记
+PNPM 安装
+安装 时, 指定安装源 pnpm install --registry https://registry.npmmirror.com
+启动 时，提示 400（Error: Request failed with status code 400） 参考Issue
+修改 package.json
+{ &amp;#34;scripts&amp;#34;: { // 其他配置... &amp;#34;dev&amp;#34;: &amp;#34;vite --https false&amp;#34;, // 其他配置... } } 提交 时，注意git commit规范 </description>
+    </item>
     
-        <item>
-        <title>JDBC Mysql 时区问题</title>
-        <link>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</link>
-        <pubDate>Tue, 12 Mar 2024 09:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/java/jdbc-mysql-1/ -&lt;h2 id=&#34;jdbc-链接-mysql-提示时区不识别&#34;&gt;JDBC 链接 Mysql 提示：时区不识别&lt;/h2&gt;
-&lt;h3 id=&#34;错误日志&#34;&gt;错误日志&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-log&#34; data-lang=&#34;log&#34;&gt;c.m.c.e.InvalidConnectionAttributeException: The server time zone value &amp;#39;PDT&amp;#39; is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specific time zone value if you want to utilize time zone support.
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;原因&#34;&gt;原因&lt;/h3&gt;
-&lt;p&gt;由于 &lt;code&gt;Client&lt;/code&gt; 端连接字符串没有设置 &lt;code&gt;serverTimezone=America/Los_Angeles&lt;/code&gt; 参数, 同时 &lt;code&gt;Mysql&lt;/code&gt; 端也没有设置时区 &lt;code&gt;time_zone&lt;/code&gt;, 此时 &lt;code&gt;Mysql&lt;/code&gt; 采用 &lt;code&gt;OS 操作系统&lt;/code&gt; 的 &lt;code&gt;system_time_zone&lt;/code&gt;, 当这个值无法被 &lt;code&gt;JDBC&lt;/code&gt; SDK 识别时，就会提示如上错误&lt;/p&gt;
-&lt;h3 id=&#34;详细分析&#34;&gt;详细分析&lt;/h3&gt;
-&lt;h4 id=&#34;mysql-时区&#34;&gt;Mysql 时区&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SHOW&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;variables&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;%time_zone%&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;@@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;global&lt;/span&gt;.time_zone,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;@@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;session&lt;/span&gt;.time_zone;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;备注&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;SYSTEM&lt;/code&gt; 代表 时区来自 &lt;code&gt;system_time_zone&lt;/code&gt;, 而 &lt;code&gt;system_time_zone&lt;/code&gt; 来自 &lt;code&gt;OS 操作系统&lt;/code&gt;，启动 &lt;code&gt;Mysql&lt;/code&gt; 时获取&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;@@global.time_zone&lt;/code&gt; 代表 &lt;code&gt;Server&lt;/code&gt; &lt;code&gt;全局&lt;/code&gt; 时区&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;@@session.time_zone&lt;/code&gt; 代表 &lt;code&gt;Client&lt;/code&gt; &lt;code&gt;当前会话&lt;/code&gt; 时区&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如果 &lt;code&gt;Mysql&lt;/code&gt; 没有设置 &lt;code&gt;time_zone&lt;/code&gt; ，显示结果如下:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Variable_name&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;system_time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;PDT&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;SYSTEM&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@global.time_zone&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@session.time_zone&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;SYSTEM&lt;/code&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;SYSTEM&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;如果 &lt;code&gt;Mysql&lt;/code&gt; 设置了 &lt;code&gt;time_zone&lt;/code&gt; ，显示结果如下:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Variable_name&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;system_time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;PDT&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;America/Los_Angeles&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@global.time_zone&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@session.time_zone&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;America/Los_Angeles&lt;/code&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;America/Los_Angeles&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4 id=&#34;jdbc-sdk&#34;&gt;JDBC SDK&lt;/h4&gt;
-&lt;p&gt;SDK &lt;code&gt;mysql-connector-java&lt;/code&gt; 版本 &lt;code&gt;8.0.18&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;源码分析&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;mysql-connector-java-8.0.18.jar!\com\mysql\cj\protocol\a\NativeProtocol.class&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;备注&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当 &lt;code&gt;Mysq&lt;/code&gt;l 返回 &lt;code&gt;time_zone&lt;/code&gt; == &lt;code&gt;SYSTEM&lt;/code&gt; 时，读取 &lt;code&gt;system_time_zone&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果 &lt;code&gt;Client&lt;/code&gt; 连接字符串 &lt;code&gt;没有&lt;/code&gt; 配置 &lt;code&gt;serverTimezone&lt;/code&gt; 或者 值为 &lt;code&gt;Null&lt;/code&gt; 或者 &lt;code&gt;Empty&lt;/code&gt;; 验证 &lt;code&gt;system_time_zone&lt;/code&gt; 是否符合预期&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果 &lt;code&gt;Client&lt;/code&gt; 连接字符串 &lt;code&gt;有&lt;/code&gt; 配置 &lt;code&gt;serverTimezone&lt;/code&gt; ，则验证 &lt;code&gt;serverTimezone&lt;/code&gt; 是否符合预期&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/mysql_jdbc_8.0.18_Protocol_2024-03-12_14-56-57.png&#34; alt=&#34;mysql_jdbc_8.0.18_Protocol alt&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;源码片段&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#00688b;font-weight:bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;configureTimezone&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    String configuredTimeZoneOnServer = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerVariable&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;time_zone&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;SYSTEM&amp;#34;&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;equalsIgnoreCase&lt;/span&gt;(configuredTimeZoneOnServer)) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        configuredTimeZoneOnServer = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerVariable&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;system_time_zone&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    String canonicalTimezone = (String)&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getPropertySet&lt;/span&gt;().&lt;span style=&#34;color:#658b00&#34;&gt;getStringProperty&lt;/span&gt;(PropertyKey.&lt;span style=&#34;color:#658b00&#34;&gt;serverTimezone&lt;/span&gt;).&lt;span style=&#34;color:#658b00&#34;&gt;getValue&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (configuredTimeZoneOnServer != &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; (canonicalTimezone == &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt; || StringUtils.&lt;span style=&#34;color:#658b00&#34;&gt;isEmptyOrWhitespaceOnly&lt;/span&gt;(canonicalTimezone))) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;try&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            canonicalTimezone = TimeUtil.&lt;span style=&#34;color:#658b00&#34;&gt;getCanonicalTimezone&lt;/span&gt;(configuredTimeZoneOnServer, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getExceptionInterceptor&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;catch&lt;/span&gt; (IllegalArgumentException var4) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;throw&lt;/span&gt; (WrongArgumentException)ExceptionFactory.&lt;span style=&#34;color:#658b00&#34;&gt;createException&lt;/span&gt;(WrongArgumentException.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;, var4.&lt;span style=&#34;color:#658b00&#34;&gt;getMessage&lt;/span&gt;(), &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getExceptionInterceptor&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (canonicalTimezone != &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; canonicalTimezone.&lt;span style=&#34;color:#658b00&#34;&gt;length&lt;/span&gt;() &amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;setServerTimeZone&lt;/span&gt;(TimeZone.&lt;span style=&#34;color:#658b00&#34;&gt;getTimeZone&lt;/span&gt;(canonicalTimezone));
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (!canonicalTimezone.&lt;span style=&#34;color:#658b00&#34;&gt;equalsIgnoreCase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;GMT&amp;#34;&lt;/span&gt;) &amp;amp;&amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerTimeZone&lt;/span&gt;().&lt;span style=&#34;color:#658b00&#34;&gt;getID&lt;/span&gt;().&lt;span style=&#34;color:#658b00&#34;&gt;equals&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;GMT&amp;#34;&lt;/span&gt;)) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;throw&lt;/span&gt; (WrongArgumentException)ExceptionFactory.&lt;span style=&#34;color:#658b00&#34;&gt;createException&lt;/span&gt;(WrongArgumentException.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;, Messages.&lt;span style=&#34;color:#658b00&#34;&gt;getString&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Connection.9&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; Object[]{canonicalTimezone}), &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getExceptionInterceptor&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;setDefaultTimeZone&lt;/span&gt;(&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerTimeZone&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;mysql-connector-java-8.0.18.jar!\com\mysql\cj\util\TimeUtil.class&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;备注&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;time_zone&lt;/code&gt; 为 &lt;code&gt;+08:00&lt;/code&gt; 或者 &lt;code&gt;-07:00&lt;/code&gt;; 直接返回 &lt;code&gt;GMT&lt;/code&gt; + &lt;code&gt;time_zone&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;否则 &lt;code&gt;time_zone&lt;/code&gt; 必须存在于 &lt;code&gt;/com/mysql/cj/util/TimeZoneMapping.properties&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/mysql_jdbc_8.0.18_TimeUtil_2024-03-12_14-56-57.png&#34; alt=&#34;mysql_jdbc_8.0.18_TimeUtil alt&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;源码片段&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;static&lt;/span&gt; String &lt;span style=&#34;color:#008b45&#34;&gt;getCanonicalTimezone&lt;/span&gt;(String timezoneStr, ExceptionInterceptor exceptionInterceptor) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (timezoneStr == &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        timezoneStr = timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;trim&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;length&lt;/span&gt;() &amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;2&lt;/span&gt; &amp;amp;&amp;amp; (timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;charAt&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;) == &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;+&amp;#39;&lt;/span&gt; || timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;charAt&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;) == &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;) &amp;amp;&amp;amp; Character.&lt;span style=&#34;color:#658b00&#34;&gt;isDigit&lt;/span&gt;(timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;charAt&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;))) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;GMT&amp;#34;&lt;/span&gt; + timezoneStr;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Class var2 = TimeUtil.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;synchronized&lt;/span&gt;(TimeUtil.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (timeZoneMappings == &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    loadTimeZoneMappings(exceptionInterceptor);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String canonicalTz;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; ((canonicalTz = timeZoneMappings.&lt;span style=&#34;color:#658b00&#34;&gt;getProperty&lt;/span&gt;(timezoneStr)) != &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; canonicalTz;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;throw&lt;/span&gt; (InvalidConnectionAttributeException)ExceptionFactory.&lt;span style=&#34;color:#658b00&#34;&gt;createException&lt;/span&gt;(InvalidConnectionAttributeException.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;, Messages.&lt;span style=&#34;color:#658b00&#34;&gt;getString&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;TimeUtil.UnrecognizedTimezoneId&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; Object[]{timezoneStr}), exceptionInterceptor);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;链接字符串&#34;&gt;链接字符串&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;参考链接字符串参数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;?serverTimezone=America/Los_Angeles&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;useServerPrepStmts=true&amp;amp;autoReconnect=true&amp;amp;failOverReadOnly=false&amp;amp;zeroDateTimeBehavior=convertToNull&amp;amp;useSSL=false&amp;amp;allowPublicKeyRetrieval=true&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/w8y56f/article/details/115445442&#34;&gt;如何设置 mysql 的时区&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/af8d7b3e2074&#34;&gt;JDBC MySQL 时区问题&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://kaimingwan.com/2022/06/20/ns4y3a/&#34;&gt;MySQL driver 读取时间时的时区处理&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/lang/java/jdbc-mysql-1/ - Terry</description>
-        </item>
+    <item>
+      <title>PNPM - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</link>
+      <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</guid>
+      <description>windows 平台shell
+nvm install v16.20.2 nvm use v16.20.2 npm install -g pnpm MacOS 平台Shell
+brew install pnpm 修改用户全局配置文件 ${home}/.npmrc ，设置 store-dir 目录，其他配置与NPM共用
+store-dir=D:\AppData\pnpm 查看 pnpm config list
+安装 pnpm install or pnpm install --registry https://registry.npmmirror.com
+运行 pnpm serve
+打包 pnpm build
+参考文档
+PNPM 安装
+PNPM 使用
+PNPM 配置优化
+NODE 优化 教程</description>
+    </item>
     
+    <item>
+      <title>Node - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/lang/nodejs/node-install-1/</link>
+      <pubDate>Sat, 03 Feb 2024 16:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/nodejs/node-install-1/</guid>
+      <description>存储优化
+windows 平台shell，修改采用加速地址，调整 registry，cache，prefix 全局包目录;
+npm config get registry npm config set registry {registry} echo %AppData% npm config get prefix npm config set prefix D:\AppData\npm npm config get cache npm config set cache D:\AppData\npm-cache @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm&amp;#34; @RD /S /Q &amp;#34;C:\Users\xxx\AppData\Roaming\npm-cache&amp;#34; registry hosts
+淘宝镜像地址
+腾讯云镜像地址
+华为云镜像地址
+添加路径 D:\AppData\npm 到环境变量 PATH ，全局安装的命令才能生效
+查看 npm config list or npm install --registry https://registry.npmmirror.com
+用户全局配置文件 ${home}/.npmrc 参考如下：
+registry=https://{hosts}/artifactory/api/npm/ sass_binary_site=https://{hosts}/artifactory/node-sass-remote/download/ _auth=&amp;#34;{basic auth}&amp;#34; email=xxx@yyy.zzz always-auth=true prefix=D:\AppData\npm cache=D:\AppData\npm-cache NVM 注意事项</description>
+    </item>
     
+    <item>
+      <title>Windows - 系统 - 垃圾清理 - 脚本</title>
+      <link>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</link>
+      <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</guid>
+      <description>清理系统垃圾
+@echo off echo 正在清除系统垃圾文件，请稍等...... del /f /s /q %systemdrive%\Windows\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\NetworkService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\LocalService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\*._mp del /f /s /q %systemdrive%\*.log del /f /s /q %systemdrive%\*.gid del /f /s /q %systemdrive%\*.chk del /f /s /q %systemdrive%\*.old del /f /s /q %systemdrive%\recycled\*.* del /f /s /q %windir%\*.bak del /f /s /q %windir%\prefetch\*.* rd /s /q %windir%\temp &amp;amp; md %windir%\temp del /f /q %userprofile%\cookies\*.</description>
+    </item>
     
-        <item>
-        <title>JDK 多版本 安装</title>
-        <link>https://terryren.github.io/posts/lang/java/jdk/</link>
-        <pubDate>Fri, 08 Mar 2024 13:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/java/jdk/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/java/jdk/ -&lt;h3 id=&#34;macos&#34;&gt;MacOS&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;查看 JDK 版本&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;/usr/libexec/java_home -V&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;协助 Oracle jdk 8&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /Library/Internet&lt;span style=&#34;color:#cd5555&#34;&gt;\ &lt;/span&gt;Plug-Ins/JavaAppletPlugin.plugin
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /Library/PreferencePanes/JavaControlPanel.prefPane
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 进入 JDK 目录&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; /Library/Java/JavaVirtualMachines
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看所有JDK&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /Library/Java/JavaVirtualMachines/openjdk.jdk
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 移除环境变量 &amp;amp; 并生效&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; ~
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;code  .bash_profile
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;source&lt;/span&gt; .bash_profile
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;通过 brew 卸载 open jdk&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew uninstall openjdk@8
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew uninstall openjdk@17
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;通过 brew 安装 open jdk&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install openjdk@8
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install openjdk@17
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;java 安装 目录&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/local/opt/openjdk@8/bin/java
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/local/opt/openjdk@17/bin/java
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;添加软连接&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ln -sfn /usr/local/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;修改 .bash_profile&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 进入用户目录&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; ~
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 编辑JAVA_HOME相关配置&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;code .bash_profile
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 添加如下内容&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Java&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;j8&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;j17&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;JAVA_HOME&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;`&lt;/span&gt;/usr/libexec/java_home -v 1.8&lt;span style=&#34;color:#cd5555&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;PATH&lt;/span&gt;=&lt;span style=&#34;color:#00688b&#34;&gt;$JAVA_HOME&lt;/span&gt;/bin:&lt;span style=&#34;color:#00688b&#34;&gt;$PATH&lt;/span&gt;:.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;CLASSPATH&lt;/span&gt;=&lt;span style=&#34;color:#00688b&#34;&gt;$JAVA_HOME&lt;/span&gt;/lib/tools.jar:&lt;span style=&#34;color:#00688b&#34;&gt;$JAVA_HOME&lt;/span&gt;/lib/dt.jar:.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Java End&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;source&lt;/span&gt; .bash_profile
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;验证 Java 版本&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;java -version
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;javac -version
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://terryren.github.io/posts/lang/java/jdk/ - Terry</description>
-        </item>
+    <item>
+      <title>Maven - 优化</title>
+      <link>https://terryren.github.io/posts/lang/java/maven/</link>
+      <pubDate>Sat, 03 Feb 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/java/maven/</guid>
+      <description>优化本地仓库地址
+默认情况下，Maven本地包存放在${home}/.m2/repository，一般在Windows系统的C盘，会影响系统性能，建议迁移到其他磁盘
+修改repository配置，可采用aliyun等加速网站</description>
+    </item>
     
+    <item>
+      <title>APISIX - 1 - 网关搭建</title>
+      <link>https://terryren.github.io/posts/web/nginx/apisix-1/</link>
+      <pubDate>Thu, 01 Feb 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/nginx/apisix-1/</guid>
+      <description>前置条件 已安装 Docker，Docker Compose 用于部署 etcd 和 APISIX 已安装 curl，用于验证 APISIX 是否安装成功
+安装 1. 下载文件 初始化相关配置，添加apisix-dashboard配置文件夹以及文件
+cd ~ git clone https://github.com/apache/apisix-docker.git cd apisix-docker/example mkdir dashboard_conf cd ~ cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf mkdir apisix cp -r apisix-docker/example/* apisix rm -rf apisix-docker 2. apisix-dashboard 注意修改conf.etcd.endpoints为apisix可访问的地址
+dashboard_conf/config.yaml，内容如下：
+# # Licensed to the Apache Software Foundation (ASF) under one or more # contributor license agreements. See the NOTICE file distributed with # this work for additional information regarding copyright ownership.</description>
+    </item>
     
+    <item>
+      <title>密码学 - 数字证书</title>
+      <link>https://terryren.github.io/posts/web/crypto/certification/</link>
+      <pubDate>Sat, 14 Oct 2023 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/crypto/certification/</guid>
+      <description>PKI 公开密钥基础建设（Public Key Infrastructure），是一组由硬件、软件、参与者、管理政策与流程组成的基础架构，其目的在于创造、管理、分配、使用、存储以及撤销数字证书， 从而建立一个安全的网络环境，数字证书最常见的格式有X.509，X.509又称之为PKIX。 在计算机界，有各种密码学标准，它们表示了如何在计算机中计算、存储、传输（等）各种算法，这些标准由 RSA、IEFT、PKIX、ITU-T、ISO 等标准组织机构编写, CA中心普遍采用的规范是X.509系列和PKCS系列
+CA 证书颁发机构
+CSR 证书签名请求
+CRL 证书吊销列表
+OCSP 在线证书状态协议
+PKCS 公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 RSA 资讯安全公司（英语：RSA Security）所制定 包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准
+pkcs1 PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见RFC8017 定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击
+openssl genrsa -out key.pem Private Key Format
+-----BEGIN RSA PRIVATE KEY----- BASE64Encoded -----END RSA PRIVATE KEY----- Public Key Format
+-----BEGIN RSA PUBLIC KEY----- BASE64Encoded -----END RSA PUBLIC KEY----- pkcs7 参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。 其中，包含了S/MIME与CMS。 主要用来存储签名或者加密后的数据,如证书或者CRL。 PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用.p7b文件扩展名</description>
+    </item>
     
-        <item>
-        <title>GIT 设置 socks5 代理</title>
-        <link>https://terryren.github.io/posts/lang/shell/git-proxy-1/</link>
-        <pubDate>Sat, 02 Mar 2024 15:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/shell/git-proxy-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/shell/git-proxy-1/ -&lt;p&gt;&lt;strong&gt;Http代理，容易受到DNS污染；建议Socks5代理&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;httphttps-模式&#34;&gt;http/https 模式&lt;/h3&gt;
-&lt;h4 id=&#34;全局代理&#34;&gt;全局代理&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;设置&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global http.proxy &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;socks5://127.0.0.1:1080&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global https.proxy &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;socks5://127.0.0.1:1080&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;取消&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global --unset http.proxy
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global --unset https.proxy
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;githubcom-专用代理&#34;&gt;github.com 专用代理&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;设置&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;{home}/.gitconfig&lt;/code&gt; &lt;strong&gt;文件变化&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;[http &amp;#34;https://github.com&amp;#34;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#658b00&#34;&gt;proxy&lt;/span&gt; = &lt;span style=&#34;color:#cd5555&#34;&gt;socks5://127.0.0.1:1080&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;取消&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global --unset http.https://github.com.proxy
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ssh-模式&#34;&gt;ssh 模式&lt;/h3&gt;
-&lt;h4 id=&#34;windows&#34;&gt;windows&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;新增&lt;/code&gt; 或者 &lt;code&gt;修改&lt;/code&gt; 此文件 &lt;code&gt;{home}/.ssh/config&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;文件内容-添加&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
-
-Host github.com
-  User git
-  Hostname github.com
-  Port 22
-  TCPKeepAlive yes
-  # 注意修改为您的 SSH 密钥文件的路径
-  IdentityFile &amp;#34;C:\Users\{you_name}\.ssh\id_rsa&amp;#34;
-  # 需要通过MINGW64的shell执行git命令
-  ProxyCommand connect -S 127.0.0.1:1080 -a none %h %p
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;windows&lt;/code&gt; 环境下必须通过 &lt;code&gt;MINGW64&lt;/code&gt; 的 &lt;code&gt;git bash shell&lt;/code&gt; 才能成功，否则找不到 &lt;code&gt;connect&lt;/code&gt; 程序&lt;/p&gt;
-&lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;新增&lt;/code&gt; 或者 &lt;code&gt;修改&lt;/code&gt; 此文件 &lt;code&gt;{home}/.ssh/config&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;文件内容-添加&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
-
-Host github.com
-   User git
-   HostName github.com
-   # socks5
-   ProxyCommand nc -v -x 127.0.0.1:1080 %h %p
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/CnKker/p/11957813.html&#34;&gt;http/https模式 socks5代理 参考文档&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://gist.github.com/b159732000/51db367b506a76877fa6fbee52c24383&#34;&gt;macos ssh模式 socks5代理 参考文档&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/481574024&#34;&gt;http 代理 参考文档&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/lang/shell/git-proxy-1/ - Terry</description>
-        </item>
+    <item>
+      <title>英语时态</title>
+      <link>https://terryren.github.io/posts/misc/english/grammar/verb-tenses/</link>
+      <pubDate>Sat, 12 Aug 2023 15:19:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/misc/english/grammar/verb-tenses/</guid>
+      <description>12 Tensens
+Simple Continuous Perfect Perfect Continuous Past 1.1 1.2 1.3 1.4 Present 2.1 2.2 2.3 2.4 Future 3.1 3.2 3.3 3.4 1 Past What happened.
+1.1 Past Simple Summary
+We use the past simple to talk about something that happened at a specific time in the past.
+We can&amp;rsquo;t change it.
+We often use or imply expressions like yesterday, last week, last month.
+Form
+For All The People
+sound like /t/ or /id/</description>
+    </item>
     
+    <item>
+      <title>一周减脂餐</title>
+      <link>https://terryren.github.io/posts/misc/health/health-eat-1/</link>
+      <pubDate>Tue, 04 Apr 2023 14:38:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/misc/health/health-eat-1/</guid>
+      <description> 中午工作餐，一碗米饭，油腻少吃
+星期一 早餐 1杯牛奶 2片全麦面包 1个水煮蛋 | 五谷膳食 晚餐 1份蔬菜 | 1个玉米 苹果 星期二 早餐 五谷杂粮 (大米 | 小麦 | 高粱 | 大豆 | 玉米) 晚餐 1地瓜 橙子 星期三 早餐 1杯牛奶 1个蒸玉米 1个水煮蛋 | 荷包蛋 晚餐 1份蔬份菜 1份山药泥 鸭梨 星期四 早餐 1大米粥 1个包子 1个水煮蛋 晚餐 1份土豆泥 火龙果 橘子 星期五 早餐 1杯牛奶 1份煎鸡蛋 1个地瓜 | 南瓜 晚餐 1份五谷杂粮 猕猴桃 星期六 早餐 1杯牛奶 1份煎鸡蛋 1个地瓜 | 南瓜 晚餐 1个玉米 1份蔬份菜 核桃 | 杏仁 火龙果 星期日 早餐 1份纯燕麦片 1份煎鸡蛋 1个地瓜 | 南瓜 午餐 白虾 | 基围虾 2份蔬份菜 晚餐 1个玉米 1份蔬份菜 橙子 火龙果 </description>
+    </item>
     
+    <item>
+      <title>中国历史纪年简表</title>
+      <link>https://terryren.github.io/posts/misc/his/his-table/</link>
+      <pubDate>Mon, 03 Apr 2023 15:19:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/misc/his/his-table/</guid>
+      <description>三皇五帝 伏羲 炎帝 黄帝 尧 舜 夏 禹之子启建夏 世袭制取代禅让 启死 五子争权 历经太康失国 后羿代夏 少康中兴事件 末期至 桀 内政不修外患不断 商汤征讨于鸣条 夏朝亡
+历时 起始年代 都城 今地 470 公元前2070─1600年 安邑 山西夏县 商 商汤 子姓名履 其始祖契曾辅佐大禹 封于商地 汤王灭夏桀 建商朝 盘庚迁都于殷 故又称殷朝 殷墟著名出土文物 甲骨文 司母戊鼎 四羊方尊
+历时 起始年代 都城 今地 550 公元前1601─1046年 毫 河南商丘 周 周文王之子周武王讨伐殷纣于牧野 纣自焚鹿台 周都镐京 施行 【分封亲戚以藩屏周】 公元前841年出现共和行政 史称共和元年 公元前206年覆
+西周 周朝东迁之前史称西周 历12王 至公元前771年 宣王之子幽王被犬戎人杀于骊山之下 西周灭亡 【烽火戏诸侯】
+历时 起始年代 都城 今地 275 公元前1046─771年 镐京 陕西西安 东周 幽王太子宣臼由镐京迁周都于洛邑 史称为东周</description>
+    </item>
     
-        <item>
-        <title>Vue Vben Admin - 入坑记</title>
-        <link>https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/</link>
-        <pubDate>Fri, 01 Mar 2024 16:06:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/ -&lt;p&gt;&lt;strong&gt;官方文档&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://doc.vvbin.cn/guide/introduction.html&#34;&gt;简介&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;入坑记&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/posts/lang/nodejs/pnpm-install-1&#34;&gt;PNPM 安装&lt;/a&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;安装&lt;/code&gt; 时, 指定安装源&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;pnpm install --registry https://registry.npmmirror.com&lt;/code&gt;&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;code&gt;启动&lt;/code&gt; 时，提示 &lt;code&gt;400（Error: Request failed with status code 400）&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/vbenjs/vue-vben-admin/discussions/2210&#34;&gt;参考Issue&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;修改 &lt;code&gt;package.json&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#228b22&#34;&gt;// 其他配置...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;vite --https false&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#228b22&#34;&gt;// 其他配置...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;code&gt;提交&lt;/code&gt; 时，注意&lt;code&gt;git commit&lt;/code&gt;规范&lt;/li&gt;
-&lt;/ol&gt;
-- https://terryren.github.io/posts/lang/nodejs/vue-vben-admin-1/ - Terry</description>
-        </item>
+    <item>
+      <title>Nginx - 1 - 单页面静态网站配置</title>
+      <link>https://terryren.github.io/posts/web/nginx/nginx-1/</link>
+      <pubDate>Fri, 10 Mar 2023 17:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
+      <description>刷新页面，默认重定向到Index.html
+静态目录(static)，找不到默认404
+server { listen 8080; server_name localhost; client_max_body_size 10m; client_header_buffer_size 256k; large_client_header_buffers 4 256k; root /opt/vue; location /faq { default_type text/html; return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;; } location /static/ { try_files \$uri \$uri =404; } location / { add_header Cache-Control &amp;#39;no-cache&amp;#39;; try_files \$uri \$uri /index.html; } } 附加问题
+400 Bad Request Request Header Or Cookie Too Large
+Nginx配置不当可能导致的安全问题
+React部署于Nginx环境中刷新后404解决方案</description>
+    </item>
     
-    
-    
-        <item>
-        <title>PNPM - 安装 - 优化</title>
-        <link>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</link>
-        <pubDate>Fri, 01 Mar 2024 10:06:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/ -&lt;p&gt;&lt;code&gt;windows&lt;/code&gt; 平台shell&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm install v16.20.2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm use v16.20.2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install -g pnpm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;MacOS&lt;/code&gt; 平台Shell&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install pnpm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改用户全局配置文件 &lt;code&gt;${home}/.npmrc&lt;/code&gt; ，设置 &lt;code&gt;store-dir&lt;/code&gt; 目录，其他配置与NPM共用&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;store-dir&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;D:\AppData\pnpm&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 &lt;code&gt;pnpm config list&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;安装 &lt;code&gt;pnpm install&lt;/code&gt; or &lt;code&gt;pnpm install --registry https://registry.npmmirror.com&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;运行 &lt;code&gt;pnpm serve&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;打包 &lt;code&gt;pnpm build&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://juejin.cn/post/7121386382936768542&#34;&gt;PNPM 安装&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/it_xcr/article/details/114655778&#34;&gt;PNPM 使用&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://pnpm.io/zh/next/npmrc#hoist&#34;&gt;PNPM 配置优化&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/posts/lang/nodejs/node-install-1&#34;&gt;NODE 优化 教程&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/lang/nodejs/pnpm-install-1/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>Node - 安装 - 优化</title>
-        <link>https://terryren.github.io/posts/lang/nodejs/node-install-1/</link>
-        <pubDate>Sat, 03 Feb 2024 16:06:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/nodejs/node-install-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/nodejs/node-install-1/ -&lt;p&gt;&lt;strong&gt;存储优化&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;windows&lt;/code&gt; 平台shell，修改采用加速地址，调整 &lt;code&gt;registry&lt;/code&gt;，&lt;code&gt;cache&lt;/code&gt;，&lt;code&gt;prefix&lt;/code&gt; 全局包目录;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config get registry
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config set registry {registry}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;%AppData%&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config get prefix
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config set prefix D:\AppData\npm
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config get cache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config set cache D:\AppData\npm-cache
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;RD&lt;/span&gt; /S /Q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;C:\Users\xxx\AppData\Roaming\npm&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;RD&lt;/span&gt; /S /Q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;C:\Users\xxx\AppData\Roaming\npm-cache&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;registry hosts&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://registry.npmmirror.com&#34;&gt;淘宝镜像地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://mirrors.cloud.tencent.com/npm/&#34;&gt;腾讯云镜像地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://mirrors.huaweicloud.com/repository/npm/&#34;&gt;华为云镜像地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;添加路径 &lt;code&gt;D:\AppData\npm&lt;/code&gt; 到环境变量 &lt;code&gt;PATH&lt;/code&gt; ，全局安装的命令才能生效&lt;/p&gt;
-&lt;p&gt;查看 &lt;code&gt;npm config list&lt;/code&gt; or &lt;code&gt;npm install --registry https://registry.npmmirror.com&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;用户全局配置文件 &lt;code&gt;${home}/.npmrc&lt;/code&gt; 参考如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;registry&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;https://{hosts}/artifactory/api/npm/&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;sass_binary_site&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;https://{hosts}/artifactory/node-sass-remote/download/&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;_auth&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;{basic auth}&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;email&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;xxx@yyy.zzz&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;always-auth&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;prefix&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;D:\AppData\npm&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cache&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;D:\AppData\npm-cache&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;NVM 注意事项&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;NVM&lt;/code&gt; 的安装目录，&lt;code&gt;不要有空格&lt;/code&gt;，否则导致莫名的错误&lt;/p&gt;
-&lt;p&gt;切换当前node版本，整个node全部通过nvm控制，新旧版本的安装也通过nvm操作&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm list
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm install v14.15.4
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm use v14.15.4
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;MacOS&lt;/code&gt; 平台shell，通过 &lt;code&gt;brew&lt;/code&gt; 命令安装 &lt;code&gt;nvm&lt;/code&gt; , &lt;code&gt;node&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;卸载已经安装的 &lt;code&gt;node&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew uninstall --ignore-dependencies node
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew uninstall --force node
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装 &lt;code&gt;nvm&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install nvm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建 &lt;code&gt;.nvm&lt;/code&gt; 目录&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir ~/.nvm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置环境 &lt;code&gt;.bash_profile&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# nvm&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;NVM_DIR&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$HOME&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;/.nvm&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[ -s &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/usr/local/opt/nvm/nvm.sh&amp;#34;&lt;/span&gt; ] &amp;amp;&amp;amp; &lt;span style=&#34;color:#cd5555&#34;&gt;\.&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/usr/local/opt/nvm/nvm.sh&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[ -s &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/usr/local/opt/nvm/etc/bash_completion&amp;#34;&lt;/span&gt; ] &amp;amp;&amp;amp; &lt;span style=&#34;color:#cd5555&#34;&gt;\.&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/usr/local/opt/nvm/etc/bash_completion&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# nvm end&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置生效&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;source&lt;/span&gt; ~/.bash_profile
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装 &lt;code&gt;node&lt;/code&gt; &lt;code&gt;v20.11.1&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm ls-remote
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm install v20.11.1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm use v20.11.1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node -v
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.base64encode.org/&#34;&gt;base64-encode&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000040688010&#34;&gt;NVM Issue&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/webSnow/p/15787265.html&#34;&gt;Node Install&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/fuminer/p/17206189.html&#34;&gt;NPM 国内镜像&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://developer.aliyun.com/article/878125&#34;&gt;淘宝 npm 域名切换&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/lang/nodejs/node-install-1/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>Windows - 系统 - 垃圾清理 - 脚本</title>
-        <link>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</link>
-        <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ -&lt;p&gt;&lt;strong&gt;清理系统垃圾&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; off
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除系统垃圾文件，请稍等......
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\Temp\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\ServiceProfiles\NetworkService\AppData\Local\Temp\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\ServiceProfiles\LocalService\AppData\Local\Temp\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*._mp
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.log
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.gid
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.chk
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.old
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\recycled\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\*.bak
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\prefetch\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;rd&lt;/span&gt; /s /q &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\temp &amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;md&lt;/span&gt;  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\temp
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\cookies\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\AppData\Local\Temp\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temporary Internet Files\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temp\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\system32\dllcache\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除驱动在安装时留下的解压文件，请稍等......
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%SystemDrive%&lt;/span&gt;\AMD\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\Intel\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\NVIDIA\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\Prog\*.*
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 清除系统垃圾完成！
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt;. &amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;pause&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>Maven - 优化</title>
-        <link>https://terryren.github.io/posts/lang/java/maven/</link>
-        <pubDate>Sat, 03 Feb 2024 13:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/java/maven/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/java/maven/ -&lt;p&gt;&lt;strong&gt;优化本地仓库地址&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;默认情况下，Maven本地包存放在&lt;code&gt;${home}/.m2/repository&lt;/code&gt;，一般在Windows系统的&lt;code&gt;C&lt;/code&gt;盘，会影响系统性能，建议迁移到其他磁盘&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/maven-optimize-1.png&#34; alt=&#34;Maven-1 alt&#34;&gt;&lt;/p&gt;
-&lt;p&gt;修改&lt;code&gt;repository&lt;/code&gt;配置，可采用aliyun等加速网站&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/maven-optimize-2.png&#34; alt=&#34;Maven-1 alt&#34;&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/lang/java/maven/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>APISIX - 1 - 网关搭建</title>
-        <link>https://terryren.github.io/posts/web/nginx/apisix-1/</link>
-        <pubDate>Thu, 01 Feb 2024 13:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/web/nginx/apisix-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/web/nginx/apisix-1/ -&lt;h3 id=&#34;前置条件&#34;&gt;前置条件&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;已安装 Docker，Docker Compose 用于部署 etcd 和 APISIX
-已安装 curl，用于验证 APISIX 是否安装成功&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
-&lt;h4 id=&#34;1-下载文件&#34;&gt;1. 下载文件&lt;/h4&gt;
-&lt;p&gt;初始化相关配置，添加&lt;code&gt;apisix-dashboard&lt;/code&gt;配置文件夹以及文件&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; ~
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/apache/apisix-docker.git
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; apisix-docker/example
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir dashboard_conf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; ~
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir apisix
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp -r apisix-docker/example/* apisix
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf apisix-docker
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2-apisix-dashboard&#34;&gt;2. apisix-dashboard&lt;/h4&gt;
-&lt;p&gt;注意修改&lt;code&gt;conf.etcd.endpoints&lt;/code&gt;为apisix可访问的地址&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/files/apisix/dashboard/config.yaml&#34; download&gt;dashboard_conf/config.yaml&lt;/a&gt;，内容如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Licensed to the Apache Software Foundation (ASF) under one or more&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# contributor license agreements.  See the NOTICE file distributed with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# this work for additional information regarding copyright ownership.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# The ASF licenses this file to You under the Apache License, Version 2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# (the &amp;#34;License&amp;#34;); you may not use this file except in compliance with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# the License.  You may obtain a copy of the License at&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#     http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# distributed under the License is distributed on an &amp;#34;AS IS&amp;#34; BASIS,&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# See the License for the specific language governing permissions and&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# limitations under the License.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;conf&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;listen&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;host&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;0.0.0.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# `manager api` listening ip or host name&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# `manager api` listening port&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;endpoints&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# supports defining multiple etcd host addresses for an etcd cluster&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- http://etcd:2379&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# etcd basic auth info&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# username: &amp;#34;root&amp;#34;    # ignore etcd username if not enable etcd auth&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# password: &amp;#34;123456&amp;#34;  # ignore etcd password if not enable etcd auth&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;log&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;error_log&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;level: warn       # supports levels, lower to higher&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;debug, info, warn, error, panic, fatal&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;file_path&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;logs/error.log &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# supports relative path, absolute path, standard output&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# such as: logs/error.log, /tmp/logs/error.log, /dev/stdout, /dev/stderr&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;authentication&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;secret&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;secret             &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# secret for jwt token generation.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# NOTE: Highly recommended to modify this value to protect `manager api`.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# if it&amp;#39;s default value, when `manager api` start, it will generate a random string to replace it.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;expire_time&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;3600&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# jwt token expire time, in second&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;users&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;username&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;admin  &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# username and password for login `manager api`&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;password&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;xxxx-todo&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;username&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;user&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;password&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;xxxx-todo&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;plugin_attr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;prometheus&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;export_addr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ip&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9091&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;3-apisix&#34;&gt;3. apisix&lt;/h4&gt;
-&lt;p&gt;默认情况下apisix使用&lt;code&gt;9080&lt;/code&gt;和&lt;code&gt;9443&lt;/code&gt;当作服务入口，端口修改参考如下：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;修改&lt;code&gt;apisix_conf/config.yaml&lt;/code&gt; 文件中 HTTP默认端口为&lt;code&gt;80&lt;/code&gt;，HTTPS默认端口为&lt;code&gt;443&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;修改``docker-compose.yml&lt;code&gt; 文件中 添加&lt;/code&gt;80&lt;code&gt;、&lt;/code&gt;443`两个端口映射&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/files/apisix/apisix/config.yaml&#34; download&gt;apisix_conf/config.yaml&lt;/a&gt;，内容如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Licensed to the Apache Software Foundation (ASF) under one or more&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# contributor license agreements.  See the NOTICE file distributed with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# this work for additional information regarding copyright ownership.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# The ASF licenses this file to You under the Apache License, Version 2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# (the &amp;#34;License&amp;#34;); you may not use this file except in compliance with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# the License.  You may obtain a copy of the License at&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#     http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# distributed under the License is distributed on an &amp;#34;AS IS&amp;#34; BASIS,&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# See the License for the specific language governing permissions and&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# limitations under the License.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;node_listen&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9080&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;              &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# APISIX listening port&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;enable_ipv6&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;enable_control&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;control&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ip&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9092&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;deployment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;admin&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;allow_admin&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;               &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# https://nginx.org/en/docs/http/ngx_http_access_module.html#allow&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#b452cd&#34;&gt;0.0.0.0&lt;/span&gt;/0             &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# We need to restrict ip access rules for security. 0.0.0.0/0 is for test.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;admin_key&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;key&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;edd1c9f034335f136f87ad84b625c8f1&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;role: admin                 # admin&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;manage all configuration data&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;viewer&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;key&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;4054f7cf07e344346cd3f287985e76a2&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;role&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;viewer&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;host&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;                           &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# it&amp;#39;s possible to define multiple etcd hosts addresses of the same etcd cluster.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;http://etcd:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# multiple etcd address&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;prefix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/apisix&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;               &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# apisix configurations prefix&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;timeout&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;30&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                     &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 30 seconds&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;plugin_attr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;prometheus&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;export_addr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ip&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9091&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;4-docker-compose&#34;&gt;4. docker-compose&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;如果服务器内存不足，建议&lt;code&gt;docker-compose.yml&lt;/code&gt;中的移除&lt;code&gt;prometheus&lt;/code&gt;以及&lt;code&gt;grafana&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;添加节点&lt;code&gt;apisix-dashboard&lt;/code&gt;，用于可视化管理网关&lt;/li&gt;
-&lt;li&gt;etcd的数据映射到本地docker磁盘，可通过命令查看&lt;code&gt;sudo ls /var/lib/docker/volumes/apisix_etcd_data/_data&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/files/apisix/docker-compose.yml&#34; download&gt;docker-compose.yml&lt;/a&gt;，内容如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Licensed to the Apache Software Foundation (ASF) under one or more&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# contributor license agreements.  See the NOTICE file distributed with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# this work for additional information regarding copyright ownership.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# The ASF licenses this file to You under the Apache License, Version 2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# (the &amp;#34;License&amp;#34;); you may not use this file except in compliance with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# the License.  You may obtain a copy of the License at&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#     http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# distributed under the License is distributed on an &amp;#34;AS IS&amp;#34; BASIS,&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# See the License for the specific language governing permissions and&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# limitations under the License.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix-dashboard&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apache/apisix-dashboard:3.0.0-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- etcd&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;##network_mode: host&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9000:9000/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apache/apisix:${APISIX_IMAGE_TAG:-3.8.0-debian}&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- etcd&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;##network_mode: host&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9180:9180/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9080:9080/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9091:9091/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9443:9443/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9092:9092/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bitnami/etcd:3.5.11&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- etcd_data:/bitnami/etcd&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ETCD_ENABLE_V2&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ALLOW_NONE_AUTHENTICATION&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ETCD_ADVERTISE_CLIENT_URLS&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;http://etcd:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ETCD_LISTEN_CLIENT_URLS&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;http://0.0.0.0:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;2379:2379/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;web1&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;nginx:1.19.0-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./upstream/web1.conf:/etc/nginx/nginx.conf&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9081:80/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- NGINX_PORT=80&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;web2&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;nginx:1.19.0-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./upstream/web2.conf:/etc/nginx/nginx.conf&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9082:80/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- NGINX_PORT=80&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;driver&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bridge&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd_data&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;driver&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;local&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;5-启动&#34;&gt;5. 启动&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;docker-compose -p APISIX up -d&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;6-验证&#34;&gt;6. 验证&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;网关验证&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;curl &amp;quot;http://127.0.0.1:9080&amp;quot; --head&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;验证面板&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;http://127.0.0.1:9000/dashboard&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;7-停止&#34;&gt;7. 停止&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;docker-compose -p APISIX down&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;8-清理&#34;&gt;8. 清理&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm apisix-dashboard
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm apisix
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm etcd
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm web1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm web2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker network rm apisix
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/gtamas/etcdmanager/releases/tag/1.2.0&#34;&gt;etcd manager&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;9-网络&#34;&gt;9. 网络&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看docker网络&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker network ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看网络细节&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker network inspect apisix_apisix
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考文档&#34;&gt;参考文档&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://apisix.apache.org/zh/docs/apisix/getting-started/README/&#34;&gt;官方入门文档&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://apisix.apache.org/zh/docs/apisix/installation-guide/&#34;&gt;APISIX 安装指南&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/posts/web/nginx/nginx-1/&#34; title=&#34;Nginx-静态网站&#34;&gt;Nginx&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/posts/web/crypto/certification/&#34; title=&#34;Certification-相关&#34;&gt;Certification&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/johar99/article/details/113651925&#34;&gt;Docker 自定义桥接ip&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/harryhare/article/details/83317987&#34;&gt;TCP 网络状态图&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/web/nginx/apisix-1/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>密码学 - 数字证书</title>
-        <link>https://terryren.github.io/posts/web/crypto/certification/</link>
-        <pubDate>Sat, 14 Oct 2023 13:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/web/crypto/certification/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/web/crypto/certification/ -&lt;h1 id=&#34;pki&#34;&gt;PKI&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;公开密钥基础建设（Public Key Infrastructure），是一组由硬件、软件、参与者、管理政策与流程组成的基础架构，其目的在于创造、管理、分配、使用、存储以及撤销数字证书，
-从而建立一个安全的网络环境，数字证书最常见的格式有X.509，X.509又称之为PKIX。
-在计算机界，有各种密码学标准，它们表示了如何在计算机中计算、存储、传输（等）各种算法，这些标准由 RSA、IEFT、PKIX、ITU-T、ISO 等标准组织机构编写, CA中心普遍采用的规范是X.509系列和PKCS系列&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;ca&#34;&gt;CA&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书颁发机构&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;csr&#34;&gt;CSR&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书签名请求&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;crl&#34;&gt;CRL&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书吊销列表&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;ocsp&#34;&gt;OCSP&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在线证书状态协议&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;pkcs&#34;&gt;PKCS&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 &lt;code&gt;RSA&lt;/code&gt; 资讯安全公司（英语：RSA Security）所制定
-包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;pkcs1&#34;&gt;pkcs1&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc8017&#34;&gt;RFC8017&lt;/a&gt;
-定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl genrsa -out key.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Private Key Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PRIVATE KEY-----
-BASE64Encoded
------END RSA PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Public Key Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PUBLIC KEY-----
-BASE64Encoded
------END RSA PUBLIC KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs7&#34;&gt;pkcs7&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。
-其中，包含了S/MIME与CMS。
-主要用来存储签名或者加密后的数据,如证书或者CRL。
-PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用&lt;code&gt;.p7b&lt;/code&gt;文件扩展名&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;‑‑‑‑‑BEGIN PKCS7‑‑‑‑‑
-
-‑‑‑‑‑END PKCS7‑‑‑‑‑
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PKCS7的文件从PEM格式转换成为DER格式&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -outform DER -out file.der
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;文件中提取出所有的证书到另外一个文件&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -print_certs -out certs.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs8&#34;&gt;pkcs8&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PKCS #8，Private-Key Information Syntax Standard，详细的描述了私钥的存储格式。用于加密、非加密地存储Private Certificate Keypairs（不限于RSA），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5958&#34;&gt;RFC5858&lt;/a&gt;
-Apache读取证书私钥的标准。主要用来存储私钥。私钥首先会使用PKCS #5的标准进行加密，然后&lt;code&gt;Base64&lt;/code&gt;编码，转换成为&lt;code&gt;PEM&lt;/code&gt;格式存储&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;一个非加密 ECC 私钥的 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PRIVATE KEY-----
-MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQglQanBRiYVPX7F2Rd
-4CqyjEN0K4qfHw4tM/yMIh21wamhRANCAARsxaI4jT1b8zbDlFziuLngPcExbYzz
-ePAHUmgWL/ZCeqlODF/l/XvimkjaWC2huu1OSWB9EKuG+mKFY2Y5k+vF
------END PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;一个加密 PKCS#8 私钥的 PEM 格式&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN ENCRYPTED PRIVATE KEY-----
-Base64 xxxxxx
------END ENCRYPTED PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;RSA 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in rsa-private-key.pem -outform PEM -nocrypt -out rsa-private-key-pkcs8.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;ECC 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in ecc-private-key.pem -outform PEM -nocrypt -out ecc-private-key-pkcs8.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs12&#34;&gt;pkcs12&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;定义了包含私钥（Private Keys）与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。PKCS12文件的扩展名是&lt;code&gt;.p12&lt;/code&gt;、&lt;code&gt;.pfx&lt;/code&gt;、&lt;code&gt;.jks&lt;/code&gt;。
-PKCS12可以看做是PKCS7的扩展，PKCS12可以额外存储私钥、证书、私钥、CRL
-Private Keys和Public Key Certificates是复数形式，这意味着PKCS #12文件实际上是一个Keystore，PKCS #12文件可以被用做Java Key Store（JKS），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc7292&#34;&gt;RFC7292&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;将PKCS12格式转换成为PEM&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;从PEM到PKCS12&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;x509&#34;&gt;X509&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;X.509是ITU-T标准化部门基于他们之前的ASN.1定义的一套证书标准，在X.500基础上进行了功能增强
-X.509是在1988年发布的。X.509证书由用户公共密钥和用户标识符组成。此外还包括版本号、证书序列号、CA标识符、签名算法标识、签发者名称、证书有效期等信息&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Certificate Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN CERTIFICATE-----
-BASE64Encoded
------END CERTIFICATE-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Certificate Subject Public Key Info&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PUBLIC KEY-----
-BASE64Encoded
------END PUBLIC KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;asn1&#34;&gt;ASN.1&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在电信和计算机网络领域，ASN.1（Abstract Syntax Notation One) 是一套标准，是描述数据的表示、编码、传输、解码的灵活的记法。
-它提供了一套正式、无歧义和精确的规则以描述独立于特定计算机硬件的对象结构。
-ASN.1是ISO和ITU-T的联合标准，最初是1984年的CCITT X.409:1984的一部分。由于其广泛应用，1988年ASN.1移到独立标准X.208，1995年进行全面修订后变成X.680系列标准&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;pem&#34;&gt;PEM&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PEM文件是一个文本文件，其内容是以“ – BEGIN -” 开头，中间内容是DER文件的Base64编码&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;查看文本证书内容&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.pem -text -noout
-openssl x509 -in cert.cer -text -noout
-openssl x509 -in cert.crt -text -noout
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PEM-To-DER&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -outform der-out cert.der
-openssl rsa -in key.pem -outform der -out key.der
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;der&#34;&gt;DER&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;DER表示证书的内容是用二进制进行编码的&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;查看二进制证书内容&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.der -inform der -text -noout
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;DER-To-PEM&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -inform der -outform pem -out cert.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/543707056&#34;&gt;密码学标准 - X.509 与 PKCS 系列&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0%E5%9F%BA%E7%A4%8E%E5%BB%BA%E8%A8%AD&#34;&gt;PKI-1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/30136885&#34;&gt;PKI-2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A0%87%E5%87%86#&#34;&gt;PKCS&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/X.509&#34;&gt;X.509&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1&#34;&gt;X.509-RFC5280&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/Pem%E6%A0%BC%E5%BC%8F&#34;&gt;Pem&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/ASN.1&#34;&gt;ASN.1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/HKnight/p/16851786.html&#34;&gt;证书认证原理&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://chanjarster.github.io/post/x509-pkcs-file-formats/&#34;&gt;X.509、PKCS文件格式介绍&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/bc32cbfe49e7&#34;&gt;常见的PKI标准(X.509、PKCS)及证书相关介绍&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/web/crypto/certification/ - Terry</description>
-        </item>
-    
+    <item>
+      <title>开篇之作</title>
+      <link>https://terryren.github.io/posts/my-dao-post/</link>
+      <pubDate>Wed, 01 Mar 2023 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/my-dao-post/</guid>
+      <description>为人
+至真 至善 至美 处事
+道 (本质论)
+道生一、一生二、二生三、三生万物 法 (方法论)
+术之根本 术 (技术论)
+闻道有先后、术业有专攻 器 (工具论)
+工欲善其事、必先利其器 势
+顺势: 顺应行业发展 造势: 引领行业发展 志
+目标导向 </description>
+    </item>
     
   </channel>
-</rss> 
+</rss>
