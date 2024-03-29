@@ -35,8 +35,8 @@ OCSP 在线证书状态协议
 PKCS 公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 RSA 资讯安全公司（英语：RSA Security）所制定 包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准
 pkcs1 PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见RFC8017 定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击
 openssl genrsa -out key.pem Private Key Format
------BEGIN RSA PRIVATE KEY----- BASE64Encoded -----END RSA PRIVATE KEY----- Public Key Format
------BEGIN RSA PUBLIC KEY----- BASE64Encoded -----END RSA PUBLIC KEY----- pkcs7 参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。 其中，包含了S/MIME与CMS。 主要用来存储签名或者加密后的数据,如证书或者CRL。 PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用.p7b文件扩展名</description>
+-----BEGIN RSA PRIVATE KEY-----BASE64Encoded-----END RSA PRIVATE KEY----- Public Key Format
+-----BEGIN RSA PUBLIC KEY-----BASE64Encoded-----END RSA PUBLIC KEY----- pkcs7 参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。 其中，包含了S/MIME与CMS。 主要用来存储签名或者加密后的数据,如证书或者CRL。 PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用.p7b文件扩展名</description>
     </item>
     
     <item>
@@ -47,7 +47,7 @@ openssl genrsa -out key.pem Private Key Format
       <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
       <description>刷新页面，默认重定向到Index.html
 静态目录(static)，找不到默认404
-server { listen 8080; server_name localhost; client_max_body_size 10m; client_header_buffer_size 256k; large_client_header_buffers 4 256k; root /opt/vue; location /faq { default_type text/html; return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;; } location /static/ { try_files \$uri \$uri =404; } location / { add_header Cache-Control &amp;#39;no-cache&amp;#39;; try_files \$uri \$uri /index.html; } } 附加问题
+server {listen 8080;server_name localhost;client_max_body_size 10m;client_header_buffer_size 256k;large_client_header_buffers 4 256k;root /opt/vue;location /faq {default_type text/html;return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;;}location /static/ {try_files \$uri \$uri =404;}location / {add_header Cache-Control &amp;#39;no-cache&amp;#39;;try_files \$uri \$uri /index.html;}} 附加问题
 400 Bad Request Request Header Or Cookie Too Large
 Nginx配置不当可能导致的安全问题
 React部署于Nginx环境中刷新后404解决方案</description>
