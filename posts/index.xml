@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Tue, 12 Mar 2024 09:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Mar 2024 09:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql Locks</title>
+      <link>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</link>
+      <pubDate>Fri, 29 Mar 2024 09:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</guid>
+      <description>Record Locks (记录锁) 事务 - 1 事务隔离级别 == REPEATABLE READ
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; START TRANSACTION; UPDATE tt_order_item SET Deleted = 1, Version = Version + 1 WHERE OrderNumber = &amp;#39;17111803861711180386&amp;#39;; COMMIT 事务 - 2 事务隔离级别 == REPEATABLE READ
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; START TRANSACTION; UPDATE tt_order_item SET Deleted = 0, Version = Version + 1 WHERE OrderNumber = &amp;#39;17111803861711180386&amp;#39;; COMMIT 事务 - 3 事务隔离级别 == READ COMMITTED</description>
+    </item>
+    
     <item>
       <title>JDBC Mysql 时区问题</title>
       <link>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</link>

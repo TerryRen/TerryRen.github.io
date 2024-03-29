@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Transaction on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/transaction/</link>
+    <description>Recent content in Transaction on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Fri, 29 Mar 2024 09:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/transaction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql Locks</title>
+      <link>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</link>
+      <pubDate>Fri, 29 Mar 2024 09:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</guid>
+      <description>Record Locks (记录锁) 事务 - 1 事务隔离级别 == REPEATABLE READ
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; START TRANSACTION; UPDATE tt_order_item SET Deleted = 1, Version = Version + 1 WHERE OrderNumber = &amp;#39;17111803861711180386&amp;#39;; COMMIT 事务 - 2 事务隔离级别 == REPEATABLE READ
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; START TRANSACTION; UPDATE tt_order_item SET Deleted = 0, Version = Version + 1 WHERE OrderNumber = &amp;#39;17111803861711180386&amp;#39;; COMMIT 事务 - 3 事务隔离级别 == READ COMMITTED</description>
+    </item>
+    
+  </channel>
+</rss>
