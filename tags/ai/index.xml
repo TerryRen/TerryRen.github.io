@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/ai/</link>
+    <description>Recent content in AI on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Wed, 24 Apr 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anaconda - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/architect/ai/anaconda/</link>
+      <pubDate>Wed, 24 Apr 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/ai/anaconda/</guid>
+      <description>conda configure navigator 通过 Anaconda Navigator UI 修改
+configure conda conda配置 默认地址 %Home%/.condarc，可修改配置添加代理
+channels: - defaults show_channel_urls: true ssl_verify: false proxy_servers: http: http://127.0.0.1:8118 https: http://127.0.0.1:8118 查看版本 conda --version 查看环境 conda env list 创建环境 conda create --name jira python=3.6 激活环境 conda activate jira 查看配置 conda config --show 安装包 conda install jupyter notebook conda install numpy=1.10 conda remove numpy conda search &amp;#39;*beautifulsoup*&amp;#39; 安装插件 jupyterlab_code_formatter 代码格式化插件
+conda install -c conda-forge jupyterlab_code_formatter conda uninstall jupyterlab_code_formatter Juputer-lab 配置 jupyter-lab --generate-config 配置文件 %Home%/.</description>
+    </item>
+    
+  </channel>
+</rss>

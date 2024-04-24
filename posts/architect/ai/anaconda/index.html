@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html><head>
+<title>Anaconda - 安装 - 优化</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="Anaconda - 安装 - 优化">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Anaconda - 安装 - 优化" />
+<meta property="og:description" content="Anaconda - 安装 - 优化" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://terryren.github.io/posts/architect/ai/anaconda/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-24T13:06:00+08:00" />
+<meta property="article:modified_time" content="2024-04-24T13:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Anaconda - 安装 - 优化"/>
+<meta name="twitter:description" content="Anaconda - 安装 - 优化"/>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE2B25M3ST"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZE2B25M3ST', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>console.log("Hello from 'layouts/partials/extended_head.html'")</script>
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    博客
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    订阅
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#conda" class="nav-conda">
+									conda
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#configure-navigator" class="nav-configure-navigator">
+									configure navigator
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#configure-conda" class="nav-configure-conda">
+									configure conda
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9f%a5%e7%9c%8b%e7%89%88%e6%9c%ac" class="nav-查看版本">
+									查看版本
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9f%a5%e7%9c%8b%e7%8e%af%e5%a2%83" class="nav-查看环境">
+									查看环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba%e7%8e%af%e5%a2%83" class="nav-创建环境">
+									创建环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%bf%80%e6%b4%bb%e7%8e%af%e5%a2%83" class="nav-激活环境">
+									激活环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9f%a5%e7%9c%8b%e9%85%8d%e7%bd%ae" class="nav-查看配置">
+									查看配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85%e5%8c%85" class="nav-安装包">
+									安装包
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85%e6%8f%92%e4%bb%b6" class="nav-安装插件">
+									安装插件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#juputer-lab" class="nav-juputer-lab">
+									Juputer-lab
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae" class="nav-配置">
+									配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://terryren.github.io/">
+            The Sound of Music
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://terryren.github.io/">
+        <div class="single-column-header-title">The Sound of Music</div>
+        
+        <div class="single-column-header-subtitle">知行合一</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Anaconda - 安装 - 优化
+                    
+                    <div class="post-subtitle">
+                        Anaconda - 安装 - 优化
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2024-04-24 13:06
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/ai">AI</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/python">Python</a>
+                                &nbsp;
+                            
+                                <a href="/tags/anaconda">Anaconda</a>
+                                &nbsp;
+                            
+                                <a href="/tags/ai">AI</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h3 id="conda">conda</h3>
+<h4 id="configure-navigator">configure navigator</h4>
+<p>通过 Anaconda Navigator UI 修改</p>
+<h4 id="configure-conda">configure conda</h4>
+<p><strong>conda配置</strong> 默认地址 <code>%Home%/.condarc</code>，可修改配置添加代理</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">channels</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- defaults<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">show_channel_urls</span>:<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">true</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">ssl_verify</span>:<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">false</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">proxy_servers</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">http</span>:<span style="color:#bbb"> </span>http://127.0.0.1:8118<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">https</span>:<span style="color:#bbb"> </span>http://127.0.0.1:8118<span style="color:#bbb">
+</span></span></span></code></pre></div><h4 id="查看版本">查看版本</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>conda --version
+</span></span></code></pre></div><h4 id="查看环境">查看环境</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>conda env list
+</span></span></code></pre></div><h4 id="创建环境">创建环境</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>conda create --name jira <span style="color:#00688b">python</span>=3.6
+</span></span></code></pre></div><h4 id="激活环境">激活环境</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>conda activate jira
+</span></span></code></pre></div><h4 id="查看配置">查看配置</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>conda config --show
+</span></span></code></pre></div><h4 id="安装包">安装包</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>conda install jupyter notebook
+</span></span><span style="display:flex;"><span>conda install <span style="color:#00688b">numpy</span>=1.10
+</span></span><span style="display:flex;"><span>conda remove numpy
+</span></span><span style="display:flex;"><span>conda search <span style="color:#cd5555">&#39;*beautifulsoup*&#39;</span>
+</span></span></code></pre></div><h4 id="安装插件">安装插件</h4>
+<p><strong>jupyterlab_code_formatter</strong> 代码格式化插件</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>conda install -c conda-forge jupyterlab_code_formatter
+</span></span><span style="display:flex;"><span>conda uninstall jupyterlab_code_formatter
+</span></span></code></pre></div><h3 id="juputer-lab">Juputer-lab</h3>
+<h4 id="配置">配置</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>jupyter-lab --generate-config
+</span></span></code></pre></div><p><strong>配置文件</strong> <code>%Home%/.jupyter/jupyter_lab_config.py</code></p>
+<p>更改 Juputer-lab <code>默认目录</code>，修改如下:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>c.ServerApp.root_dir = <span style="color:#cd5555">r</span><span style="color:#cd5555">&#39;D:</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">xxx</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">yyy</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">zzz</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">my-hero&#39;</span>
+</span></span></code></pre></div><p><strong>Windows查看环境变量-筛选</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">set</span> | find <span style="color:#cd5555">&#34;go&#34;</span>
+</span></span></code></pre></div><p><strong>参考文档</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/154515490">Jupyter-lab</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/455609442">Jupyter 生成配置文件</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/94744929">conda 环境</a></p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2024-04-24</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/db/mysql/mysql-lock-1/">
+			上回<br>Mysql Locks
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+                <p style="opacity: 0.6" align="center">
+                    <small>此篇文章的评论功能已经停用。</small>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://terryren.github.io/">
+    
+        <div class="nav-title">
+            The Sound of Music
+        </div>
+        
+        <div class="nav-subtitle">
+            知行合一
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                博客
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                订阅
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#conda" class="nav-conda">
+									conda
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#configure-navigator" class="nav-configure-navigator">
+									configure navigator
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#configure-conda" class="nav-configure-conda">
+									configure conda
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9f%a5%e7%9c%8b%e7%89%88%e6%9c%ac" class="nav-查看版本">
+									查看版本
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9f%a5%e7%9c%8b%e7%8e%af%e5%a2%83" class="nav-查看环境">
+									查看环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba%e7%8e%af%e5%a2%83" class="nav-创建环境">
+									创建环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%bf%80%e6%b4%bb%e7%8e%af%e5%a2%83" class="nav-激活环境">
+									激活环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9f%a5%e7%9c%8b%e9%85%8d%e7%bd%ae" class="nav-查看配置">
+									查看配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85%e5%8c%85" class="nav-安装包">
+									安装包
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85%e6%8f%92%e4%bb%b6" class="nav-安装插件">
+									安装插件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#juputer-lab" class="nav-juputer-lab">
+									Juputer-lab
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae" class="nav-配置">
+									配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>
