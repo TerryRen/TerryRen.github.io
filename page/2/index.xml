@@ -7,9 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 24 Apr 2024 13:06:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2024 13:06:00 +0800</lastBuildDate>
     
         <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Maven - 优化</title>
+        <link>https://terryren.github.io/posts/lang/java/maven/</link>
+        <pubDate>Sat, 03 Feb 2024 13:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/lang/java/maven/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/lang/java/maven/ -&lt;p&gt;&lt;strong&gt;优化本地仓库地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;默认情况下，Maven本地包存放在&lt;code&gt;${home}/.m2/repository&lt;/code&gt;，一般在Windows系统的&lt;code&gt;C&lt;/code&gt;盘，会影响系统性能，建议迁移到其他磁盘&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/maven-optimize-1.png&#34; alt=&#34;Maven-1 alt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;修改&lt;code&gt;repository&lt;/code&gt;配置，可采用aliyun等加速网站&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/maven-optimize-2.png&#34; alt=&#34;Maven-1 alt&#34;&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/lang/java/maven/ - Terry</description>
+        </item>
     
     
     

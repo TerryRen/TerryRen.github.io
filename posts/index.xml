@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 24 Apr 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Jul 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Minio - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/architect/io/minio-install-1/</link>
+      <pubDate>Tue, 16 Jul 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/io/minio-install-1/</guid>
+      <description>1 - Install Docker 2 - Pull the MinIO Docker Image docker pull minio/minio:latest 3 - Create Docker Compose File 通过如下内容，修改账户 + 密码，然后创建 docker-compose.yml 文件
+version: &amp;#39;3&amp;#39; services: minio: image: minio/minio:latest container_name: minio ports: - &amp;#34;9000:9000&amp;#34; - &amp;#34;9001:9001&amp;#34; environment: MINIO_ROOT_USER: {user} MINIO_ROOT_PASSWORD: {user-password} volumes: - ~/minio/data:/data - ~/minio/config:/root/.minio command: server --address &amp;#34;0.0.0.0:9000&amp;#34; --console-address &amp;#34;0.0.0.0:9001&amp;#34; /data restart: always 4 - Run Docker Compose #docker-compose down docker-compose up -d 5 - Access MinIO Open your web browser and navigate to http://:9001.</description>
+    </item>
+    
     <item>
       <title>Anaconda - 安装 - 优化</title>
       <link>https://terryren.github.io/posts/architect/ai/anaconda/</link>
