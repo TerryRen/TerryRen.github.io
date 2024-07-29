@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on The Sound of Music</title>
+    <link>https://terryren.github.io/categories/docker/</link>
+    <description>Recent content in Docker on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Wed, 24 Jul 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian12 Docker - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/architect/basis/debian-docker-1/</link>
+      <pubDate>Wed, 24 Jul 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/basis/debian-docker-1/</guid>
+      <description>1 - 安装 Debian 12 通过 https://www.osboxes.org/debian/ 下载 适配 Vmware 的OS镜像
+查看 OS Info
+uname -a lsb_release -a cat /etc/os-release 修改 APT 源
+vi /etc/apt/sources.list 修改内容
+# Tsinghua University deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware 更新源
+sudo apt update 2 - 安装Docker &amp;amp; Docker Compose CE版本 export https_proxy=&amp;#34;http://127.0.0.1:8118&amp;#34; export http_proxy=&amp;#34;http://127.</description>
+    </item>
+    
+  </channel>
+</rss>

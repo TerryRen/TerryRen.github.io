@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Discuz - 安装 - 优化</title>
+<title>Debian12 Docker - 安装 - 优化</title>
 
 
 
@@ -10,26 +10,26 @@
 <meta name="google-site-verification" content="">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
-<meta name="description" content="Discuz - 安装 - 优化">
+<meta name="description" content="Debian12 Docker - 安装 - 优化">
 <meta name="renderer" content="webkit">
 <meta name="theme-color" content="#ffffff">
 
 
 
-<meta property="og:title" content="Discuz - 安装 - 优化" />
-<meta property="og:description" content="Discuz - 安装 - 优化" />
+<meta property="og:title" content="Debian12 Docker - 安装 - 优化" />
+<meta property="og:description" content="Debian12 Docker - 安装 - 优化" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://terryren.github.io/posts/architect/basis/discuz-1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-07-23T13:06:00+08:00" />
-<meta property="article:modified_time" content="2024-07-23T13:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="https://terryren.github.io/posts/architect/basis/debian-docker-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-24T13:06:00+08:00" />
+<meta property="article:modified_time" content="2024-07-24T13:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Discuz - 安装 - 优化"/>
-<meta name="twitter:description" content="Discuz - 安装 - 优化"/>
+<meta name="twitter:title" content="Debian12 Docker - 安装 - 优化"/>
+<meta name="twitter:description" content="Debian12 Docker - 安装 - 优化"/>
 
 
 
@@ -174,8 +174,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#1---install-docker--mysql-57" class="nav-1---install-docker--mysql-57">
-									1 - Install Docker &amp; Mysql 5.7
+								<a href="#1---%e5%ae%89%e8%a3%85-debian-12" class="nav-1---安装-debian-12">
+									1 - 安装 Debian 12
 								</a>
 							</li>
 						
@@ -192,8 +192,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#2---pull-the-discuz-docker-image" class="nav-2---pull-the-discuz-docker-image">
-									2 - Pull the Discuz Docker Image
+								<a href="#2---%e5%ae%89%e8%a3%85docker--docker-compose-ce%e7%89%88%e6%9c%ac" class="nav-2---安装docker--docker-compose-ce版本">
+									2 - 安装Docker &amp; Docker Compose CE版本
 								</a>
 							</li>
 						
@@ -210,8 +210,32 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#3---%e5%88%9b%e5%bb%ba%e6%9c%ac%e5%9c%b0%e7%a3%81%e7%9b%98%e7%9b%ae%e5%bd%95" class="nav-3---创建本地磁盘目录">
-									3 - 创建本地磁盘目录
+								<a href="#3---%e8%ae%be%e7%bd%ae-socks5-%e4%bb%a3%e7%90%86" class="nav-3---设置-socks5-代理">
+									3 - 设置 Socks5 代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#31-%e5%88%9b%e5%bb%ba%e5%a6%82%e4%b8%8b%e6%96%87%e4%bb%b6" class="nav-31-创建如下文件">
+									3.1 创建如下文件
 								</a>
 							</li>
 						
@@ -228,8 +252,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#4---%e5%88%9b%e5%bb%ba%e6%96%87%e4%bb%b6-docker-composeyaml" class="nav-4---创建文件-docker-composeyaml">
-									4 - 创建文件 docker-compose.yaml
+								<a href="#32-%e6%96%87%e4%bb%b6%e4%b8%ad%e5%a1%ab%e5%86%99%e5%a6%82%e4%b8%8b%e5%86%85%e5%ae%b9" class="nav-32-文件中填写如下内容">
+									3.2 文件中填写如下内容
 								</a>
 							</li>
 						
@@ -243,11 +267,15 @@ if (!doNotTrack) {
 						
 						
 						
+							
+								</ul>
+							
+						
 						
 						
 							<li>
-								<a href="#5---docker-compose-%e5%90%af%e5%8a%a8--%e5%81%9c%e6%ad%a2" class="nav-5---docker-compose-启动--停止">
-									5 - docker compose 启动 &amp; 停止
+								<a href="#%e9%87%8d%e5%90%afdocker" class="nav-重启docker">
+									重启Docker
 								</a>
 							</li>
 						
@@ -310,29 +338,29 @@ if (!doNotTrack) {
                 
             >
                 <div class="post-title">
-                    Discuz - 安装 - 优化
+                    Debian12 Docker - 安装 - 优化
                     
                     <div class="post-subtitle">
-                        Discuz - 安装 - 优化
+                        Debian12 Docker - 安装 - 优化
                     </div>
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2024-07-23 13:06
+                            2024-07-24 13:06
                         </time>
                         
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/discuz">Discuz</a>
+                                <a href="/categories/docker">Docker</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/discuz">Discuz</a>
+                                <a href="/tags/debian12">Debian12</a>
                                 &nbsp;
                             
                                 <a href="/tags/docker">Docker</a>
@@ -348,48 +376,52 @@ if (!doNotTrack) {
                 
                 <div class="post-body" v-pre>
                 
-                    <h3 id="1---install-docker--mysql-57">1 - Install Docker &amp; Mysql 5.7</h3>
-<p>创建Mysql数据库 <code>{PWD}</code> 修改成实际密码</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>CREATE DATABASE discuz;
-</span></span><span style="display:flex;"><span>GRANT ALL PRIVILEGES ON discuz.* TO <span style="color:#cd5555">&#39;discuz&#39;</span>@<span style="color:#cd5555">&#39;%&#39;</span> IDENTIFIED BY <span style="color:#cd5555">&#39;{PWD}&#39;</span>;
-</span></span><span style="display:flex;"><span>FLUSH PRIVILEGES;
-</span></span></code></pre></div><h3 id="2---pull-the-discuz-docker-image">2 - Pull the Discuz Docker Image</h3>
-<p><strong>注意设置Docker Sock5代理</strong> 需要访问 <strong>hub.docker.com</strong> 国内很多镜像网站下载失败，腾讯云服务器可直接获取</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker pull tencentci/discuz:latest
-</span></span></code></pre></div><h3 id="3---创建本地磁盘目录">3 - 创建本地磁盘目录</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /mnt/discuz/www
-</span></span></code></pre></div><h3 id="4---创建文件-docker-composeyaml">4 - 创建文件 <code>docker-compose.yaml</code></h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#39;3&#39;</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">services</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">web</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>tencentci/discuz:latest<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>discuz<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ports</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#cd5555">&#34;28080:80&#34;</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">volumes</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- discuz-www:/var/www/html<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>always<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">volumes</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">discuz-www</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver</span>:<span style="color:#bbb"> </span>local<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver_opts</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">type</span>:<span style="color:#bbb"> </span>none<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">o</span>:<span style="color:#bbb"> </span>bind<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">device</span>:<span style="color:#bbb"> </span>/mnt/discuz/www<span style="color:#bbb">
-</span></span></span></code></pre></div><p><strong>通过命令 检查Docker Volumn</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker volume inspect discuz_discuz-www
-</span></span></code></pre></div><h3 id="5---docker-compose-启动--停止">5 - docker compose 启动 &amp; 停止</h3>
-<p><strong>Docker Compose (V1)</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose up -d
-</span></span><span style="display:flex;"><span>docker-compose down
-</span></span></code></pre></div><p><strong>Docker Compose (V2)</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker compose up -d
-</span></span><span style="display:flex;"><span>docker compose down
+                    <h3 id="1---安装-debian-12">1 - 安装 Debian 12</h3>
+<p>通过 <code>https://www.osboxes.org/debian/</code> 下载 适配 <code>Vmware</code> 的OS镜像</p>
+<p><strong>查看 OS Info</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>uname -a
+</span></span><span style="display:flex;"><span>lsb_release -a
+</span></span><span style="display:flex;"><span>cat /etc/os-release
+</span></span></code></pre></div><p><strong>修改 <code>APT</code> 源</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vi /etc/apt/sources.list
+</span></span></code></pre></div><p><strong>修改内容</strong></p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># Tsinghua University
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+</code></pre><p><strong>更新源</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt update
+</span></span></code></pre></div><h3 id="2---安装docker--docker-compose-ce版本">2 - 安装Docker &amp; Docker Compose CE版本</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">https_proxy</span>=<span style="color:#cd5555">&#34;http://127.0.0.1:8118&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">http_proxy</span>=<span style="color:#cd5555">&#34;http://127.0.0.1:8118&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>env
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 此步骤需要梯子</span>
+</span></span><span style="display:flex;"><span>curl -sS https://download.docker.com/linux/debian/gpg | gpg --dearmor &gt; /usr/share/keyrings/docker-ce.gpg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;deb [arch=</span><span style="color:#8b008b;font-weight:bold">$(</span>dpkg --print-architecture<span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555"> signed-by=/usr/share/keyrings/docker-ce.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian </span><span style="color:#8b008b;font-weight:bold">$(</span>lsb_release -sc<span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555"> stable&#34;</span> &gt; /etc/apt/sources.list.d/docker.list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ls /etc/apt/sources.list.d/
+</span></span><span style="display:flex;"><span>cat /etc/apt/sources.list.d/docker.list 
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+</span></span><span style="display:flex;"><span>docker version
+</span></span><span style="display:flex;"><span>docker compose version
+</span></span></code></pre></div><h3 id="3---设置-socks5-代理">3 - 设置 <code>Socks5</code> 代理</h3>
+<h4 id="31-创建如下文件">3.1 创建如下文件</h4>
+<p><code>vi /etc/systemd/system/docker.service.d/proxy.conf</code></p>
+<h4 id="32-文件中填写如下内容">3.2 文件中填写如下内容</h4>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">[Service]
+Environment=&#34;HTTP_PROXY=socks5://127.0.0.1:1080&#34;
+Environment=&#34;HTTPS_PROXY=socks5://127.0.0.1:1080&#34;
+</code></pre><h3 id="重启docker">重启Docker</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>systemctl restart docker
 </span></span></code></pre></div>
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2024-07-23</p>
+		    <p style="color:#777;">最后修改于 2024-07-24</p>
                     
                 </div>
             </div>
@@ -398,14 +430,14 @@ if (!doNotTrack) {
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/posts/architect/basis/debian-docker-1/">
-			下回<br>Debian12 Docker - 安装 - 优化
+                <a class="newer-posts">
+			下回<br>已经到头啦。
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/posts/architect/io/minio-install-1/">
-			上回<br>Minio - 安装 - 优化
+                <a class="older-posts" href="/posts/architect/basis/discuz-1/">
+			上回<br>Discuz - 安装 - 优化
                 </a>
                 
             </nav>
@@ -535,8 +567,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#1---install-docker--mysql-57" class="nav-1---install-docker--mysql-57">
-									1 - Install Docker &amp; Mysql 5.7
+								<a href="#1---%e5%ae%89%e8%a3%85-debian-12" class="nav-1---安装-debian-12">
+									1 - 安装 Debian 12
 								</a>
 							</li>
 						
@@ -553,8 +585,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#2---pull-the-discuz-docker-image" class="nav-2---pull-the-discuz-docker-image">
-									2 - Pull the Discuz Docker Image
+								<a href="#2---%e5%ae%89%e8%a3%85docker--docker-compose-ce%e7%89%88%e6%9c%ac" class="nav-2---安装docker--docker-compose-ce版本">
+									2 - 安装Docker &amp; Docker Compose CE版本
 								</a>
 							</li>
 						
@@ -571,8 +603,32 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#3---%e5%88%9b%e5%bb%ba%e6%9c%ac%e5%9c%b0%e7%a3%81%e7%9b%98%e7%9b%ae%e5%bd%95" class="nav-3---创建本地磁盘目录">
-									3 - 创建本地磁盘目录
+								<a href="#3---%e8%ae%be%e7%bd%ae-socks5-%e4%bb%a3%e7%90%86" class="nav-3---设置-socks5-代理">
+									3 - 设置 Socks5 代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#31-%e5%88%9b%e5%bb%ba%e5%a6%82%e4%b8%8b%e6%96%87%e4%bb%b6" class="nav-31-创建如下文件">
+									3.1 创建如下文件
 								</a>
 							</li>
 						
@@ -589,8 +645,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#4---%e5%88%9b%e5%bb%ba%e6%96%87%e4%bb%b6-docker-composeyaml" class="nav-4---创建文件-docker-composeyaml">
-									4 - 创建文件 docker-compose.yaml
+								<a href="#32-%e6%96%87%e4%bb%b6%e4%b8%ad%e5%a1%ab%e5%86%99%e5%a6%82%e4%b8%8b%e5%86%85%e5%ae%b9" class="nav-32-文件中填写如下内容">
+									3.2 文件中填写如下内容
 								</a>
 							</li>
 						
@@ -604,11 +660,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 						
+							
+								</ul>
+							
+						
 						
 						
 							<li>
-								<a href="#5---docker-compose-%e5%90%af%e5%8a%a8--%e5%81%9c%e6%ad%a2" class="nav-5---docker-compose-启动--停止">
-									5 - docker compose 启动 &amp; 停止
+								<a href="#%e9%87%8d%e5%90%afdocker" class="nav-重启docker">
+									重启Docker
 								</a>
 							</li>
 						
