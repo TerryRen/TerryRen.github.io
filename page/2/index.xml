@@ -7,9 +7,57 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Tue, 16 Jul 2024 13:06:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2024 13:06:00 +0800</lastBuildDate>
     
         <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Windows - 系统 - 垃圾清理 - 脚本</title>
+        <link>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</link>
+        <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ -&lt;p&gt;&lt;strong&gt;清理系统垃圾&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; off
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除系统垃圾文件，请稍等......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\ServiceProfiles\NetworkService\AppData\Local\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\ServiceProfiles\LocalService\AppData\Local\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*._mp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.gid
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.chk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.old
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\recycled\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\*.bak
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\prefetch\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;rd&lt;/span&gt; /s /q &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\temp &amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;md&lt;/span&gt;  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\temp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\cookies\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\AppData\Local\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temporary Internet Files\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\system32\dllcache\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除驱动在安装时留下的解压文件，请稍等......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%SystemDrive%&lt;/span&gt;\AMD\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\Intel\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\NVIDIA\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\Prog\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 清除系统垃圾完成！
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt;. &amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;pause&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ - Terry</description>
+        </item>
     
     
     

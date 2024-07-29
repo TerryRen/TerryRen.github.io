@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Tue, 16 Jul 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Jul 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Discuz - 安装 - 优化</title>
+      <link>https://terryren.github.io/posts/architect/basis/discuz-1/</link>
+      <pubDate>Tue, 23 Jul 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/basis/discuz-1/</guid>
+      <description>1 - Install Docker &amp;amp; Mysql 5.7 创建Mysql数据库 {PWD} 修改成实际密码
+CREATE DATABASE discuz; GRANT ALL PRIVILEGES ON discuz.* TO &amp;#39;discuz&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED BY &amp;#39;{PWD}&amp;#39;; FLUSH PRIVILEGES; 2 - Pull the Discuz Docker Image 注意设置Docker Sock5代理 需要访问 hub.docker.com 国内很多镜像网站下载失败，腾讯云服务器可直接获取
+docker pull tencentci/discuz:latest 3 - 创建本地磁盘目录 mkdir -p /mnt/discuz/www 4 - 创建文件 docker-compose.yaml version: &amp;#39;3&amp;#39; services: web: image: tencentci/discuz:latest container_name: discuz ports: - &amp;#34;28080:80&amp;#34; volumes: - discuz-www:/var/www/html restart: always volumes: discuz-www: driver: local driver_opts: type: none o: bind device: /mnt/discuz/www 通过命令 检查Docker Volumn</description>
+    </item>
+    
     <item>
       <title>Minio - 安装 - 优化</title>
       <link>https://terryren.github.io/posts/architect/io/minio-install-1/</link>

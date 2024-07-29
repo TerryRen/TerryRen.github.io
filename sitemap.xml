@@ -3,10 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://terryren.github.io/categories/</loc>
-    <lastmod>2024-07-16T13:06:00+08:00</lastmod>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/discuz/</loc>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/discuz/</loc>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/architect/basis/discuz-1/</loc>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/docker/</loc>
-    <lastmod>2024-07-16T13:06:00+08:00</lastmod>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/</loc>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/</loc>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/</loc>
+    <lastmod>2024-07-23T13:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/minio/</loc>
     <lastmod>2024-07-16T13:06:00+08:00</lastmod>
@@ -15,15 +33,6 @@
     <lastmod>2024-07-16T13:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/posts/architect/io/minio-install-1/</loc>
-    <lastmod>2024-07-16T13:06:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/posts/</loc>
-    <lastmod>2024-07-16T13:06:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/tags/</loc>
-    <lastmod>2024-07-16T13:06:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/</loc>
     <lastmod>2024-07-16T13:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/ai/</loc>
