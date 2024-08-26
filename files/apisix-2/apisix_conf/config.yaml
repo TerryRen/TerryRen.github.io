@@ -41,11 +41,11 @@ deployment:
 
     admin_key:
       - name: "admin"
-        key: supper-admin-20240203-9527-009
+        key: "{admin_replace}"
         role: admin                 # admin: manage all configuration data
 
       - name: "viewer"
-        key: viewer-20240203-9527-007
+        key: "{viewer_replace}"
         role: viewer
 
   etcd:
@@ -53,6 +53,9 @@ deployment:
       - "http://etcd:2379"          # multiple etcd address
     prefix: "/apisix"               # apisix configurations prefix
     timeout: 30                     # 30 seconds
+                        # etcd basic auth info
+    # username: "root"    # ignore etcd username if not enable etcd auth
+    # password: "123456"  # ignore etcd password if not enable etcd auth
 
 plugin_attr:
   prometheus:
