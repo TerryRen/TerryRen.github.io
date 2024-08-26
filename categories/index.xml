@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 24 Jul 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Aug 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web</title>
+      <link>https://terryren.github.io/categories/web/</link>
+      <pubDate>Mon, 26 Aug 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/categories/web/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Docker</title>
       <link>https://terryren.github.io/categories/docker/</link>
@@ -77,15 +86,6 @@
       <pubDate>Fri, 01 Mar 2024 16:06:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/categories/node/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web</title>
-      <link>https://terryren.github.io/categories/web/</link>
-      <pubDate>Thu, 01 Feb 2024 13:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/categories/web/</guid>
       <description></description>
     </item>
     

@@ -255,6 +255,42 @@ if (!doNotTrack) {
 					
 				
 			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#6---%e6%b8%85%e7%90%86%e5%ae%89%e8%a3%85%e6%96%87%e4%bb%b6" class="nav-6---清理安装文件">
+									6 - 清理安装文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#7---%e4%bf%ae%e6%94%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e9%85%8d%e7%bd%ae" class="nav-7---修改数据库配置">
+									7 - 修改数据库配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
 		</ul>
 	</div>
 
@@ -354,6 +390,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>GRANT ALL PRIVILEGES ON discuz.* TO <span style="color:#cd5555">&#39;discuz&#39;</span>@<span style="color:#cd5555">&#39;%&#39;</span> IDENTIFIED BY <span style="color:#cd5555">&#39;{PWD}&#39;</span>;
 </span></span><span style="display:flex;"><span>FLUSH PRIVILEGES;
 </span></span></code></pre></div><h3 id="2---pull-the-discuz-docker-image">2 - Pull the Discuz Docker Image</h3>
+<p><strong>Discuz! X3.5 Release 20230726 UTF-8</strong></p>
 <p><strong>注意设置Docker Sock5代理</strong> 需要访问 <strong>hub.docker.com</strong> 国内很多镜像网站下载失败，腾讯云服务器可直接获取</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker pull tencentci/discuz:latest
 </span></span></code></pre></div><h3 id="3---创建本地磁盘目录">3 - 创建本地磁盘目录</h3>
@@ -386,7 +423,12 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p><strong>Docker Compose (V2)</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker compose up -d
 </span></span><span style="display:flex;"><span>docker compose down
-</span></span></code></pre></div>
+</span></span></code></pre></div><h3 id="6---清理安装文件">6 - 清理安装文件</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -rf www/install/index.php
+</span></span><span style="display:flex;"><span>rm -rf www/uc_server/install/index.php
+</span></span></code></pre></div><h3 id="7---修改数据库配置">7 - 修改数据库配置</h3>
+<p><a href="https://blog.csdn.net/qq_35171556/article/details/120562427">参考文档</a></p>
+
                     
                     <HR width="100%" id="EOF">
 		    <p style="color:#777;">最后修改于 2024-07-23</p>
@@ -609,6 +651,42 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 							<li>
 								<a href="#5---docker-compose-%e5%90%af%e5%8a%a8--%e5%81%9c%e6%ad%a2" class="nav-5---docker-compose-启动--停止">
 									5 - docker compose 启动 &amp; 停止
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#6---%e6%b8%85%e7%90%86%e5%ae%89%e8%a3%85%e6%96%87%e4%bb%b6" class="nav-6---清理安装文件">
+									6 - 清理安装文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#7---%e4%bf%ae%e6%94%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e9%85%8d%e7%bd%ae" class="nav-7---修改数据库配置">
+									7 - 修改数据库配置
 								</a>
 							</li>
 						

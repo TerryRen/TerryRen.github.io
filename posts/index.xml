@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 24 Jul 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Aug 2024 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>APISIX - 2 - 网关优化</title>
+      <link>https://terryren.github.io/posts/web/nginx/apisix-2/</link>
+      <pubDate>Mon, 26 Aug 2024 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/nginx/apisix-2/</guid>
+      <description>前置条件 已安装 Docker，Docker Compose 用于部署 etcd 和 APISIX 已安装 curl，用于验证 APISIX 是否安装成功 采用 APISIX 的 3.2.2 LTS 长期支持版本，APISIX Dashboard 的 3.0.0 版本，etcd 的 3.5.11 版本 配置 APISIX 固定 IP 桥接模式 配置 APISIX 绑定到 443 &amp;amp; 80 端口；
+安装 1. 下载文件 初始化相关配置，添加 apisix-dashboard 配置文件夹 dashboard_conf 以及文件
+cd ~ git clone https://github.com/apache/apisix-docker.git cd apisix-docker/example mkdir dashboard_conf cd ~ cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf mkdir apisix cp -r apisix-docker/example/* apisix rm -rf apisix-docker 2. apisix-dashboard 注意修改 conf.</description>
+    </item>
+    
     <item>
       <title>Debian12 Docker - 安装 - 优化</title>
       <link>https://terryren.github.io/posts/architect/basis/debian-docker-1/</link>
@@ -29,7 +40,8 @@ sudo apt update 2 - 安装Docker &amp;amp; Docker Compose CE版本 export https_
       
       <guid>https://terryren.github.io/posts/architect/basis/discuz-1/</guid>
       <description>1 - Install Docker &amp;amp; Mysql 5.7 创建Mysql数据库 {PWD} 修改成实际密码
-CREATE DATABASE discuz; GRANT ALL PRIVILEGES ON discuz.* TO &amp;#39;discuz&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED BY &amp;#39;{PWD}&amp;#39;; FLUSH PRIVILEGES; 2 - Pull the Discuz Docker Image 注意设置Docker Sock5代理 需要访问 hub.docker.com 国内很多镜像网站下载失败，腾讯云服务器可直接获取
+CREATE DATABASE discuz; GRANT ALL PRIVILEGES ON discuz.* TO &amp;#39;discuz&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED BY &amp;#39;{PWD}&amp;#39;; FLUSH PRIVILEGES; 2 - Pull the Discuz Docker Image Discuz! X3.5 Release 20230726 UTF-8
+注意设置Docker Sock5代理 需要访问 hub.docker.com 国内很多镜像网站下载失败，腾讯云服务器可直接获取
 docker pull tencentci/discuz:latest 3 - 创建本地磁盘目录 mkdir -p /mnt/discuz/www 4 - 创建文件 docker-compose.yaml version: &amp;#39;3&amp;#39; services: web: image: tencentci/discuz:latest container_name: discuz ports: - &amp;#34;28080:80&amp;#34; volumes: - discuz-www:/var/www/html restart: always volumes: discuz-www: driver: local driver_opts: type: none o: bind device: /mnt/discuz/www 通过命令 检查Docker Volumn</description>
     </item>
     
