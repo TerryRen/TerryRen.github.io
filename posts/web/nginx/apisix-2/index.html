@@ -7,7 +7,7 @@
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
-<meta name="google-site-verification" content="">
+<meta name="google-site-verification" content="G-ZE2B25M3ST">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
 <meta name="description" content="APISIX网关搭建">
@@ -650,8 +650,13 @@ if (!doNotTrack) {
 <li>如果服务器内存不足，建议 <code>docker-compose.yml</code> 中的移除 <code>prometheus</code> 以及 <code>grafana</code></li>
 <li>添加节点 <code>apisix-dashboard</code>，用于可视化管理网关</li>
 <li>etcd的数据映射到本地docker磁盘，可通过命令查看<code>sudo ls /var/lib/docker/volumes/apisix_etcd_data/_data</code></li>
+<li>由于 <code>apisix</code> 绑定到了 <code>443</code>, <code>80</code> 两个端口，针对 <code>centos 7.x</code> 等操作系统，需要在 <code>docker-compose.yml</code> 添加如下片段，启用特殊网络绑定权限</li>
+<li>如果通过 <code>docker run xxx</code> 命令启动 <code>apisix</code>， 遇见端口权限问题，需要添加参数<code>--privileged=true</code></li>
 </ol>
-<p><a href="/files/apisix-2/docker-compose.yml" download>docker-compose.yml</a>，内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">user</span>:<span style="color:#bbb"> </span>root<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">cap_add</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- NET_BIND_SERVICE<span style="color:#bbb">
+</span></span></span></code></pre></div><p><a href="/files/apisix-2/docker-compose.yml" download>docker-compose.yml</a>，内容如下：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#228b22">#</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#228b22"># Licensed to the Apache Software Foundation (ASF) under one or more</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#228b22"># contributor license agreements.  See the NOTICE file distributed with</span><span style="color:#bbb">
@@ -697,6 +702,9 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ports</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#cd5555">&#34;80:80/tcp&#34;</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#cd5555">&#34;443:443/tcp&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">user</span>:<span style="color:#bbb"> </span>root<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">cap_add</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- NET_BIND_SERVICE      <span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">networks</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">apisix</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#8b008b;font-weight:bold">ipv4_address</span>:<span style="color:#bbb"> </span><span style="color:#b452cd">172.25.0.3</span><span style="color:#bbb">      
@@ -802,8 +810,8 @@ if (!doNotTrack) {
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts">
-			下回<br>已经到头啦。
+                <a class="newer-posts" href="/posts/architect/basis/apache-elastic-search-1/">
+			下回<br>Elastic Search - 安装
                 </a>
                 
                 

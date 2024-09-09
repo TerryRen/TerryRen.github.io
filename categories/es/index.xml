@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ES on The Sound of Music</title>
+    <link>https://terryren.github.io/categories/es/</link>
+    <description>Recent content in ES on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Tue, 27 Aug 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/categories/es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Elastic Search - 安装</title>
+      <link>https://terryren.github.io/posts/architect/basis/apache-elastic-search-1/</link>
+      <pubDate>Tue, 27 Aug 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/basis/apache-elastic-search-1/</guid>
+      <description>部署 ES 8.11.4 创建目录 es mkdir -p /mnt/es mkdir -p /mnt/es/plugins mkdir -p /mnt/es/data mkdir -p /mnt/es/logs mkdir -p /mnt/es/kib/data 创建 .env 文件 .env 文件内容如下
+# Password for the &amp;#39;elastic&amp;#39; user (at least 6 characters) # 注意不要全数字 ELASTIC_PASSWORD=changeme # Password for the &amp;#39;kibana_system&amp;#39; user (at least 6 characters) # 注意不要全数字，否则KIBANA可能验证出错 KIBANA_PASSWORD=changeme # Version of Elastic products STACK_VERSION=8.11.4 # Set the cluster name CLUSTER_NAME=es-docker-cluster # Set to &amp;#39;basic&amp;#39; or &amp;#39;trial&amp;#39; to automatically start the 30-day trial LICENSE=basic # Increase or decrease based on the available host memory (in bytes) MEM_LIMIT=1073741824 # Project namespace (defaults to the current folder name if not set) COMPOSE_PROJECT_NAME=es 创建 docker-compose.</description>
+    </item>
+    
+  </channel>
+</rss>

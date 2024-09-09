@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html><head>
+<title>Elastic Search - 安装</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="G-ZE2B25M3ST">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="Elastic Search  - 安装">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Elastic Search - 安装" />
+<meta property="og:description" content="Elastic Search  - 安装" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://terryren.github.io/posts/architect/basis/apache-elastic-search-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-08-27T13:06:00+08:00" />
+<meta property="article:modified_time" content="2024-08-27T13:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Elastic Search - 安装"/>
+<meta name="twitter:description" content="Elastic Search  - 安装"/>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE2B25M3ST"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZE2B25M3ST', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>console.log("Hello from 'layouts/partials/extended_head.html'")</script>
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    博客
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    订阅
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2-es-8114" class="nav-部署-es-8114">
+									部署 ES 8.11.4
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba%e7%9b%ae%e5%bd%95-es" class="nav-创建目录-es">
+									创建目录 es
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba-env-%e6%96%87%e4%bb%b6" class="nav-创建-env-文件">
+									创建 .env 文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba-docker-composeyml-%e6%96%87%e4%bb%b6" class="nav-创建-docker-composeyml-文件">
+									创建 docker-compose.yml 文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bf%90%e8%a1%8c" class="nav-运行">
+									运行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%aa%8c%e8%af%81" class="nav-验证">
+									验证
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%81%9c%e6%ad%a2" class="nav-停止">
+									停止
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%ad%e6%96%87%e5%88%86%e8%af%8d" class="nav-中文分词">
+									中文分词
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85-ik%e4%b8%ad%e6%96%87%e5%88%86%e8%af%8d-%e6%8f%92%e4%bb%b6" class="nav-安装-ik中文分词-插件">
+									安装 IK中文分词 插件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96-es" class="nav-优化-es">
+									优化 ES
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%b0%83%e6%95%b4-jvm-%e5%86%85%e5%ad%98" class="nav-调整-jvm-内存">
+									调整 JVM 内存
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a2%9e%e5%8a%a0%e7%ba%bf%e7%a8%8b%e6%b1%a0%e5%a4%a7%e5%b0%8f" class="nav-增加线程池大小">
+									增加线程池大小
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a2%9e%e5%8a%a0%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6%e9%99%90%e5%88%b6" class="nav-增加文件描述符限制">
+									增加文件描述符限制
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%b0%83%e6%95%b4%e5%86%85%e6%a0%b8%e5%8f%82%e6%95%b0" class="nav-调整内核参数">
+									调整内核参数
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%85%b3%e9%94%ae%e9%85%8d%e7%bd%ae%e6%8f%8f%e8%bf%b0" class="nav-关键配置描述">
+									关键配置描述
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://terryren.github.io/">
+            The Sound of Music
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://terryren.github.io/">
+        <div class="single-column-header-title">The Sound of Music</div>
+        
+        <div class="single-column-header-subtitle">知行合一</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Elastic Search - 安装
+                    
+                    <div class="post-subtitle">
+                        Elastic Search  - 安装
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2024-08-27 13:06
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/es">ES</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/es">ES</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h3 id="部署-es-8114">部署 ES <code>8.11.4</code></h3>
+<h4 id="创建目录-es">创建目录 <code>es</code></h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /mnt/es
+</span></span><span style="display:flex;"><span>mkdir -p /mnt/es/plugins
+</span></span><span style="display:flex;"><span>mkdir -p /mnt/es/data
+</span></span><span style="display:flex;"><span>mkdir -p /mnt/es/logs
+</span></span><span style="display:flex;"><span>mkdir -p /mnt/es/kib/data
+</span></span></code></pre></div><h4 id="创建-env-文件">创建 <code>.env</code> 文件</h4>
+<p><code>.env</code> 文件内容如下</p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># Password for the &#39;elastic&#39; user (at least 6 characters)
+# 注意不要全数字
+ELASTIC_PASSWORD=changeme
+
+# Password for the &#39;kibana_system&#39; user (at least 6 characters)
+# 注意不要全数字，否则KIBANA可能验证出错
+KIBANA_PASSWORD=changeme
+
+# Version of Elastic products
+STACK_VERSION=8.11.4
+
+# Set the cluster name
+CLUSTER_NAME=es-docker-cluster
+
+# Set to &#39;basic&#39; or &#39;trial&#39; to automatically start the 30-day trial
+LICENSE=basic
+
+# Increase or decrease based on the available host memory (in bytes)
+MEM_LIMIT=1073741824
+
+# Project namespace (defaults to the current folder name if not set)
+COMPOSE_PROJECT_NAME=es
+</code></pre><h4 id="创建-docker-composeyml-文件">创建 <code>docker-compose.yml</code> 文件</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#39;3&#39;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">services</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">elasticsearch</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>elasticsearch:8.11.4<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>always<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>es01<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">environment</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- node.name=es01<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- cluster.name=${CLUSTER_NAME}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- discovery.type=single-node<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- bootstrap.memory_lock=true<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#cd5555">&#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- ELASTIC_PASSWORD=${ELASTIC_PASSWORD}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- xpack.security.enabled=true<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- xpack.security.authc.api_key.enabled=true<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- xpack.security.transport.ssl.enabled=false<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- xpack.security.http.ssl.enabled=false<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- xpack.license.self_generated.type=${LICENSE}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- http.host=0.0.0.0<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ulimits</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">memlock</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#8b008b;font-weight:bold">soft</span>:<span style="color:#bbb"> </span>-<span style="color:#b452cd">1</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#8b008b;font-weight:bold">hard</span>:<span style="color:#bbb"> </span>-<span style="color:#b452cd">1</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- es_data:/usr/share/elasticsearch/data<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- es_logs:/usr/share/elasticsearch/logs<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- es_plugins:/usr/share/elasticsearch/plugins<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ports</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b452cd">9200</span>:<span style="color:#b452cd">9200</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">networks</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- elastic<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">kibana</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>kibana:8.11.4<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>kib01<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">depends_on</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- elasticsearch<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">environment</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- ELASTICSEARCH_HOSTS=http://es01:9200<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- ELASTICSEARCH_USERNAME=kibana_system<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- I18N_LOCALE=zh-CN<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- kib_data:/usr/share/kibana/data<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ports</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b452cd">5601</span>:<span style="color:#b452cd">5601</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">networks</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- elastic<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">es_data</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver</span>:<span style="color:#bbb"> </span>local<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver_opts</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">type</span>:<span style="color:#bbb"> </span>none<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">o</span>:<span style="color:#bbb"> </span>bind<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">device</span>:<span style="color:#bbb"> </span>/mnt/es/data<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">es_logs</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver</span>:<span style="color:#bbb"> </span>local<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver_opts</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">type</span>:<span style="color:#bbb"> </span>none<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">o</span>:<span style="color:#bbb"> </span>bind<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">device</span>:<span style="color:#bbb"> </span>/mnt/es/logs<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">es_plugins</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver</span>:<span style="color:#bbb"> </span>local<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver_opts</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">type</span>:<span style="color:#bbb"> </span>none<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">o</span>:<span style="color:#bbb"> </span>bind<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">device</span>:<span style="color:#bbb"> </span>/mnt/es/plugins<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">kib_data</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver</span>:<span style="color:#bbb"> </span>local<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver_opts</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">type</span>:<span style="color:#bbb"> </span>none<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">o</span>:<span style="color:#bbb"> </span>bind<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">device</span>:<span style="color:#bbb"> </span>/mnt/es/kib/data<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">networks</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">elastic</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">driver</span>:<span style="color:#bbb"> </span>bridge<span style="color:#bbb">
+</span></span></span></code></pre></div><h4 id="运行">运行</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose up -d
+</span></span></code></pre></div><h4 id="验证">验证</h4>
+<p>通过 内置用户 <code>elastic</code> 用户名+密码方式 先验证 <code>集群</code> 状态</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl --location <span style="color:#cd5555">&#39;http://localhost:9200/_cluster/health?pretty&#39;</span> <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>--header <span style="color:#cd5555">&#39;Authorization: Basic xxxxx&#39;</span>
+</span></span></code></pre></div><p><code>kibana_system</code> 为内置账户，通过如下命令 查询基本信息</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl --location <span style="color:#cd5555">&#39;localhost:9200/_security/user/kibana_system&#39;</span> <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>--header <span style="color:#cd5555">&#39;Authorization: Basic xxxxx=&#39;</span>
+</span></span></code></pre></div><p><code>kibana_system</code> 为内置账户，没有默认密码，需要修改，否则 <code>Kibana</code> 无法使用</p>
+<p>【1】如果你是第一次设置密码，可以使用如下工具：</p>
+<p><code>bin/elasticsearch-setup-passwords interactive</code></p>
+<p>【2】进入容器，通过命令修改密码</p>
+<p><code>bin/elasticsearch-reset-password -u kibana_system</code></p>
+<p><strong>推荐【3】</strong></p>
+<p>【3】通过API修改密码</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl --location --request PUT <span style="color:#cd5555">&#39;localhost:9200/_security/user/kibana_system/_password&#39;</span> <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>--header <span style="color:#cd5555">&#39;Content-Type: application/json&#39;</span> <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>--header <span style="color:#cd5555">&#39;Authorization: Basic xxxxxx&#39;</span> <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>--data <span style="color:#cd5555">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">    &#34;password&#34;: &#34;xxxxx&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">}&#39;</span>
+</span></span></code></pre></div><p>通过 <code>Kibana</code> 地址 <code>localhost:5601</code> ，先使用 高级用户 <code>elastic</code> 登录，后续可以创建用户、角色、API Key等；进行权限控制</p>
+<h4 id="停止">停止</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose down
+</span></span></code></pre></div><h3 id="中文分词">中文分词</h3>
+<h4 id="安装-ik中文分词-插件">安装 IK中文分词 插件</h4>
+<h5 id="网络安装">网络安装</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 进入容器</span>
+</span></span><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> -it es01 /bin/bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 安装 IK 分词器</span>
+</span></span><span style="display:flex;"><span>bin/elasticsearch-plugin install https://github.com/infinilabs/analysis-ik/releases/download/v8.11.4/elasticsearch-analysis-ik-8.11.4.zip
+</span></span></code></pre></div><h5 id="离线安装">离线安装</h5>
+<p><strong>下载 IK 分词 到 <code>es</code> 目录</strong></p>
+<p><a href="https://github.com/infinilabs/analysis-ik/releases/download/v8.11.4/elasticsearch-analysis-ik-8.11.4.zip">下载地址</a></p>
+<p><strong>复制文件 到 容器的 <code>tmp</code> 目录</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker cp ./elasticsearch-analysis-ik-8.11.4.zip es01:/tmp/
+</span></span></code></pre></div><p><strong>进入容器并安装插件</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 进入容器</span>
+</span></span><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> -it es01 /bin/bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 安装 IK 分词器</span>
+</span></span><span style="display:flex;"><span>bin/elasticsearch-plugin install file:///tmp/elasticsearch-analysis-ik-8.11.4.zip
+</span></span></code></pre></div><h5 id="重启-es-容器">重启 <code>ES</code> 容器</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker restart es01
+</span></span></code></pre></div><h5 id="验证插件是否成功安装">验证插件是否成功安装</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> -it es01 /usr/share/elasticsearch/bin/elasticsearch-plugin list
+</span></span></code></pre></div><h3 id="优化-es">优化 ES</h3>
+<h4 id="调整-jvm-内存">调整 JVM 内存</h4>
+<p>在 <code>docker-compose.yml</code> 中设置 <code>ES_JAVA_OPTS</code> 环境变量</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">environment</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- <span style="color:#cd5555">&#34;ES_JAVA_OPTS=-Xms4g -Xmx4g&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><h4 id="增加线程池大小">增加线程池大小</h4>
+<p>可以在 <code>elasticsearch.yml</code> 文件中调整线程池设置，如 <code>thread_pool.search.size</code></p>
+<h4 id="增加文件描述符限制">增加文件描述符限制</h4>
+<p><strong>临时调整</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 查看 当前 shell 会话的资源限制</span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">ulimit</span> -a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 设置用户可以打开的最大文件数</span>
+</span></span><span style="display:flex;"><span>sudo <span style="color:#658b00">ulimit</span> -n <span style="color:#b452cd">65536</span>
+</span></span></code></pre></div><p><strong>永久生效</strong></p>
+<p>编辑 <code>/etc/security/limits.conf</code> 文件, 可以添加以下内容</p>
+<p>其中，<code>*</code> 表示对 <code>所有用户</code> 生效，<code>soft</code> 表示 <code>软限制</code>，<code>hard</code> 表示 <code>硬限制</code></p>
+<pre tabindex="0"><code>* soft nofile 65535
+* hard nofile 65535
+root soft nofile 65535
+root hard nofile 65535
+</code></pre><h4 id="调整内核参数">调整内核参数</h4>
+<p><strong>临时调整</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 查看 进程可拥有的最大内存映射区，默认值通常是 65530</span>
+</span></span><span style="display:flex;"><span>sysctl vm.max_map_count
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 或者查看</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># cat /proc/sys/vm/max_map_count</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 对于运行 Elasticsearch 等需要大量内存映射的应用程序，建议将其设置为至少 262144</span>
+</span></span><span style="display:flex;"><span>sudo sysctl -w vm.max_map_count=<span style="color:#b452cd">262144</span>
+</span></span></code></pre></div><p><strong>永久生效</strong></p>
+<p>可以将其添加到 /etc/sysctl.conf 文件中</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;vm.max_map_count=262144&#34;</span> | sudo tee -a /etc/sysctl.conf
+</span></span></code></pre></div><h3 id="关键配置描述">关键配置描述</h3>
+<p><code>xpack.security.authc.api_key.enabled=true</code></p>
+<p>Elasticsearch 的一个配置选项，用于启用 <code>API Key</code> 认证功能，避免在代码中硬编码用户名和密码</p>
+<p>可以通过 Kibana 或者直接在 Elasticsearch 中使用 API 生成 API Key</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -u elastic -X POST <span style="color:#cd5555">&#34;localhost:9200/_security/api_key&#34;</span> -H <span style="color:#cd5555">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#cd5555">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">  &#34;name&#34;: &#34;my-api-key&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">  &#34;expiration&#34;: &#34;1d&#34;, 
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">  &#34;role_descriptors&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">    &#34;my_custom_role&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">      &#34;cluster&#34;: [&#34;all&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">      &#34;index&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">          &#34;names&#34;: [&#34;*&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">          &#34;privileges&#34;: [&#34;read&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">      ]
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">}&#39;</span>
+</span></span></code></pre></div><p>生成的 API Key 可以在后续请求中通过 HTTP 头部传递进行认证</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -H <span style="color:#cd5555">&#34;Authorization: ApiKey YOUR_API_KEY&#34;</span> -X GET <span style="color:#cd5555">&#34;localhost:9200/_cluster/health&#34;</span>
+</span></span></code></pre></div><p><code>xpack.security.transport.ssl.enabled=true</code></p>
+<p>用于启用 <code>节点之间</code> 的 <code>传输层</code> 加密, 确保集群内的节点之间的通信是加密的，从而防止数据在传输过程中被截获或篡改</p>
+<p><code>xpack.security.http.ssl.enabled=true</code></p>
+<p>用于启用 <code>HTTP</code> 层的加密</p>
+<p>确保通过 <code>REST API</code> 进行的 HTTP 请求和响应是加密的，从而保护数据在客户端和 Elasticsearch 服务器之间的传输安全</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2024-08-27</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/web/nginx/apisix-2/">
+			上回<br>APISIX - 2 - 网关优化
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+                <p style="opacity: 0.6" align="center">
+                    <small>此篇文章的评论功能已经停用。</small>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://terryren.github.io/">
+    
+        <div class="nav-title">
+            The Sound of Music
+        </div>
+        
+        <div class="nav-subtitle">
+            知行合一
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                博客
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                订阅
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2-es-8114" class="nav-部署-es-8114">
+									部署 ES 8.11.4
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba%e7%9b%ae%e5%bd%95-es" class="nav-创建目录-es">
+									创建目录 es
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba-env-%e6%96%87%e4%bb%b6" class="nav-创建-env-文件">
+									创建 .env 文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9b%e5%bb%ba-docker-composeyml-%e6%96%87%e4%bb%b6" class="nav-创建-docker-composeyml-文件">
+									创建 docker-compose.yml 文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bf%90%e8%a1%8c" class="nav-运行">
+									运行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%aa%8c%e8%af%81" class="nav-验证">
+									验证
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%81%9c%e6%ad%a2" class="nav-停止">
+									停止
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%ad%e6%96%87%e5%88%86%e8%af%8d" class="nav-中文分词">
+									中文分词
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%85-ik%e4%b8%ad%e6%96%87%e5%88%86%e8%af%8d-%e6%8f%92%e4%bb%b6" class="nav-安装-ik中文分词-插件">
+									安装 IK中文分词 插件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8c%96-es" class="nav-优化-es">
+									优化 ES
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%b0%83%e6%95%b4-jvm-%e5%86%85%e5%ad%98" class="nav-调整-jvm-内存">
+									调整 JVM 内存
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a2%9e%e5%8a%a0%e7%ba%bf%e7%a8%8b%e6%b1%a0%e5%a4%a7%e5%b0%8f" class="nav-增加线程池大小">
+									增加线程池大小
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a2%9e%e5%8a%a0%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6%e9%99%90%e5%88%b6" class="nav-增加文件描述符限制">
+									增加文件描述符限制
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%b0%83%e6%95%b4%e5%86%85%e6%a0%b8%e5%8f%82%e6%95%b0" class="nav-调整内核参数">
+									调整内核参数
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%85%b3%e9%94%ae%e9%85%8d%e7%bd%ae%e6%8f%8f%e8%bf%b0" class="nav-关键配置描述">
+									关键配置描述
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>
