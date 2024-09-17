@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Debian12 Docker - 安装 - 优化</title>
+<title>Linux 挂载磁盘</title>
 
 
 
@@ -10,26 +10,26 @@
 <meta name="google-site-verification" content="G-ZE2B25M3ST">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
-<meta name="description" content="Debian12 Docker - 安装 - 优化">
+<meta name="description" content="Linux 挂载磁盘">
 <meta name="renderer" content="webkit">
 <meta name="theme-color" content="#ffffff">
 
 
 
-<meta property="og:title" content="Debian12 Docker - 安装 - 优化" />
-<meta property="og:description" content="Debian12 Docker - 安装 - 优化" />
+<meta property="og:title" content="Linux 挂载磁盘" />
+<meta property="og:description" content="Linux 挂载磁盘" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://terryren.github.io/posts/architect/basis/debian-docker-1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-07-24T13:06:00+08:00" />
-<meta property="article:modified_time" content="2024-07-24T13:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="https://terryren.github.io/posts/architect/io/disk-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-16T10:06:00+08:00" />
+<meta property="article:modified_time" content="2024-09-16T10:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Debian12 Docker - 安装 - 优化"/>
-<meta name="twitter:description" content="Debian12 Docker - 安装 - 优化"/>
+<meta name="twitter:title" content="Linux 挂载磁盘"/>
+<meta name="twitter:description" content="Linux 挂载磁盘"/>
 
 
 
@@ -174,8 +174,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#1---%e5%ae%89%e8%a3%85-debian-12" class="nav-1---安装-debian-12">
-									1 - 安装 Debian 12
+								<a href="#%e6%8c%82%e8%bd%bd%e7%a3%81%e7%9b%98" class="nav-挂载磁盘">
+									挂载磁盘
 								</a>
 							</li>
 						
@@ -192,8 +192,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#2---%e5%ae%89%e8%a3%85docker--docker-compose-ce%e7%89%88%e6%9c%ac" class="nav-2---安装docker--docker-compose-ce版本">
-									2 - 安装Docker &amp; Docker Compose CE版本
+								<a href="#%e7%a3%81%e7%9b%98%e7%a9%ba%e9%97%b4" class="nav-磁盘空间">
+									磁盘空间
 								</a>
 							</li>
 						
@@ -210,32 +210,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#3---%e8%ae%be%e7%bd%ae-socks5-%e4%bb%a3%e7%90%86" class="nav-3---设置-socks5-代理">
-									3 - 设置 Socks5 代理
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#31-%e5%88%9b%e5%bb%ba%e5%a6%82%e4%b8%8b%e6%96%87%e4%bb%b6" class="nav-31-创建如下文件">
-									3.1 创建如下文件
+								<a href="#inode" class="nav-inode">
+									INODE
 								</a>
 							</li>
 						
@@ -252,30 +228,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#32-%e6%96%87%e4%bb%b6%e4%b8%ad%e5%a1%ab%e5%86%99%e5%a6%82%e4%b8%8b%e5%86%85%e5%ae%b9" class="nav-32-文件中填写如下内容">
-									3.2 文件中填写如下内容
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#4---%e9%87%8d%e5%90%afdocker" class="nav-4---重启docker">
-									4 - 重启Docker
+								<a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="nav-参考资料">
+									参考资料
 								</a>
 							</li>
 						
@@ -338,32 +292,32 @@ if (!doNotTrack) {
                 
             >
                 <div class="post-title">
-                    Debian12 Docker - 安装 - 优化
+                    Linux 挂载磁盘
                     
                     <div class="post-subtitle">
-                        Debian12 Docker - 安装 - 优化
+                        Linux 挂载磁盘
                     </div>
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2024-07-24 13:06
+                            2024-09-16 10:06
                         </time>
                         
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/docker">Docker</a>
+                                <a href="/categories/linux">Linux</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/debian12">Debian12</a>
+                                <a href="/tags/linux">Linux</a>
                                 &nbsp;
                             
-                                <a href="/tags/docker">Docker</a>
+                                <a href="/tags/%E7%A3%81%E7%9B%98">磁盘</a>
                                 &nbsp;
                             
                         
@@ -376,53 +330,180 @@ if (!doNotTrack) {
                 
                 <div class="post-body" v-pre>
                 
-                    <h3 id="1---安装-debian-12">1 - 安装 Debian 12</h3>
-<p>通过 <code>https://www.osboxes.org/debian/</code> 下载 适配 <code>Vmware</code> 的OS镜像</p>
-<p><strong>查看 OS Info</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>uname -a
-</span></span><span style="display:flex;"><span>lsb_release -a
-</span></span><span style="display:flex;"><span>cat /etc/os-release
-</span></span></code></pre></div><p><strong>修改 <code>APT</code> 源</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vi /etc/apt/sources.list
-</span></span></code></pre></div><p><strong>修改内容</strong></p>
-<pre tabindex="0"><code class="language-conf" data-lang="conf"># Tsinghua University
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
-</code></pre><p><strong>更新源</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt update
-</span></span></code></pre></div><h3 id="2---安装docker--docker-compose-ce版本">2 - 安装Docker &amp; Docker Compose CE版本</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">https_proxy</span>=<span style="color:#cd5555">&#34;http://127.0.0.1:8118&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">http_proxy</span>=<span style="color:#cd5555">&#34;http://127.0.0.1:8118&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>env
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 此步骤需要梯子</span>
-</span></span><span style="display:flex;"><span>curl -sS https://download.docker.com/linux/debian/gpg | gpg --dearmor &gt; /usr/share/keyrings/docker-ce.gpg
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;deb [arch=</span><span style="color:#8b008b;font-weight:bold">$(</span>dpkg --print-architecture<span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555"> signed-by=/usr/share/keyrings/docker-ce.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian </span><span style="color:#8b008b;font-weight:bold">$(</span>lsb_release -sc<span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555"> stable&#34;</span> &gt; /etc/apt/sources.list.d/docker.list
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>ls /etc/apt/sources.list.d/
-</span></span><span style="display:flex;"><span>cat /etc/apt/sources.list.d/docker.list 
-</span></span><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-</span></span><span style="display:flex;"><span>docker version
-</span></span><span style="display:flex;"><span>docker compose version
-</span></span></code></pre></div><h3 id="3---设置-socks5-代理">3 - 设置 <code>Socks5</code> 代理</h3>
-<h4 id="31-创建如下文件">3.1 创建如下文件</h4>
-<p><code>vi /etc/systemd/system/docker.service.d/proxy.conf</code></p>
-<h4 id="32-文件中填写如下内容">3.2 文件中填写如下内容</h4>
-<pre tabindex="0"><code class="language-conf" data-lang="conf">[Service]
-Environment=&#34;HTTP_PROXY=socks5://127.0.0.1:1080&#34;
-Environment=&#34;HTTPS_PROXY=socks5://127.0.0.1:1080&#34;
-</code></pre><h3 id="4---重启docker">4 - 重启Docker</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl daemon-reload
-</span></span><span style="display:flex;"><span>systemctl restart docker
-</span></span></code></pre></div><p>[腾讯云 安装 Docker]https://cloud.tencent.com/document/product/213/46000#agw1lQAjlPGNKN9VsnRD8)</p>
+                    <h3 id="挂载磁盘">挂载磁盘</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">#</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"><code>fdisk -l</code></td>
+<td style="text-align:center">查看磁盘情况</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"><code>lsblk -f</code></td>
+<td style="text-align:center">查看磁盘文件格式</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"><code>fdisk /dev/vdb</code></td>
+<td style="text-align:center">输入n，一路回车，直到再次提示输入命令，然后输入w，保存分区</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"><code>mkfs.ext4 /dev/vdb1</code></td>
+<td style="text-align:center">用mkfs.ext4格式化新分区，也可用mkfs.ext3格式化新分区</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"><code>mkdir -p /mnt</code></td>
+<td style="text-align:center">新建挂载点，如果mnt目录不存在，则创建</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"><code>mount /dev/vdb1 /mnt</code></td>
+<td style="text-align:center">将/dev/vdb1挂载到/mnt</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"><code>df -h</code></td>
+<td style="text-align:center">查看挂载情况</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"><code>cp /etc/fstab /etc/fstab.bk</code></td>
+<td style="text-align:center">备份文件系统分配表</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"><code>echo /dev/vdb1 /mnt ext4 defaults 0 0 &gt;&gt; /etc/fstab</code></td>
+<td style="text-align:center">设置开机自动挂载</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><code>reboot</code></td>
+<td style="text-align:center">重启</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center"><code>df -h</code></td>
+<td style="text-align:center">再次验证磁盘是否挂载成功</td>
+</tr>
+</tbody>
+</table>
+<h3 id="磁盘空间">磁盘空间</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">#</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"><code>du -h --max-depth=1</code></td>
+<td style="text-align:center">查看当前目录，哪个文件夹占用空间最大</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"><code>du * -sh | sort -hr</code></td>
+<td style="text-align:center">#h 表示以人可读的形式显示出来</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"><code>df -h</code></td>
+<td style="text-align:center">查看linux文件系统中磁盘容量</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"><code>df -hT /dev/vdb1</code></td>
+<td style="text-align:center">查看linux文件系统中磁盘容量&amp;以及类型</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"><code>df -i</code></td>
+<td style="text-align:center">安装inode形式显示磁盘容量</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"><code>fdisk -l /dev/vda</code></td>
+<td style="text-align:center">查看Sector(磁盘)的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"><code>stat /boot/ | grep &quot;IO Block&quot;</code></td>
+<td style="text-align:center">查看Block(块)的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"><code>getconf PAGE_SIZE</code></td>
+<td style="text-align:center">查看Page(页)的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"><code>dumpe2fs -h /dev/vdb1</code></td>
+<td style="text-align:center">查看SuperBlock信息</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><code>stat example.txt</code></td>
+<td style="text-align:center">查看指定文件的Inode信息</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center"><code>file usr/bin/</code></td>
+<td style="text-align:center">查看文件类型</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center"><code>ls -i</code></td>
+<td style="text-align:center">查看目录下信息带有Inode</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center"><code>touch /data/test{1..5}.txt</code></td>
+<td style="text-align:center">创建5个空文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inode">INODE</h3>
+<p>inode也会消耗硬盘空间，所以格式化的时候，操作系统自动将硬盘分成两个区域。</p>
+<p>一个是数据区，存放文件数据；另一个是inode区，存放inode所包含的信息。</p>
+<p>每个inode的大小，一般是128字节或256字节。</p>
+<p>通常情况下不需要关注单个inode的大小，而是需要重点关注inode总数，inode总数在格式化的时候就确定了。</p>
+<p>Inode包含很多的文件元信息，但不包含文件名，例如：字节数、属主UserID、属组GroupID、读写执行权限、时间戳等。</p>
+<p>而文件名存放在目录当中，但Linux系统内部不使用文件名，而是使用<code>Inode号码</code>识别文件。</p>
+<p>对于系统来说<code>文件名</code>只是inode号码便于识别的<code>别称</code>。</p>
+<p>表面上，用户通过文件名打开文件，实际上，系统内部将这个过程分为三四步：</p>
+<ol>
+<li>系统通过目录项找到文件名对应的inode号码</li>
+<li>通过inode号码，获取inode信息</li>
+<li>根据inode信息，找到文件数据所在的block，并读出数据</li>
+</ol>
+<p>其实系统还要根据inode信息，看用户是否具有访问的权限，有就指向对应的数据block，没有就返回权限拒绝。</p>
+<p>在文件系统中，有三大缓冲为了提升效率：inode缓冲区、dentry缓冲区、块缓冲。</p>
+<h3 id="参考资料">参考资料</h3>
+<p><a href="https://help.aliyun.com/document_detail/25426.html?spm=5176.2020520165.120.d25426.4a627029Wj6PJ2">参考资料-1</a></p>
+<p><a href="https://www.cnblogs.com/sparkdev/p/11200395.html">磁盘信息</a></p>
+<p><a href="https://blog.csdn.net/u012749168/article/details/52810670">Linux Inode &amp; Block总结</a></p>
+<p><a href="https://blog.csdn.net/Ohmyberry/article/details/80427492">Linux 深入理解 inode/block/superblock</a></p>
+<p><a href="https://www.jianshu.com/p/42eb8c495811">Linux 处理Inode满的问题</a></p>
+<p><a href="https://www.cnblogs.com/llife/p/11470668.html">Linux Inode 详解</a></p>
+<p><a href="https://blog.51cto.com/13449039/2395301">Inode知识图解</a></p>
+<p><a href="https://baike.baidu.com/item/dentry/6715475?fr=aladdin">dentry百科</a></p>
+<p><a href="https://blog.csdn.net/thewayma/article/details/4287170">Page Cache 技术</a></p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2024-07-24</p>
+		    <p style="color:#777;">最后修改于 2024-09-16</p>
                     
                 </div>
             </div>
@@ -431,14 +512,14 @@ Environment=&#34;HTTPS_PROXY=socks5://127.0.0.1:1080&#34;
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/posts/web/nginx/apisix-2/">
-			下回<br>APISIX - 2 - 网关优化
+                <a class="newer-posts">
+			下回<br>已经到头啦。
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/posts/architect/basis/discuz-1/">
-			上回<br>Discuz - 安装 - 优化
+                <a class="older-posts" href="/posts/architect/basis/apache-elastic-search-1/">
+			上回<br>Elastic Search - 安装
                 </a>
                 
             </nav>
@@ -568,8 +649,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#1---%e5%ae%89%e8%a3%85-debian-12" class="nav-1---安装-debian-12">
-									1 - 安装 Debian 12
+								<a href="#%e6%8c%82%e8%bd%bd%e7%a3%81%e7%9b%98" class="nav-挂载磁盘">
+									挂载磁盘
 								</a>
 							</li>
 						
@@ -586,8 +667,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#2---%e5%ae%89%e8%a3%85docker--docker-compose-ce%e7%89%88%e6%9c%ac" class="nav-2---安装docker--docker-compose-ce版本">
-									2 - 安装Docker &amp; Docker Compose CE版本
+								<a href="#%e7%a3%81%e7%9b%98%e7%a9%ba%e9%97%b4" class="nav-磁盘空间">
+									磁盘空间
 								</a>
 							</li>
 						
@@ -604,32 +685,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#3---%e8%ae%be%e7%bd%ae-socks5-%e4%bb%a3%e7%90%86" class="nav-3---设置-socks5-代理">
-									3 - 设置 Socks5 代理
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#31-%e5%88%9b%e5%bb%ba%e5%a6%82%e4%b8%8b%e6%96%87%e4%bb%b6" class="nav-31-创建如下文件">
-									3.1 创建如下文件
+								<a href="#inode" class="nav-inode">
+									INODE
 								</a>
 							</li>
 						
@@ -646,30 +703,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#32-%e6%96%87%e4%bb%b6%e4%b8%ad%e5%a1%ab%e5%86%99%e5%a6%82%e4%b8%8b%e5%86%85%e5%ae%b9" class="nav-32-文件中填写如下内容">
-									3.2 文件中填写如下内容
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#4---%e9%87%8d%e5%90%afdocker" class="nav-4---重启docker">
-									4 - 重启Docker
+								<a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="nav-参考资料">
+									参考资料
 								</a>
 							</li>
 						

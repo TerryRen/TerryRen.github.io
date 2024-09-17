@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>磁盘 on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/%E7%A3%81%E7%9B%98/</link>
+    <description>Recent content in 磁盘 on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Mon, 16 Sep 2024 10:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/%E7%A3%81%E7%9B%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 挂载磁盘</title>
+      <link>https://terryren.github.io/posts/architect/io/disk-1/</link>
+      <pubDate>Mon, 16 Sep 2024 10:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/io/disk-1/</guid>
+      <description>挂载磁盘 # 命令 说明 1 fdisk -l 查看磁盘情况 2 lsblk -f 查看磁盘文件格式 3 fdisk /dev/vdb 输入n，一路回车，直到再次提示输入命令，然后输入w，保存分区 4 mkfs.ext4 /dev/vdb1 用mkfs.ext4格式化新分区，也可用mkfs.ext3格式化新分区 5 mkdir -p /mnt 新建挂载点，如果mnt目录不存在，则创建 6 mount /dev/vdb1 /mnt 将/dev/vdb1挂载到/mnt 7 df -h 查看挂载情况 8 cp /etc/fstab /etc/fstab.bk 备份文件系统分配表 9 echo /dev/vdb1 /mnt ext4 defaults 0 0 &amp;gt;&amp;gt; /etc/fstab 设置开机自动挂载 10 reboot 重启 11 df -h 再次验证磁盘是否挂载成功 磁盘空间 # 命令 说明 1 du -h --max-depth=1 查看当前目录，哪个文件夹占用空间最大 2 du * -sh | sort -hr #h 表示以人可读的形式显示出来 3 df -h 查看linux文件系统中磁盘容量 4 df -hT /dev/vdb1 查看linux文件系统中磁盘容量&amp;amp;以及类型 5 df -i 安装inode形式显示磁盘容量 6 fdisk -l /dev/vda 查看Sector(磁盘)的大小 7 stat /boot/ | grep &amp;quot;IO Block&amp;quot; 查看Block(块)的大小 8 getconf PAGE_SIZE 查看Page(页)的大小 9 dumpe2fs -h /dev/vdb1 查看SuperBlock信息 10 stat example.</description>
+    </item>
+    
+  </channel>
+</rss>
