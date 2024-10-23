@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 16 Sep 2024 10:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Oct 2024 15:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker - Login 权限 存储</title>
+      <link>https://terryren.github.io/posts/architect/basis/docker-3/</link>
+      <pubDate>Wed, 23 Oct 2024 15:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/basis/docker-3/</guid>
+      <description>1 - 修改配置 ~/.docker/config.json cd ~ mkdir .docker vi config.json 添加内容如下；通过 pass 模式保存授权信息
+{ &amp;#34;auths&amp;#34;: { &amp;#34;harbor.xxx.org&amp;#34;: {} }, &amp;#34;credsStore&amp;#34;: &amp;#34;pass&amp;#34; } 2 - 安装软件包 sudo apt-get install -y pass gnupg2 3 - 下载 pass 认证文件 curl -fsSL https://github.com/docker/docker-credential-helpers/releases/download/v0.6.4/docker-credential-pass-v0.6.4-amd64.tar.gz 4 - 解压缩 tar xzvf docker-credential-pass-v0.6.4-amd64.tar.gz 5 - 复制到执行目录（需要Root权限） sudo cp docker-credential-pass /usr/local/bin/ sudo chmod +x /usr/local/bin/docker-credential-pass 6 - 生成GPG的Key，按照提示要求生成即可，无需密码保护 # 生成GPG的Key gpg --full-generate-key # 查看目录 ll ~/.gnupg # 查看GPG密码，uid之前为 KEY ID gpg --list-secret-keys --keyid-format LONG 7 - pass 初始化 将 替换为你的实际 GPG 密钥 KEY ID</description>
+    </item>
+    
+    <item>
+      <title>Docker - 常见命令</title>
+      <link>https://terryren.github.io/posts/architect/basis/docker-2/</link>
+      <pubDate>Wed, 23 Oct 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/basis/docker-2/</guid>
+      <description>1 - 镜像相关 # 拉取 镜像 docker pull redis:6.2 # 修改 镜像 标签 docker tag redis:6.2 redis:lasted # 运行 容器 docker run --name redis -d -p 6379:6379 redis:6.2 # 复制(CP) 宿主机文件 到 容器内 docker cp ~/redis-lua/request_rate_limiter.lua 0ab58484c4e2:/data # 进入容器，并执行 /bin/sh docker exec -it 0ab58484c4e2 /bin/sh # 运行 容器 修改entrypoint命令 docker run -it --entrypoint /bin/sh sp-ci-adapter:feature_5917-dev 2 - WSL 中 运行 Docker WSL 不支持 Docker 守护模式，需要每次启动 WSL 后 在启动一次 Docker
+sudo service docker status sudo service docker start 3 - Docker 监控相关 # 查看 每个容器进程的 内存、CPU、IO docker stats --format &amp;#34;table {{.</description>
+    </item>
+    
     <item>
       <title>Linux 挂载磁盘</title>
       <link>https://terryren.github.io/posts/architect/io/disk-1/</link>
@@ -24,7 +44,7 @@
       
       <guid>https://terryren.github.io/posts/architect/basis/apache-elastic-search-1/</guid>
       <description>部署 ES 8.11.4 创建目录 es mkdir -p /mnt/es mkdir -p /mnt/es/plugins mkdir -p /mnt/es/data mkdir -p /mnt/es/logs mkdir -p /mnt/es/kib/data 创建 .env 文件 .env 文件内容如下
-# Password for the &amp;#39;elastic&amp;#39; user (at least 6 characters) # 注意不要全数字 ELASTIC_PASSWORD=changeme # Password for the &amp;#39;kibana_system&amp;#39; user (at least 6 characters) # 注意不要全数字，否则KIBANA可能验证出错 KIBANA_PASSWORD=changeme # Version of Elastic products STACK_VERSION=8.11.4 # Set the cluster name CLUSTER_NAME=es-docker-cluster # Set to &amp;#39;basic&amp;#39; or &amp;#39;trial&amp;#39; to automatically start the 30-day trial LICENSE=basic # Increase or decrease based on the available host memory (in bytes) MEM_LIMIT=1073741824 # Project namespace (defaults to the current folder name if not set) COMPOSE_PROJECT_NAME=es 创建 docker-compose.</description>
+# Password for the &amp;#39;elastic&amp;#39; user (at least 6 characters)# 注意不要全数字ELASTIC_PASSWORD=changeme# Password for the &amp;#39;kibana_system&amp;#39; user (at least 6 characters)# 注意不要全数字，否则KIBANA可能验证出错KIBANA_PASSWORD=changeme# Version of Elastic productsSTACK_VERSION=8.11.4# Set the cluster nameCLUSTER_NAME=es-docker-cluster# Set to &amp;#39;basic&amp;#39; or &amp;#39;trial&amp;#39; to automatically start the 30-day trialLICENSE=basic# Increase or decrease based on the available host memory (in bytes)MEM_LIMIT=2g# Project namespace (defaults to the current folder name if not set)COMPOSE_PROJECT_NAME=es 创建 docker-compose.</description>
     </item>
     
     <item>
@@ -48,7 +68,7 @@ cd ~ git clone https://github.com/apache/apisix-docker.git cd apisix-docker/exam
 查看 OS Info
 uname -a lsb_release -a cat /etc/os-release 修改 APT 源
 vi /etc/apt/sources.list 修改内容
-# Tsinghua University deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware 更新源
+# Tsinghua Universitydeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmwaredeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmwaredeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmwaredeb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware 更新源
 sudo apt update 2 - 安装Docker &amp;amp; Docker Compose CE版本 export https_proxy=&amp;#34;http://127.0.0.1:8118&amp;#34; export http_proxy=&amp;#34;http://127.</description>
     </item>
     
@@ -134,7 +154,7 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:1080 {home}
 [http &amp;#34;https://github.com&amp;#34;] proxy = socks5://127.0.0.1:1080 取消
 git config --global --unset http.https://github.com.proxy ssh 模式 windows 新增 或者 修改 此文件 {home}/.ssh/config
 文件内容-添加
-# Read more about SSH config files: https://linux.die.net/man/5/ssh_config Host github.com User git Hostname github.com Port 22 TCPKeepAlive yes # 注意修改为您的 SSH 密钥文件的路径 IdentityFile &amp;#34;C:\Users\{you_name}\.</description>
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_configHost github.comUser gitHostname github.comPort 22TCPKeepAlive yes# 注意修改为您的 SSH 密钥文件的路径IdentityFile &amp;#34;C:\Users\{you_name}\.</description>
     </item>
     
     <item>
@@ -239,8 +259,8 @@ OCSP 在线证书状态协议
 PKCS 公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 RSA 资讯安全公司（英语：RSA Security）所制定 包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准
 pkcs1 PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见RFC8017 定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击
 openssl genrsa -out key.pem Private Key Format
------BEGIN RSA PRIVATE KEY----- BASE64Encoded -----END RSA PRIVATE KEY----- Public Key Format
------BEGIN RSA PUBLIC KEY----- BASE64Encoded -----END RSA PUBLIC KEY----- pkcs7 参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。 其中，包含了S/MIME与CMS。 主要用来存储签名或者加密后的数据,如证书或者CRL。 PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用.p7b文件扩展名</description>
+-----BEGIN RSA PRIVATE KEY-----BASE64Encoded-----END RSA PRIVATE KEY----- Public Key Format
+-----BEGIN RSA PUBLIC KEY-----BASE64Encoded-----END RSA PUBLIC KEY----- pkcs7 参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。 其中，包含了S/MIME与CMS。 主要用来存储签名或者加密后的数据,如证书或者CRL。 PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用.p7b文件扩展名</description>
     </item>
     
     <item>
@@ -291,7 +311,7 @@ sound like /t/ or /id/</description>
       <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
       <description>刷新页面，默认重定向到Index.html
 静态目录(static)，找不到默认404
-server { listen 8080; server_name localhost; client_max_body_size 10m; client_header_buffer_size 256k; large_client_header_buffers 4 256k; root /opt/vue; location /faq { default_type text/html; return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;; } location /static/ { try_files \$uri \$uri =404; } location / { add_header Cache-Control &amp;#39;no-cache&amp;#39;; try_files \$uri \$uri /index.html; } } 附加问题
+server {listen 8080;server_name localhost;client_max_body_size 10m;client_header_buffer_size 256k;large_client_header_buffers 4 256k;root /opt/vue;location /faq {default_type text/html;return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;;}location /static/ {try_files \$uri \$uri =404;}location / {add_header Cache-Control &amp;#39;no-cache&amp;#39;;try_files \$uri \$uri /index.html;}} 附加问题
 400 Bad Request Request Header Or Cookie Too Large
 Nginx配置不当可能导致的安全问题
 React部署于Nginx环境中刷新后404解决方案</description>

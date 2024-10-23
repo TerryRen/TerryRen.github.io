@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 24 Jul 2024 13:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Oct 2024 15:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker - Login 权限 存储</title>
+      <link>https://terryren.github.io/posts/architect/basis/docker-3/</link>
+      <pubDate>Wed, 23 Oct 2024 15:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/basis/docker-3/</guid>
+      <description>1 - 修改配置 ~/.docker/config.json cd ~ mkdir .docker vi config.json 添加内容如下；通过 pass 模式保存授权信息
+{ &amp;#34;auths&amp;#34;: { &amp;#34;harbor.xxx.org&amp;#34;: {} }, &amp;#34;credsStore&amp;#34;: &amp;#34;pass&amp;#34; } 2 - 安装软件包 sudo apt-get install -y pass gnupg2 3 - 下载 pass 认证文件 curl -fsSL https://github.com/docker/docker-credential-helpers/releases/download/v0.6.4/docker-credential-pass-v0.6.4-amd64.tar.gz 4 - 解压缩 tar xzvf docker-credential-pass-v0.6.4-amd64.tar.gz 5 - 复制到执行目录（需要Root权限） sudo cp docker-credential-pass /usr/local/bin/ sudo chmod +x /usr/local/bin/docker-credential-pass 6 - 生成GPG的Key，按照提示要求生成即可，无需密码保护 # 生成GPG的Key gpg --full-generate-key # 查看目录 ll ~/.gnupg # 查看GPG密码，uid之前为 KEY ID gpg --list-secret-keys --keyid-format LONG 7 - pass 初始化 将 替换为你的实际 GPG 密钥 KEY ID</description>
+    </item>
+    
+    <item>
+      <title>Docker - 常见命令</title>
+      <link>https://terryren.github.io/posts/architect/basis/docker-2/</link>
+      <pubDate>Wed, 23 Oct 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/basis/docker-2/</guid>
+      <description>1 - 镜像相关 # 拉取 镜像 docker pull redis:6.2 # 修改 镜像 标签 docker tag redis:6.2 redis:lasted # 运行 容器 docker run --name redis -d -p 6379:6379 redis:6.2 # 复制(CP) 宿主机文件 到 容器内 docker cp ~/redis-lua/request_rate_limiter.lua 0ab58484c4e2:/data # 进入容器，并执行 /bin/sh docker exec -it 0ab58484c4e2 /bin/sh # 运行 容器 修改entrypoint命令 docker run -it --entrypoint /bin/sh sp-ci-adapter:feature_5917-dev 2 - WSL 中 运行 Docker WSL 不支持 Docker 守护模式，需要每次启动 WSL 后 在启动一次 Docker
+sudo service docker status sudo service docker start 3 - Docker 监控相关 # 查看 每个容器进程的 内存、CPU、IO docker stats --format &amp;#34;table {{.</description>
+    </item>
+    
     <item>
       <title>Debian12 Docker - 安装 - 优化</title>
       <link>https://terryren.github.io/posts/architect/basis/debian-docker-1/</link>
@@ -18,7 +38,7 @@
 查看 OS Info
 uname -a lsb_release -a cat /etc/os-release 修改 APT 源
 vi /etc/apt/sources.list 修改内容
-# Tsinghua University deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware 更新源
+# Tsinghua Universitydeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmwaredeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmwaredeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmwaredeb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware 更新源
 sudo apt update 2 - 安装Docker &amp;amp; Docker Compose CE版本 export https_proxy=&amp;#34;http://127.0.0.1:8118&amp;#34; export http_proxy=&amp;#34;http://127.</description>
     </item>
     

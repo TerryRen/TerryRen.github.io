@@ -15,7 +15,7 @@
       
       <guid>https://terryren.github.io/posts/architect/basis/apache-elastic-search-1/</guid>
       <description>部署 ES 8.11.4 创建目录 es mkdir -p /mnt/es mkdir -p /mnt/es/plugins mkdir -p /mnt/es/data mkdir -p /mnt/es/logs mkdir -p /mnt/es/kib/data 创建 .env 文件 .env 文件内容如下
-# Password for the &amp;#39;elastic&amp;#39; user (at least 6 characters) # 注意不要全数字 ELASTIC_PASSWORD=changeme # Password for the &amp;#39;kibana_system&amp;#39; user (at least 6 characters) # 注意不要全数字，否则KIBANA可能验证出错 KIBANA_PASSWORD=changeme # Version of Elastic products STACK_VERSION=8.11.4 # Set the cluster name CLUSTER_NAME=es-docker-cluster # Set to &amp;#39;basic&amp;#39; or &amp;#39;trial&amp;#39; to automatically start the 30-day trial LICENSE=basic # Increase or decrease based on the available host memory (in bytes) MEM_LIMIT=1073741824 # Project namespace (defaults to the current folder name if not set) COMPOSE_PROJECT_NAME=es 创建 docker-compose.</description>
+# Password for the &amp;#39;elastic&amp;#39; user (at least 6 characters)# 注意不要全数字ELASTIC_PASSWORD=changeme# Password for the &amp;#39;kibana_system&amp;#39; user (at least 6 characters)# 注意不要全数字，否则KIBANA可能验证出错KIBANA_PASSWORD=changeme# Version of Elastic productsSTACK_VERSION=8.11.4# Set the cluster nameCLUSTER_NAME=es-docker-cluster# Set to &amp;#39;basic&amp;#39; or &amp;#39;trial&amp;#39; to automatically start the 30-day trialLICENSE=basic# Increase or decrease based on the available host memory (in bytes)MEM_LIMIT=2g# Project namespace (defaults to the current folder name if not set)COMPOSE_PROJECT_NAME=es 创建 docker-compose.</description>
     </item>
     
   </channel>

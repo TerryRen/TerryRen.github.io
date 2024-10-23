@@ -7,7 +7,7 @@
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
-<meta name="google-site-verification" content="G-ZE2B25M3ST">
+<meta name="google-site-verification" content="">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
 <meta name="description" content="Elastic Search  - 安装">
@@ -582,12 +582,24 @@ CLUSTER_NAME=es-docker-cluster
 LICENSE=basic
 
 # Increase or decrease based on the available host memory (in bytes)
-MEM_LIMIT=1073741824
+MEM_LIMIT=2g
 
 # Project namespace (defaults to the current folder name if not set)
 COMPOSE_PROJECT_NAME=es
 </code></pre><h4 id="创建-docker-composeyml-文件">创建 <code>docker-compose.yml</code> 文件</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#39;3&#39;</span><span style="color:#bbb">
+<p>Docker Compose 版本 <code>2.x</code> 不采用 <code>Swarm</code> 模式，支持 <code>mem_limit</code> 限制内容</p>
+<p>Docker Compose 版本 <code>3.x</code> 采用 <code>Swarm</code> 模式，需要将资源限制放在 <code>deploy</code> 部分，不采用 <code>Swarm</code> 模式，仍然支持 <code>mem_limit</code> 限制内容</p>
+<p><strong>参考示例</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;3.8&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">services</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">elasticsearch</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>elasticsearch:8.11.4<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">deploy</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">resources</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#8b008b;font-weight:bold">limits</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">          </span><span style="color:#8b008b;font-weight:bold">memory</span>:<span style="color:#bbb"> </span>2g<span style="color:#bbb">
+</span></span></span></code></pre></div><p><strong>2.x 完整配置 示例</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">version</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#39;2&#39;</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">services</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">elasticsearch</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>elasticsearch:8.11.4<span style="color:#bbb">
@@ -614,6 +626,7 @@ COMPOSE_PROJECT_NAME=es
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- es_data:/usr/share/elasticsearch/data<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- es_logs:/usr/share/elasticsearch/logs<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- es_plugins:/usr/share/elasticsearch/plugins<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">mem_limit</span>:<span style="color:#bbb"> </span>${MEM_LIMIT}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ports</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#b452cd">9200</span>:<span style="color:#b452cd">9200</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">networks</span>:<span style="color:#bbb">
@@ -1234,9 +1247,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
         
         
     </div>
-</div>
-
-<div id="single-column-footer">
+</div><div id="single-column-footer">
 Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
 <br>
 移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
