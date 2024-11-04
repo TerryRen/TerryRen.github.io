@@ -40,7 +40,7 @@ dashboard_conf/config.yaml，内容如下：
       <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
       <description>刷新页面，默认重定向到Index.html
 静态目录(static)，找不到默认404
-server {listen 8080;server_name localhost;client_max_body_size 10m;client_header_buffer_size 256k;large_client_header_buffers 4 256k;root /opt/vue;location /faq {default_type text/html;return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;;}location /static/ {try_files \$uri \$uri =404;}location / {add_header Cache-Control &amp;#39;no-cache&amp;#39;;try_files \$uri \$uri /index.html;}} 附加问题
+server { listen 8080; server_name localhost; client_max_body_size 10m; client_header_buffer_size 256k; large_client_header_buffers 4 256k; root /opt/vue; location /faq { default_type text/html; return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;; } location /static/ { try_files \$uri \$uri =404; } location / { add_header Cache-Control &amp;#39;no-cache&amp;#39;; try_files \$uri \$uri /index.html; } } 附加问题
 400 Bad Request Request Header Or Cookie Too Large
 Nginx配置不当可能导致的安全问题
 React部署于Nginx环境中刷新后404解决方案</description>

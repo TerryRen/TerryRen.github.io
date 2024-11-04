@@ -447,10 +447,23 @@ COMPOSE_PROJECT_NAME=es
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 安装 IK 分词器&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bin/elasticsearch-plugin install file:///tmp/elasticsearch-analysis-ik-8.11.4.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;复制IK配置&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由于 &lt;code&gt;elasticsearch-plugin&lt;/code&gt; 方式安装IK插件，仅安装了Jar包，相关Config没有安装，需要Copy到相关目录，否则可能出现如下错误&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Cannot invoke \&amp;quot;org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\&amp;quot; because \&amp;quot;org.wltea.analyzer.dic.Dictionary.singleton._StopWords\&amp;quot; is null&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install unzip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;unzip elasticsearch-analysis-ik-8.11.4.zip -d /mnt/es/plugins/analysis-ik
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;重启-es-容器&#34;&gt;重启 &lt;code&gt;ES&lt;/code&gt; 容器&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker restart es01
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;验证插件是否成功安装&#34;&gt;验证插件是否成功安装&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker &lt;span style=&#34;color:#658b00&#34;&gt;exec&lt;/span&gt; -it es01 /usr/share/elasticsearch/bin/elasticsearch-plugin list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;验证IK分词&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl --location &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;localhost:9200/_analyze&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&lt;/span&gt;--header &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&lt;/span&gt;--header &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;Authorization: Basic xxxxxx&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&lt;/span&gt;--data &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;    &amp;#34;analyzer&amp;#34;: &amp;#34;ik_max_word&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;    &amp;#34;text&amp;#34;: &amp;#34;我是中国人&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;}&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;优化-es&#34;&gt;优化 ES&lt;/h3&gt;
 &lt;h4 id=&#34;调整-jvm-内存&#34;&gt;调整 JVM 内存&lt;/h4&gt;
 &lt;p&gt;在 &lt;code&gt;docker-compose.yml&lt;/code&gt; 中设置 &lt;code&gt;ES_JAVA_OPTS&lt;/code&gt; 环境变量&lt;/p&gt;

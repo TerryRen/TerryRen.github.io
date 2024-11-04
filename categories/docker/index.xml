@@ -38,7 +38,7 @@ sudo service docker status sudo service docker start 3 - Docker 监控相关 # �
 查看 OS Info
 uname -a lsb_release -a cat /etc/os-release 修改 APT 源
 vi /etc/apt/sources.list 修改内容
-# Tsinghua Universitydeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmwaredeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmwaredeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmwaredeb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware 更新源
+# Tsinghua University deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware 更新源
 sudo apt update 2 - 安装Docker &amp;amp; Docker Compose CE版本 export https_proxy=&amp;#34;http://127.0.0.1:8118&amp;#34; export http_proxy=&amp;#34;http://127.</description>
     </item>
     
