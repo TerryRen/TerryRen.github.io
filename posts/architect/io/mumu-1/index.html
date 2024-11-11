@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html><head>
+<title>网易 MUMU12 模拟器 - 1</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="G-ZE2B25M3ST">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="MUMU12 模拟器">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="网易 MUMU12 模拟器 - 1" />
+<meta property="og:description" content="MUMU12 模拟器" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://terryren.github.io/posts/architect/io/mumu-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-17T13:06:00+08:00" />
+<meta property="article:modified_time" content="2024-09-17T13:06:00+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="网易 MUMU12 模拟器 - 1"/>
+<meta name="twitter:description" content="MUMU12 模拟器"/>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE2B25M3ST"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZE2B25M3ST', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>console.log("Hello from 'layouts/partials/extended_head.html'")</script>
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    博客
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    订阅
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#adb-%e5%9f%ba%e6%9c%ac%e4%bf%a1%e6%81%af" class="nav-adb-基本信息">
+									ADB 基本信息
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#adb-%e8%b0%83%e8%af%95%e7%ab%af%e5%8f%a3" class="nav-adb-调试端口">
+									ADB 调试端口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#abd-shell" class="nav-abd-shell">
+									ABD Shell
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%af%bc%e5%85%a5-mitm-%e8%af%81%e4%b9%a6" class="nav-导入-mitm-证书">
+									导入 MITM 证书
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#ca-%e8%af%81%e4%b9%a6%e5%ae%89%e8%a3%85%e7%9b%ae%e5%bd%95" class="nav-ca-证书安装目录">
+									CA 证书安装目录
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%9f%e6%88%90-andorid-%e7%b3%bb%e7%bb%9f%e8%af%81%e4%b9%a6" class="nav-生成-andorid-系统证书">
+									生成 Andorid 系统证书
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%af%bc%e5%85%a5%e8%af%81%e4%b9%a6" class="nav-导入证书">
+									导入证书
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%ae-mitm-%e4%bb%a3%e7%90%86" class="nav-设置-mitm-代理">
+									设置 MITM 代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%ae%e4%bb%a3%e7%90%86" class="nav-设置代理">
+									设置代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%96%e6%b6%88%e4%bb%a3%e7%90%86" class="nav-取消代理">
+									取消代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="nav-参考资料">
+									参考资料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://terryren.github.io/">
+            The Sound of Music
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://terryren.github.io/">
+        <div class="single-column-header-title">The Sound of Music</div>
+        
+        <div class="single-column-header-subtitle">知行合一</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    网易 MUMU12 模拟器 - 1
+                    
+                    <div class="post-subtitle">
+                        MUMU12 模拟器
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2024-09-17 13:06
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/mumu12">MUMU12</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/mumu12">MUMU12</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%99%A8">模拟器</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h3 id="adb-基本信息">ADB 基本信息</h3>
+<p><code>ADB</code> 是 <code>Android Debug Bridge</code> 的简称</p>
+<h4 id="adb-调试端口">ADB 调试端口</h4>
+<p><code>设置</code> &ndash;&gt; <code>问题诊断</code> &ndash;&gt; <code>网络信息\ADB调试端口</code></p>
+<h4 id="abd-shell">ABD Shell</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">cd</span> /d C:<span style="color:#cd5555">\P</span>rogram Files<span style="color:#cd5555">\N</span>etease<span style="color:#cd5555">\M</span>uMu Player 12<span style="color:#cd5555">\s</span>hell
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 查看 已链接的 设备列表</span>
+</span></span><span style="display:flex;"><span>adb devices
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 链接 MUMU 模拟器</span>
+</span></span><span style="display:flex;"><span>adb connect 127.0.0.1:16384
+</span></span></code></pre></div><h3 id="导入-mitm-证书">导入 MITM 证书</h3>
+<h4 id="ca-证书安装目录">CA 证书安装目录</h4>
+<p>找到本机已经安装的 <code>MITM CA 证书</code>, 默认安装路径 <code>C:\Users\xxx\.mitmproxy</code></p>
+<h4 id="生成-andorid-系统证书">生成 Andorid 系统证书</h4>
+<blockquote>
+<p>从 <strong>Andorid 7</strong> 开始, <code>App</code> 会忽略用户导入的证书，因此需要安装到 <code>系统证书目录</code>, 系统证书通常是 <code>hash.0</code> 格式</p>
+</blockquote>
+<blockquote>
+<p>找到 <code>mitmproxy-ca-cert.cer</code> 证书文件 此证书适合 <code>Andorid</code> 系统</p>
+</blockquote>
+<ol>
+<li>找到 证书 的 Hash值</li>
+</ol>
+<p>建议在Linux相关机器执行如下命令</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>openssl x509 -inform PEM -subject_hash_old -in ~/mitmproxy-ca-cert.cer | head -1
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># c8750f0d</span>
+</span></span></code></pre></div><ol start="2">
+<li>重命名证书</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cp mitmproxy-ca-cert.cer c8750f0d.0
+</span></span></code></pre></div><h4 id="导入证书">导入证书</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 需要重启 adb kill-server adb start-server</span>
+</span></span><span style="display:flex;"><span>adb reboot
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 启用 Root 模式</span>
+</span></span><span style="display:flex;"><span>adb root
+</span></span><span style="display:flex;"><span>adb connect 127.0.0.1:16384
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 上传文件</span>
+</span></span><span style="display:flex;"><span>adb push C:<span style="color:#cd5555">\U</span>sers<span style="color:#cd5555">\x</span>xx<span style="color:#cd5555">\.</span>mitmproxy<span style="color:#cd5555">\c</span>8750f0d.0 /system/etc/security/cacerts
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 修改权限</span>
+</span></span><span style="display:flex;"><span>adb shell <span style="color:#cd5555">&#34;chmod 664 /system/etc/security/cacerts/c8750f0d.0&#34;</span>
+</span></span></code></pre></div><h3 id="设置-mitm-代理">设置 MITM 代理</h3>
+<h4 id="设置代理">设置代理</h4>
+<p>**开启 <code>mitmweb.exe</code> **</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 看看本机IP</span>
+</span></span><span style="display:flex;"><span>ipconfig /all
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 查看代理</span>
+</span></span><span style="display:flex;"><span>adb shell settings get global http_proxy
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 设置模拟器代理IP</span>
+</span></span><span style="display:flex;"><span>adb shell settings put global http_proxy 192.168.31.178:8080
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 查看代理</span>
+</span></span><span style="display:flex;"><span>adb shell settings get global http_proxy
+</span></span></code></pre></div><p><strong>打开App验证流量</strong></p>
+<h4 id="取消代理">取消代理</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 无需重启</span>
+</span></span><span style="display:flex;"><span>adb shell settings put global http_proxy :0
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 需要重启</span>
+</span></span><span style="display:flex;"><span>adb shell settings delete global http_proxy
+</span></span><span style="display:flex;"><span>adb shell settings delete global global_http_proxy_host
+</span></span><span style="display:flex;"><span>adb shell settings delete global global_http_proxy_port
+</span></span></code></pre></div><h3 id="参考资料">参考资料</h3>
+<p><a href="https://mumu.163.com/mac/">MUMU 12 下载</a></p>
+<p><a href="https://mitmproxy.org/downloads/#10.4.2/">MITM Proxy</a></p>
+<p><a href="https://docs.mitmproxy.org/stable/concepts-certificates/">MITM Proxy Cert</a></p>
+<p><a href="https://docs.mitmproxy.org/stable/howto-install-system-trusted-ca-android/">MITM Proxy CA Cert On Android</a></p>
+<p><a href="https://blog.csdn.net/m0_46607055/article/details/137638350">BP 抓取 MUMU 12的设置</a></p>
+<p><a href="https://mumu.163.com/help/20240814/40912_1174291.html">Charles 抓包</a></p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2024-09-17</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/architect/basis/docker-2/">
+			下回<br>Docker - 常见命令
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/architect/io/disk-1/">
+			上回<br>Linux 挂载磁盘
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+                <p style="opacity: 0.6" align="center">
+                    <small>此篇文章的评论功能已经停用。</small>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://terryren.github.io/">
+    
+        <div class="nav-title">
+            The Sound of Music
+        </div>
+        
+        <div class="nav-subtitle">
+            知行合一
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                博客
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                订阅
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#adb-%e5%9f%ba%e6%9c%ac%e4%bf%a1%e6%81%af" class="nav-adb-基本信息">
+									ADB 基本信息
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#adb-%e8%b0%83%e8%af%95%e7%ab%af%e5%8f%a3" class="nav-adb-调试端口">
+									ADB 调试端口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#abd-shell" class="nav-abd-shell">
+									ABD Shell
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%af%bc%e5%85%a5-mitm-%e8%af%81%e4%b9%a6" class="nav-导入-mitm-证书">
+									导入 MITM 证书
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#ca-%e8%af%81%e4%b9%a6%e5%ae%89%e8%a3%85%e7%9b%ae%e5%bd%95" class="nav-ca-证书安装目录">
+									CA 证书安装目录
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%9f%e6%88%90-andorid-%e7%b3%bb%e7%bb%9f%e8%af%81%e4%b9%a6" class="nav-生成-andorid-系统证书">
+									生成 Andorid 系统证书
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%af%bc%e5%85%a5%e8%af%81%e4%b9%a6" class="nav-导入证书">
+									导入证书
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%ae-mitm-%e4%bb%a3%e7%90%86" class="nav-设置-mitm-代理">
+									设置 MITM 代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%ae%e4%bb%a3%e7%90%86" class="nav-设置代理">
+									设置代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%96%e6%b6%88%e4%bb%a3%e7%90%86" class="nav-取消代理">
+									取消代理
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="nav-参考资料">
+									参考资料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

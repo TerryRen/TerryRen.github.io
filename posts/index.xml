@@ -29,6 +29,20 @@ sudo service docker status sudo service docker start 3 - Docker 监控相关 # �
     </item>
     
     <item>
+      <title>网易 MUMU12 模拟器 - 1</title>
+      <link>https://terryren.github.io/posts/architect/io/mumu-1/</link>
+      <pubDate>Tue, 17 Sep 2024 13:06:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/io/mumu-1/</guid>
+      <description>ADB 基本信息 ADB 是 Android Debug Bridge 的简称
+ADB 调试端口 设置 &amp;ndash;&amp;gt; 问题诊断 &amp;ndash;&amp;gt; 网络信息\ADB调试端口
+ABD Shell cd /d C:\Program Files\Netease\MuMu Player 12\shell # 查看 已链接的 设备列表 adb devices # 链接 MUMU 模拟器 adb connect 127.0.0.1:16384 导入 MITM 证书 CA 证书安装目录 找到本机已经安装的 MITM CA 证书, 默认安装路径 C:\Users\xxx\.mitmproxy
+生成 Andorid 系统证书 从 Andorid 7 开始, App 会忽略用户导入的证书，因此需要安装到 系统证书目录, 系统证书通常是 hash.0 格式
+找到 mitmproxy-ca-cert.cer 证书文件 此证书适合 Andorid 系统
+找到 证书 的 Hash值 建议在Linux相关机器执行如下命令</description>
+    </item>
+    
+    <item>
       <title>Linux 挂载磁盘</title>
       <link>https://terryren.github.io/posts/architect/io/disk-1/</link>
       <pubDate>Mon, 16 Sep 2024 10:06:00 +0800</pubDate>

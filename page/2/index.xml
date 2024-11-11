@@ -14,6 +14,46 @@
     
     
         <item>
+        <title>Mysql Locks</title>
+        <link>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</link>
+        <pubDate>Fri, 29 Mar 2024 09:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/db/mysql/mysql-lock-1/ -&lt;h3 id=&#34;record-locks-记录锁&#34;&gt;Record Locks (记录锁)&lt;/h3&gt;
+&lt;h4 id=&#34;事务---1&#34;&gt;事务 - 1&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;事务隔离级别 == REPEATABLE READ&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ISOLATION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LEVEL&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;REPEATABLE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;READ&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;START&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;UPDATE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;tt_order_item&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;Deleted&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;+&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;OrderNumber&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;17111803861711180386&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;COMMIT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;事务---2&#34;&gt;事务 - 2&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;事务隔离级别 == REPEATABLE READ&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ISOLATION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LEVEL&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;REPEATABLE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;READ&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;START&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;UPDATE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;tt_order_item&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;Deleted&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;+&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;OrderNumber&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;17111803861711180386&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;COMMIT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;事务---3&#34;&gt;事务 - 3&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;事务隔离级别 == READ COMMITTED&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;此事务隔离级别下，仅会读取到事务已提交后的变更结果&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ISOLATION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LEVEL&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;READ&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;COMMITTED&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;*&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;tt_order_item&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;OrderNumber&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;IBRB17111803861711180386&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html#innodb-record-locks&#34;&gt;innodb-record-locks&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/db/mysql/mysql-lock-1/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
         <title>JDBC Mysql 时区问题</title>
         <link>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</link>
         <pubDate>Tue, 12 Mar 2024 09:56:00 +0800</pubDate>
@@ -783,152 +823,6 @@ Host github.com
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/johar99/article/details/113651925&#34;&gt;Docker 自定义桥接ip&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/harryhare/article/details/83317987&#34;&gt;TCP 网络状态图&lt;/a&gt;&lt;/p&gt;
 - https://terryren.github.io/posts/web/nginx/apisix-1/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>密码学 - 数字证书</title>
-        <link>https://terryren.github.io/posts/web/crypto/certification/</link>
-        <pubDate>Sat, 14 Oct 2023 13:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/web/crypto/certification/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/web/crypto/certification/ -&lt;h1 id=&#34;pki&#34;&gt;PKI&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;公开密钥基础建设（Public Key Infrastructure），是一组由硬件、软件、参与者、管理政策与流程组成的基础架构，其目的在于创造、管理、分配、使用、存储以及撤销数字证书，
-从而建立一个安全的网络环境，数字证书最常见的格式有X.509，X.509又称之为PKIX。
-在计算机界，有各种密码学标准，它们表示了如何在计算机中计算、存储、传输（等）各种算法，这些标准由 RSA、IEFT、PKIX、ITU-T、ISO 等标准组织机构编写, CA中心普遍采用的规范是X.509系列和PKCS系列&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;ca&#34;&gt;CA&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书颁发机构&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;csr&#34;&gt;CSR&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书签名请求&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;crl&#34;&gt;CRL&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书吊销列表&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;ocsp&#34;&gt;OCSP&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在线证书状态协议&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;pkcs&#34;&gt;PKCS&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 &lt;code&gt;RSA&lt;/code&gt; 资讯安全公司（英语：RSA Security）所制定
-包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;pkcs1&#34;&gt;pkcs1&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc8017&#34;&gt;RFC8017&lt;/a&gt;
-定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl genrsa -out key.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Private Key Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PRIVATE KEY-----
-BASE64Encoded
------END RSA PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Public Key Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PUBLIC KEY-----
-BASE64Encoded
------END RSA PUBLIC KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs7&#34;&gt;pkcs7&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。
-其中，包含了S/MIME与CMS。
-主要用来存储签名或者加密后的数据,如证书或者CRL。
-PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用&lt;code&gt;.p7b&lt;/code&gt;文件扩展名&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;‑‑‑‑‑BEGIN PKCS7‑‑‑‑‑
-
-‑‑‑‑‑END PKCS7‑‑‑‑‑
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PKCS7的文件从PEM格式转换成为DER格式&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -outform DER -out file.der
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;文件中提取出所有的证书到另外一个文件&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -print_certs -out certs.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs8&#34;&gt;pkcs8&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PKCS #8，Private-Key Information Syntax Standard，详细的描述了私钥的存储格式。用于加密、非加密地存储Private Certificate Keypairs（不限于RSA），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5958&#34;&gt;RFC5858&lt;/a&gt;
-Apache读取证书私钥的标准。主要用来存储私钥。私钥首先会使用PKCS #5的标准进行加密，然后&lt;code&gt;Base64&lt;/code&gt;编码，转换成为&lt;code&gt;PEM&lt;/code&gt;格式存储&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;一个非加密 ECC 私钥的 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PRIVATE KEY-----
-MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQglQanBRiYVPX7F2Rd
-4CqyjEN0K4qfHw4tM/yMIh21wamhRANCAARsxaI4jT1b8zbDlFziuLngPcExbYzz
-ePAHUmgWL/ZCeqlODF/l/XvimkjaWC2huu1OSWB9EKuG+mKFY2Y5k+vF
------END PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;一个加密 PKCS#8 私钥的 PEM 格式&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN ENCRYPTED PRIVATE KEY-----
-Base64 xxxxxx
------END ENCRYPTED PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;RSA 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in rsa-private-key.pem -outform PEM -nocrypt -out rsa-private-key-pkcs8.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;ECC 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in ecc-private-key.pem -outform PEM -nocrypt -out ecc-private-key-pkcs8.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs12&#34;&gt;pkcs12&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;定义了包含私钥（Private Keys）与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。PKCS12文件的扩展名是&lt;code&gt;.p12&lt;/code&gt;、&lt;code&gt;.pfx&lt;/code&gt;、&lt;code&gt;.jks&lt;/code&gt;。
-PKCS12可以看做是PKCS7的扩展，PKCS12可以额外存储私钥、证书、私钥、CRL
-Private Keys和Public Key Certificates是复数形式，这意味着PKCS #12文件实际上是一个Keystore，PKCS #12文件可以被用做Java Key Store（JKS），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc7292&#34;&gt;RFC7292&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;将PKCS12格式转换成为PEM&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;从PEM到PKCS12&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;x509&#34;&gt;X509&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;X.509是ITU-T标准化部门基于他们之前的ASN.1定义的一套证书标准，在X.500基础上进行了功能增强
-X.509是在1988年发布的。X.509证书由用户公共密钥和用户标识符组成。此外还包括版本号、证书序列号、CA标识符、签名算法标识、签发者名称、证书有效期等信息&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Certificate Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN CERTIFICATE-----
-BASE64Encoded
------END CERTIFICATE-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Certificate Subject Public Key Info&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PUBLIC KEY-----
-BASE64Encoded
------END PUBLIC KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;asn1&#34;&gt;ASN.1&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在电信和计算机网络领域，ASN.1（Abstract Syntax Notation One) 是一套标准，是描述数据的表示、编码、传输、解码的灵活的记法。
-它提供了一套正式、无歧义和精确的规则以描述独立于特定计算机硬件的对象结构。
-ASN.1是ISO和ITU-T的联合标准，最初是1984年的CCITT X.409:1984的一部分。由于其广泛应用，1988年ASN.1移到独立标准X.208，1995年进行全面修订后变成X.680系列标准&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;pem&#34;&gt;PEM&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PEM文件是一个文本文件，其内容是以“ – BEGIN -” 开头，中间内容是DER文件的Base64编码&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;查看文本证书内容&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.pem -text -noout
-openssl x509 -in cert.cer -text -noout
-openssl x509 -in cert.crt -text -noout
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PEM-To-DER&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -outform der-out cert.der
-openssl rsa -in key.pem -outform der -out key.der
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;der&#34;&gt;DER&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;DER表示证书的内容是用二进制进行编码的&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;查看二进制证书内容&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.der -inform der -text -noout
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;DER-To-PEM&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -inform der -outform pem -out cert.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/543707056&#34;&gt;密码学标准 - X.509 与 PKCS 系列&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0%E5%9F%BA%E7%A4%8E%E5%BB%BA%E8%A8%AD&#34;&gt;PKI-1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/30136885&#34;&gt;PKI-2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A0%87%E5%87%86#&#34;&gt;PKCS&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/X.509&#34;&gt;X.509&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1&#34;&gt;X.509-RFC5280&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/Pem%E6%A0%BC%E5%BC%8F&#34;&gt;Pem&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/ASN.1&#34;&gt;ASN.1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/HKnight/p/16851786.html&#34;&gt;证书认证原理&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://chanjarster.github.io/post/x509-pkcs-file-formats/&#34;&gt;X.509、PKCS文件格式介绍&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/bc32cbfe49e7&#34;&gt;常见的PKI标准(X.509、PKCS)及证书相关介绍&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/web/crypto/certification/ - Terry</description>
         </item>
     
     
