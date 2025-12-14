@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/redis/</link>
+    <description>Recent content in Redis on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Tue, 28 Jan 2025 10:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>异地多活数据中心秒杀库存问题深度解析：从超卖到一致性</title>
+      <link>https://terryren.github.io/posts/architect/misc/seckill-stock-multi-dc/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/seckill-stock-multi-dc/</guid>
+      <description>在异地多活数据中心架构下，秒杀库存管理面临的核心挑战是：如何确保多个数据中心之间的库存数据一致性，避免超卖问题，同时保证高并发性能和用户体验。本文将深入分析这个技术难题，并提供完整的解决方案。
+问题背景与挑战 超卖问题的根本原因 在传统的单数据中心架构中，库存管理相对简单，通过数据库事务和锁机制就能保证数据一致性。但在异地多活环境下，情况变得复杂：
+数据中心A: 库存1000 → 扣减100 → 剩余900 数据中心B: 库存1000 → 扣减200 → 剩余800 数据中心C: 库存1000 → 扣减150 → 剩余850 实际总扣减: 100 + 200 + 150 = 450 但每个数据中心都认为还有库存，继续扣减... 核心问题：
+每个数据中心维护独立的库存副本 缺乏全局库存协调机制 网络延迟导致数据同步不及时 并发扣减时的数据竞争 技术挑战 1. 数据一致性问题
+多数据中心间的库存数据同步延迟 并发扣减时的数据竞争 网络分区导致的数据不一致 2. 性能要求
+秒杀场景下的超高并发（TPS可达数万） 毫秒级的响应时间要求 避免超卖和少卖 3. 用户体验要求
+保证用户看到的库存信息准确 避免重复下单 快速响应和反馈 解决方案架构 1. 中心化库存管理（推荐） 核心思路：所有库存扣减都通过中心化的库存服务进行，避免本地缓存导致的数据不一致。
+// 中心化库存服务架构 class CentralizedStockService { constructor() { this.redis = new Redis(); // 中心化Redis集群 this.</description>
+    </item>
+    
+  </channel>
+</rss>

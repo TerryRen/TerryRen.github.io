@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sharding on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/sharding/</link>
+    <description>Recent content in Sharding on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Tue, 29 Jul 2025 10:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/sharding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>亿级订单系统：电商C端与B端分库分表架构终极指南</title>
+      <link>https://terryren.github.io/posts/architect/misc/mysql-sharding-compare/</link>
+      <pubDate>Tue, 29 Jul 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/mysql-sharding-compare/</guid>
+      <description>当日订单量从百万冲向一亿，数据库架构的挑战不再是简单的“要不要分库分表”，而是如何为特征迥异的 C 端（用户）和 B 端（商户）设计出各自最优、且能协同工作的“专属”架构。本文将彻底摒弃泛泛而谈的方案罗列，直击问题本质，深度剖析两种业务场景下的最佳实践与反模式。
+核心原则：C 端与 B 端，必须“分而治之” 电商系统的数据库设计，最大的误区就是试图用一套统一的方案解决所有问题。C 端和 B 端的业务特征差异巨大，决定了它们必须采用不同的架构策略。
+C 端 (Customer)：用户量巨大，但个体行为相对均匀。核心诉求是高并发下的快速读写和个人关联数据的聚合。不存在“超级用户”能凭一己之力压垮整个系统。 B 端 (Business)：商户规模天差地别，“超级卖家”现象普遍存在。核心诉求是应对数据倾斜（热点）、复杂的报表分析和严格的数据隔离。 C 端架构：追求极致的并发与稳定的体验 对于 C 端，我们的目标是：在亿级用户和千万级 TPS 的冲击下，保证每个普通用户的下单、查询等操作都如丝般顺滑。
+最佳实践：UID 分库 + hot/history 表 (或 月分表) 这是业界公认的最成熟、最稳健的 C 端订单架构。
+分库：库 = uid % N (例如 N=256)。将一个用户的所有数据（订单、地址等）路由到同一个物理数据库。 分表：库内创建 orders_hot 和 orders_history 两张表。新订单写入 hot 表，后台任务定期将超过（如90天）的冷数据迁移到 history 表。月分表 (如 orders_202407) 是此模式的变体，原理相通。 深度解析：为何它能应对极限并发？ 这里的核心是写操作的冲突域管理。
+维度 写并发分析 结论 写入目标 写入请求根据 uid 均分到 256 个库，每个库平均承载的 TPS 远低于其物理极限（单库可达 2000-5000 TPS）。 宏观层面高度分散，无瓶颈。 热点用户冲击 假设一个热点用户（如公司订餐）并发 100 个 INSERT，这些请求会落到同一个库的 hot 表。 冲突点 冲突点在于**uid 二级索引**。这 100 个请求需要修改 uid 索引上同一个 uid 值对应的物理页。 冲突化解 1.</description>
+    </item>
+    
+  </channel>
+</rss>

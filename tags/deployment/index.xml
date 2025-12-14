@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deployment on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/deployment/</link>
+    <description>Recent content in Deployment on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Mon, 27 Jan 2025 10:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>灰度环境深度解析：影响场景、技术细节与平滑迁移</title>
+      <link>https://terryren.github.io/posts/architect/misc/gray-release-environment/</link>
+      <pubDate>Mon, 27 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/gray-release-environment/</guid>
+      <description>概述 灰度发布是现代软件开发和部署中不可或缺的重要环节，它能够有效降低发布风险，提高系统稳定性。本文将深入探讨灰度环境的影响场景、技术实现细节以及如何平滑迁移到正式环境的最佳实践。
+灰度发布的影响场景 业务场景 1. 新功能验证
+在真实用户环境中验证新功能的效果和用户接受度 收集用户反馈，快速迭代优化 验证业务逻辑的正确性和完整性 2. 性能测试
+在真实流量下测试系统性能表现 验证系统在高并发场景下的稳定性 识别性能瓶颈和优化点 3. 兼容性测试
+验证新旧版本的兼容性 确保数据迁移的平滑性 测试第三方服务集成的稳定性 4. 风险控制
+降低发布风险，快速发现问题 提供快速回滚机制 保护核心业务不受影响 技术场景 1. 数据库变更
+新字段、索引、表结构变更的验证 数据迁移脚本的测试 数据库性能影响评估 2. API接口升级
+向后兼容性验证 接口性能测试 客户端适配验证 3. 缓存策略调整
+缓存命中率验证 缓存穿透风险测试 缓存更新策略验证 4. 第三方服务集成
+新服务稳定性验证 服务降级机制测试 异常处理流程验证 灰度环境技术细节 流量路由策略 1. 用户ID哈希
+// 根据用户ID进行哈希分片 function routeByUserId(userId, totalShards) { const hash = md5(userId); const shard = parseInt(hash.substring(0, 8), 16) % totalShards; return shard === 0 ?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OKR on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/okr/</link>
+    <description>Recent content in OKR on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Fri, 26 Jul 2024 16:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/okr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KPI &#43; OKR</title>
+      <link>https://terryren.github.io/posts/architect/misc/kpi-okr-1/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/kpi-okr-1/</guid>
+      <description>Key Performance Indicator = KPI（关键绩效指标） == 从上到下 （维持运营）
+Objectives And Key Results = OKR（目标与关键结果）	== 从下到上 （推动突破）
+（1）KPI 制定原则 SMART 原则（具体、可衡量、可实现、相关性强、时限明确）
+关注过程+结果（如缺陷率、交付周期）
+适度数量：每个岗位 3-5 个即可
+示例：
+版本按期交付率 ≥ 95%
+P0/P1 级 Bug 关闭率 ≥ 98%
+代码覆盖率 ≥ 85%
+（2）OKR 制定原则 O（目标）：鼓舞人心、定性、与战略一致
+KR（关键结果）：定量、挑战性、可衡量
+不与考核直接挂钩，避免保守设定
+示例：
+O：提升产品在细分市场的竞争力
+KR1：新增 3 个差异化功能
+KR2：用户留存率从 60% → 75%
+KR3：收集并落地 10 条核心客户反馈
+实施步骤（落地指南） 战略分解：公司战略 → 部门 OKR → 团队/个人 OKR KPI 定基准：根据历史数据和行业标准设定合理阈值
+OKR 设挑战：目标略超出当前能力，完成 70% 即成功
+周期管理：</description>
+    </item>
+    
+  </channel>
+</rss>

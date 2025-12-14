@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Architecture on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/architecture/</link>
+    <description>Recent content in Architecture on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Tue, 29 Jul 2025 10:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>亿级订单系统：电商C端与B端分库分表架构终极指南</title>
+      <link>https://terryren.github.io/posts/architect/misc/mysql-sharding-compare/</link>
+      <pubDate>Tue, 29 Jul 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/mysql-sharding-compare/</guid>
+      <description>当日订单量从百万冲向一亿，数据库架构的挑战不再是简单的“要不要分库分表”，而是如何为特征迥异的 C 端（用户）和 B 端（商户）设计出各自最优、且能协同工作的“专属”架构。本文将彻底摒弃泛泛而谈的方案罗列，直击问题本质，深度剖析两种业务场景下的最佳实践与反模式。
+核心原则：C 端与 B 端，必须“分而治之” 电商系统的数据库设计，最大的误区就是试图用一套统一的方案解决所有问题。C 端和 B 端的业务特征差异巨大，决定了它们必须采用不同的架构策略。
+C 端 (Customer)：用户量巨大，但个体行为相对均匀。核心诉求是高并发下的快速读写和个人关联数据的聚合。不存在“超级用户”能凭一己之力压垮整个系统。 B 端 (Business)：商户规模天差地别，“超级卖家”现象普遍存在。核心诉求是应对数据倾斜（热点）、复杂的报表分析和严格的数据隔离。 C 端架构：追求极致的并发与稳定的体验 对于 C 端，我们的目标是：在亿级用户和千万级 TPS 的冲击下，保证每个普通用户的下单、查询等操作都如丝般顺滑。
+最佳实践：UID 分库 + hot/history 表 (或 月分表) 这是业界公认的最成熟、最稳健的 C 端订单架构。
+分库：库 = uid % N (例如 N=256)。将一个用户的所有数据（订单、地址等）路由到同一个物理数据库。 分表：库内创建 orders_hot 和 orders_history 两张表。新订单写入 hot 表，后台任务定期将超过（如90天）的冷数据迁移到 history 表。月分表 (如 orders_202407) 是此模式的变体，原理相通。 深度解析：为何它能应对极限并发？ 这里的核心是写操作的冲突域管理。
+维度 写并发分析 结论 写入目标 写入请求根据 uid 均分到 256 个库，每个库平均承载的 TPS 远低于其物理极限（单库可达 2000-5000 TPS）。 宏观层面高度分散，无瓶颈。 热点用户冲击 假设一个热点用户（如公司订餐）并发 100 个 INSERT，这些请求会落到同一个库的 hot 表。 冲突点 冲突点在于**uid 二级索引**。这 100 个请求需要修改 uid 索引上同一个 uid 值对应的物理页。 冲突化解 1.</description>
+    </item>
+    
+    <item>
+      <title>异地多活数据中心秒杀库存问题深度解析：从超卖到一致性</title>
+      <link>https://terryren.github.io/posts/architect/misc/seckill-stock-multi-dc/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/seckill-stock-multi-dc/</guid>
+      <description>在异地多活数据中心架构下，秒杀库存管理面临的核心挑战是：如何确保多个数据中心之间的库存数据一致性，避免超卖问题，同时保证高并发性能和用户体验。本文将深入分析这个技术难题，并提供完整的解决方案。
+问题背景与挑战 超卖问题的根本原因 在传统的单数据中心架构中，库存管理相对简单，通过数据库事务和锁机制就能保证数据一致性。但在异地多活环境下，情况变得复杂：
+数据中心A: 库存1000 → 扣减100 → 剩余900 数据中心B: 库存1000 → 扣减200 → 剩余800 数据中心C: 库存1000 → 扣减150 → 剩余850 实际总扣减: 100 + 200 + 150 = 450 但每个数据中心都认为还有库存，继续扣减... 核心问题：
+每个数据中心维护独立的库存副本 缺乏全局库存协调机制 网络延迟导致数据同步不及时 并发扣减时的数据竞争 技术挑战 1. 数据一致性问题
+多数据中心间的库存数据同步延迟 并发扣减时的数据竞争 网络分区导致的数据不一致 2. 性能要求
+秒杀场景下的超高并发（TPS可达数万） 毫秒级的响应时间要求 避免超卖和少卖 3. 用户体验要求
+保证用户看到的库存信息准确 避免重复下单 快速响应和反馈 解决方案架构 1. 中心化库存管理（推荐） 核心思路：所有库存扣减都通过中心化的库存服务进行，避免本地缓存导致的数据不一致。
+// 中心化库存服务架构 class CentralizedStockService { constructor() { this.redis = new Redis(); // 中心化Redis集群 this.</description>
+    </item>
+    
+    <item>
+      <title>灰度发布策略深度解析：何时使用、环境区别与数据同步</title>
+      <link>https://terryren.github.io/posts/architect/misc/gray-release-strategy/</link>
+      <pubDate>Mon, 27 Jan 2025 14:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/gray-release-strategy/</guid>
+      <description>概述 在软件开发和部署过程中，灰度发布、预发布环境、数据同步等概念经常被提及，但它们的使用场景、技术实现和最佳实践往往存在混淆。本文将深入探讨新功能开发中的灰度发布策略选择、不同环境的区别以及数据同步的最佳实践。
+新功能开发是否都需要走灰度发布？ 灰度发布的适用场景 1. 必须走灰度发布的情况
+高风险变更
+数据库结构变更（新增字段、索引、表结构） 核心业务逻辑修改 第三方服务集成或升级 缓存策略重大调整 支付系统升级 大规模影响
+影响用户量超过10万的功能 涉及核心业务流程的变更 性能敏感的功能优化 用户体验重大改变 技术架构变更
+微服务拆分或合并 数据存储方案变更 消息队列系统升级 监控告警体系调整 2. 可以跳过灰度发布的情况
+低风险变更
+// 示例：简单的UI调整 const buttonStyle = { backgroundColor: &amp;#39;#007bff&amp;#39;, // 颜色调整 borderRadius: &amp;#39;4px&amp;#39; // 圆角调整 }; 内部工具功能
+开发工具优化 内部管理系统功能 日志格式调整 非核心配置修改 紧急修复
+安全漏洞修复 严重bug修复 性能问题紧急修复 3. 灰度发布决策矩阵
+变更类型 影响范围 风险等级 是否需要灰度发布 UI调整 小 低 ❌ 不需要 业务逻辑 中 中 ⚠️ 建议使用 数据库变更 大 高 ✅ 必须使用 第三方服务 大 高 ✅ 必须使用 性能优化 中 中 ⚠️ 建议使用 安全修复 大 高 ⚠️ 紧急情况可跳过 灰度发布成本效益分析 成本考虑</description>
+    </item>
+    
+    <item>
+      <title>灰度环境深度解析：影响场景、技术细节与平滑迁移</title>
+      <link>https://terryren.github.io/posts/architect/misc/gray-release-environment/</link>
+      <pubDate>Mon, 27 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/gray-release-environment/</guid>
+      <description>概述 灰度发布是现代软件开发和部署中不可或缺的重要环节，它能够有效降低发布风险，提高系统稳定性。本文将深入探讨灰度环境的影响场景、技术实现细节以及如何平滑迁移到正式环境的最佳实践。
+灰度发布的影响场景 业务场景 1. 新功能验证
+在真实用户环境中验证新功能的效果和用户接受度 收集用户反馈，快速迭代优化 验证业务逻辑的正确性和完整性 2. 性能测试
+在真实流量下测试系统性能表现 验证系统在高并发场景下的稳定性 识别性能瓶颈和优化点 3. 兼容性测试
+验证新旧版本的兼容性 确保数据迁移的平滑性 测试第三方服务集成的稳定性 4. 风险控制
+降低发布风险，快速发现问题 提供快速回滚机制 保护核心业务不受影响 技术场景 1. 数据库变更
+新字段、索引、表结构变更的验证 数据迁移脚本的测试 数据库性能影响评估 2. API接口升级
+向后兼容性验证 接口性能测试 客户端适配验证 3. 缓存策略调整
+缓存命中率验证 缓存穿透风险测试 缓存更新策略验证 4. 第三方服务集成
+新服务稳定性验证 服务降级机制测试 异常处理流程验证 灰度环境技术细节 流量路由策略 1. 用户ID哈希
+// 根据用户ID进行哈希分片 function routeByUserId(userId, totalShards) { const hash = md5(userId); const shard = parseInt(hash.substring(0, 8), 16) % totalShards; return shard === 0 ?</description>
+    </item>
+    
+  </channel>
+</rss>

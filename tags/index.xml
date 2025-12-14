@@ -7,7 +7,214 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 23 Oct 2024 15:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Dec 2025 10:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>标普500</title>
+      <link>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</link>
+      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>财务自由</title>
+      <link>https://terryren.github.io/tags/%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1/</link>
+      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>定投</title>
+      <link>https://terryren.github.io/tags/%E5%AE%9A%E6%8A%95/</link>
+      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E5%AE%9A%E6%8A%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>投资策略</title>
+      <link>https://terryren.github.io/tags/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</link>
+      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>经济</title>
+      <link>https://terryren.github.io/tags/%E7%BB%8F%E6%B5%8E/</link>
+      <pubDate>Sat, 29 Nov 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E7%BB%8F%E6%B5%8E/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>商业</title>
+      <link>https://terryren.github.io/tags/%E5%95%86%E4%B8%9A/</link>
+      <pubDate>Sat, 29 Nov 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E5%95%86%E4%B8%9A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>思考</title>
+      <link>https://terryren.github.io/tags/%E6%80%9D%E8%80%83/</link>
+      <pubDate>Sat, 29 Nov 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E6%80%9D%E8%80%83/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Architecture</title>
+      <link>https://terryren.github.io/tags/architecture/</link>
+      <pubDate>Tue, 29 Jul 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Database</title>
+      <link>https://terryren.github.io/tags/database/</link>
+      <pubDate>Tue, 29 Jul 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL</title>
+      <link>https://terryren.github.io/tags/mysql/</link>
+      <pubDate>Tue, 29 Jul 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sharding</title>
+      <link>https://terryren.github.io/tags/sharding/</link>
+      <pubDate>Tue, 29 Jul 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/sharding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>高并发</title>
+      <link>https://terryren.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Tue, 29 Jul 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consistency</title>
+      <link>https://terryren.github.io/tags/consistency/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/consistency/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distributed System</title>
+      <link>https://terryren.github.io/tags/distributed-system/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/distributed-system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multi-DC</title>
+      <link>https://terryren.github.io/tags/multi-dc/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/multi-dc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://terryren.github.io/tags/redis/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Seckill</title>
+      <link>https://terryren.github.io/tags/seckill/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/seckill/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stock Management</title>
+      <link>https://terryren.github.io/tags/stock-management/</link>
+      <pubDate>Tue, 28 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/stock-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Sync</title>
+      <link>https://terryren.github.io/tags/data-sync/</link>
+      <pubDate>Mon, 27 Jan 2025 14:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/data-sync/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DevOps</title>
+      <link>https://terryren.github.io/tags/devops/</link>
+      <pubDate>Mon, 27 Jan 2025 14:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gray Release</title>
+      <link>https://terryren.github.io/tags/gray-release/</link>
+      <pubDate>Mon, 27 Jan 2025 14:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/gray-release/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Strategy</title>
+      <link>https://terryren.github.io/tags/strategy/</link>
+      <pubDate>Mon, 27 Jan 2025 14:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/strategy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deployment</title>
+      <link>https://terryren.github.io/tags/deployment/</link>
+      <pubDate>Mon, 27 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/deployment/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Docker</title>
       <link>https://terryren.github.io/tags/docker/</link>
@@ -81,6 +288,51 @@
     </item>
     
     <item>
+      <title>Culture</title>
+      <link>https://terryren.github.io/tags/culture/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/culture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KPI</title>
+      <link>https://terryren.github.io/tags/kpi/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/kpi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Management</title>
+      <link>https://terryren.github.io/tags/management/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OKR</title>
+      <link>https://terryren.github.io/tags/okr/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/okr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Team Building</title>
+      <link>https://terryren.github.io/tags/team-building/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/team-building/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Debian12</title>
       <link>https://terryren.github.io/tags/debian12/</link>
       <pubDate>Wed, 24 Jul 2024 13:06:00 +0800</pubDate>
@@ -140,15 +392,6 @@
       <pubDate>Fri, 29 Mar 2024 09:56:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/tags/lock/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mysql</title>
-      <link>https://terryren.github.io/tags/mysql/</link>
-      <pubDate>Fri, 29 Mar 2024 09:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/mysql/</guid>
       <description></description>
     </item>
     

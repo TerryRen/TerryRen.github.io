@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KPI on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/kpi/</link>
+    <description>Recent content in KPI on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Fri, 26 Jul 2024 16:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/kpi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KPI &#43; OKR</title>
+      <link>https://terryren.github.io/posts/architect/misc/kpi-okr-1/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/kpi-okr-1/</guid>
+      <description>Key Performance Indicator = KPI（关键绩效指标） == 从上到下 （维持运营）
+Objectives And Key Results = OKR（目标与关键结果）	== 从下到上 （推动突破）
+（1）KPI 制定原则 SMART 原则（具体、可衡量、可实现、相关性强、时限明确）
+关注过程+结果（如缺陷率、交付周期）
+适度数量：每个岗位 3-5 个即可
+示例：
+版本按期交付率 ≥ 95%
+P0/P1 级 Bug 关闭率 ≥ 98%
+代码覆盖率 ≥ 85%
+（2）OKR 制定原则 O（目标）：鼓舞人心、定性、与战略一致
+KR（关键结果）：定量、挑战性、可衡量
+不与考核直接挂钩，避免保守设定
+示例：
+O：提升产品在细分市场的竞争力
+KR1：新增 3 个差异化功能
+KR2：用户留存率从 60% → 75%
+KR3：收集并落地 10 条核心客户反馈
+实施步骤（落地指南） 战略分解：公司战略 → 部门 OKR → 团队/个人 OKR KPI 定基准：根据历史数据和行业标准设定合理阈值
+OKR 设挑战：目标略超出当前能力，完成 70% 即成功
+周期管理：</description>
+    </item>
+    
+    <item>
+      <title>产研团队的KPI制定、梯队与文化建设</title>
+      <link>https://terryren.github.io/posts/architect/misc/mgr-kpi-culture-1/</link>
+      <pubDate>Fri, 26 Jul 2024 16:00:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/architect/misc/mgr-kpi-culture-1/</guid>
+      <description>导读：一个高效且富有创造力的产研团队，不仅依赖于清晰的目标指引，更根植于健全的人才体系和卓越的团队文化。本文将深入探讨如何为产品、研发、测试这三个关键角色制定有效且科学的KPI，并进一步分享关于产研团队梯队建设和文化建设的系统性思考。
+一、如何制定产品、研发、测试的KPI？ 制定KPI的核心目标是将公司战略与个人工作对齐，并提供可衡量的框架来评估成果。一个好的KPI体系应该激励正确的行为，促进协作，最终驱动业务成功。
+(一) 产品经理 (Product Manager) 产品经理的核心职责是定义正确且有价值的产品，并驱动其商业成功。KPI的设定需要根据其服务的客户类型（C端 vs B端）进行区分。
+1. C端产品经理 (B2C) C端产品服务于海量个体用户，核心是获取用户、提升活跃与留存。
+关键KPIs:
+用户增长与活跃: 日/月活跃用户数 (DAU/MAU)、用户留存率 (Retention Rate)。 商业价值: 付费转化率 (Conversion Rate)、用户生命周期价值 (LTV)。 用户满意度: 净推荐值 (NPS)、应用商店评分。 最重要的KPI：用户留存率 (User Retention Rate)
+为什么？ 留存率是产品健康度的终极试金石。高留存率证明产品真正解决了用户痛点，是实现用户增长和商业变现的基石。 2. B端产品经理 (B2B) B端产品服务于企业客户，核心是解决业务问题、提升效率、创造商业价值。
+关键KPIs:
+客户与商业成功: 年/月经常性收入 (ARR/MRR)、客户流失率 (Churn Rate)。 产品采用与价值实现: 客户健康度评分、关键功能采用率。 客户满意度: 客户满意度评分 (CSAT)、净推荐值 (NPS)。 最重要的KPI：净收入留存率 (Net Revenue Retention - NRR)
+为什么？ NRR综合体现了客户留存和价值深化（增购/交叉销售）。一个大于100%的NRR意味着业务具备强大的内生增长力，是B端产品成功的黄金指标。 (二) 研发工程师 (R&amp;amp;D / Developer) 研发团队的核心职责是高质量、高效率地构建和交付软件。推荐使用业界公认的DORA四大关键指标来衡量团队效能。
+关键KPIs (团队指标):
+部署频率 (Deployment Frequency): 衡量团队向生产环境部署的频率。 变更前置时间 (Lead Time for Changes): 从代码提交到成功部署所需的时间。 变更失败率 (Change Failure Rate): 部署导致服务降级或需要修复的百分比。 服务恢复平均时间 (Mean Time to Restore - MTTR): 发生故障后恢复服务所需的平均时间。 最重要的KPI：变更前置时间 (Lead Time for Changes)</description>
+    </item>
+    
+  </channel>
+</rss>
