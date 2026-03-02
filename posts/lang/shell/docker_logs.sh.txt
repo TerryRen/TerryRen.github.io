@@ -1,0 +1,123 @@
+#!/bin/bash
+
+# ====================================================
+# Docker 容器日志管理脚本
+# 用法:
+#   1. 查看日志占用排行: ./docker_logs.sh
+#   2. 清理指定容器日志: ./docker_logs.sh clean <容器名或ID>
+#   3. 清理所有容器日志: ./docker_logs.sh clean all
+# ====================================================
+
+COMMAND=$1
+TARGET=$2
+
+# ----------------- 功能 1：列出日志排行 -----------------
+list_logs() {
+    echo -e "\n================================ Docker 容器日志大小占用排行 ================================"
+    printf "%-12s %-35s %-40s %-20s\n" "日志大小" "容器名称" "容器ID" "镜像名称"
+    echo "-----------------------------------------------------------------------------------------------------------"
+
+    sudo docker ps -a --format '{{.ID}}' | while read -r id; do
+        name=$(sudo docker inspect --format '{{.Name}}' "$id" | sed 's/^\///')
+        image=$(sudo docker inspect --format '{{.Config.Image}}' "$id")
+        logpath=$(sudo docker inspect --format '{{.LogPath}}' "$id")
+        
+        if [ -f "$logpath" ]; then
+            size=$(sudo du -h "$logpath" | cut -f1)
+            size_kb=$(sudo du -k "$logpath" | cut -f1)
+            
+            # id 只取前 12 位短 ID
+            short_id=${id:0:12}
+            
+            echo "${size_kb}|${size}|${name}|${short_id}|${image}"
+        fi
+    done | sort -nr | awk -F'|' '{printf "%-10s %-35s %-40s %-20s\n", $2, $3, $4, $5}'
+
+    echo "==========================================================================================================="
+    echo "提示: 可以使用 './docker_logs.sh clean <容器名或ID>' 来清理特定容器的日志。"
+}
+
+# ----------------- 功能 2：清理容器日志 -----------------
+clean_logs() {
+    if [ -z "$TARGET" ]; then
+        echo "错误: 请提供要清理的容器名称、ID，或者使用 'all' 清理所有容器。"
+        echo "用法: ./docker_logs.sh clean <容器名或ID>"
+        echo "示例: ./docker_logs.sh clean apisix"
+        exit 1
+    fi
+
+    # 确定要处理的容器列表
+    if [ "$TARGET" = "all" ]; then
+        echo "警告: 准备清理所有容器的日志！"
+        read -p "确定要继续吗？(y/N): " confirm
+        if [[ "$confirm" != [yY] && "$confirm" != [yY][eE][sS] ]]; then
+            echo "已取消。"
+            exit 0
+        fi
+        # 获取所有容器 ID
+        containers=$(sudo docker ps -a -q)
+    else
+        # 验证目标容器是否存在 (可以是名字或 ID)
+        container_id=$(sudo docker ps -a -q -f "name=^/${TARGET}$" -f "id=${TARGET}")
+        
+        if [ -z "$container_id" ]; then
+            # 如果按精确匹配没找到，尝试模糊匹配 (比如输入了短ID)
+            container_id=$(sudo docker ps -a -q -f "id=${TARGET}")
+            if [ -z "$container_id" ]; then
+                # 最后尝试模糊匹配名字
+                container_id=$(sudo docker ps -a -q -f "name=${TARGET}")
+            fi
+        fi
+
+        if [ -z "$container_id" ]; then
+            echo "错误: 找不到容器 '${TARGET}'。请使用 './docker_logs.sh' 查看可用的容器列表。"
+            exit 1
+        fi
+        
+        containers="$container_id"
+        
+        # 如果模糊匹配找到了多个，提示并退出以防止误删
+        count=$(echo "$containers" | wc -l)
+        if [ "$count" -gt 1 ]; then
+            echo "错误: '${TARGET}' 匹配到了多个容器。请使用更精确的容器名称或 ID。"
+            sudo docker ps -a --format "table {{.ID}}\t{{.Names}}" | grep "$TARGET"
+            exit 1
+        fi
+    fi
+
+    # 执行清理逻辑
+    for id in $containers; do
+        name=$(sudo docker inspect --format '{{.Name}}' "$id" | sed 's/^\///')
+        logpath=$(sudo docker inspect --format '{{.LogPath}}' "$id")
+        
+        if [ -f "$logpath" ]; then
+            old_size=$(sudo du -h "$logpath" | cut -f1)
+            # 使用 truncate 安全清空日志，不影响运行中的容器
+            sudo truncate -s 0 "$logpath"
+            echo "✅ 已清理容器 [${name}] 的日志 (释放了 ${old_size} 空间)。"
+        else
+            echo "⚠️  容器 [${name}] 的日志文件不存在或没有权限访问。"
+        fi
+    done
+}
+
+# ----------------- 主入口逻辑 -----------------
+case "$COMMAND" in
+    clean)
+        clean_logs
+        ;;
+    help|-h|--help)
+        echo "用法:"
+        echo "  $0                  - 列出所有容器日志大小排行"
+        echo "  $0 clean <name|id>  - 清理指定容器名或 ID 的日志"
+        echo "  $0 clean all        - 清理所有容器的日志"
+        ;;
+    "")
+        list_logs
+        ;;
+    *)
+        echo "未知命令: $COMMAND"
+        echo "请使用 '$0 help' 查看帮助。"
+        exit 1
+        ;;
+esac

@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 01 Dec 2025 10:00:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker</title>
+      <link>https://terryren.github.io/tags/docker/</link>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://terryren.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://terryren.github.io/tags/shell/</link>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://terryren.github.io/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>运维</title>
+      <link>https://terryren.github.io/tags/%E8%BF%90%E7%BB%B4/</link>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E8%BF%90%E7%BB%B4/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>标普500</title>
       <link>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</link>
@@ -212,15 +239,6 @@
       <pubDate>Mon, 27 Jan 2025 10:00:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/tags/deployment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://terryren.github.io/tags/docker/</link>
-      <pubDate>Wed, 23 Oct 2024 15:06:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
@@ -491,15 +509,6 @@
       <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/tags/bat/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shell</title>
-      <link>https://terryren.github.io/tags/shell/</link>
-      <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/shell/</guid>
       <description></description>
     </item>
     

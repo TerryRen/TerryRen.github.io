@@ -7,9 +7,190 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 01 Dec 2025 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Linux 挂载磁盘</title>
+        <link>https://terryren.github.io/posts/architect/io/disk-1/</link>
+        <pubDate>Mon, 16 Sep 2024 10:06:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/architect/io/disk-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/architect/io/disk-1/ -&lt;h3 id=&#34;挂载磁盘&#34;&gt;挂载磁盘&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;#&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;命令&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;fdisk -l&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看磁盘情况&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;lsblk -f&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看磁盘文件格式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;fdisk /dev/vdb&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;输入n，一路回车，直到再次提示输入命令，然后输入w，保存分区&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;mkfs.ext4 /dev/vdb1&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用mkfs.ext4格式化新分区，也可用mkfs.ext3格式化新分区&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;mkdir -p /mnt&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;新建挂载点，如果mnt目录不存在，则创建&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;mount /dev/vdb1 /mnt&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;将/dev/vdb1挂载到/mnt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;df -h&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看挂载情况&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;8&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;cp /etc/fstab /etc/fstab.bk&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;备份文件系统分配表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;echo /dev/vdb1 /mnt ext4 defaults 0 0 &amp;gt;&amp;gt; /etc/fstab&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置开机自动挂载&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;reboot&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;重启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;df -h&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;再次验证磁盘是否挂载成功&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;磁盘空间&#34;&gt;磁盘空间&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;#&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;命令&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;du -h --max-depth=1&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看当前目录，哪个文件夹占用空间最大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;du * -sh | sort -hr&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;#h 表示以人可读的形式显示出来&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;df -h&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看linux文件系统中磁盘容量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;df -hT /dev/vdb1&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看linux文件系统中磁盘容量&amp;amp;以及类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;df -i&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;安装inode形式显示磁盘容量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;fdisk -l /dev/vda&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看Sector(磁盘)的大小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;stat /boot/ | grep &amp;quot;IO Block&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看Block(块)的大小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;8&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;getconf PAGE_SIZE&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看Page(页)的大小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;dumpe2fs -h /dev/vdb1&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看SuperBlock信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;stat example.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看指定文件的Inode信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;file usr/bin/&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看文件类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;ls -i&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查看目录下信息带有Inode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;13&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;touch /data/test{1..5}.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;创建5个空文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;inode&#34;&gt;INODE&lt;/h3&gt;
+&lt;p&gt;inode也会消耗硬盘空间，所以格式化的时候，操作系统自动将硬盘分成两个区域。&lt;/p&gt;
+&lt;p&gt;一个是数据区，存放文件数据；另一个是inode区，存放inode所包含的信息。&lt;/p&gt;
+&lt;p&gt;每个inode的大小，一般是128字节或256字节。&lt;/p&gt;
+&lt;p&gt;通常情况下不需要关注单个inode的大小，而是需要重点关注inode总数，inode总数在格式化的时候就确定了。&lt;/p&gt;
+&lt;p&gt;Inode包含很多的文件元信息，但不包含文件名，例如：字节数、属主UserID、属组GroupID、读写执行权限、时间戳等。&lt;/p&gt;
+&lt;p&gt;而文件名存放在目录当中，但Linux系统内部不使用文件名，而是使用&lt;code&gt;Inode号码&lt;/code&gt;识别文件。&lt;/p&gt;
+&lt;p&gt;对于系统来说&lt;code&gt;文件名&lt;/code&gt;只是inode号码便于识别的&lt;code&gt;别称&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;表面上，用户通过文件名打开文件，实际上，系统内部将这个过程分为三四步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;系统通过目录项找到文件名对应的inode号码&lt;/li&gt;
+&lt;li&gt;通过inode号码，获取inode信息&lt;/li&gt;
+&lt;li&gt;根据inode信息，找到文件数据所在的block，并读出数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其实系统还要根据inode信息，看用户是否具有访问的权限，有就指向对应的数据block，没有就返回权限拒绝。&lt;/p&gt;
+&lt;p&gt;在文件系统中，有三大缓冲为了提升效率：inode缓冲区、dentry缓冲区、块缓冲。&lt;/p&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.aliyun.com/document_detail/25426.html?spm=5176.2020520165.120.d25426.4a627029Wj6PJ2&#34;&gt;参考资料-1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/sparkdev/p/11200395.html&#34;&gt;磁盘信息&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/u012749168/article/details/52810670&#34;&gt;Linux Inode &amp;amp; Block总结&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Ohmyberry/article/details/80427492&#34;&gt;Linux 深入理解 inode/block/superblock&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/42eb8c495811&#34;&gt;Linux 处理Inode满的问题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/llife/p/11470668.html&#34;&gt;Linux Inode 详解&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.51cto.com/13449039/2395301&#34;&gt;Inode知识图解&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://baike.baidu.com/item/dentry/6715475?fr=aladdin&#34;&gt;dentry百科&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/thewayma/article/details/4287170&#34;&gt;Page Cache 技术&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/architect/io/disk-1/ - Terry</description>
+        </item>
     
     
     
@@ -1198,183 +1379,6 @@ Use the credentials you set (&lt;strong&gt;{user}&lt;/strong&gt; and &lt;strong&
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html#innodb-record-locks&#34;&gt;innodb-record-locks&lt;/a&gt;&lt;/p&gt;
 - https://terryren.github.io/posts/db/mysql/mysql-lock-1/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>JDBC Mysql 时区问题</title>
-        <link>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</link>
-        <pubDate>Tue, 12 Mar 2024 09:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/lang/java/jdbc-mysql-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/lang/java/jdbc-mysql-1/ -&lt;h2 id=&#34;jdbc-链接-mysql-提示时区不识别&#34;&gt;JDBC 链接 Mysql 提示：时区不识别&lt;/h2&gt;
-&lt;h3 id=&#34;错误日志&#34;&gt;错误日志&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-log&#34; data-lang=&#34;log&#34;&gt;c.m.c.e.InvalidConnectionAttributeException: The server time zone value &amp;#39;PDT&amp;#39; is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specific time zone value if you want to utilize time zone support.
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;原因&#34;&gt;原因&lt;/h3&gt;
-&lt;p&gt;由于 &lt;code&gt;Client&lt;/code&gt; 端连接字符串没有设置 &lt;code&gt;serverTimezone=America/Los_Angeles&lt;/code&gt; 参数, 同时 &lt;code&gt;Mysql&lt;/code&gt; 端也没有设置时区 &lt;code&gt;time_zone&lt;/code&gt;, 此时 &lt;code&gt;Mysql&lt;/code&gt; 采用 &lt;code&gt;OS 操作系统&lt;/code&gt; 的 &lt;code&gt;system_time_zone&lt;/code&gt;, 当这个值无法被 &lt;code&gt;JDBC&lt;/code&gt; SDK 识别时，就会提示如上错误&lt;/p&gt;
-&lt;h3 id=&#34;详细分析&#34;&gt;详细分析&lt;/h3&gt;
-&lt;h4 id=&#34;mysql-时区&#34;&gt;Mysql 时区&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SHOW&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;variables&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;%time_zone%&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;@@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;global&lt;/span&gt;.time_zone,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;@@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;session&lt;/span&gt;.time_zone;&lt;span style=&#34;color:#bbb&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;备注&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;SYSTEM&lt;/code&gt; 代表 时区来自 &lt;code&gt;system_time_zone&lt;/code&gt;, 而 &lt;code&gt;system_time_zone&lt;/code&gt; 来自 &lt;code&gt;OS 操作系统&lt;/code&gt;，启动 &lt;code&gt;Mysql&lt;/code&gt; 时获取&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;@@global.time_zone&lt;/code&gt; 代表 &lt;code&gt;Server&lt;/code&gt; &lt;code&gt;全局&lt;/code&gt; 时区&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;@@session.time_zone&lt;/code&gt; 代表 &lt;code&gt;Client&lt;/code&gt; &lt;code&gt;当前会话&lt;/code&gt; 时区&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如果 &lt;code&gt;Mysql&lt;/code&gt; 没有设置 &lt;code&gt;time_zone&lt;/code&gt; ，显示结果如下:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Variable_name&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;system_time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;PDT&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;SYSTEM&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@global.time_zone&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@session.time_zone&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;SYSTEM&lt;/code&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;SYSTEM&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;如果 &lt;code&gt;Mysql&lt;/code&gt; 设置了 &lt;code&gt;time_zone&lt;/code&gt; ，显示结果如下:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Variable_name&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;system_time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;PDT&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;time_zone&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;America/Los_Angeles&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@global.time_zone&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;@@session.time_zone&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;America/Los_Angeles&lt;/code&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;America/Los_Angeles&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4 id=&#34;jdbc-sdk&#34;&gt;JDBC SDK&lt;/h4&gt;
-&lt;p&gt;SDK &lt;code&gt;mysql-connector-java&lt;/code&gt; 版本 &lt;code&gt;8.0.18&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;源码分析&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;mysql-connector-java-8.0.18.jar!\com\mysql\cj\protocol\a\NativeProtocol.class&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;备注&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当 &lt;code&gt;Mysq&lt;/code&gt;l 返回 &lt;code&gt;time_zone&lt;/code&gt; == &lt;code&gt;SYSTEM&lt;/code&gt; 时，读取 &lt;code&gt;system_time_zone&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果 &lt;code&gt;Client&lt;/code&gt; 连接字符串 &lt;code&gt;没有&lt;/code&gt; 配置 &lt;code&gt;serverTimezone&lt;/code&gt; 或者 值为 &lt;code&gt;Null&lt;/code&gt; 或者 &lt;code&gt;Empty&lt;/code&gt;; 验证 &lt;code&gt;system_time_zone&lt;/code&gt; 是否符合预期&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果 &lt;code&gt;Client&lt;/code&gt; 连接字符串 &lt;code&gt;有&lt;/code&gt; 配置 &lt;code&gt;serverTimezone&lt;/code&gt; ，则验证 &lt;code&gt;serverTimezone&lt;/code&gt; 是否符合预期&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/mysql_jdbc_8.0.18_Protocol_2024-03-12_14-56-57.png&#34; alt=&#34;mysql_jdbc_8.0.18_Protocol alt&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;源码片段&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#00688b;font-weight:bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;configureTimezone&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    String configuredTimeZoneOnServer = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerVariable&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;time_zone&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;SYSTEM&amp;#34;&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;equalsIgnoreCase&lt;/span&gt;(configuredTimeZoneOnServer)) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        configuredTimeZoneOnServer = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerVariable&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;system_time_zone&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    String canonicalTimezone = (String)&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getPropertySet&lt;/span&gt;().&lt;span style=&#34;color:#658b00&#34;&gt;getStringProperty&lt;/span&gt;(PropertyKey.&lt;span style=&#34;color:#658b00&#34;&gt;serverTimezone&lt;/span&gt;).&lt;span style=&#34;color:#658b00&#34;&gt;getValue&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (configuredTimeZoneOnServer != &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; (canonicalTimezone == &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt; || StringUtils.&lt;span style=&#34;color:#658b00&#34;&gt;isEmptyOrWhitespaceOnly&lt;/span&gt;(canonicalTimezone))) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;try&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            canonicalTimezone = TimeUtil.&lt;span style=&#34;color:#658b00&#34;&gt;getCanonicalTimezone&lt;/span&gt;(configuredTimeZoneOnServer, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getExceptionInterceptor&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;catch&lt;/span&gt; (IllegalArgumentException var4) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;throw&lt;/span&gt; (WrongArgumentException)ExceptionFactory.&lt;span style=&#34;color:#658b00&#34;&gt;createException&lt;/span&gt;(WrongArgumentException.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;, var4.&lt;span style=&#34;color:#658b00&#34;&gt;getMessage&lt;/span&gt;(), &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getExceptionInterceptor&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (canonicalTimezone != &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; canonicalTimezone.&lt;span style=&#34;color:#658b00&#34;&gt;length&lt;/span&gt;() &amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;setServerTimeZone&lt;/span&gt;(TimeZone.&lt;span style=&#34;color:#658b00&#34;&gt;getTimeZone&lt;/span&gt;(canonicalTimezone));
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (!canonicalTimezone.&lt;span style=&#34;color:#658b00&#34;&gt;equalsIgnoreCase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;GMT&amp;#34;&lt;/span&gt;) &amp;amp;&amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerTimeZone&lt;/span&gt;().&lt;span style=&#34;color:#658b00&#34;&gt;getID&lt;/span&gt;().&lt;span style=&#34;color:#658b00&#34;&gt;equals&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;GMT&amp;#34;&lt;/span&gt;)) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;throw&lt;/span&gt; (WrongArgumentException)ExceptionFactory.&lt;span style=&#34;color:#658b00&#34;&gt;createException&lt;/span&gt;(WrongArgumentException.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;, Messages.&lt;span style=&#34;color:#658b00&#34;&gt;getString&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Connection.9&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; Object[]{canonicalTimezone}), &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getExceptionInterceptor&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;setDefaultTimeZone&lt;/span&gt;(&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;serverSession&lt;/span&gt;.&lt;span style=&#34;color:#658b00&#34;&gt;getServerTimeZone&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;mysql-connector-java-8.0.18.jar!\com\mysql\cj\util\TimeUtil.class&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;备注&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;time_zone&lt;/code&gt; 为 &lt;code&gt;+08:00&lt;/code&gt; 或者 &lt;code&gt;-07:00&lt;/code&gt;; 直接返回 &lt;code&gt;GMT&lt;/code&gt; + &lt;code&gt;time_zone&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;否则 &lt;code&gt;time_zone&lt;/code&gt; 必须存在于 &lt;code&gt;/com/mysql/cj/util/TimeZoneMapping.properties&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/mysql_jdbc_8.0.18_TimeUtil_2024-03-12_14-56-57.png&#34; alt=&#34;mysql_jdbc_8.0.18_TimeUtil alt&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;源码片段&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;static&lt;/span&gt; String &lt;span style=&#34;color:#008b45&#34;&gt;getCanonicalTimezone&lt;/span&gt;(String timezoneStr, ExceptionInterceptor exceptionInterceptor) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (timezoneStr == &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        timezoneStr = timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;trim&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;length&lt;/span&gt;() &amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;2&lt;/span&gt; &amp;amp;&amp;amp; (timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;charAt&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;) == &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;+&amp;#39;&lt;/span&gt; || timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;charAt&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;) == &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;) &amp;amp;&amp;amp; Character.&lt;span style=&#34;color:#658b00&#34;&gt;isDigit&lt;/span&gt;(timezoneStr.&lt;span style=&#34;color:#658b00&#34;&gt;charAt&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;))) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;GMT&amp;#34;&lt;/span&gt; + timezoneStr;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Class var2 = TimeUtil.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;synchronized&lt;/span&gt;(TimeUtil.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (timeZoneMappings == &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    loadTimeZoneMappings(exceptionInterceptor);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String canonicalTz;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; ((canonicalTz = timeZoneMappings.&lt;span style=&#34;color:#658b00&#34;&gt;getProperty&lt;/span&gt;(timezoneStr)) != &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; canonicalTz;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            } &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;throw&lt;/span&gt; (InvalidConnectionAttributeException)ExceptionFactory.&lt;span style=&#34;color:#658b00&#34;&gt;createException&lt;/span&gt;(InvalidConnectionAttributeException.&lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;, Messages.&lt;span style=&#34;color:#658b00&#34;&gt;getString&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;TimeUtil.UnrecognizedTimezoneId&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; Object[]{timezoneStr}), exceptionInterceptor);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;链接字符串&#34;&gt;链接字符串&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;参考链接字符串参数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;?serverTimezone=America/Los_Angeles&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;useServerPrepStmts=true&amp;amp;autoReconnect=true&amp;amp;failOverReadOnly=false&amp;amp;zeroDateTimeBehavior=convertToNull&amp;amp;useSSL=false&amp;amp;allowPublicKeyRetrieval=true&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/w8y56f/article/details/115445442&#34;&gt;如何设置 mysql 的时区&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/af8d7b3e2074&#34;&gt;JDBC MySQL 时区问题&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://kaimingwan.com/2022/06/20/ns4y3a/&#34;&gt;MySQL driver 读取时间时的时区处理&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/lang/java/jdbc-mysql-1/ - Terry</description>
         </item>
     
     

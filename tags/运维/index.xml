@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>shell on The Sound of Music</title>
-    <link>https://terryren.github.io/tags/shell/</link>
-    <description>Recent content in shell on The Sound of Music</description>
+    <title>运维 on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/%E8%BF%90%E7%BB%B4/</link>
+    <description>Recent content in 运维 on The Sound of Music</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/tags/%E8%BF%90%E7%BB%B4/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>清理 Docker 容器日志脚本</title>
       <link>https://terryren.github.io/posts/lang/shell/docker-logs-clean/</link>
@@ -18,16 +18,6 @@
 这里分享一个实用的 bash 脚本，它不仅可以列出各个容器日志的大小排行，还支持通过指定容器名称或容器的短 ID 来安全地清理日志，而且不需要重启容器。
 脚本功能 查看日志排行：统计各个容器的日志占用大小，从大到小排序输出。 清理指定容器日志：安全清空特定容器日志，解决占用问题的同时不中断容器服务。 清理所有日志：一键清理所有容器日志（执行前有二次确认机制）。 脚本代码 (docker_logs.sh) 创建并保存以下代码为 docker_logs.sh，赋予执行权限后即可使用：
 #!/bin/bash # ==================================================== # Docker 容器日志管理脚本 # 用法: # 1. 查看日志占用排行: ./docker_logs.sh # 2. 清理指定容器日志: ./docker_logs.sh clean &amp;lt;容器名或ID&amp;gt; # 3. 清理所有容器日志: ./docker_logs.sh clean all # ==================================================== COMMAND=$1 TARGET=$2 # ----------------- 功能 1：列出日志排行 ----------------- list_logs() { echo -e &amp;#34;\n================================ Docker 容器日志大小占用排行 ================================&amp;#34; printf &amp;#34;%-12s %-35s %-40s %-20s\n&amp;#34; &amp;#34;日志大小&amp;#34; &amp;#34;容器名称&amp;#34; &amp;#34;容器ID&amp;#34; &amp;#34;镜像名称&amp;#34; echo &amp;#34;-----------------------------------------------------------------------------------------------------------&amp;#34; sudo docker ps -a --format &amp;#39;{{.</description>
-    </item>
-    
-    <item>
-      <title>Windows - 系统 - 垃圾清理 - 脚本</title>
-      <link>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</link>
-      <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</guid>
-      <description>清理系统垃圾
-@echo off echo 正在清除系统垃圾文件，请稍等...... del /f /s /q %systemdrive%\Windows\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\NetworkService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\Windows\ServiceProfiles\LocalService\AppData\Local\Temp\*.* del /f /s /q %systemdrive%\*._mp del /f /s /q %systemdrive%\*.log del /f /s /q %systemdrive%\*.gid del /f /s /q %systemdrive%\*.chk del /f /s /q %systemdrive%\*.old del /f /s /q %systemdrive%\recycled\*.* del /f /s /q %windir%\*.bak del /f /s /q %windir%\prefetch\*.* rd /s /q %windir%\temp &amp;amp; md %windir%\temp del /f /q %userprofile%\cookies\*.</description>
     </item>
     
   </channel>

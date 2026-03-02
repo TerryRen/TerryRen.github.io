@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Wed, 23 Oct 2024 15:06:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>清理 Docker 容器日志脚本</title>
+      <link>https://terryren.github.io/posts/lang/shell/docker-logs-clean/</link>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/docker-logs-clean/</guid>
+      <description>在服务器上运行 Docker 容器一段时间后，容器的日志文件（通常是以 json 格式存储在 /var/lib/docker/containers/ 目录下）可能会变得非常庞大，占用大量磁盘空间，甚至导致系统 I/O 阻塞和性能下降。
+这里分享一个实用的 bash 脚本，它不仅可以列出各个容器日志的大小排行，还支持通过指定容器名称或容器的短 ID 来安全地清理日志，而且不需要重启容器。
+脚本功能 查看日志排行：统计各个容器的日志占用大小，从大到小排序输出。 清理指定容器日志：安全清空特定容器日志，解决占用问题的同时不中断容器服务。 清理所有日志：一键清理所有容器日志（执行前有二次确认机制）。 脚本代码 (docker_logs.sh) 创建并保存以下代码为 docker_logs.sh，赋予执行权限后即可使用：
+#!/bin/bash # ==================================================== # Docker 容器日志管理脚本 # 用法: # 1. 查看日志占用排行: ./docker_logs.sh # 2. 清理指定容器日志: ./docker_logs.sh clean &amp;lt;容器名或ID&amp;gt; # 3. 清理所有容器日志: ./docker_logs.sh clean all # ==================================================== COMMAND=$1 TARGET=$2 # ----------------- 功能 1：列出日志排行 ----------------- list_logs() { echo -e &amp;#34;\n================================ Docker 容器日志大小占用排行 ================================&amp;#34; printf &amp;#34;%-12s %-35s %-40s %-20s\n&amp;#34; &amp;#34;日志大小&amp;#34; &amp;#34;容器名称&amp;#34; &amp;#34;容器ID&amp;#34; &amp;#34;镜像名称&amp;#34; echo &amp;#34;-----------------------------------------------------------------------------------------------------------&amp;#34; sudo docker ps -a --format &amp;#39;{{.</description>
+    </item>
+    
     <item>
       <title>Docker - Login 权限 存储</title>
       <link>https://terryren.github.io/posts/architect/basis/docker-3/</link>

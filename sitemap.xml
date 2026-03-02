@@ -3,16 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://terryren.github.io/categories/</loc>
-    <lastmod>2025-12-01T10:00:00+08:00</lastmod>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/docker/</loc>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/docker/</loc>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/posts/</loc>
-    <lastmod>2025-12-01T10:00:00+08:00</lastmod>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/shell/</loc>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/categories/shell/</loc>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/</loc>
-    <lastmod>2025-12-01T10:00:00+08:00</lastmod>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/</loc>
-    <lastmod>2025-12-01T10:00:00+08:00</lastmod>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/posts/lang/shell/docker-logs-clean/</loc>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://terryren.github.io/tags/%E8%BF%90%E7%BB%B4/</loc>
+    <lastmod>2026-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</loc>
     <lastmod>2025-12-01T10:00:00+08:00</lastmod>
@@ -106,12 +124,6 @@
   </url><url>
     <loc>https://terryren.github.io/posts/architect/misc/gray-release-environment/</loc>
     <lastmod>2025-01-27T10:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/tags/docker/</loc>
-    <lastmod>2024-10-23T15:06:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/categories/docker/</loc>
-    <lastmod>2024-10-23T15:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/posts/architect/basis/docker-3/</loc>
     <lastmod>2024-10-23T15:06:00+08:00</lastmod>
@@ -260,9 +272,6 @@
     <loc>https://terryren.github.io/posts/lang/shell/git-proxy-1/</loc>
     <lastmod>2024-03-02T15:56:00+08:00</lastmod>
   </url><url>
-    <loc>https://terryren.github.io/categories/shell/</loc>
-    <lastmod>2024-03-02T15:56:00+08:00</lastmod>
-  </url><url>
     <loc>https://terryren.github.io/tags/node/</loc>
     <lastmod>2024-03-01T16:06:00+08:00</lastmod>
   </url><url>
@@ -294,9 +303,6 @@
     <lastmod>2024-02-03T16:06:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/bat/</loc>
-    <lastmod>2024-02-03T15:56:00+08:00</lastmod>
-  </url><url>
-    <loc>https://terryren.github.io/tags/shell/</loc>
     <lastmod>2024-02-03T15:56:00+08:00</lastmod>
   </url><url>
     <loc>https://terryren.github.io/tags/windows/</loc>

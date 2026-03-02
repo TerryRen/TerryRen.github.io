@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html><head>
+<title>清理 Docker 容器日志脚本</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="G-ZE2B25M3ST">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="一个实用的 bash 脚本，用于查看 Docker 容器日志大小排行，并支持按容器名或短 ID 清理日志文件。">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="清理 Docker 容器日志脚本" />
+<meta property="og:description" content="一个实用的 bash 脚本，用于查看 Docker 容器日志大小排行，并支持按容器名或短 ID 清理日志文件。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://terryren.github.io/posts/lang/shell/docker-logs-clean/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2026-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2026-03-02T00:00:00+00:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="清理 Docker 容器日志脚本"/>
+<meta name="twitter:description" content="一个实用的 bash 脚本，用于查看 Docker 容器日志大小排行，并支持按容器名或短 ID 清理日志文件。"/>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE2B25M3ST"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZE2B25M3ST', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/vendor/js/md5.min.js"></script><script>
+  var gitalk = new Gitalk({
+  clientID: '50258117d196aaac7365',
+  clientSecret: '0275b94a9ffbee8946d8bd5a18dac9232057164a',
+  repo: 'TerryRen.github.io',
+  owner: 'TerryRen',
+  admin: ['TerryRen'],
+  id: md5(location.pathname),
+  distractionFreeMode: 'false'
+  });
+  window.onload = function () {
+        gitalk.render('gitalk-container')
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script>console.log("Hello from 'layouts/partials/extended_head.html'")</script>
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    博客
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    订阅
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%84%9a%e6%9c%ac%e5%8a%9f%e8%83%bd" class="nav-脚本功能">
+									脚本功能
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%84%9a%e6%9c%ac%e4%bb%a3%e7%a0%81-docker_logssh" class="nav-脚本代码-docker_logssh">
+									脚本代码 (docker_logs.sh)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="nav-使用方法">
+									使用方法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#1-%e6%9f%a5%e7%9c%8b%e6%97%a5%e5%bf%97%e5%8d%a0%e7%94%a8%e6%8e%92%e8%a1%8c%e9%bb%98%e8%ae%a4%e8%a1%8c%e4%b8%ba" class="nav-1-查看日志占用排行默认行为">
+									1. 查看日志占用排行（默认行为）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2-%e6%b8%85%e7%90%86%e6%8c%87%e5%ae%9a%e5%ae%b9%e5%99%a8%e7%9a%84%e6%97%a5%e5%bf%97" class="nav-2-清理指定容器的日志">
+									2. 清理指定容器的日志
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#3-%e4%b8%80%e9%94%ae%e6%b8%85%e7%90%86%e6%89%80%e6%9c%89%e5%ae%b9%e5%99%a8%e6%97%a5%e5%bf%97" class="nav-3-一键清理所有容器日志">
+									3. 一键清理所有容器日志
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%95%bf%e6%95%88%e8%a7%a3%e5%86%b3%e5%bb%ba%e8%ae%ae" class="nav-长效解决建议">
+									长效解决建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://terryren.github.io/">
+            The Sound of Music
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://terryren.github.io/">
+        <div class="single-column-header-title">The Sound of Music</div>
+        
+        <div class="single-column-header-subtitle">知行合一</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    清理 Docker 容器日志脚本
+                    
+                    <div class="post-subtitle">
+                        一个实用的 bash 脚本，用于查看 Docker 容器日志大小排行，并支持按容器名或短 ID 清理日志文件。
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2026-03-02 00:00
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[Shell Docker]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/docker">docker</a>
+                                &nbsp;
+                            
+                                <a href="/tags/shell">shell</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E8%BF%90%E7%BB%B4">运维</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>在服务器上运行 Docker 容器一段时间后，容器的日志文件（通常是以 json 格式存储在 <code>/var/lib/docker/containers/</code> 目录下）可能会变得非常庞大，占用大量磁盘空间，甚至导致系统 I/O 阻塞和性能下降。</p>
+<p>这里分享一个实用的 <code>bash</code> 脚本，它不仅可以列出各个容器日志的大小排行，还支持通过指定容器名称或容器的短 ID 来安全地清理日志，而且<strong>不需要重启容器</strong>。</p>
+<h2 id="脚本功能">脚本功能</h2>
+<ol>
+<li><strong>查看日志排行</strong>：统计各个容器的日志占用大小，从大到小排序输出。</li>
+<li><strong>清理指定容器日志</strong>：安全清空特定容器日志，解决占用问题的同时不中断容器服务。</li>
+<li><strong>清理所有日志</strong>：一键清理所有容器日志（执行前有二次确认机制）。</li>
+</ol>
+<h2 id="脚本代码-docker_logssh">脚本代码 (<code>docker_logs.sh</code>)</h2>
+<p>创建并保存以下代码为 <code>docker_logs.sh</code>，赋予执行权限后即可使用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#1e889b">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#1e889b"></span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ====================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># Docker 容器日志管理脚本</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 用法:</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">#   1. 查看日志占用排行: ./docker_logs.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">#   2. 清理指定容器日志: ./docker_logs.sh clean &lt;容器名或ID&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">#   3. 清理所有容器日志: ./docker_logs.sh clean all</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ====================================================</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">COMMAND</span>=<span style="color:#00688b">$1</span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">TARGET</span>=<span style="color:#00688b">$2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ----------------- 功能 1：列出日志排行 -----------------</span>
+</span></span><span style="display:flex;"><span>list_logs() {
+</span></span><span style="display:flex;"><span>    <span style="color:#658b00">echo</span> -e <span style="color:#cd5555">&#34;\n================================ Docker 容器日志大小占用排行 ================================&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#658b00">printf</span> <span style="color:#cd5555">&#34;%-12s %-35s %-40s %-20s\n&#34;</span> <span style="color:#cd5555">&#34;日志大小&#34;</span> <span style="color:#cd5555">&#34;容器名称&#34;</span> <span style="color:#cd5555">&#34;容器ID&#34;</span> <span style="color:#cd5555">&#34;镜像名称&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;-----------------------------------------------------------------------------------------------------------&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    sudo docker ps -a --format <span style="color:#cd5555">&#39;{{.ID}}&#39;</span> | <span style="color:#8b008b;font-weight:bold">while</span> <span style="color:#658b00">read</span> -r id; <span style="color:#8b008b;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">name</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker inspect --format <span style="color:#cd5555">&#39;{{.Name}}&#39;</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$id</span><span style="color:#cd5555">&#34;</span> | sed <span style="color:#cd5555">&#39;s/^\///&#39;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">image</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker inspect --format <span style="color:#cd5555">&#39;{{.Config.Image}}&#39;</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$id</span><span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">logpath</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker inspect --format <span style="color:#cd5555">&#39;{{.LogPath}}&#39;</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$id</span><span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> [ -f <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$logpath</span><span style="color:#cd5555">&#34;</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">size</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo du -h <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$logpath</span><span style="color:#cd5555">&#34;</span> | cut -f1<span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">size_kb</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo du -k <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$logpath</span><span style="color:#cd5555">&#34;</span> | cut -f1<span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#228b22"># id 只取前 12 位短 ID</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">short_id</span>=<span style="color:#cd5555">${</span><span style="color:#00688b">id</span>:<span style="color:#00688b">0</span>:<span style="color:#00688b">12</span><span style="color:#cd5555">}</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;</span><span style="color:#cd5555">${</span><span style="color:#00688b">size_kb</span><span style="color:#cd5555">}</span><span style="color:#cd5555">|</span><span style="color:#cd5555">${</span><span style="color:#00688b">size</span><span style="color:#cd5555">}</span><span style="color:#cd5555">|</span><span style="color:#cd5555">${</span><span style="color:#00688b">name</span><span style="color:#cd5555">}</span><span style="color:#cd5555">|</span><span style="color:#cd5555">${</span><span style="color:#00688b">short_id</span><span style="color:#cd5555">}</span><span style="color:#cd5555">|</span><span style="color:#cd5555">${</span><span style="color:#00688b">image</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">done</span> | sort -nr | awk -F<span style="color:#cd5555">&#39;|&#39;</span> <span style="color:#cd5555">&#39;{printf &#34;%-10s %-35s %-40s %-20s\n&#34;, $2, $3, $4, $5}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;===========================================================================================================&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;提示: 可以使用 &#39;./docker_logs.sh clean &lt;容器名或ID&gt;&#39; 来清理特定容器的日志。&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ----------------- 功能 2：清理容器日志 -----------------</span>
+</span></span><span style="display:flex;"><span>clean_logs() {
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">if</span> [ -z <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$TARGET</span><span style="color:#cd5555">&#34;</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;错误: 请提供要清理的容器名称、ID，或者使用 &#39;all&#39; 清理所有容器。&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;用法: ./docker_logs.sh clean &lt;容器名或ID&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;示例: ./docker_logs.sh clean apisix&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">exit</span> <span style="color:#b452cd">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#228b22"># 确定要处理的容器列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">if</span> [ <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$TARGET</span><span style="color:#cd5555">&#34;</span> = <span style="color:#cd5555">&#34;all&#34;</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;警告: 准备清理所有容器的日志！&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">read</span> -p <span style="color:#cd5555">&#34;确定要继续吗？(y/N): &#34;</span> confirm
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> [[ <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$confirm</span><span style="color:#cd5555">&#34;</span> != [yY] &amp;&amp; <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$confirm</span><span style="color:#cd5555">&#34;</span> != [yY][eE][sS] ]]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;已取消。&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">exit</span> <span style="color:#b452cd">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#228b22"># 获取所有容器 ID</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">containers</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker ps -a -q<span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#228b22"># 验证目标容器是否存在 (可以是名字或 ID)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">container_id</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker ps -a -q -f <span style="color:#cd5555">&#34;name=^/</span><span style="color:#cd5555">${</span><span style="color:#00688b">TARGET</span><span style="color:#cd5555">}</span>$<span style="color:#cd5555">&#34;</span> -f <span style="color:#cd5555">&#34;id=</span><span style="color:#cd5555">${</span><span style="color:#00688b">TARGET</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> [ -z <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$container_id</span><span style="color:#cd5555">&#34;</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#228b22"># 如果按精确匹配没找到，尝试模糊匹配 (比如输入了短ID)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">container_id</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker ps -a -q -f <span style="color:#cd5555">&#34;id=</span><span style="color:#cd5555">${</span><span style="color:#00688b">TARGET</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">if</span> [ -z <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$container_id</span><span style="color:#cd5555">&#34;</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#228b22"># 最后尝试模糊匹配名字</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00688b">container_id</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker ps -a -q -f <span style="color:#cd5555">&#34;name=</span><span style="color:#cd5555">${</span><span style="color:#00688b">TARGET</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> [ -z <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$container_id</span><span style="color:#cd5555">&#34;</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;错误: 找不到容器 &#39;</span><span style="color:#cd5555">${</span><span style="color:#00688b">TARGET</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#39;。请使用 &#39;./docker_logs.sh&#39; 查看可用的容器列表。&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">exit</span> <span style="color:#b452cd">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">containers</span>=<span style="color:#cd5555">&#34;</span><span style="color:#00688b">$container_id</span><span style="color:#cd5555">&#34;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#228b22"># 如果模糊匹配找到了多个，提示并退出以防止误删</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">count</span>=<span style="color:#8b008b;font-weight:bold">$(</span><span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$containers</span><span style="color:#cd5555">&#34;</span> | wc -l<span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> [ <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$count</span><span style="color:#cd5555">&#34;</span> -gt <span style="color:#b452cd">1</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;错误: &#39;</span><span style="color:#cd5555">${</span><span style="color:#00688b">TARGET</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#39; 匹配到了多个容器。请使用更精确的容器名称或 ID。&#34;</span>
+</span></span><span style="display:flex;"><span>            sudo docker ps -a --format <span style="color:#cd5555">&#34;table {{.ID}}\t{{.Names}}&#34;</span> | grep <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$TARGET</span><span style="color:#cd5555">&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">exit</span> <span style="color:#b452cd">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#228b22"># 执行清理逻辑</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">for</span> id in <span style="color:#00688b">$containers</span>; <span style="color:#8b008b;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">name</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker inspect --format <span style="color:#cd5555">&#39;{{.Name}}&#39;</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$id</span><span style="color:#cd5555">&#34;</span> | sed <span style="color:#cd5555">&#39;s/^\///&#39;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">logpath</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo docker inspect --format <span style="color:#cd5555">&#39;{{.LogPath}}&#39;</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$id</span><span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> [ -f <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$logpath</span><span style="color:#cd5555">&#34;</span> ]; <span style="color:#8b008b;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">old_size</span>=<span style="color:#8b008b;font-weight:bold">$(</span>sudo du -h <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$logpath</span><span style="color:#cd5555">&#34;</span> | cut -f1<span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#228b22"># 使用 truncate 安全清空日志，不影响运行中的容器</span>
+</span></span><span style="display:flex;"><span>            sudo truncate -s <span style="color:#b452cd">0</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$logpath</span><span style="color:#cd5555">&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;✅ 已清理容器 [</span><span style="color:#cd5555">${</span><span style="color:#00688b">name</span><span style="color:#cd5555">}</span><span style="color:#cd5555">] 的日志 (释放了 </span><span style="color:#cd5555">${</span><span style="color:#00688b">old_size</span><span style="color:#cd5555">}</span><span style="color:#cd5555"> 空间)。&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;⚠️  容器 [</span><span style="color:#cd5555">${</span><span style="color:#00688b">name</span><span style="color:#cd5555">}</span><span style="color:#cd5555">] 的日志文件不存在或没有权限访问。&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">done</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ----------------- 主入口逻辑 -----------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">case</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$COMMAND</span><span style="color:#cd5555">&#34;</span> in
+</span></span><span style="display:flex;"><span>    clean)
+</span></span><span style="display:flex;"><span>        clean_logs
+</span></span><span style="display:flex;"><span>        ;;
+</span></span><span style="display:flex;"><span>    help|-h|--help)
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;用法:&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;  </span><span style="color:#00688b">$0</span><span style="color:#cd5555">                  - 列出所有容器日志大小排行&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;  </span><span style="color:#00688b">$0</span><span style="color:#cd5555"> clean &lt;name|id&gt;  - 清理指定容器名或 ID 的日志&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;  </span><span style="color:#00688b">$0</span><span style="color:#cd5555"> clean all        - 清理所有容器的日志&#34;</span>
+</span></span><span style="display:flex;"><span>        ;;
+</span></span><span style="display:flex;"><span>    <span style="color:#cd5555">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>        list_logs
+</span></span><span style="display:flex;"><span>        ;;
+</span></span><span style="display:flex;"><span>    *)
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;未知命令: </span><span style="color:#00688b">$COMMAND</span><span style="color:#cd5555">&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;请使用 &#39;</span><span style="color:#00688b">$0</span><span style="color:#cd5555"> help&#39; 查看帮助。&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#658b00">exit</span> <span style="color:#b452cd">1</span>
+</span></span><span style="display:flex;"><span>        ;;
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">esac</span>
+</span></span></code></pre></div><h2 id="使用方法">使用方法</h2>
+<p>首先，给脚本添加执行权限：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x docker_logs.sh
+</span></span></code></pre></div><h3 id="1-查看日志占用排行默认行为">1. 查看日志占用排行（默认行为）</h3>
+<p>直接运行脚本，会输出按日志大小排序的列表：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./docker_logs.sh
+</span></span></code></pre></div><h3 id="2-清理指定容器的日志">2. 清理指定容器的日志</h3>
+<p>支持通过<strong>容器名称</strong>精确匹配或模糊匹配（如 <code>nginx</code>, <code>apisix</code>）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./docker_logs.sh clean apisix
+</span></span></code></pre></div><p>也支持通过 <strong>容器短 ID</strong> 清理（如 <code>a1b2c3</code>）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./docker_logs.sh clean a1b2c3
+</span></span></code></pre></div><blockquote>
+<p><strong>注意：</strong> 使用 <code>truncate</code> 命令清理日志是非常安全的，因为它会在不关闭文件描述符的情况下将文件大小清零。这意味着不需要停止或重启容器，容器仍然能向其中写入新日志，不会引起程序异常或卡死。</p>
+</blockquote>
+<h3 id="3-一键清理所有容器日志">3. 一键清理所有容器日志</h3>
+<p>如果想一键释放所有空间：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./docker_logs.sh clean all
+</span></span></code></pre></div><blockquote>
+<p>脚本具有防呆设计，在执行 <code>all</code> 命令时会提示 <code>(y/N)</code> 确认，避免误删！</p>
+</blockquote>
+<h2 id="长效解决建议">长效解决建议</h2>
+<p>虽然这个脚本可以非常方便地处理手头的问题，但为了防止日后再次发生“日志撑爆硬盘”的情况，强烈建议在运行容器或 <code>docker-compose.yml</code> 中设置日志轮转配置。</p>
+<p>在 <code>docker-compose.yml</code> 中增加以下 <code>logging</code> 配置段：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">services</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">your_service</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>your_image<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#228b22"># 限制单个文件最大50M，最多保留3个旧文件</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">logging</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">driver</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;json-file&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">options</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#8b008b;font-weight:bold">max-size</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;50m&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#8b008b;font-weight:bold">max-file</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;3&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>配置后重新启动容器（<code>docker-compose up -d</code>），Docker 将会自动帮您管理日志轮转。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2026-03-02</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/misc/sp500-dca-vs-timing/">
+			上回<br>普通人的财务自由之路：关于标普500定投、做T与抄底的终极答案
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+<div id="gitalk-container"></div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://terryren.github.io/">
+    
+        <div class="nav-title">
+            The Sound of Music
+        </div>
+        
+        <div class="nav-subtitle">
+            知行合一
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                博客
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                订阅
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%84%9a%e6%9c%ac%e5%8a%9f%e8%83%bd" class="nav-脚本功能">
+									脚本功能
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%84%9a%e6%9c%ac%e4%bb%a3%e7%a0%81-docker_logssh" class="nav-脚本代码-docker_logssh">
+									脚本代码 (docker_logs.sh)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="nav-使用方法">
+									使用方法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#1-%e6%9f%a5%e7%9c%8b%e6%97%a5%e5%bf%97%e5%8d%a0%e7%94%a8%e6%8e%92%e8%a1%8c%e9%bb%98%e8%ae%a4%e8%a1%8c%e4%b8%ba" class="nav-1-查看日志占用排行默认行为">
+									1. 查看日志占用排行（默认行为）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2-%e6%b8%85%e7%90%86%e6%8c%87%e5%ae%9a%e5%ae%b9%e5%99%a8%e7%9a%84%e6%97%a5%e5%bf%97" class="nav-2-清理指定容器的日志">
+									2. 清理指定容器的日志
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#3-%e4%b8%80%e9%94%ae%e6%b8%85%e7%90%86%e6%89%80%e6%9c%89%e5%ae%b9%e5%99%a8%e6%97%a5%e5%bf%97" class="nav-3-一键清理所有容器日志">
+									3. 一键清理所有容器日志
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%95%bf%e6%95%88%e8%a7%a3%e5%86%b3%e5%bb%ba%e8%ae%ae" class="nav-长效解决建议">
+									长效解决建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>
