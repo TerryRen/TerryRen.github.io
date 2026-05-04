@@ -1,0 +1,2517 @@
+<!DOCTYPE html>
+<html><head>
+<title>旧笔记本改造 AI 自动化服务器：HP ZHAN 99 安装 Ubuntu Desktop 24.04 LTS</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="G-ZE2B25M3ST">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="以 HP ZHAN 99 移动工作站为例，记录从 Windows 10 单系统迁移到 Ubuntu Desktop 24.04 LTS，并搭建 Docker、SSH、Tailscale、n8n、AI Agent 基础环境的完整过程。">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="旧笔记本改造 AI 自动化服务器：HP ZHAN 99 安装 Ubuntu Desktop 24.04 LTS" />
+<meta property="og:description" content="以 HP ZHAN 99 移动工作站为例，记录从 Windows 10 单系统迁移到 Ubuntu Desktop 24.04 LTS，并搭建 Docker、SSH、Tailscale、n8n、AI Agent 基础环境的完整过程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://terryren.github.io/posts/misc/ubuntu-desktop-ai-server-hp-zhan99/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2026-04-27T17:30:00+08:00" />
+<meta property="article:modified_time" content="2026-04-27T17:30:00+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="旧笔记本改造 AI 自动化服务器：HP ZHAN 99 安装 Ubuntu Desktop 24.04 LTS"/>
+<meta name="twitter:description" content="以 HP ZHAN 99 移动工作站为例，记录从 Windows 10 单系统迁移到 Ubuntu Desktop 24.04 LTS，并搭建 Docker、SSH、Tailscale、n8n、AI Agent 基础环境的完整过程。"/>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE2B25M3ST"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZE2B25M3ST', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>console.log("Hello from 'layouts/partials/extended_head.html'")</script>
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    博客
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    订阅
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#1---%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%89%e6%8b%a9-ubuntu-desktop-2404-lts" class="nav-1---为什么选择-ubuntu-desktop-2404-lts">
+									1 - 为什么选择 Ubuntu Desktop 24.04 LTS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2---%e5%ae%89%e8%a3%85%e5%89%8d%e5%87%86%e5%a4%87" class="nav-2---安装前准备">
+									2 - 安装前准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#21-%e5%a4%87%e4%bb%bd%e6%95%b0%e6%8d%ae" class="nav-21-备份数据">
+									2.1 备份数据
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22-%e5%87%86%e5%a4%87-u-%e7%9b%98" class="nav-22-准备-u-盘">
+									2.2 准备 U 盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#23-%e4%b8%8b%e8%bd%bd-ubuntu-desktop-2404-lts-%e9%95%9c%e5%83%8f" class="nav-23-下载-ubuntu-desktop-2404-lts-镜像">
+									2.3 下载 Ubuntu Desktop 24.04 LTS 镜像
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#3---%e5%88%b6%e4%bd%9c-ubuntu-%e7%b3%bb%e7%bb%9f%e5%ae%89%e8%a3%85-u-%e7%9b%98" class="nav-3---制作-ubuntu-系统安装-u-盘">
+									3 - 制作 Ubuntu 系统安装 U 盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#31-%e4%b8%8b%e8%bd%bd-rufus" class="nav-31-下载-rufus">
+									3.1 下载 Rufus
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#32-%e4%bd%bf%e7%94%a8-rufus-%e5%86%99%e5%85%a5%e9%95%9c%e5%83%8f" class="nav-32-使用-rufus-写入镜像">
+									3.2 使用 Rufus 写入镜像
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#4---%e8%b0%83%e6%95%b4-bios-%e5%90%af%e5%8a%a8%e8%ae%be%e7%bd%ae" class="nav-4---调整-bios-启动设置">
+									4 - 调整 BIOS 启动设置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#41-%e5%bc%80%e5%90%af%e8%99%9a%e6%8b%9f%e5%8c%96" class="nav-41-开启虚拟化">
+									4.1 开启虚拟化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42-secure-boot" class="nav-42-secure-boot">
+									4.2 Secure Boot
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#43-%e5%90%af%e5%8a%a8%e6%a8%a1%e5%bc%8f" class="nav-43-启动模式">
+									4.3 启动模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#5---%e4%bb%8e-u-%e7%9b%98%e5%90%af%e5%8a%a8-ubuntu-%e5%ae%89%e8%a3%85%e7%a8%8b%e5%ba%8f" class="nav-5---从-u-盘启动-ubuntu-安装程序">
+									5 - 从 U 盘启动 Ubuntu 安装程序
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#6---%e5%ae%89%e8%a3%85-ubuntu-desktop-2404-lts" class="nav-6---安装-ubuntu-desktop-2404-lts">
+									6 - 安装 Ubuntu Desktop 24.04 LTS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#61-%e9%80%89%e6%8b%a9%e8%af%ad%e8%a8%80" class="nav-61-选择语言">
+									6.1 选择语言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#62-%e9%94%ae%e7%9b%98%e5%b8%83%e5%b1%80" class="nav-62-键盘布局">
+									6.2 键盘布局
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#63-%e7%bd%91%e7%bb%9c%e8%bf%9e%e6%8e%a5" class="nav-63-网络连接">
+									6.3 网络连接
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#64-%e5%ae%89%e8%a3%85%e7%b1%bb%e5%9e%8b" class="nav-64-安装类型">
+									6.4 安装类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#65-%e6%98%af%e5%90%a6%e6%89%8b%e5%8a%a8%e5%88%86%e5%8c%ba" class="nav-65-是否手动分区">
+									6.5 是否手动分区
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#66-%e5%88%9b%e5%bb%ba%e7%94%a8%e6%88%b7" class="nav-66-创建用户">
+									6.6 创建用户
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#67-%e7%ad%89%e5%be%85%e5%ae%89%e8%a3%85%e5%ae%8c%e6%88%90" class="nav-67-等待安装完成">
+									6.7 等待安装完成
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#7---%e5%ae%89%e8%a3%85%e5%90%8e%e7%9a%84%e5%9f%ba%e7%a1%80%e8%ae%be%e7%bd%ae" class="nav-7---安装后的基础设置">
+									7 - 安装后的基础设置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#71-%e5%88%87%e6%8d%a2-ubuntu-%e8%bd%af%e4%bb%b6%e6%ba%90%e5%88%b0%e6%b8%85%e5%8d%8e%e9%95%9c%e5%83%8f" class="nav-71-切换-ubuntu-软件源到清华镜像">
+									7.1 切换 Ubuntu 软件源到清华镜像
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#72-%e6%9b%b4%e6%96%b0%e7%b3%bb%e7%bb%9f" class="nav-72-更新系统">
+									7.2 更新系统
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#73-%e5%ae%89%e8%a3%85%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7" class="nav-73-安装常用工具">
+									7.3 安装常用工具
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#74-%e5%ae%89%e8%a3%85-ssh-%e6%9c%8d%e5%8a%a1" class="nav-74-安装-ssh-服务">
+									7.4 安装 SSH 服务
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#8---%e5%ae%89%e8%a3%85-nvidia-%e9%a9%b1%e5%8a%a8" class="nav-8---安装-nvidia-驱动">
+									8 - 安装 NVIDIA 驱动
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#9---%e6%b8%85%e7%a9%ba%e5%b9%b6%e6%8c%82%e8%bd%bd-1tb-%e6%95%b0%e6%8d%ae%e7%9b%98" class="nav-9---清空并挂载-1tb-数据盘">
+									9 - 清空并挂载 1TB 数据盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#10---%e5%ae%89%e8%a3%85-docker" class="nav-10---安装-docker">
+									10 - 安装 Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#11---%e5%ae%89%e8%a3%85-nodejspythonuv" class="nav-11---安装-nodejspythonuv">
+									11 - 安装 Node.js、Python、uv
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#111-%e5%ae%89%e8%a3%85-nodejs-lts" class="nav-111-安装-nodejs-lts">
+									11.1 安装 Node.js LTS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#112-%e5%ae%89%e8%a3%85-python-%e5%92%8c-uv" class="nav-112-安装-python-和-uv">
+									11.2 安装 Python 和 uv
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#12---%e5%ae%89%e8%a3%85-tailscale" class="nav-12---安装-tailscale">
+									12 - 安装 Tailscale
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#13---%e5%ae%89%e8%a3%85-n8n-%e8%87%aa%e5%8a%a8%e5%8c%96%e5%b9%b3%e5%8f%b0" class="nav-13---安装-n8n-自动化平台">
+									13 - 安装 n8n 自动化平台
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#14---ai-agent-%e7%9a%84%e5%ae%9a%e4%bd%8d%e5%bb%ba%e8%ae%ae" class="nav-14---ai-agent-的定位建议">
+									14 - AI Agent 的定位建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#15---%e4%bb%a3%e7%90%86%e7%a8%8b%e5%ba%8f%e8%bf%81%e7%a7%bb" class="nav-15---代理程序迁移">
+									15 - 代理程序迁移
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#16---%e6%8e%a8%e8%8d%90%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" class="nav-16---推荐目录结构">
+									16 - 推荐目录结构
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#17---%e5%b8%b8%e7%94%a8%e7%bb%b4%e6%8a%a4%e5%91%bd%e4%bb%a4" class="nav-17---常用维护命令">
+									17 - 常用维护命令
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#18---%e6%9c%80%e7%bb%88%e6%8e%a8%e8%8d%90%e8%bd%af%e4%bb%b6%e6%b8%85%e5%8d%95" class="nav-18---最终推荐软件清单">
+									18 - 最终推荐软件清单
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#19---%e6%80%bb%e7%bb%93" class="nav-19---总结">
+									19 - 总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://terryren.github.io/">
+            The Sound of Music
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://terryren.github.io/">
+        <div class="single-column-header-title">The Sound of Music</div>
+        
+        <div class="single-column-header-subtitle">知行合一</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    旧笔记本改造 AI 自动化服务器：HP ZHAN 99 安装 Ubuntu Desktop 24.04 LTS
+                    
+                    <div class="post-subtitle">
+                        以 HP ZHAN 99 移动工作站为例，记录从 Windows 10 单系统迁移到 Ubuntu Desktop 24.04 LTS，并搭建 Docker、SSH、Tailscale、n8n、AI Agent 基础环境的完整过程。
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2026-04-27 17:30
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/ubuntu">Ubuntu</a>
+                                &nbsp;
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/ai">AI</a>
+                                &nbsp;
+                            
+                                <a href="/tags/docker">Docker</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96">自动化</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>手里有一台 2018 年左右的 <strong>HP ZHAN 99 移动工作站</strong>，配置如下：</p>
+<ul>
+<li>CPU：Intel i5-8300H，4 核 8 线程</li>
+<li>内存：已升级到 32GB</li>
+<li>显卡：Intel UHD 630 + NVIDIA Quadro P600</li>
+<li>硬盘：256GB SSD + 1TB 数据盘</li>
+<li>原系统：Windows 10</li>
+<li>当前用途：代理程序、虚拟机、轻量服务</li>
+</ul>
+<p>这台机器已经不算新，但作为一台常开的个人服务器仍然很合适。尤其是 32GB 内存，对于 Docker、n8n、Playwright、AI Agent、自动化脚本来说已经比较宽裕。</p>
+<p>最开始考虑继续在 Windows 10 上跑虚拟机、WSL 或各种 Agent，但实际体验并不理想。老笔记本跑虚拟机有额外开销，而很多 AI Agent、自动化工具、Docker 服务本身更偏向 Linux 环境。因此最终更推荐的方案是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>单系统安装 Ubuntu Desktop 24.04 LTS
+</span></span><span style="display:flex;"><span>+ 256GB SSD 做系统盘
+</span></span><span style="display:flex;"><span>+ 1TB 数据盘挂载到 /data
+</span></span><span style="display:flex;"><span>+ Docker / SSH / Tailscale / n8n / AI Agent
+</span></span></code></pre></div><p>这篇文章记录完整安装和初始化过程。</p>
+<h2 id="1---为什么选择-ubuntu-desktop-2404-lts">1 - 为什么选择 Ubuntu Desktop 24.04 LTS</h2>
+<p>如果只是纯服务器，Ubuntu Server 会更轻。但这台机器是笔记本，有屏幕、键盘、独立显卡，后续可能需要跑浏览器自动化、Playwright、远程桌面、图形化排障，所以这里选择 <strong>Ubuntu Desktop 24.04 LTS</strong>。</p>
+<p>选择 Desktop 版本的主要原因：</p>
+<ul>
+<li>图形界面方便排障</li>
+<li>浏览器、代理、远程桌面配置更直观</li>
+<li>对 NVIDIA 驱动支持较好</li>
+<li>软件资料多，遇到问题容易搜索</li>
+<li>仍然可以通过 SSH 当服务器使用</li>
+<li>后续可以安装 Docker、n8n、AI Agent、开发环境</li>
+</ul>
+<p>Ubuntu 24.04 LTS 是长期支持版本，适合长期使用，不需要频繁升级系统。</p>
+<h2 id="2---安装前准备">2 - 安装前准备</h2>
+<h3 id="21-备份数据">2.1 备份数据</h3>
+<p>单系统安装 Ubuntu 的含义是：<strong>清掉原来的 Windows，只保留 Ubuntu</strong>。</p>
+<p>安装前一定要备份：</p>
+<ul>
+<li>桌面文件</li>
+<li>下载目录</li>
+<li>文档目录</li>
+<li>浏览器书签</li>
+<li>代理软件配置</li>
+<li>SSH 密钥</li>
+<li>项目代码</li>
+<li>D 盘重要资料</li>
+<li>软件授权信息</li>
+</ul>
+<p>如果 1TB 数据盘里有重要文件，但不确定安装时是否会误删，建议先全部备份到移动硬盘、NAS 或另一台电脑。</p>
+<p>最安全的做法是：<strong>安装系统前，把重要数据全部拷贝到外置硬盘</strong>。</p>
+<h3 id="22-准备-u-盘">2.2 准备 U 盘</h3>
+<p>准备一个容量至少 8GB 的 U 盘，建议 16GB 或更大。</p>
+<p>注意：制作系统安装盘会格式化 U 盘，所以 U 盘里的原有文件也要提前备份。</p>
+<h3 id="23-下载-ubuntu-desktop-2404-lts-镜像">2.3 下载 Ubuntu Desktop 24.04 LTS 镜像</h3>
+<p>如果 Ubuntu 官网访问不稳定，可以直接使用清华大学开源软件镜像站：</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04/</a></p>
+<p>下载 <code>Ubuntu 24.04 LTS Desktop</code> 的 ISO 文件。</p>
+<p>下载后文件名通常类似：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ubuntu-24.04.x-desktop-amd64.iso
+</span></span></code></pre></div><p>其中 <code>amd64</code> 表示 64 位 PC 版本，并不是 AMD CPU 专用，Intel CPU 也使用这个版本。</p>
+<p>下载完成后，建议顺手下载同目录下的 <code>SHA256SUMS</code>，核对 ISO 文件校验值，避免镜像下载过程中损坏。</p>
+<h2 id="3---制作-ubuntu-系统安装-u-盘">3 - 制作 Ubuntu 系统安装 U 盘</h2>
+<p>如果现在还在 Windows 10 上，可以使用 Rufus 制作启动盘。</p>
+<h3 id="31-下载-rufus">3.1 下载 Rufus</h3>
+<p>访问：</p>
+<p><a href="https://rufus.ie">https://rufus.ie</a></p>
+<p>下载 Rufus 便携版即可，不需要安装。</p>
+<h3 id="32-使用-rufus-写入镜像">3.2 使用 Rufus 写入镜像</h3>
+<p>插入 U 盘，打开 Rufus。</p>
+<p>推荐设置如下：</p>
+<ul>
+<li>设备：选择你的 U 盘</li>
+<li>引导类型：选择刚下载的 Ubuntu ISO</li>
+<li>分区类型：GPT</li>
+<li>目标系统：UEFI</li>
+<li>文件系统：FAT32</li>
+<li>卷标：保持默认即可</li>
+</ul>
+<p>然后点击“开始”。</p>
+<p>如果 Rufus 提示使用 ISO 模式或 DD 模式，通常选择：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>以 ISO 镜像模式写入
+</span></span></code></pre></div><p>等待写入完成即可。</p>
+<h2 id="4---调整-bios-启动设置">4 - 调整 BIOS 启动设置</h2>
+<p>HP 笔记本进入 BIOS 或启动菜单的方法通常是：</p>
+<ul>
+<li>开机后连续按 <code>Esc</code></li>
+<li>按 <code>F9</code> 进入启动设备选择</li>
+<li>按 <code>F10</code> 进入 BIOS 设置</li>
+</ul>
+<p>建议先进入 BIOS 检查几个选项。</p>
+<h3 id="41-开启虚拟化">4.1 开启虚拟化</h3>
+<p>找到类似选项：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Virtualization Technology
+</span></span><span style="display:flex;"><span>Intel VT-x
+</span></span></code></pre></div><p>设置为：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Enabled
+</span></span></code></pre></div><p>这对 Docker、虚拟化、部分自动化服务都有帮助。</p>
+<h3 id="42-secure-boot">4.2 Secure Boot</h3>
+<p>Ubuntu 通常可以在 Secure Boot 开启时安装，但 NVIDIA 驱动有时会麻烦一些。</p>
+<p>为了减少折腾，可以考虑：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Secure Boot: Disabled
+</span></span></code></pre></div><p>如果更重视安全，也可以保留开启，但后续安装 NVIDIA 驱动时可能需要额外注册 MOK 密钥。</p>
+<h3 id="43-启动模式">4.3 启动模式</h3>
+<p>建议使用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>UEFI
+</span></span></code></pre></div><p>不要使用 Legacy BIOS 模式。</p>
+<h2 id="5---从-u-盘启动-ubuntu-安装程序">5 - 从 U 盘启动 Ubuntu 安装程序</h2>
+<p>插入制作好的 Ubuntu 启动 U 盘。</p>
+<p>开机后连续按：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Esc
+</span></span></code></pre></div><p>然后按：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>F9
+</span></span></code></pre></div><p>在启动菜单中选择类似：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>UEFI: USB Disk
+</span></span></code></pre></div><p>进入 Ubuntu 安装界面后，一般会看到两个选项：</p>
+<ul>
+<li>Try Ubuntu</li>
+<li>Install Ubuntu</li>
+</ul>
+<p>如果担心硬件兼容性，可以先选择 <code>Try Ubuntu</code> 试用一下，确认键盘、触控板、鼠标、网卡、屏幕显示都正常。</p>
+<p>如果没问题，再点击桌面上的 <code>Install Ubuntu</code>。</p>
+<h2 id="6---安装-ubuntu-desktop-2404-lts">6 - 安装 Ubuntu Desktop 24.04 LTS</h2>
+<h3 id="61-选择语言">6.1 选择语言</h3>
+<p>中文或英文都可以。</p>
+<p>如果习惯搜索英文报错，系统语言可以选英文；如果主要日常使用，选中文也没问题。</p>
+<h3 id="62-键盘布局">6.2 键盘布局</h3>
+<p>如果不确定，默认英文键盘即可：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>English (US)
+</span></span></code></pre></div><p>后续进系统后可以再添加中文输入法。</p>
+<h3 id="63-网络连接">6.3 网络连接</h3>
+<p>建议安装时连接 Wi-Fi 或网线。</p>
+<p>有网络的好处是：</p>
+<ul>
+<li>可以下载更新</li>
+<li>可以安装第三方驱动</li>
+<li>可以减少安装后补驱动的麻烦</li>
+</ul>
+<h3 id="64-安装类型">6.4 安装类型</h3>
+<p>如果确定要单系统安装，选择类似：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Erase disk and install Ubuntu
+</span></span></code></pre></div><p>也就是“清除磁盘并安装 Ubuntu”。</p>
+<p>这一步非常关键：<strong>它会删除目标磁盘上的原系统和数据</strong>。</p>
+<p>如果机器里有 256GB SSD 和 1TB 数据盘，建议把系统安装到 256GB SSD 上。</p>
+<p>安装器可能会显示磁盘名称，例如：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/dev/nvme0n1
+</span></span><span style="display:flex;"><span>/dev/sda
+</span></span></code></pre></div><p>一般来说：</p>
+<ul>
+<li>NVMe SSD 常见名称：<code>/dev/nvme0n1</code></li>
+<li>SATA 硬盘或 SSD 常见名称：<code>/dev/sda</code></li>
+</ul>
+<p>如果不确定哪个是 SSD，可以根据容量判断：</p>
+<ul>
+<li>约 256GB 的盘：系统盘</li>
+<li>约 1TB 的盘：数据盘</li>
+</ul>
+<p>建议先只选择 256GB SSD 安装系统，1TB 数据盘安装完成后再手动挂载为 <code>/data</code>。</p>
+<h3 id="65-是否手动分区">6.5 是否手动分区</h3>
+<p>新手不建议手动分区。</p>
+<p>直接选择：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Erase disk and install Ubuntu
+</span></span></code></pre></div><p>让 Ubuntu 自动分区即可。</p>
+<p>如果想手动分区，可以参考：</p>
+<ul>
+<li>EFI 分区：512MB，FAT32，挂载 <code>/boot/efi</code></li>
+<li>根分区 <code>/</code>：剩余 SSD 空间，ext4</li>
+<li>swap：使用默认 swapfile，不一定单独分区</li>
+</ul>
+<p>对于 32GB 内存的机器，默认 swapfile 通常就够了。</p>
+<h3 id="66-创建用户">6.6 创建用户</h3>
+<p>设置：</p>
+<ul>
+<li>用户名</li>
+<li>电脑名</li>
+<li>登录密码</li>
+</ul>
+<p>电脑名可以设置成：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ai-server
+</span></span></code></pre></div><p>后续局域网访问会比较直观。</p>
+<h3 id="67-等待安装完成">6.7 等待安装完成</h3>
+<p>安装通常需要 10 到 30 分钟。</p>
+<p>完成后系统会提示重启。重启时拔掉 U 盘，避免再次进入安装程序。</p>
+<h2 id="7---安装后的基础设置">7 - 安装后的基础设置</h2>
+<p>进入 Ubuntu 后，先打开终端。</p>
+<h3 id="71-切换-ubuntu-软件源到清华镜像">7.1 切换 Ubuntu 软件源到清华镜像</h3>
+<p>如果安装镜像使用的是清华镜像，安装系统后也建议把 Ubuntu 软件源切换到清华镜像。否则后面的 <code>apt update</code>、<code>apt install</code> 仍然可能走默认官方源，在国内环境下容易慢或失败。</p>
+<p>Ubuntu 24.04 LTS 的系统代号是 <code>noble</code>。Ubuntu 24.04 默认使用 Deb822 格式的软件源配置，文件通常是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/etc/apt/sources.list.d/ubuntu.sources
+</span></span></code></pre></div><p>先备份原配置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
+</span></span></code></pre></div><p>写入清华镜像源：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo tee /etc/apt/sources.list.d/ubuntu.sources &gt; /dev/null <span style="color:#cd5555">&lt;&lt;&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">Types: deb
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">Suites: noble noble-updates noble-backports noble-security
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">Components: main restricted universe multiverse
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">EOF</span>
+</span></span></code></pre></div><p>如果后续想恢复默认源，可以把备份文件复制回来：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo cp /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources
+</span></span></code></pre></div><h3 id="72-更新系统">7.2 更新系统</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt upgrade -y
+</span></span></code></pre></div><p>重启一次：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo reboot
+</span></span></code></pre></div><h3 id="73-安装常用工具">7.3 安装常用工具</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install -y git curl wget vim htop tmux unzip build-essential ca-certificates gnupg lsb-release net-tools
+</span></span></code></pre></div><p>这些工具后面配置开发环境、Docker、Agent 都会用到。</p>
+<h3 id="74-安装-ssh-服务">7.4 安装 SSH 服务</h3>
+<p>如果要把这台电脑当服务器，SSH 必装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install -y openssh-server
+</span></span><span style="display:flex;"><span>sudo systemctl <span style="color:#658b00">enable</span> ssh
+</span></span><span style="display:flex;"><span>sudo systemctl start ssh
+</span></span></code></pre></div><p>查看本机 IP：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hostname -I
+</span></span></code></pre></div><p>以后可以从另一台电脑连接：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh 用户名@服务器IP
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh terry@192.168.1.100
+</span></span></code></pre></div><h2 id="8---安装-nvidia-驱动">8 - 安装 NVIDIA 驱动</h2>
+<p>这台机器有 NVIDIA Quadro P600，Ubuntu 通常能识别。</p>
+<p>可以在图形界面中打开：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Software &amp; Updates
+</span></span></code></pre></div><p>进入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Additional Drivers
+</span></span></code></pre></div><p>选择推荐的 NVIDIA 专有驱动，例如：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>nvidia-driver-535
+</span></span><span style="display:flex;"><span>nvidia-driver-550
+</span></span></code></pre></div><p>安装后重启。</p>
+<p>也可以用命令查看推荐驱动：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ubuntu-drivers devices
+</span></span></code></pre></div><p>自动安装推荐驱动：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ubuntu-drivers autoinstall
+</span></span><span style="display:flex;"><span>sudo reboot
+</span></span></code></pre></div><p>重启后验证：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nvidia-smi
+</span></span></code></pre></div><p>如果能看到 Quadro P600 和驱动信息，说明安装成功。</p>
+<p>需要注意的是，Quadro P600 通常显存不大，大概率是 4GB。它可以用来做轻量 GPU 加速，但不适合作为本地大模型主力显卡。</p>
+<h2 id="9---清空并挂载-1tb-数据盘">9 - 清空并挂载 1TB 数据盘</h2>
+<p>我第一次安装时不小心把 Ubuntu 装到了 1TB 机械硬盘上，后面重新安装才把系统放回 SSD。这样会导致 1TB 盘里也残留 Ubuntu 的 EFI 启动程序，BIOS 启动菜单里可能看到两个 <code>ubuntu</code> 启动项。</p>
+<p>最终目标是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>256GB SSD：只做 Ubuntu 系统盘
+</span></span><span style="display:flex;"><span>1TB 机械硬盘：清空所有数据，重新作为 /data 数据盘
+</span></span></code></pre></div><p>下面的操作会清空 1TB 盘上的所有数据，包括旧 Ubuntu 分区和旧 EFI 启动分区。执行前一定要确认这块盘里没有需要保留的文件。</p>
+<p>先查看磁盘和挂载情况：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk -f
+</span></span></code></pre></div><p>你可能会看到类似：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>nvme0n1       238G
+</span></span><span style="display:flex;"><span>├─nvme0n1p1   vfat   /boot/efi
+</span></span><span style="display:flex;"><span>└─nvme0n1p2   ext4   /
+</span></span><span style="display:flex;"><span>sda           931G
+</span></span><span style="display:flex;"><span>├─sda1        vfat
+</span></span><span style="display:flex;"><span>└─sda2        ext4
+</span></span></code></pre></div><p>这里的关键是确认：</p>
+<ul>
+<li>当前系统根目录 <code>/</code> 在 SSD 上，例如 <code>/dev/nvme0n1p2</code></li>
+<li>当前 <code>/boot/efi</code> 也在 SSD 上，例如 <code>/dev/nvme0n1p1</code></li>
+<li>1TB 机械硬盘是 <code>/dev/sda</code></li>
+</ul>
+<p>如果 <code>/</code> 或 <code>/boot/efi</code> 还在 <code>/dev/sda</code> 上，说明当前系统仍然依赖 1TB 盘，不能继续清空。</p>
+<p>确认 1TB 盘是 <code>/dev/sda</code> 之后，先清除旧文件系统和分区签名：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo wipefs -a /dev/sda
+</span></span></code></pre></div><p>然后重建 GPT 分区表，并把整块盘建成一个 ext4 数据分区：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo parted /dev/sda --script mklabel gpt
+</span></span><span style="display:flex;"><span>sudo parted /dev/sda --script mkpart primary ext4 0% 100%
+</span></span><span style="display:flex;"><span>sudo mkfs.ext4 -L data /dev/sda1
+</span></span></code></pre></div><p>这里格式化的是 <code>/dev/sda1</code>，不是 <code>/dev/sda</code>。这样更符合常规用法：<code>/dev/sda</code> 是整块磁盘，<code>/dev/sda1</code> 是数据分区。</p>
+<p>创建挂载目录：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mkdir -p /data
+</span></span></code></pre></div><p>查看新分区 UUID：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo blkid /dev/sda1
+</span></span></code></pre></div><p>记录输出里的 <code>UUID</code>，然后编辑 <code>/etc/fstab</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo vim /etc/fstab
+</span></span></code></pre></div><p>添加一行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>UUID=你的UUID /data ext4 defaults 0 2
+</span></span></code></pre></div><p>测试挂载：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mount -a
+</span></span><span style="display:flex;"><span>df -h
+</span></span></code></pre></div><p>如果能看到 <code>/data</code>，说明挂载成功。</p>
+<p>给当前用户权限：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chown -R <span style="color:#00688b">$USER</span>:<span style="color:#00688b">$USER</span> /data
+</span></span></code></pre></div><p>后续可以把项目、日志、下载、模型、备份都放到 <code>/data</code>。</p>
+<p>如果清空 1TB 盘后 BIOS 里仍然看到多余的 <code>ubuntu</code> 启动项，那通常是主板 NVRAM 里残留的启动记录，不一定是磁盘上还有启动文件。可以在当前 Ubuntu 系统里查看：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo efibootmgr
+</span></span></code></pre></div><p>输出可能类似：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Boot0001* ubuntu
+</span></span><span style="display:flex;"><span>Boot0003* ubuntu
+</span></span></code></pre></div><p>如果能确认其中一个是旧 1TB 盘留下的启动项，可以删除对应编号。例如删除 <code>Boot0003</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo efibootmgr -b <span style="color:#b452cd">0003</span> -B
+</span></span></code></pre></div><p>这一步要谨慎，只删除确认无用的启动项。如果不确定，可以先保留；只要 BIOS 里把 SSD 上的 Ubuntu 放在第一启动顺序，系统也能正常启动。</p>
+<h2 id="10---安装-docker">10 - 安装 Docker</h2>
+<p>Docker 是后续跑 n8n、数据库、自动化服务的基础。</p>
+<p>前面已经把 Ubuntu 系统源切到清华镜像。Docker 建议也使用清华 Docker CE 镜像，这样后续安装 <code>docker-ce</code>、<code>docker compose</code> 会更稳定。</p>
+<p>先安装依赖：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install -y ca-certificates curl gnupg
+</span></span></code></pre></div><p>添加 Docker GPG key。优先使用 Docker 官方 key：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo install -m <span style="color:#b452cd">0755</span> -d /etc/apt/keyrings
+</span></span><span style="display:flex;"><span>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+</span></span><span style="display:flex;"><span>sudo chmod a+r /etc/apt/keyrings/docker.gpg
+</span></span></code></pre></div><p>如果官方地址访问不稳定，或者上面的 <code>curl</code> 长时间无响应，可以改用清华 Docker CE 镜像里的 GPG key：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo rm -f /etc/apt/keyrings/docker.gpg
+</span></span><span style="display:flex;"><span>curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+</span></span><span style="display:flex;"><span>sudo chmod a+r /etc/apt/keyrings/docker.gpg
+</span></span></code></pre></div><p>添加清华 Docker CE 软件源：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>  <span style="color:#cd5555">&#34;deb [arch=</span><span style="color:#8b008b;font-weight:bold">$(</span>dpkg --print-architecture<span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555"> signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu \
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555">  </span><span style="color:#8b008b;font-weight:bold">$(</span>. /etc/os-release &amp;&amp; <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$VERSION_CODENAME</span><span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555"> stable&#34;</span> | <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</span></span></code></pre></div><p>确认当前系统代号是 <code>noble</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>. /etc/os-release &amp;&amp; <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$VERSION_CODENAME</span><span style="color:#cd5555">&#34;</span>
+</span></span></code></pre></div><p>如果输出不是 <code>noble</code>，说明当前系统不是 Ubuntu 24.04 LTS，需要确认是否下载或安装错版本。</p>
+<p>安装 Docker：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</span></span></code></pre></div><p>把当前用户加入 docker 组：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo usermod -aG docker <span style="color:#00688b">$USER</span>
+</span></span></code></pre></div><p>注销或重启后验证：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker version
+</span></span><span style="display:flex;"><span>docker compose version
+</span></span></code></pre></div><h2 id="11---安装-nodejspythonuv">11 - 安装 Node.js、Python、uv</h2>
+<p>很多 AI Agent、自动化工具都依赖 Node.js 和 Python。</p>
+<h3 id="111-安装-nodejs-lts">11.1 安装 Node.js LTS</h3>
+<p>推荐使用 NodeSource：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+</span></span><span style="display:flex;"><span>sudo apt install -y nodejs
+</span></span></code></pre></div><p>如果 NodeSource 脚本访问不稳定，可以先重试，或者临时使用 Ubuntu 仓库里的 <code>nodejs</code> 包。不过 Ubuntu 仓库版本可能偏旧，长期跑 n8n 或前端工具时仍然更建议使用 Node.js LTS。</p>
+<p>验证：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>node -v
+</span></span><span style="display:flex;"><span>npm -v
+</span></span></code></pre></div><p>安装完成后，把 npm registry 切到国内镜像：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>npm config <span style="color:#658b00">set</span> registry https://registry.npmmirror.com
+</span></span><span style="display:flex;"><span>npm config get registry
+</span></span></code></pre></div><p>后续 <code>npm install</code>、<code>npx</code>、部分 AI Agent CLI 工具安装会更稳定。</p>
+<h3 id="112-安装-python-和-uv">11.2 安装 Python 和 uv</h3>
+<p>Ubuntu 自带 Python，但建议安装一些开发包：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install -y python3 python3-pip python3-venv
+</span></span></code></pre></div><p>把 pip 源切到清华 PyPI 镜像：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python3 -m pip config <span style="color:#658b00">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+</span></span><span style="display:flex;"><span>python3 -m pip config list
+</span></span></code></pre></div><p>如果遇到个别包在镜像同步期间暂时不可用，可以临时指定官方源安装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python3 -m pip install 包名 -i https://pypi.org/simple
+</span></span></code></pre></div><p>安装 uv（官方一键脚本）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -LsSf https://astral.sh/uv/install.sh | sh
+</span></span></code></pre></div><p>若 <code>astral.sh</code> 在国内网络下拉取失败，而本机已有 SOCKS 代理（常见监听 <code>127.0.0.1:1080</code>），可让 <code>curl</code> 走代理再执行脚本。建议使用 <code>socks5h</code>，表示 DNS 也经代理解析，访问国外域名时往往更稳：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -x socks5h://127.0.0.1:1080 -LsSf https://astral.sh/uv/install.sh | sh
+</span></span></code></pre></div><p>代理若在局域网其他机器上，把地址改成例如 <code>socks5h://192.168.1.10:1080</code> 即可。</p>
+<p>也可在当前终端里导出代理变量，再执行原命令。这样若安装脚本内部还会拉取其他资源，子进程也能继承代理：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">ALL_PROXY</span>=socks5h://127.0.0.1:1080
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">HTTPS_PROXY</span>=socks5h://127.0.0.1:1080
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">HTTP_PROXY</span>=socks5h://127.0.0.1:1080
+</span></span><span style="display:flex;"><span>curl -LsSf https://astral.sh/uv/install.sh | sh
+</span></span></code></pre></div><p>若不放心直接管道执行，可先只看脚本前几行确认下载成功：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -x socks5h://127.0.0.1:1080 -LsSf https://astral.sh/uv/install.sh | sed -n <span style="color:#cd5555">&#39;1,20p&#39;</span>
+</span></span></code></pre></div><p>安装完成后若提示找不到 <code>uv</code>，可执行 <code>source ~/.bashrc</code> 或新开一个终端，再运行 <code>uv --version</code>。</p>
+<p>如果希望 uv 默认也走清华 PyPI 镜像，可以配置环境变量：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#cd5555">&#39;export UV_DEFAULT_INDEX=&#34;https://pypi.tuna.tsinghua.edu.cn/simple&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.bashrc
+</span></span></code></pre></div><p>重开终端后验证：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>uv --version
+</span></span></code></pre></div><h2 id="12---安装-tailscale">12 - 安装 Tailscale</h2>
+<p>如果这台机器要长期放在家里或办公室，强烈建议安装 Tailscale。它可以让你在外网安全访问这台服务器，不需要公网 IP，也不需要复杂端口转发。</p>
+<p>安装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -fsSL https://tailscale.com/install.sh | sh
+</span></span></code></pre></div><p>启动并登录：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo tailscale up
+</span></span></code></pre></div><p>浏览器会打开认证页面，登录后这台机器就会加入你的私有网络。</p>
+<p>以后可以直接通过 Tailscale IP SSH 连接它。</p>
+<h2 id="13---安装-n8n-自动化平台">13 - 安装 n8n 自动化平台</h2>
+<p>n8n 很适合做自动化流程，例如：</p>
+<ul>
+<li>定时任务</li>
+<li>Webhook</li>
+<li>调用 AI API</li>
+<li>处理表格和文件</li>
+<li>连接数据库</li>
+<li>调用脚本</li>
+<li>消息通知</li>
+</ul>
+<p>创建目录：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /data/docker/n8n
+</span></span><span style="display:flex;"><span><span style="color:#658b00">cd</span> /data/docker/n8n
+</span></span></code></pre></div><p>创建 <code>docker-compose.yml</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">services</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">n8n</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>n8nio/n8n:latest<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">container_name</span>:<span style="color:#bbb"> </span>n8n<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>unless-stopped<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ports</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#cd5555">&#34;5678:5678&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">environment</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- TZ=Asia/Shanghai<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- N8N_HOST=0.0.0.0<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- N8N_PORT=5678<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- N8N_PROTOCOL=http<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- ./n8n_data:/home/node/.n8n<span style="color:#bbb">
+</span></span></span></code></pre></div><p>启动：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker compose up -d
+</span></span></code></pre></div><p>浏览器访问：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>http://服务器IP:5678
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>http://192.168.1.100:5678
+</span></span></code></pre></div><h2 id="14---ai-agent-的定位建议">14 - AI Agent 的定位建议</h2>
+<p>这台机器适合做：</p>
+<ul>
+<li>AI 自动化执行器</li>
+<li>浏览器自动化主机</li>
+<li>代码任务执行环境</li>
+<li>文件处理服务器</li>
+<li>n8n 工作流服务器</li>
+<li>代理服务主机</li>
+<li>远程开发环境</li>
+</ul>
+<p>但不建议把它定位成本地大模型服务器。</p>
+<p>原因是 Quadro P600 显存有限，通常只有 4GB。它可以尝试跑一些小模型，例如：</p>
+<ul>
+<li>Qwen 1.5B / 3B</li>
+<li>Llama 3.2 3B</li>
+<li>DeepSeek Coder 1.3B</li>
+<li>Phi mini</li>
+</ul>
+<p>但如果要跑 7B、14B、32B 模型，体验会比较一般，尤其是速度和显存都不理想。</p>
+<p>更推荐的组合是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>本机负责执行任务
+</span></span><span style="display:flex;"><span>云端大模型负责推理
+</span></span></code></pre></div><p>例如：</p>
+<ul>
+<li>Claude</li>
+<li>OpenAI</li>
+<li>DeepSeek</li>
+<li>腾讯混元</li>
+<li>Kimi</li>
+<li>GLM</li>
+<li>Qwen API</li>
+</ul>
+<p>这样既稳定，又不会被本机 GPU 限制。</p>
+<h2 id="15---代理程序迁移">15 - 代理程序迁移</h2>
+<p>如果原来 Windows 上跑了代理程序，迁移到 Linux 前需要确认：</p>
+<ul>
+<li>是否有 Linux 版本</li>
+<li>是否有 Docker 版本</li>
+<li>配置文件能否导出</li>
+<li>是否支持 systemd 开机自启</li>
+<li>是否需要 Web 管理界面</li>
+</ul>
+<p>常见选择包括：</p>
+<ul>
+<li>sing-box</li>
+<li>mihomo</li>
+<li>v2ray</li>
+<li>xray</li>
+<li>clash-meta/mihomo</li>
+</ul>
+<p>建议把代理配置文件放到：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/data/proxy
+</span></span></code></pre></div><p>这样重装系统或迁移服务时比较方便。</p>
+<h2 id="16---推荐目录结构">16 - 推荐目录结构</h2>
+<p>建议把 1TB 数据盘规划成这样：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/data
+</span></span><span style="display:flex;"><span>  ├── docker
+</span></span><span style="display:flex;"><span>  │   ├── n8n
+</span></span><span style="display:flex;"><span>  │   ├── postgres
+</span></span><span style="display:flex;"><span>  │   └── redis
+</span></span><span style="display:flex;"><span>  ├── projects
+</span></span><span style="display:flex;"><span>  ├── scripts
+</span></span><span style="display:flex;"><span>  ├── logs
+</span></span><span style="display:flex;"><span>  ├── models
+</span></span><span style="display:flex;"><span>  ├── downloads
+</span></span><span style="display:flex;"><span>  ├── backup
+</span></span><span style="display:flex;"><span>  └── proxy
+</span></span></code></pre></div><p>这样系统盘保持干净，数据集中在 <code>/data</code>，后续备份也简单。</p>
+<h2 id="17---常用维护命令">17 - 常用维护命令</h2>
+<p>查看系统资源：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>htop
+</span></span></code></pre></div><p>查看磁盘空间：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>df -h
+</span></span></code></pre></div><p>查看 Docker 容器：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker ps
+</span></span></code></pre></div><p>查看 Docker 日志：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker logs -f 容器名
+</span></span></code></pre></div><p>查看 NVIDIA 显卡：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nvidia-smi
+</span></span></code></pre></div><p>查看 SSH 状态：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl status ssh
+</span></span></code></pre></div><p>查看开机时间：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>uptime
+</span></span></code></pre></div><h2 id="18---最终推荐软件清单">18 - 最终推荐软件清单</h2>
+<p>这台 HP ZHAN 99 改造完成后，建议安装：</p>
+<ul>
+<li>Ubuntu Desktop 24.04 LTS</li>
+<li>NVIDIA 驱动</li>
+<li>OpenSSH Server</li>
+<li>Tailscale</li>
+<li>Docker / Docker Compose</li>
+<li>Git</li>
+<li>Node.js LTS</li>
+<li>Python 3 / uv</li>
+<li>n8n</li>
+<li>Playwright</li>
+<li>代理程序</li>
+<li>AI Agent，例如 OpenClaw、Hermes Agent 或其他 CLI Agent</li>
+</ul>
+<h2 id="19---总结">19 - 总结</h2>
+<p>这台 2018 年的 HP ZHAN 99 虽然已经不是新机器，但 <code>i5-8300H + 32GB 内存 + Quadro P600 + SSD + 1TB 数据盘</code> 的组合，仍然非常适合改造成一台个人 AI 自动化服务器。</p>
+<p>相比继续使用 Windows 10 加虚拟机，直接安装 Ubuntu Desktop 24.04 LTS 有几个明显优势：</p>
+<ul>
+<li>性能更好</li>
+<li>环境更接近 AI Agent 的原生运行环境</li>
+<li>Docker、Node、Python、Playwright 更容易配置</li>
+<li>更适合长期常开</li>
+<li>远程管理更方便</li>
+<li>后续扩展 n8n、Agent、自动化脚本更自然</li>
+</ul>
+<p>最终推荐架构：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Ubuntu Desktop 24.04 LTS 裸机安装
+</span></span><span style="display:flex;"><span>+ 256GB SSD 做系统盘
+</span></span><span style="display:flex;"><span>+ 1TB 数据盘挂载到 /data
+</span></span><span style="display:flex;"><span>+ Docker / n8n / Tailscale / SSH
+</span></span><span style="display:flex;"><span>+ 云端大模型 API
+</span></span><span style="display:flex;"><span>+ 本机负责自动化执行
+</span></span></code></pre></div><p>这不是一台强大的本地大模型服务器，但它非常适合作为个人 AI 自动化基础设施的核心节点。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2026-04-27</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/misc/sp500-dca-vs-timing/">
+			下回<br>普通人的财务自由之路：关于标普500、纳斯达克100定投与抄底的终极答案
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/lang/shell/docker-logs-clean/">
+			上回<br>清理 Docker 容器日志脚本
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+                <p style="opacity: 0.6" align="center">
+                    <small>此篇文章的评论功能已经停用。</small>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://terryren.github.io/">
+    
+        <div class="nav-title">
+            The Sound of Music
+        </div>
+        
+        <div class="nav-subtitle">
+            知行合一
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                博客
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                订阅
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#1---%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%89%e6%8b%a9-ubuntu-desktop-2404-lts" class="nav-1---为什么选择-ubuntu-desktop-2404-lts">
+									1 - 为什么选择 Ubuntu Desktop 24.04 LTS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2---%e5%ae%89%e8%a3%85%e5%89%8d%e5%87%86%e5%a4%87" class="nav-2---安装前准备">
+									2 - 安装前准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#21-%e5%a4%87%e4%bb%bd%e6%95%b0%e6%8d%ae" class="nav-21-备份数据">
+									2.1 备份数据
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22-%e5%87%86%e5%a4%87-u-%e7%9b%98" class="nav-22-准备-u-盘">
+									2.2 准备 U 盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#23-%e4%b8%8b%e8%bd%bd-ubuntu-desktop-2404-lts-%e9%95%9c%e5%83%8f" class="nav-23-下载-ubuntu-desktop-2404-lts-镜像">
+									2.3 下载 Ubuntu Desktop 24.04 LTS 镜像
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#3---%e5%88%b6%e4%bd%9c-ubuntu-%e7%b3%bb%e7%bb%9f%e5%ae%89%e8%a3%85-u-%e7%9b%98" class="nav-3---制作-ubuntu-系统安装-u-盘">
+									3 - 制作 Ubuntu 系统安装 U 盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#31-%e4%b8%8b%e8%bd%bd-rufus" class="nav-31-下载-rufus">
+									3.1 下载 Rufus
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#32-%e4%bd%bf%e7%94%a8-rufus-%e5%86%99%e5%85%a5%e9%95%9c%e5%83%8f" class="nav-32-使用-rufus-写入镜像">
+									3.2 使用 Rufus 写入镜像
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#4---%e8%b0%83%e6%95%b4-bios-%e5%90%af%e5%8a%a8%e8%ae%be%e7%bd%ae" class="nav-4---调整-bios-启动设置">
+									4 - 调整 BIOS 启动设置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#41-%e5%bc%80%e5%90%af%e8%99%9a%e6%8b%9f%e5%8c%96" class="nav-41-开启虚拟化">
+									4.1 开启虚拟化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42-secure-boot" class="nav-42-secure-boot">
+									4.2 Secure Boot
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#43-%e5%90%af%e5%8a%a8%e6%a8%a1%e5%bc%8f" class="nav-43-启动模式">
+									4.3 启动模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#5---%e4%bb%8e-u-%e7%9b%98%e5%90%af%e5%8a%a8-ubuntu-%e5%ae%89%e8%a3%85%e7%a8%8b%e5%ba%8f" class="nav-5---从-u-盘启动-ubuntu-安装程序">
+									5 - 从 U 盘启动 Ubuntu 安装程序
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#6---%e5%ae%89%e8%a3%85-ubuntu-desktop-2404-lts" class="nav-6---安装-ubuntu-desktop-2404-lts">
+									6 - 安装 Ubuntu Desktop 24.04 LTS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#61-%e9%80%89%e6%8b%a9%e8%af%ad%e8%a8%80" class="nav-61-选择语言">
+									6.1 选择语言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#62-%e9%94%ae%e7%9b%98%e5%b8%83%e5%b1%80" class="nav-62-键盘布局">
+									6.2 键盘布局
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#63-%e7%bd%91%e7%bb%9c%e8%bf%9e%e6%8e%a5" class="nav-63-网络连接">
+									6.3 网络连接
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#64-%e5%ae%89%e8%a3%85%e7%b1%bb%e5%9e%8b" class="nav-64-安装类型">
+									6.4 安装类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#65-%e6%98%af%e5%90%a6%e6%89%8b%e5%8a%a8%e5%88%86%e5%8c%ba" class="nav-65-是否手动分区">
+									6.5 是否手动分区
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#66-%e5%88%9b%e5%bb%ba%e7%94%a8%e6%88%b7" class="nav-66-创建用户">
+									6.6 创建用户
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#67-%e7%ad%89%e5%be%85%e5%ae%89%e8%a3%85%e5%ae%8c%e6%88%90" class="nav-67-等待安装完成">
+									6.7 等待安装完成
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#7---%e5%ae%89%e8%a3%85%e5%90%8e%e7%9a%84%e5%9f%ba%e7%a1%80%e8%ae%be%e7%bd%ae" class="nav-7---安装后的基础设置">
+									7 - 安装后的基础设置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#71-%e5%88%87%e6%8d%a2-ubuntu-%e8%bd%af%e4%bb%b6%e6%ba%90%e5%88%b0%e6%b8%85%e5%8d%8e%e9%95%9c%e5%83%8f" class="nav-71-切换-ubuntu-软件源到清华镜像">
+									7.1 切换 Ubuntu 软件源到清华镜像
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#72-%e6%9b%b4%e6%96%b0%e7%b3%bb%e7%bb%9f" class="nav-72-更新系统">
+									7.2 更新系统
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#73-%e5%ae%89%e8%a3%85%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7" class="nav-73-安装常用工具">
+									7.3 安装常用工具
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#74-%e5%ae%89%e8%a3%85-ssh-%e6%9c%8d%e5%8a%a1" class="nav-74-安装-ssh-服务">
+									7.4 安装 SSH 服务
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#8---%e5%ae%89%e8%a3%85-nvidia-%e9%a9%b1%e5%8a%a8" class="nav-8---安装-nvidia-驱动">
+									8 - 安装 NVIDIA 驱动
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#9---%e6%b8%85%e7%a9%ba%e5%b9%b6%e6%8c%82%e8%bd%bd-1tb-%e6%95%b0%e6%8d%ae%e7%9b%98" class="nav-9---清空并挂载-1tb-数据盘">
+									9 - 清空并挂载 1TB 数据盘
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#10---%e5%ae%89%e8%a3%85-docker" class="nav-10---安装-docker">
+									10 - 安装 Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#11---%e5%ae%89%e8%a3%85-nodejspythonuv" class="nav-11---安装-nodejspythonuv">
+									11 - 安装 Node.js、Python、uv
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#111-%e5%ae%89%e8%a3%85-nodejs-lts" class="nav-111-安装-nodejs-lts">
+									11.1 安装 Node.js LTS
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#112-%e5%ae%89%e8%a3%85-python-%e5%92%8c-uv" class="nav-112-安装-python-和-uv">
+									11.2 安装 Python 和 uv
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#12---%e5%ae%89%e8%a3%85-tailscale" class="nav-12---安装-tailscale">
+									12 - 安装 Tailscale
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#13---%e5%ae%89%e8%a3%85-n8n-%e8%87%aa%e5%8a%a8%e5%8c%96%e5%b9%b3%e5%8f%b0" class="nav-13---安装-n8n-自动化平台">
+									13 - 安装 n8n 自动化平台
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#14---ai-agent-%e7%9a%84%e5%ae%9a%e4%bd%8d%e5%bb%ba%e8%ae%ae" class="nav-14---ai-agent-的定位建议">
+									14 - AI Agent 的定位建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#15---%e4%bb%a3%e7%90%86%e7%a8%8b%e5%ba%8f%e8%bf%81%e7%a7%bb" class="nav-15---代理程序迁移">
+									15 - 代理程序迁移
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#16---%e6%8e%a8%e8%8d%90%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84" class="nav-16---推荐目录结构">
+									16 - 推荐目录结构
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#17---%e5%b8%b8%e7%94%a8%e7%bb%b4%e6%8a%a4%e5%91%bd%e4%bb%a4" class="nav-17---常用维护命令">
+									17 - 常用维护命令
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#18---%e6%9c%80%e7%bb%88%e6%8e%a8%e8%8d%90%e8%bd%af%e4%bb%b6%e6%b8%85%e5%8d%95" class="nav-18---最终推荐软件清单">
+									18 - 最终推荐软件清单
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#19---%e6%80%bb%e7%bb%93" class="nav-19---总结">
+									19 - 总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

@@ -260,10 +260,15 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /q  <span style="color:#00688b">%userprofile%</span>\cookies\*.*
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /q  <span style="color:#00688b">%userprofile%</span>\recent\*.*
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%userprofile%</span>\AppData\Local\Temp\*.*
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%userprofile%</span>\AppData\Local\CrashDumps\*.*
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%userprofile%</span>\Local Settings\Temporary Internet Files\*.*
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%userprofile%</span>\Local Settings\Temp\*.*
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%userprofile%</span>\recent\*.*
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%windir%</span>\system32\dllcache\*.*
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">echo</span> 正在清除浏览器缓存，请稍等......
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%userprofile%</span><span style="color:#cd5555">\AppData\Local\Google\Chrome\User Data\Default\Cache\*.*&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%userprofile%</span><span style="color:#cd5555">\AppData\Local\Microsoft\Edge\User Data\Default\Cache\*.*&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">echo</span> 正在清除驱动在安装时留下的解压文件，请稍等......
 </span></span><span style="display:flex;"><span>
@@ -272,10 +277,295 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%windir%</span>\NVIDIA\*.*
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q  <span style="color:#00688b">%windir%</span>\Prog\*.*
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">echo</span> 清理 Windows 更新缓存
+</span></span><span style="display:flex;"><span>net stop wuauserv
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q <span style="color:#00688b">%windir%</span>\SoftwareDistribution\Download\*.*
+</span></span><span style="display:flex;"><span>net start wuauserv
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">echo</span> 清除系统垃圾完成！
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">echo</span>. &amp; <span style="color:#8b008b;font-weight:bold">pause</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><p><strong>给 C 盘减负：<code>.cursor</code> 目录联接</strong></p>
+<p>将 Cursor 配置/缓存目录放到 D 盘，在 C 盘用户目录下用目录联接指过去，可减轻 C 盘占用。</p>
+<ol>
+<li><strong>关闭 Cursor</strong>，避免占用 <code>%USERPROFILE%\.cursor</code>。</li>
+<li>在 D 盘建好目标目录（示例：<code>D:\你的用户名\.cursor</code>），把原 <code>%USERPROFILE%\.cursor</code> 里的内容<strong>剪切</strong>到该目录。</li>
+<li><strong>删除</strong> C 盘侧已空的 <code>%USERPROFILE%\.cursor</code> 文件夹（必须是真实目录，不能残留同名文件夹，否则 <code>mklink</code> 会失败）。</li>
+<li>以<strong>管理员身份</strong>打开「命令提示符」或 PowerShell，执行下面的联接命令（将 <code>{user}</code> 换成你的 Windows 登录名；也可用下方带 <code>%USERNAME%</code> 的写法）。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span><span style="color:#228b22">REM 需要管理员</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">mklink</span> /D <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%USERPROFILE%</span><span style="color:#cd5555">\.cursor&#34;</span> D:\{user}\.cursor
+</span></span></code></pre></div><p>若希望路径随当前用户名自动展开，可用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span><span style="color:#228b22">REM 需要管理员（目标目录须已存在且已迁入数据）</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">mklink</span> /D <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%USERPROFILE%</span><span style="color:#cd5555">\.cursor&#34;</span> <span style="color:#cd5555">&#34;D:\</span><span style="color:#00688b">%USERNAME%</span><span style="color:#cd5555">\.cursor&#34;</span>
+</span></span></code></pre></div><p><strong>清理 <code>Windows\Installer</code>（孤儿补丁缓存）</strong></p>
+<p><code>C:\Windows\Installer</code> 存放已安装程序的 <code>.msi</code> / <code>.msp</code> 补丁缓存，通常体积巨大（10–20 GB+）。其中一部分是&quot;孤儿文件&quot;——对应的程序已卸载，但缓存未被清除。</p>
+<blockquote>
+<p>此目录<strong>不可直接删除</strong>，否则会导致程序无法卸载或修复。</p>
+</blockquote>
+<p>原先常用的第三方工具 PatchCleaner（homedev.com.au）已停止维护、官网下线。目前建议通过<strong>系统自带磁盘清理</strong>来处理：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span><span style="color:#228b22">REM 管理员运行 - 先配置清理项（勾选全部，尤其&#34;Windows 更新清理&#34;）</span>
+</span></span><span style="display:flex;"><span>cleanmgr /d C /sageset:1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM 再执行清理</span>
+</span></span><span style="display:flex;"><span>cleanmgr /d C /sagerun:1
+</span></span></code></pre></div><p><strong>清理 <code>Windows\WinSxS</code>（组件存储）</strong></p>
+<p>WinSxS（Windows Side-by-Side）是 Windows 的<strong>组件存储</strong>，位于 <code>C:\Windows\WinSxS</code>。</p>
+<p><em>为什么体积大？</em></p>
+<ul>
+<li>Windows 按<strong>组件 + 版本号</strong>管理系统文件。每次系统更新，新旧版本都保留在 WinSxS 中以便回滚。</li>
+<li><code>C:\Windows\System32</code> 等目录下的 DLL 实际上是<strong>硬链接</strong>指向 WinSxS 中的文件。资源管理器和 SpaceSniffer 会<strong>重复计算</strong>硬链接体积，所以报告值比实际独占空间大（通常只有报告值的 40%–60%）。</li>
+</ul>
+<p><em>查看真实占用：</em></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span><span style="color:#228b22">REM 管理员运行</span>
+</span></span><span style="display:flex;"><span>Dism.exe /Online /Cleanup-Image /AnalyzeComponentStore
+</span></span></code></pre></div><p>输出示例：</p>
+<pre tabindex="0"><code>组件存储（WinSxS）的大小:          12.35 GB
+与 Windows 共享:                    8.10 GB    ← 硬链接重复部分，不算真正占用
+备份和已禁用的功能:                 1.52 GB
+缓存和临时数据:                     0.73 GB
+可以推荐清理的组件数:              是
+</code></pre><p><em>DISM 清理命令：</em></p>
+<p>DISM（Deployment Image Servicing and Management）是 Windows 内置的镜像服务工具，<code>/Cleanup-Image</code> 子命令用于清理组件存储中<strong>被新版取代的旧版本组件文件</strong>。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span><span style="color:#228b22">REM 温和清理（保留回滚能力，可回收 1-2 GB）</span>
+</span></span><span style="display:flex;"><span>Dism.exe /Online /Cleanup-Image /StartComponentCleanup
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM 深度清理（以当前更新为基线，永久删除旧版本，不可回滚旧更新，可回收 2-5 GB）</span>
+</span></span><span style="display:flex;"><span>Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>行为</th>
+<th>回滚能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/StartComponentCleanup</code></td>
+<td>删除被取代的旧版本组件</td>
+<td>保留</td>
+</tr>
+<tr>
+<td><code>/StartComponentCleanup /ResetBase</code></td>
+<td>以当前更新为新基线，永久删除所有旧版本</td>
+<td>丧失（一般无影响）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>清理用户目录缓存</strong></p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>清理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%USERPROFILE%\AppData\Local\Temp</code></td>
+<td>直接清空（已在上方脚本覆盖）</td>
+</tr>
+<tr>
+<td><code>%USERPROFILE%\AppData\Local\CrashDumps</code></td>
+<td>直接清空（已在上方脚本覆盖）</td>
+</tr>
+<tr>
+<td><code>%USERPROFILE%\AppData\Local\Google\Chrome\...\Cache</code></td>
+<td>清空浏览器缓存（已在上方脚本覆盖）</td>
+</tr>
+<tr>
+<td><code>%USERPROFILE%\AppData\Local\Microsoft\Edge\...\Cache</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>%USERPROFILE%\.cursor</code></td>
+<td>建议 mklink 到 D 盘（见上方小节）</td>
+</tr>
+<tr>
+<td><code>%USERPROFILE%\AppData\Local\NuGet\v3-cache</code></td>
+<td><code>dotnet nuget locals all --clear</code></td>
+</tr>
+<tr>
+<td><code>%USERPROFILE%\AppData\Local\Microsoft\Visual Studio</code></td>
+<td>在 VS 中清理组件缓存</td>
+</tr>
+</tbody>
+</table>
+<p><strong>清理 AppData 各应用缓存</strong></p>
+<p><code>AppData\Local</code> 是 C 盘用户目录中的&quot;隐形大户&quot;，以下按占用从大到小列出清理建议：</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>大小</th>
+<th>清理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft\Outlook</code></td>
+<td>~4.3 GB</td>
+<td>Outlook 离线缓存（OST），在 Outlook → 帐户设置 → 数据文件中，调整邮件保留时间为 3–6 个月</td>
+</tr>
+<tr>
+<td><code>Google\Chrome</code></td>
+<td>~3.1 GB</td>
+<td><code>chrome://settings/clearBrowserData</code> 清理缓存</td>
+</tr>
+<tr>
+<td><code>JetBrains</code></td>
+<td>~3.7 GB</td>
+<td>IDE → File → Invalidate Caches；删除不再使用的旧版本目录</td>
+</tr>
+<tr>
+<td><code>Microsoft\Edge</code></td>
+<td>~1.4 GB</td>
+<td><code>edge://settings/clearBrowserData</code> 清理缓存</td>
+</tr>
+<tr>
+<td><code>Packages</code></td>
+<td>~1.7 GB</td>
+<td>UWP 应用数据（含新版 Teams 等），通过 设置 → 应用 → 对应应用 → 重置</td>
+</tr>
+<tr>
+<td><code>NuGet</code></td>
+<td>~1.5 GB</td>
+<td><code>dotnet nuget locals all --clear</code>（详见下方说明）</td>
+</tr>
+<tr>
+<td><code>AndroidStudio*</code></td>
+<td>~1.3 GB</td>
+<td>不做 Android 开发可卸载；否则 <code>rd /s /q &quot;%USERPROFILE%\.gradle\caches&quot;</code></td>
+</tr>
+<tr>
+<td><code>Postman</code></td>
+<td>~1.2 GB</td>
+<td>Postman 设置中清理历史/响应缓存；不用可卸载</td>
+</tr>
+<tr>
+<td><code>Microsoft\VisualStudio</code></td>
+<td>~887 MB</td>
+<td>VS Installer → 更多 → 清理下载缓存</td>
+</tr>
+<tr>
+<td><code>Microsoft\Office</code></td>
+<td>~716 MB</td>
+<td>Office 缓存，一般不需手动清</td>
+</tr>
+<tr>
+<td><code>YarnCache</code></td>
+<td>~676 MB</td>
+<td><code>yarn cache clean</code></td>
+</tr>
+<tr>
+<td><code>Cursor</code></td>
+<td>~686 MB</td>
+<td>建议 mklink 到 D 盘（见上方小节）</td>
+</tr>
+<tr>
+<td><code>AzureFunctionsTools</code></td>
+<td>~459 MB</td>
+<td>不用可删：<code>rd /s /q &quot;%LOCALAPPDATA%\AzureFunctionsTools&quot;</code></td>
+</tr>
+<tr>
+<td><code>Microsoft\Terminal Server Client</code></td>
+<td>~388 MB</td>
+<td>RDP 位图缓存，可安全删除</td>
+</tr>
+<tr>
+<td><code>go-build</code></td>
+<td>~294 MB</td>
+<td><code>go clean -cache</code></td>
+</tr>
+<tr>
+<td><code>Microsoft\Teams\Cache</code></td>
+<td>~229 MB</td>
+<td><code>del /f /s /q &quot;%LOCALAPPDATA%\Microsoft\Teams\Cache\*.*&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>快速清理脚本（可安全执行）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span><span style="color:#228b22">REM === AppData 缓存清理 ===</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM Yarn 缓存（~676 MB）</span>
+</span></span><span style="display:flex;"><span>yarn cache clean
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM NuGet 全部本地缓存（~1.5 GB）</span>
+</span></span><span style="display:flex;"><span>dotnet nuget locals all --clear
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM Go 编译缓存（~294 MB）</span>
+</span></span><span style="display:flex;"><span>go clean -cache
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM RDP 位图缓存（~388 MB）</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%LOCALAPPDATA%</span><span style="color:#cd5555">\Microsoft\Terminal Server Client\Cache\*.*&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM Teams 旧版缓存（~229 MB）</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%LOCALAPPDATA%</span><span style="color:#cd5555">\Microsoft\Teams\Cache\*.*&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM Edge 缓存（~1.4 GB）</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%LOCALAPPDATA%</span><span style="color:#cd5555">\Microsoft\Edge\User Data\Default\Cache\*.*&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">REM Chrome 缓存（~3.1 GB）</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">del</span> /f /s /q <span style="color:#cd5555">&#34;</span><span style="color:#00688b">%LOCALAPPDATA%</span><span style="color:#cd5555">\Google\Chrome\User Data\Default\Cache\*.*&#34;</span>
+</span></span></code></pre></div><p><strong>NuGet 缓存迁移说明</strong></p>
+<p>在 <code>NuGet.config</code> 中设置 <code>globalPackagesFolder</code> 只控制<strong>包文件本体</strong>的存放位置，NuGet 还有三个独立缓存仍然留在 C 盘：</p>
+<table>
+<thead>
+<tr>
+<th>缓存目录</th>
+<th>用途</th>
+<th>受 <code>globalPackagesFolder</code> 控制？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AppData\Local\NuGet\v3-cache</code></td>
+<td>HTTP 响应缓存（包元数据、搜索结果等 API 响应）</td>
+<td><strong>否</strong></td>
+</tr>
+<tr>
+<td><code>AppData\Local\NuGet\plugins-cache</code></td>
+<td>认证插件缓存（凭据提供程序等）</td>
+<td><strong>否</strong></td>
+</tr>
+<tr>
+<td><code>Temp\NuGetScratch</code></td>
+<td>临时工作目录（安装/还原过程中的中间文件）</td>
+<td><strong>否</strong></td>
+</tr>
+<tr>
+<td><code>globalPackagesFolder</code> 指向的目录</td>
+<td>包文件本体（.nupkg + 解压内容）</td>
+<td><strong>是</strong> ✓</td>
+</tr>
+</tbody>
+</table>
+<p>要将这三个缓存也迁到 D 盘，需要设置<strong>系统环境变量</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span><span style="color:#228b22">REM 管理员运行 - 永久设置系统环境变量</span>
+</span></span><span style="display:flex;"><span>setx NUGET_HTTP_CACHE_PATH <span style="color:#cd5555">&#34;D:\AppData\nuget\v3-cache&#34;</span> /M
+</span></span><span style="display:flex;"><span>setx NUGET_PLUGINS_CACHE_PATH <span style="color:#cd5555">&#34;D:\AppData\nuget\plugins-cache&#34;</span> /M
+</span></span><span style="display:flex;"><span>setx NUGET_SCRATCH <span style="color:#cd5555">&#34;D:\AppData\nuget\scratch&#34;</span> /M
+</span></span></code></pre></div><p>设置后，先清理旧缓存再重启：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>dotnet nuget locals all --clear
+</span></span></code></pre></div><p><strong>常用磁盘分析工具</strong></p>
+<ul>
+<li>
+<p><strong>TreeSize Free</strong></p>
+<ul>
+<li>作用: 图形化展示各文件夹/文件占用空间，支持按大小排序，快速找出大文件/大目录。</li>
+<li>官网下载: <a href="https://www.jam-software.com/treesize_free">https://www.jam-software.com/treesize_free</a></li>
+</ul>
+</li>
+<li>
+<p><strong>SpaceSniffer</strong></p>
+<ul>
+<li>作用: 以「矩形块」方式直观展示磁盘空间占用情况，适合快速定位&quot;空间杀手&quot;。</li>
+<li>官网下载: <a href="http://www.uderzo.it/main_products/space_sniffer">http://www.uderzo.it/main_products/space_sniffer</a></li>
+</ul>
+</li>
+</ul>
+
                     
                     <HR width="100%" id="EOF">
 		    <p style="color:#777;">最后修改于 2024-02-03</p>

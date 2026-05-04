@@ -7,9 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2026 18:55:00 +0800</lastBuildDate>
     
         <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Mysql Locks</title>
+        <link>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</link>
+        <pubDate>Fri, 29 Mar 2024 09:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/db/mysql/mysql-lock-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/db/mysql/mysql-lock-1/ -&lt;h3 id=&#34;record-locks-记录锁&#34;&gt;Record Locks (记录锁)&lt;/h3&gt;
+&lt;h4 id=&#34;事务---1&#34;&gt;事务 - 1&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;事务隔离级别 == REPEATABLE READ&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ISOLATION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LEVEL&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;REPEATABLE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;READ&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;START&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;UPDATE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;tt_order_item&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;Deleted&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;+&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;OrderNumber&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;17111803861711180386&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;COMMIT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;事务---2&#34;&gt;事务 - 2&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;事务隔离级别 == REPEATABLE READ&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ISOLATION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LEVEL&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;REPEATABLE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;READ&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;START&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;UPDATE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;tt_order_item&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;Deleted&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;Version&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;+&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;OrderNumber&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;17111803861711180386&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;COMMIT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;事务---3&#34;&gt;事务 - 3&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;事务隔离级别 == READ COMMITTED&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;此事务隔离级别下，仅会读取到事务已提交后的变更结果&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SET&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;TRANSACTION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ISOLATION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;LEVEL&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;READ&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;COMMITTED&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;*&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;tt_order_item&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;OrderNumber&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;IBRB17111803861711180386&amp;#39;&lt;/span&gt;;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html#innodb-record-locks&#34;&gt;innodb-record-locks&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/db/mysql/mysql-lock-1/ - Terry</description>
+        </item>
     
     
     
@@ -475,10 +515,15 @@ Host github.com
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\cookies\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\AppData\Local\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\AppData\Local\CrashDumps\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temporary Internet Files\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temp\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\system32\dllcache\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除浏览器缓存，请稍等......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\AppData\Local\Google\Chrome\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\AppData\Local\Microsoft\Edge\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除驱动在安装时留下的解压文件，请稍等......
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -487,10 +532,295 @@ Host github.com
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\NVIDIA\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\Prog\*.*
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 清理 Windows 更新缓存
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;net stop wuauserv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\SoftwareDistribution\Download\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;net start wuauserv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 清除系统垃圾完成！
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt;. &amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;pause&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ - Terry</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;给 C 盘减负：&lt;code&gt;.cursor&lt;/code&gt; 目录联接&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将 Cursor 配置/缓存目录放到 D 盘，在 C 盘用户目录下用目录联接指过去，可减轻 C 盘占用。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;关闭 Cursor&lt;/strong&gt;，避免占用 &lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在 D 盘建好目标目录（示例：&lt;code&gt;D:\你的用户名\.cursor&lt;/code&gt;），把原 &lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt; 里的内容&lt;strong&gt;剪切&lt;/strong&gt;到该目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;删除&lt;/strong&gt; C 盘侧已空的 &lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt; 文件夹（必须是真实目录，不能残留同名文件夹，否则 &lt;code&gt;mklink&lt;/code&gt; 会失败）。&lt;/li&gt;
+&lt;li&gt;以&lt;strong&gt;管理员身份&lt;/strong&gt;打开「命令提示符」或 PowerShell，执行下面的联接命令（将 &lt;code&gt;{user}&lt;/code&gt; 换成你的 Windows 登录名；也可用下方带 &lt;code&gt;%USERNAME%&lt;/code&gt; 的写法）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 需要管理员&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;mklink&lt;/span&gt; /D &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%USERPROFILE%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\.cursor&amp;#34;&lt;/span&gt; D:\{user}\.cursor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若希望路径随当前用户名自动展开，可用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 需要管理员（目标目录须已存在且已迁入数据）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;mklink&lt;/span&gt; /D &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%USERPROFILE%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\.cursor&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%USERNAME%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\.cursor&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;清理 &lt;code&gt;Windows\Installer&lt;/code&gt;（孤儿补丁缓存）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C:\Windows\Installer&lt;/code&gt; 存放已安装程序的 &lt;code&gt;.msi&lt;/code&gt; / &lt;code&gt;.msp&lt;/code&gt; 补丁缓存，通常体积巨大（10–20 GB+）。其中一部分是&amp;quot;孤儿文件&amp;quot;——对应的程序已卸载，但缓存未被清除。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;此目录&lt;strong&gt;不可直接删除&lt;/strong&gt;，否则会导致程序无法卸载或修复。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原先常用的第三方工具 PatchCleaner（homedev.com.au）已停止维护、官网下线。目前建议通过&lt;strong&gt;系统自带磁盘清理&lt;/strong&gt;来处理：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 管理员运行 - 先配置清理项（勾选全部，尤其&amp;#34;Windows 更新清理&amp;#34;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cleanmgr /d C /sageset:1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 再执行清理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cleanmgr /d C /sagerun:1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;清理 &lt;code&gt;Windows\WinSxS&lt;/code&gt;（组件存储）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;WinSxS（Windows Side-by-Side）是 Windows 的&lt;strong&gt;组件存储&lt;/strong&gt;，位于 &lt;code&gt;C:\Windows\WinSxS&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;为什么体积大？&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 按&lt;strong&gt;组件 + 版本号&lt;/strong&gt;管理系统文件。每次系统更新，新旧版本都保留在 WinSxS 中以便回滚。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C:\Windows\System32&lt;/code&gt; 等目录下的 DLL 实际上是&lt;strong&gt;硬链接&lt;/strong&gt;指向 WinSxS 中的文件。资源管理器和 SpaceSniffer 会&lt;strong&gt;重复计算&lt;/strong&gt;硬链接体积，所以报告值比实际独占空间大（通常只有报告值的 40%–60%）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;查看真实占用：&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 管理员运行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dism.exe /Online /Cleanup-Image /AnalyzeComponentStore
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输出示例：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;组件存储（WinSxS）的大小:          12.35 GB
+与 Windows 共享:                    8.10 GB    ← 硬链接重复部分，不算真正占用
+备份和已禁用的功能:                 1.52 GB
+缓存和临时数据:                     0.73 GB
+可以推荐清理的组件数:              是
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;DISM 清理命令：&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;DISM（Deployment Image Servicing and Management）是 Windows 内置的镜像服务工具，&lt;code&gt;/Cleanup-Image&lt;/code&gt; 子命令用于清理组件存储中&lt;strong&gt;被新版取代的旧版本组件文件&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 温和清理（保留回滚能力，可回收 1-2 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dism.exe /Online /Cleanup-Image /StartComponentCleanup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 深度清理（以当前更新为基线，永久删除旧版本，不可回滚旧更新，可回收 2-5 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;行为&lt;/th&gt;
+&lt;th&gt;回滚能力&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/StartComponentCleanup&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除被取代的旧版本组件&lt;/td&gt;
+&lt;td&gt;保留&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/StartComponentCleanup /ResetBase&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;以当前更新为新基线，永久删除所有旧版本&lt;/td&gt;
+&lt;td&gt;丧失（一般无影响）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;清理用户目录缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目录&lt;/th&gt;
+&lt;th&gt;清理方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Temp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;直接清空（已在上方脚本覆盖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\CrashDumps&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;直接清空（已在上方脚本覆盖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Google\Chrome\...\Cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;清空浏览器缓存（已在上方脚本覆盖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Microsoft\Edge\...\Cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;同上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;建议 mklink 到 D 盘（见上方小节）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\NuGet\v3-cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;dotnet nuget locals all --clear&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Microsoft\Visual Studio&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在 VS 中清理组件缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;清理 AppData 各应用缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;AppData\Local&lt;/code&gt; 是 C 盘用户目录中的&amp;quot;隐形大户&amp;quot;，以下按占用从大到小列出清理建议：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目录&lt;/th&gt;
+&lt;th&gt;大小&lt;/th&gt;
+&lt;th&gt;清理方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Outlook&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~4.3 GB&lt;/td&gt;
+&lt;td&gt;Outlook 离线缓存（OST），在 Outlook → 帐户设置 → 数据文件中，调整邮件保留时间为 3–6 个月&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Google\Chrome&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~3.1 GB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chrome://settings/clearBrowserData&lt;/code&gt; 清理缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;JetBrains&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~3.7 GB&lt;/td&gt;
+&lt;td&gt;IDE → File → Invalidate Caches；删除不再使用的旧版本目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Edge&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.4 GB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;edge://settings/clearBrowserData&lt;/code&gt; 清理缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Packages&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.7 GB&lt;/td&gt;
+&lt;td&gt;UWP 应用数据（含新版 Teams 等），通过 设置 → 应用 → 对应应用 → 重置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;NuGet&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.5 GB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;dotnet nuget locals all --clear&lt;/code&gt;（详见下方说明）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AndroidStudio*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.3 GB&lt;/td&gt;
+&lt;td&gt;不做 Android 开发可卸载；否则 &lt;code&gt;rd /s /q &amp;quot;%USERPROFILE%\.gradle\caches&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Postman&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.2 GB&lt;/td&gt;
+&lt;td&gt;Postman 设置中清理历史/响应缓存；不用可卸载&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\VisualStudio&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~887 MB&lt;/td&gt;
+&lt;td&gt;VS Installer → 更多 → 清理下载缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Office&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~716 MB&lt;/td&gt;
+&lt;td&gt;Office 缓存，一般不需手动清&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;YarnCache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~676 MB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;yarn cache clean&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Cursor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~686 MB&lt;/td&gt;
+&lt;td&gt;建议 mklink 到 D 盘（见上方小节）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AzureFunctionsTools&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~459 MB&lt;/td&gt;
+&lt;td&gt;不用可删：&lt;code&gt;rd /s /q &amp;quot;%LOCALAPPDATA%\AzureFunctionsTools&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Terminal Server Client&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~388 MB&lt;/td&gt;
+&lt;td&gt;RDP 位图缓存，可安全删除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;go-build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~294 MB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;go clean -cache&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Teams\Cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~229 MB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;del /f /s /q &amp;quot;%LOCALAPPDATA%\Microsoft\Teams\Cache\*.*&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;快速清理脚本（可安全执行）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM === AppData 缓存清理 ===&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Yarn 缓存（~676 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yarn cache clean
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM NuGet 全部本地缓存（~1.5 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet nuget locals all --clear
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Go 编译缓存（~294 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;go clean -cache
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM RDP 位图缓存（~388 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Microsoft\Terminal Server Client\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Teams 旧版缓存（~229 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Microsoft\Teams\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Edge 缓存（~1.4 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Microsoft\Edge\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Chrome 缓存（~3.1 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Google\Chrome\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;NuGet 缓存迁移说明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;NuGet.config&lt;/code&gt; 中设置 &lt;code&gt;globalPackagesFolder&lt;/code&gt; 只控制&lt;strong&gt;包文件本体&lt;/strong&gt;的存放位置，NuGet 还有三个独立缓存仍然留在 C 盘：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;缓存目录&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;th&gt;受 &lt;code&gt;globalPackagesFolder&lt;/code&gt; 控制？&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AppData\Local\NuGet\v3-cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;HTTP 响应缓存（包元数据、搜索结果等 API 响应）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;否&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AppData\Local\NuGet\plugins-cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;认证插件缓存（凭据提供程序等）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;否&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Temp\NuGetScratch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;临时工作目录（安装/还原过程中的中间文件）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;否&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;globalPackagesFolder&lt;/code&gt; 指向的目录&lt;/td&gt;
+&lt;td&gt;包文件本体（.nupkg + 解压内容）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;是&lt;/strong&gt; ✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;要将这三个缓存也迁到 D 盘，需要设置&lt;strong&gt;系统环境变量&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 管理员运行 - 永久设置系统环境变量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;setx NUGET_HTTP_CACHE_PATH &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\AppData\nuget\v3-cache&amp;#34;&lt;/span&gt; /M
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;setx NUGET_PLUGINS_CACHE_PATH &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\AppData\nuget\plugins-cache&amp;#34;&lt;/span&gt; /M
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;setx NUGET_SCRATCH &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\AppData\nuget\scratch&amp;#34;&lt;/span&gt; /M
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置后，先清理旧缓存再重启：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet nuget locals all --clear
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;常用磁盘分析工具&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TreeSize Free&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;作用: 图形化展示各文件夹/文件占用空间，支持按大小排序，快速找出大文件/大目录。&lt;/li&gt;
+&lt;li&gt;官网下载: &lt;a href=&#34;https://www.jam-software.com/treesize_free&#34;&gt;https://www.jam-software.com/treesize_free&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SpaceSniffer&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;作用: 以「矩形块」方式直观展示磁盘空间占用情况，适合快速定位&amp;quot;空间杀手&amp;quot;。&lt;/li&gt;
+&lt;li&gt;官网下载: &lt;a href=&#34;http://www.uderzo.it/main_products/space_sniffer&#34;&gt;http://www.uderzo.it/main_products/space_sniffer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+- https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ - Terry</description>
         </item>
     
     
@@ -783,152 +1113,6 @@ Host github.com
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/johar99/article/details/113651925&#34;&gt;Docker 自定义桥接ip&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/harryhare/article/details/83317987&#34;&gt;TCP 网络状态图&lt;/a&gt;&lt;/p&gt;
 - https://terryren.github.io/posts/web/nginx/apisix-1/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>密码学 - 数字证书</title>
-        <link>https://terryren.github.io/posts/web/crypto/certification/</link>
-        <pubDate>Sat, 14 Oct 2023 13:56:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/web/crypto/certification/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/web/crypto/certification/ -&lt;h1 id=&#34;pki&#34;&gt;PKI&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;公开密钥基础建设（Public Key Infrastructure），是一组由硬件、软件、参与者、管理政策与流程组成的基础架构，其目的在于创造、管理、分配、使用、存储以及撤销数字证书，
-从而建立一个安全的网络环境，数字证书最常见的格式有X.509，X.509又称之为PKIX。
-在计算机界，有各种密码学标准，它们表示了如何在计算机中计算、存储、传输（等）各种算法，这些标准由 RSA、IEFT、PKIX、ITU-T、ISO 等标准组织机构编写, CA中心普遍采用的规范是X.509系列和PKCS系列&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;ca&#34;&gt;CA&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书颁发机构&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;csr&#34;&gt;CSR&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书签名请求&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;crl&#34;&gt;CRL&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;证书吊销列表&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;ocsp&#34;&gt;OCSP&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在线证书状态协议&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;pkcs&#34;&gt;PKCS&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 &lt;code&gt;RSA&lt;/code&gt; 资讯安全公司（英语：RSA Security）所制定
-包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;pkcs1&#34;&gt;pkcs1&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc8017&#34;&gt;RFC8017&lt;/a&gt;
-定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl genrsa -out key.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Private Key Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PRIVATE KEY-----
-BASE64Encoded
------END RSA PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Public Key Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PUBLIC KEY-----
-BASE64Encoded
------END RSA PUBLIC KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs7&#34;&gt;pkcs7&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。
-其中，包含了S/MIME与CMS。
-主要用来存储签名或者加密后的数据,如证书或者CRL。
-PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用&lt;code&gt;.p7b&lt;/code&gt;文件扩展名&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;‑‑‑‑‑BEGIN PKCS7‑‑‑‑‑
-
-‑‑‑‑‑END PKCS7‑‑‑‑‑
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PKCS7的文件从PEM格式转换成为DER格式&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -outform DER -out file.der
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;文件中提取出所有的证书到另外一个文件&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -print_certs -out certs.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs8&#34;&gt;pkcs8&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PKCS #8，Private-Key Information Syntax Standard，详细的描述了私钥的存储格式。用于加密、非加密地存储Private Certificate Keypairs（不限于RSA），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5958&#34;&gt;RFC5858&lt;/a&gt;
-Apache读取证书私钥的标准。主要用来存储私钥。私钥首先会使用PKCS #5的标准进行加密，然后&lt;code&gt;Base64&lt;/code&gt;编码，转换成为&lt;code&gt;PEM&lt;/code&gt;格式存储&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;一个非加密 ECC 私钥的 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PRIVATE KEY-----
-MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQglQanBRiYVPX7F2Rd
-4CqyjEN0K4qfHw4tM/yMIh21wamhRANCAARsxaI4jT1b8zbDlFziuLngPcExbYzz
-ePAHUmgWL/ZCeqlODF/l/XvimkjaWC2huu1OSWB9EKuG+mKFY2Y5k+vF
------END PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;一个加密 PKCS#8 私钥的 PEM 格式&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN ENCRYPTED PRIVATE KEY-----
-Base64 xxxxxx
------END ENCRYPTED PRIVATE KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;RSA 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in rsa-private-key.pem -outform PEM -nocrypt -out rsa-private-key-pkcs8.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;ECC 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in ecc-private-key.pem -outform PEM -nocrypt -out ecc-private-key-pkcs8.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs12&#34;&gt;pkcs12&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;定义了包含私钥（Private Keys）与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。PKCS12文件的扩展名是&lt;code&gt;.p12&lt;/code&gt;、&lt;code&gt;.pfx&lt;/code&gt;、&lt;code&gt;.jks&lt;/code&gt;。
-PKCS12可以看做是PKCS7的扩展，PKCS12可以额外存储私钥、证书、私钥、CRL
-Private Keys和Public Key Certificates是复数形式，这意味着PKCS #12文件实际上是一个Keystore，PKCS #12文件可以被用做Java Key Store（JKS），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc7292&#34;&gt;RFC7292&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;将PKCS12格式转换成为PEM&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;从PEM到PKCS12&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;x509&#34;&gt;X509&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;X.509是ITU-T标准化部门基于他们之前的ASN.1定义的一套证书标准，在X.500基础上进行了功能增强
-X.509是在1988年发布的。X.509证书由用户公共密钥和用户标识符组成。此外还包括版本号、证书序列号、CA标识符、签名算法标识、签发者名称、证书有效期等信息&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Certificate Format&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN CERTIFICATE-----
-BASE64Encoded
------END CERTIFICATE-----
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Certificate Subject Public Key Info&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PUBLIC KEY-----
-BASE64Encoded
------END PUBLIC KEY-----
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;asn1&#34;&gt;ASN.1&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在电信和计算机网络领域，ASN.1（Abstract Syntax Notation One) 是一套标准，是描述数据的表示、编码、传输、解码的灵活的记法。
-它提供了一套正式、无歧义和精确的规则以描述独立于特定计算机硬件的对象结构。
-ASN.1是ISO和ITU-T的联合标准，最初是1984年的CCITT X.409:1984的一部分。由于其广泛应用，1988年ASN.1移到独立标准X.208，1995年进行全面修订后变成X.680系列标准&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;pem&#34;&gt;PEM&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PEM文件是一个文本文件，其内容是以“ – BEGIN -” 开头，中间内容是DER文件的Base64编码&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;查看文本证书内容&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.pem -text -noout
-openssl x509 -in cert.cer -text -noout
-openssl x509 -in cert.crt -text -noout
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PEM-To-DER&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -outform der-out cert.der
-openssl rsa -in key.pem -outform der -out key.der
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;der&#34;&gt;DER&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;DER表示证书的内容是用二进制进行编码的&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;查看二进制证书内容&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.der -inform der -text -noout
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;DER-To-PEM&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -inform der -outform pem -out cert.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/543707056&#34;&gt;密码学标准 - X.509 与 PKCS 系列&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0%E5%9F%BA%E7%A4%8E%E5%BB%BA%E8%A8%AD&#34;&gt;PKI-1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/30136885&#34;&gt;PKI-2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A0%87%E5%87%86#&#34;&gt;PKCS&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/X.509&#34;&gt;X.509&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1&#34;&gt;X.509-RFC5280&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/Pem%E6%A0%BC%E5%BC%8F&#34;&gt;Pem&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/ASN.1&#34;&gt;ASN.1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/HKnight/p/16851786.html&#34;&gt;证书认证原理&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://chanjarster.github.io/post/x509-pkcs-file-formats/&#34;&gt;X.509、PKCS文件格式介绍&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/bc32cbfe49e7&#34;&gt;常见的PKI标准(X.509、PKCS)及证书相关介绍&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/web/crypto/certification/ - Terry</description>
         </item>
     
     

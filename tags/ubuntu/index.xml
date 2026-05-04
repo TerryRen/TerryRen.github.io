@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Mon, 27 Apr 2026 17:30:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>旧笔记本改造 AI 自动化服务器：HP ZHAN 99 安装 Ubuntu Desktop 24.04 LTS</title>
+      <link>https://terryren.github.io/posts/misc/ubuntu-desktop-ai-server-hp-zhan99/</link>
+      <pubDate>Mon, 27 Apr 2026 17:30:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/misc/ubuntu-desktop-ai-server-hp-zhan99/</guid>
+      <description>手里有一台 2018 年左右的 HP ZHAN 99 移动工作站，配置如下：
+CPU：Intel i5-8300H，4 核 8 线程 内存：已升级到 32GB 显卡：Intel UHD 630 + NVIDIA Quadro P600 硬盘：256GB SSD + 1TB 数据盘 原系统：Windows 10 当前用途：代理程序、虚拟机、轻量服务 这台机器已经不算新，但作为一台常开的个人服务器仍然很合适。尤其是 32GB 内存，对于 Docker、n8n、Playwright、AI Agent、自动化脚本来说已经比较宽裕。
+最开始考虑继续在 Windows 10 上跑虚拟机、WSL 或各种 Agent，但实际体验并不理想。老笔记本跑虚拟机有额外开销，而很多 AI Agent、自动化工具、Docker 服务本身更偏向 Linux 环境。因此最终更推荐的方案是：
+单系统安装 Ubuntu Desktop 24.04 LTS + 256GB SSD 做系统盘 + 1TB 数据盘挂载到 /data + Docker / SSH / Tailscale / n8n / AI Agent 这篇文章记录完整安装和初始化过程。</description>
+    </item>
+    
+  </channel>
+</rss>

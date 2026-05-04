@@ -7,9 +7,1463 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2026 18:55:00 +0800</lastBuildDate>
     
         <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>普通人的财务自由之路：关于标普500、纳斯达克100定投与抄底的终极答案</title>
+        <link>https://terryren.github.io/posts/misc/sp500-dca-vs-timing/</link>
+        <pubDate>Fri, 01 May 2026 18:55:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/misc/sp500-dca-vs-timing/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/misc/sp500-dca-vs-timing/ -&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
+&lt;p&gt;手里有50万，十年后能变多少？是每天盯着K线做T，还是苦苦等待暴跌抄底？本文将用数据告诉你，为什么“躺平”往往赢过“瞎折腾”，并给出一套适合普通人的美股指数定投策略。&lt;/p&gt;
+&lt;p&gt;如果你和我一样，是通过 A 股账户买 &lt;strong&gt;纳斯达克ETF华夏（SH:513300）&lt;/strong&gt;、&lt;strong&gt;标普500ETF博时（SH:513500）&lt;/strong&gt; 这类场内 QDII ETF 间接参与美股，本文后半部分也会把同类基金、分红、溢价和选择标准一次讲清楚。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;写在前面的预期管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本文出现的所有金额均为 &lt;strong&gt;名义值（未扣通胀）&lt;/strong&gt;。按长期 CPI 2.5–3% 折算，10 年后实际购买力大约是名义值的 75–80%，20 年后约 55–60%。&lt;/li&gt;
+&lt;li&gt;历史上美股 &lt;strong&gt;名义&lt;/strong&gt; 年化约 9–10%，&lt;strong&gt;扣通胀后实际&lt;/strong&gt; 长期年化约 6.5–7%（Credit Suisse / UBS Global Investment Returns Yearbook，覆盖 1900–2023）。本文用 8% 作为中性预期、5% 作为保守预期、10% 作为偏乐观情景。&lt;/li&gt;
+&lt;li&gt;美国是过去 120 年里表现 &lt;strong&gt;最好&lt;/strong&gt; 的发达国家市场，存在显著幸存者偏差。日本日经 225 从 1989 年高点到再次回到原位用了约 35 年。&lt;strong&gt;不要把美股的过去当成你的未来的承诺。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一-相信复利时间的魔法&#34;&gt;一、 相信复利：时间的魔法&lt;/h2&gt;
+&lt;p&gt;让我们先算一笔账。&lt;/p&gt;
+&lt;p&gt;如果你现在手握 &lt;strong&gt;50万元&lt;/strong&gt; 本金，投入标普500指数，并且在接下来的 &lt;strong&gt;10年&lt;/strong&gt; 里什么都不做，只是持有。在三档预期收益下，结果差异巨大：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;假设年化（名义）&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;10 年后名义资产&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;按 3% 通胀折算的实际购买力&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5%（保守）&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;81.4 万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;≈ 60.6 万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8%（中性）&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;108.0 万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;≈ 80.3 万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10%（偏乐观）&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;129.7 万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;≈ 96.5 万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;你不需要看盘，不需要懂技术指标，甚至不需要关心美联储加息降息。单纯靠企业盈利的增长和时间的复利，你的资产就能在中性预期下增值约 58 万。这就是投资的第一性原理。&lt;/p&gt;
+&lt;p&gt;但请记住：&lt;strong&gt;10% 不是天上掉下来的常态&lt;/strong&gt;。Credit Suisse / UBS Global Investment Returns Yearbook 统计 1900–2023 年全球主要市场，&lt;strong&gt;实际年化收益&lt;/strong&gt;（扣通胀）约为：美国 6.6%、英国 5.4%、德国 3.3%、日本 1.9%。也就是说，名义 10% 的体感是建立在过去 100 多年里 &lt;strong&gt;美国是表现最好的市场&lt;/strong&gt; 这一前提上的，不能视为投资规划的基准假设。&lt;/p&gt;
+&lt;h2 id=&#34;二-别做t赚成长的钱别赚波动的钱&#34;&gt;二、 别做T：赚“成长”的钱，别赚“波动”的钱&lt;/h2&gt;
+&lt;p&gt;很多人不满足于年化10%，总想通过“高抛低吸”（做T）来跑赢大盘。但残酷的数据告诉我们：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;长期持有指数是正和博弈&lt;/strong&gt;：你赚的是优秀企业业绩增长的钱，时间维度拉长后胜率非常高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;频繁择时对零售投资者是高摩擦游戏&lt;/strong&gt;：扣掉手续费、点差、税费、错过的最佳交易日后，长期期望值很容易为负。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;真正的关键不是&amp;quot;急涨慢跌&amp;quot;，而是 &lt;strong&gt;指数的长期涨幅高度集中在极少数几天里&lt;/strong&gt;。这是被反复验证过的一个反直觉事实：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以标普 500 为例，1993–2023 这 30 年里，如果你 &lt;strong&gt;错过最好的 10 天&lt;/strong&gt;，年化收益从约 &lt;strong&gt;9.8% 跌到 5.6%&lt;/strong&gt;；错过最好的 30 天，年化收益跌到约 &lt;strong&gt;1.6%&lt;/strong&gt;；错过最好的 50 天，&lt;strong&gt;累计回报转为负数&lt;/strong&gt;。
+—— Hartford Funds / J.P. Morgan《The cost of market timing》系列研究&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;更糟的是，&lt;strong&gt;最好的 10 天里大约 7 天紧挨着最差的 10 天&lt;/strong&gt;（典型场景：2008 年 10 月、2020 年 3 月）。你没办法只躲掉跌幅、又不错过反弹。一旦你因为&amp;quot;看着不对&amp;quot;在大跌中卖出，大概率也会错过接下来的 V 型反弹。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对于非职业交易员，做T的结局通常是：一顿操作猛如虎，一看收益二点五。&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;顺带纠正一个常见的口误：股票市场普遍是 &lt;strong&gt;&amp;ldquo;急跌慢涨&amp;rdquo;&lt;/strong&gt;（负偏态），不是&amp;quot;急涨慢跌&amp;quot;。2000–2002 年纳斯达克 100 用了 2.5 年跌掉 &lt;strong&gt;-83%&lt;/strong&gt;，又用了约 15 年才回到 2000 年高点；2008 年 S&amp;amp;P 500 从 2007 年 10 月高点跌至 2009 年 3 月低点 &lt;strong&gt;-57%&lt;/strong&gt;，再回到原点用了 &lt;strong&gt;5.5 年&lt;/strong&gt;（直到 2013 年 3 月）。所以&amp;quot;反正跌得慢，我能从容跑路&amp;quot;是一个危险的错觉。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;三-别等暴跌上帝也无法战胜定投&#34;&gt;三、 别等暴跌：上帝也无法战胜定投&lt;/h2&gt;
+&lt;p&gt;“现在的价格太高了，我要攒着钱，等大跌了再一把梭哈。”——这是最常见的心理误区。&lt;/p&gt;
+&lt;p&gt;这里要谨慎引用两个常被混淆的研究，它们的真正结论是：&lt;/p&gt;
+&lt;h3 id=&#34;研究一手里已经有一笔钱--立即一次性入场统计上更优&#34;&gt;研究一：手里已经有一笔钱 → 立即一次性入场，统计上更优&lt;/h3&gt;
+&lt;p&gt;Vanguard 2012 年那篇《Dollar-Cost Averaging Just Means Taking Risk Later》研究了 1926–2011 年美国、英国、澳大利亚三大市场的所有 12 个月窗口：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一次性入场（Lump Sum）在大约 2/3 的时段里跑赢分批 DCA，平均超额收益约 2.3%。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;直觉解释：市场长期向上，每多一天在场内就多一天复利。&amp;ldquo;先放着以后慢慢投&amp;quot;等价于主动选择更晚承担风险，代价是少赚。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以如果你现在手里就握着 50 万，统计上的最优解不是&amp;quot;分 12 个月每月投 4.2 万&amp;rdquo;，而是尽快入场。&lt;/strong&gt; 仅当你的心理承受能力不允许，才退而求其次用 6–12 个月分批入场，把&amp;quot;后悔最大化&amp;quot;风险摊平。&lt;/p&gt;
+&lt;p&gt;但如果你买的是 A 股场内 QDII ETF，还要加一个前提：&lt;strong&gt;不能在明显高溢价时一次性买入&lt;/strong&gt;。Lump Sum 的结论讨论的是资产价格本身，不是让你用 105 元去买只值 100 元的基金份额。遇到 QDII 额度紧张、暂停申购、场内溢价明显偏高时，宁愿先把钱放在货币基金里，等溢价回落后再买。&lt;/p&gt;
+&lt;h3 id=&#34;研究二哪怕你是上帝来抄底也很难跑赢-dca&#34;&gt;研究二：哪怕你是上帝来抄底，也很难跑赢 DCA&lt;/h3&gt;
+&lt;p&gt;Nick Maggiulli 在《Even God Couldn&amp;rsquo;t Beat Dollar-Cost Averaging》(Of Dollars and Data, 2019) 里做了一个极端实验：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;让一个&amp;quot;上帝视角&amp;quot;的择时者在每两次回撤之间精准买在最低点，对比一个无脑每月定投的傻瓜。结果：&lt;strong&gt;在大约 70% 的 40 年滚动窗口里，上帝都跑输傻瓜&lt;/strong&gt;——因为下一个真正的大底可能要等 5 年甚至 10 年，等待期间的现金拖累 + 踏空，足够抹掉抄底的全部好处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;所以&amp;quot;攒着工资等大跌&amp;quot;在统计上几乎一定输给&amp;quot;工资到手就投&amp;quot;。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;把这两个结论合起来&#34;&gt;把这两个结论合起来&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;你的处境&lt;/th&gt;
+&lt;th&gt;统计最优解&lt;/th&gt;
+&lt;th&gt;心理可接受的次优解&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;手里已有一笔钱&lt;/td&gt;
+&lt;td&gt;立即一次性入场（Lump Sum）&lt;/td&gt;
+&lt;td&gt;分 6–12 个月匀速买完&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;每月有工资现金流&lt;/td&gt;
+&lt;td&gt;工资到手立即投（被动 DCA）&lt;/td&gt;
+&lt;td&gt;同左&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;工资到手后留一部分等大跌&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;不推荐&lt;/strong&gt;（既输概率也输预期）&lt;/td&gt;
+&lt;td&gt;仅当心理需要&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;结论：Time in the market beats timing the market.（在市场中的时间胜过预测市场的时间）。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;四-一个折中策略核心定投--少量卫星行为优解不是数学优解&#34;&gt;四、 一个折中策略：核心定投 + 少量卫星（行为优解，不是数学优解）&lt;/h2&gt;
+&lt;p&gt;读到这里你可能会问：第三节明明说&amp;quot;等暴跌&amp;quot;是错的，那为什么还要留子弹？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;先把结论说在前面：留卫星仓位的真正目的是&amp;quot;防止你在大跌中砍仓&amp;quot;，而不是&amp;quot;提高收益&amp;quot;。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-数学上-8020-几乎一定跑输-1000&#34;&gt;1. 数学上 80/20 几乎一定跑输 100/0&lt;/h3&gt;
+&lt;p&gt;假设货币基金/短债年化 2%，标普 500 长期年化 8%：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;100% 满仓：年化 8%
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;80/20  ：年化 = 80%×8% + 20%×2% = 6.8%（且 20% 子弹只在罕见的 -20% 大跌中才有机会被全用上）
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;长期拖累约 1.2 个百分点。&lt;/strong&gt; 在 2010–2020 那种长达 11 年没有 ≥20% 大回撤的周期里（最深也只是 2018Q4 的 -19.8%），20% 子弹基本&amp;quot;放着发霉&amp;quot;。这就是 Vanguard 那篇研究反复在讲的代价：&lt;strong&gt;任何形式的&amp;quot;留现金等机会&amp;quot;都是择时，统计上都更可能跑输。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-那为什么还要留因为人不是机器&#34;&gt;2. 那为什么还要留？因为人不是机器&lt;/h3&gt;
+&lt;p&gt;行为金融的现实是：&lt;strong&gt;大多数零售投资者在 -30% 时会砍仓&lt;/strong&gt;（DALBAR 每年发布的《QAIB》报告显示，过去 30 年美国普通基金投资者实际年化比基金本身年化要低约 3–4%，主要原因就是高买低卖）。&lt;/p&gt;
+&lt;p&gt;如果留 10–20% 现金能让你 &lt;strong&gt;不在底部割肉&lt;/strong&gt;，那这部分&amp;quot;拖累&amp;quot;就是值得的——它换来的是你能完整吃到下一轮上涨。这是一个用收益换概率的交易，不是无成本的&amp;quot;smart&amp;quot;。&lt;/p&gt;
+&lt;h3 id=&#34;3-推荐配比按你的砍仓概率来选&#34;&gt;3. 推荐配比（按你的&amp;quot;砍仓概率&amp;quot;来选）&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;你过往的砍仓表现&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;建议核心 / 卫星&lt;/th&gt;
+&lt;th&gt;卫星仓位的角色定位&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;从来不砍，能扛 -50%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;100 / 0&lt;/td&gt;
+&lt;td&gt;不需要&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;大跌时会犹豫但能不动&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;90 / 10&lt;/td&gt;
+&lt;td&gt;心理安慰金 + 再平衡&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;跌 -30% 大概率会砍一些&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;80 / 20&lt;/td&gt;
+&lt;td&gt;强制纪律 + 少量加仓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;跌 -15% 就会想跑&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;不适合纯股票指数&lt;/td&gt;
+&lt;td&gt;该考虑股债 60/40 组合&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;4-加仓规则放宽阈值不要-all-in&#34;&gt;4. 加仓规则：放宽阈值、不要 All-in&lt;/h3&gt;
+&lt;p&gt;历史上 S&amp;amp;P 500 ≥-20% 的回撤大约 &lt;strong&gt;每 7–10 年才出现一次&lt;/strong&gt;。把 50% 子弹留到 -20% 才打，意味着大部分时间这笔钱在睡觉。更可执行的版本是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;回撤 -10%&lt;/strong&gt;：动用卫星仓位的 &lt;strong&gt;30%&lt;/strong&gt; 加仓（不是总仓位的 30%，是 20% 卫星里的 30%）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回撤 -20%&lt;/strong&gt;：再动用 &lt;strong&gt;40%&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回撤 -30%&lt;/strong&gt;：再动用剩下的 &lt;strong&gt;30%&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;永远不要 All-in。&lt;/strong&gt; 2008 年 S&amp;amp;P 500 触及 -20% 后还要再跌 -47% 才见底，2000–2002 年这种事发生了 &lt;strong&gt;3 次&lt;/strong&gt;。把&amp;quot;最后一颗子弹&amp;quot;永远留着，是抵御&amp;quot;以为已经到底但其实还能再跌一半&amp;quot;这种现实的最低成本保险。&lt;/p&gt;
+&lt;h3 id=&#34;5-动态再平衡这才是-8020-的真正长期收益来源&#34;&gt;5. 动态再平衡（这才是 80/20 的真正长期收益来源）&lt;/h3&gt;
+&lt;p&gt;不是&amp;quot;等大跌再加仓&amp;quot;，而是 &lt;strong&gt;按阈值再平衡&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每年年底检查一次，或股债比例偏离目标 ±5% 时触发；&lt;/li&gt;
+&lt;li&gt;高于目标时把核心卖一点回卫星，低于目标时反过来；&lt;/li&gt;
+&lt;li&gt;这本身是一种纪律化的&amp;quot;低买高卖&amp;quot;，主要价值是 &lt;strong&gt;控制风险、维持目标仓位、减少情绪化操作&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要注意，再平衡不保证提高绝对收益。在单边上涨的大牛市里，它可能因为卖出上涨资产而拖累收益；在震荡市场里，它可能提升风险调整后收益。所以更准确的说法是：&lt;strong&gt;纪律性再平衡 &amp;gt; 主观抄底；再平衡是风险管理工具，不是收益增强魔法。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;五-细节优化定投频率没那么重要钱到手就投才重要&#34;&gt;五、 细节优化：定投频率没那么重要，&amp;ldquo;钱到手就投&amp;quot;才重要&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;黄金法则&lt;/strong&gt;：钱什么时候到手，就什么时候投。
+如果是月薪族，设置发薪日的次日自动扣款，是坚持定投最轻松的姿势。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;定投频率本身（周投 / 双周投 / 月投）对长期收益的影响 &lt;strong&gt;几乎可以忽略&lt;/strong&gt;。Vanguard 2012 年内部测算：在 1926–2011 美国市场全部样本里，月投与周投的最终资产差距 &lt;strong&gt;常年稳定在 0.05% 以内&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;需要避免的是这两类反模式，不是周投本身：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;月薪到手后强行拆 4 周再投&lt;/strong&gt;。这反而让前 3 周的钱平均闲置了 1.5 周，确实拖累很小但完全没必要。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;手动定投而不是自动扣款&lt;/strong&gt;。每次需要&amp;quot;动手&amp;quot;的操作都会被市场情绪干扰——上涨时舍不得买，下跌时不敢买。&lt;strong&gt;真正的定投是机器在投，你只负责不卡壳。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以正确表述是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;现金流频率 = 投资频率&lt;/strong&gt;：月薪就月投，周薪就周投，奖金到账就一次性投。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;必须自动化&lt;/strong&gt;：交给券商自动扣款，把人脑从决策环节里彻底拿掉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;六-如果买纳斯达克100策略一样吗&#34;&gt;六、 如果买纳斯达克100，策略一样吗？&lt;/h2&gt;
+&lt;p&gt;大方向一样：&lt;strong&gt;长期持有 + 定投为主 + 少量现金等大跌加仓&lt;/strong&gt;，仍然不建议频繁做T，也不建议长期空仓等暴跌。&lt;/p&gt;
+&lt;p&gt;但纳斯达克100和标普500有一个关键差异：&lt;strong&gt;纳指100更集中、更偏科技成长，长期弹性更大，回撤也更深。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;标普500大约代表美国大盘核心资产，行业分布更均衡；纳斯达克100则更依赖科技巨头、半导体、软件、互联网平台和 AI 产业链。顺风时它涨得更猛，逆风时也更容易出现 30% 甚至 50% 级别的回撤。&lt;/p&gt;
+&lt;p&gt;因此，如果标普500适合用 &lt;strong&gt;80/20&lt;/strong&gt;，纳斯达克100可以稍微保守一点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;70% ~ 75% 核心仓位&lt;/strong&gt;：继续每月定投，保证长期在车上。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;25% ~ 30% 卫星仓位&lt;/strong&gt;：放在货币基金、短债或现金管理工具里，等待大回撤。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;纳指100的加仓阈值也要放宽。标普500跌 10% 已经值得关注，但纳指100跌 10% 很可能只是正常波动。&lt;/p&gt;
+&lt;p&gt;参考过去 25 年纳指 100 的真实回撤：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;时间&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;最大回撤&lt;/th&gt;
+&lt;th&gt;持续时间&lt;/th&gt;
+&lt;th&gt;恢复用时&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2000-03 ~ 2002-10&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;strong&gt;-83%&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;2.5 年下跌&lt;/td&gt;
+&lt;td&gt;约 15 年才回到 2000 年 3 月高点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2007-10 ~ 2008-11&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;strong&gt;-54%&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1 年&lt;/td&gt;
+&lt;td&gt;约 2 年&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2020-02 ~ 2020-03&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;strong&gt;-28%&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;5 周&lt;/td&gt;
+&lt;td&gt;约 5 个月&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2021-11 ~ 2022-12&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;strong&gt;-36%&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;13 个月&lt;/td&gt;
+&lt;td&gt;约 1.5 年&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;也就是说，&lt;strong&gt;&amp;quot;-35% 才 All-in&amp;quot;在过去 25 年里只触发过 2 次&lt;/strong&gt;（2008、2022 短暂触及）。把所有子弹都留到这个阈值，意味着 90% 以上的时间它都在睡觉，且 2000 年那次进去之后还要再跌 -50%+ 才见底。&lt;/p&gt;
+&lt;p&gt;更现实的纳指 100 加仓规则是 &lt;strong&gt;分批、永远留剩余子弹&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;回撤 -15%&lt;/strong&gt;：动用卫星仓位的 &lt;strong&gt;25%&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回撤 -25%&lt;/strong&gt;：再动用 &lt;strong&gt;35%&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回撤 -35%&lt;/strong&gt;：再动用 &lt;strong&gt;30%&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回撤 -50% 以下&lt;/strong&gt;：剩余 &lt;strong&gt;10%&lt;/strong&gt; 再用，&lt;strong&gt;永远不要 All-in&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样既能在常规回撤里有动作，也能在 2000 年那种&amp;quot;以为见底但还没&amp;quot;的极端情况下保留弹药。&lt;/p&gt;
+&lt;p&gt;如果你只买一个指数，标普500更适合作为核心；如果你能承受更大波动，并且相信美国科技巨头的长期竞争力，可以把纳指100作为增强收益的部分。比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;稳健型&lt;/strong&gt;：标普500 80% + 纳斯达克100 20%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;均衡型&lt;/strong&gt;：标普500 70% + 纳斯达克100 30%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;进取型&lt;/strong&gt;：标普500 60% + 纳斯达克100 40%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但这里一定要说清楚：&lt;strong&gt;标普500 + 纳斯达克100 并不是充分分散。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;纳斯达克100不是一类完全独立的新资产，它和标普500高度重叠。苹果、微软、英伟达、亚马逊、Meta、谷歌等科技巨头，本来就是标普500里的大权重股票；你再买纳斯达克100，本质上是在 &lt;strong&gt;进一步超配美国大型科技股&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;所以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;标普500 + 纳斯达克100，不等于&amp;quot;美国市场 + 另一类资产&amp;rdquo;；&lt;/li&gt;
+&lt;li&gt;它更像是&amp;quot;美国大盘核心 + 科技成长增强&amp;quot;；&lt;/li&gt;
+&lt;li&gt;如果你的工资、房产、现金都在人民币体系内，也不应把全部长期资产都压在美股指数上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;真正的长期养老组合，除了美股指数，还应该保留人民币现金、货币基金、短债或其他低波动资产。它们看起来收益低，但作用是在你失业、生病、买房、退休前后遇到熊市时，避免你被迫在低点卖出股票资产。&lt;/p&gt;
+&lt;p&gt;不建议普通人一开始就全部押纳斯达克100。你以为自己买的是高成长，真正下跌时考验的是你的睡眠质量。&lt;/p&gt;
+&lt;h2 id=&#34;七-每年抽取10利润会怎么样&#34;&gt;七、 每年抽取10%利润，会怎么样？&lt;/h2&gt;
+&lt;p&gt;很多人会想：既然涨了，那我每年把利润抽出 10%，剩下的继续定投，是不是更稳？&lt;/p&gt;
+&lt;p&gt;答案是：&lt;strong&gt;心理上更舒服，长期总资产会变少。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设 50 万长期年化 10%，不抽利润，10 年大约是 &lt;strong&gt;129.69 万&lt;/strong&gt;。如果每年赚了钱就抽走当年利润的 10%，实际效果接近于把年化收益从 10% 降到约 9%，10 年后账户大约是 &lt;strong&gt;118 万左右&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;差额来自一个很简单的原因：你抽走的不是“闲钱”，而是未来继续参与复利的本金。&lt;/p&gt;
+&lt;p&gt;所以，是否止盈要看你的目标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;目标是最大化长期财富&lt;/strong&gt;：不建议机械抽利润，尽量让利润继续滚利润。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标是提高安全感&lt;/strong&gt;：可以少量抽取，让自己有“落袋为安”的体验。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标是准备抄底资金&lt;/strong&gt;：可以把抽出的利润放进货币基金或短债，作为下一轮大跌的子弹，而不是直接消费掉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更合理的方式不是每年固定抽 10% 利润，而是设一个条件：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只有当账户创新高，并且年度收益超过 15% ~ 20% 时，才抽取超额收益的一部分。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这样既不会过早打断复利，又能在市场情绪过热时自动积累现金。&lt;/p&gt;
+&lt;h2 id=&#34;八-通过-a-股-etf-买美股有什么不同&#34;&gt;八、 通过 A 股 ETF 买美股，有什么不同？&lt;/h2&gt;
+&lt;p&gt;如果你买的是 &lt;strong&gt;纳斯达克ETF华夏（SH:513300）&lt;/strong&gt;、&lt;strong&gt;标普500ETF博时（SH:513500）&lt;/strong&gt;，本质上是用人民币账户，通过 A 股场内 QDII ETF 间接投资美国指数。&lt;/p&gt;
+&lt;p&gt;它和直接买美股 ETF（如 QQQ、VOO、SPY）并不完全一样。&lt;/p&gt;
+&lt;h3 id=&#34;1-分红不要指望它像美股-etf-一样稳定派息&#34;&gt;1. 分红：不要指望它像美股 ETF 一样稳定派息&lt;/h3&gt;
+&lt;p&gt;QDII ETF 的底层股票会分红，但这些分红先进入基金资产，再由基金按照合同和当期财务情况决定是否向持有人现金分红。&lt;/p&gt;
+&lt;p&gt;对投资者来说，关键不是&amp;quot;底层有没有分红&amp;quot;，而是 &lt;strong&gt;基金份额本身是否派现&lt;/strong&gt;。这取决于：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;是否存在&amp;quot;可分配利润&amp;quot;&lt;/strong&gt;：很多 QDII ETF 因为申购赎回机制、汇兑损益、份额扩张等原因，账面上长期没有可分配利润，因而长期不派现。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基金合同的分红条款&lt;/strong&gt;：多数 ETF 是&amp;quot;符合条件时可分配&amp;quot;，不是承诺每年必分。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基金管理人的实际安排&lt;/strong&gt;：同样跟踪指数，不同产品的分红频率也可能不同。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对投资者的实际影响：很多 A 股场内 QDII ETF &lt;strong&gt;成立以来分红次数极少甚至为 0&lt;/strong&gt;，收益主要体现在净值和场内价格上涨里。&lt;/p&gt;
+&lt;p&gt;这对&lt;strong&gt;长期投资者未必是坏事&lt;/strong&gt;：分红留在基金里相当于自动再投资，也省掉了&amp;quot;收到分红后再买回去&amp;quot;的佣金、买卖价差和溢价风险。但对靠现金流生活的退休投资者来说，就需要 &lt;strong&gt;自己定期赎回部分份额&lt;/strong&gt; 来制造现金流，这点比直接持有美股 SPY/VOO 略麻烦。&lt;/p&gt;
+&lt;h3 id=&#34;2-汇率风险a-股-qdii-etf-几乎都不做汇率对冲&#34;&gt;2. 汇率风险：A 股 QDII ETF &lt;strong&gt;几乎都不做汇率对冲&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;A 股 QDII ETF 以人民币计价，但底层资产是美元资产。所以你的人民币收益大致来自三部分：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;人民币收益 = 美股指数涨跌 + 美元兑人民币汇率变化 - 基金费用与跟踪误差
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;具体到不同情景：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;情景&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;美股指数&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;美元/人民币&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;你的人民币收益（粗略）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;美股涨、人民币贬值&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;+10%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;+5%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;strong&gt;约 +15%&lt;/strong&gt;（双重利好）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;美股涨、人民币升值&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;+10%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-5%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;约 +5%（汇率吃掉一半）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;美股跌、人民币升值&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-10%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-5%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;strong&gt;约 -15%&lt;/strong&gt;（双重打击）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;几乎所有市面上的 A 股 QDII ETF 都不做汇率对冲。&lt;/strong&gt; 这意味着你天然在赌&amp;quot;人民币长期不会大幅升值&amp;quot;。如果你认为未来 10 年人民币可能从当前水平显著升值（比如回到 6.0 附近），那就要预期至少 10–15% 的额外汇率拖累。&lt;/p&gt;
+&lt;p&gt;如果想规避这部分风险，目前在 A 股层面 &lt;strong&gt;没有低成本工具&lt;/strong&gt;（少数 LOF 或主动 QDII 基金会做部分对冲，但费率更高）。这是 A 股渠道的结构性劣势。&lt;/p&gt;
+&lt;h3 id=&#34;3-最大的坑不是费率而是溢价&#34;&gt;3. 最大的坑不是费率，而是溢价&lt;/h3&gt;
+&lt;p&gt;跨境 ETF 的场内价格可能高于基金净值，这叫溢价。极端时可达 &lt;strong&gt;5–20%&lt;/strong&gt;（2021 年原油 ETF、2024 年某些纳指 ETF 都出现过 10%+ 的溢价）。原因包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A 股和美股交易时间不同；&lt;/li&gt;
+&lt;li&gt;QDII 额度紧张，基金被迫暂停申购，套利通道断裂；&lt;/li&gt;
+&lt;li&gt;市场情绪太热；&lt;/li&gt;
+&lt;li&gt;申购赎回机制不够顺畅。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果你在高溢价时买入，相当于还没开始投资就先亏一截，且溢价回归往往是通过&amp;quot;价格相对净值下跌&amp;quot;完成的。&lt;/p&gt;
+&lt;p&gt;买入前请先看四个指标：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;溢价率&lt;/strong&gt;（IOPV 与价格的差）：越低越好，超过 2% 就该警惕，超过 5% 不要碰。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;成交额&lt;/strong&gt;：成交越活跃，越容易买卖。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;买卖价差&lt;/strong&gt;：价差越小，交易摩擦越低。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基金规模&lt;/strong&gt;：规模太小的产品更容易流动性不足。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下单前可以用这个检查清单：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1. 当前溢价率是否低于 2%？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2. 基金是否处于暂停申购状态？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3. 当日成交额是否足够大？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4. 买一卖一价差是否很窄？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5. 这笔钱是否 5 年内用不到？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6. 当前组合里纳斯达克100是否已经过高？
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;只要其中一两项明显不舒服，就不必急着买。长期投资不差这一天，但高溢价买入造成的损失可能需要好几个月才能修复。&lt;/p&gt;
+&lt;h3 id=&#34;4-筛选优先级要分短期-vs-长期持有&#34;&gt;4. 筛选优先级要分&amp;quot;短期&amp;quot; vs &amp;ldquo;长期&amp;quot;持有&lt;/h3&gt;
+&lt;p&gt;很多文章笼统地说&amp;quot;溢价率 &amp;gt; 费率&amp;rdquo;，但这只在 &lt;strong&gt;短期&lt;/strong&gt; 才对。对长期持有者，费率会被时间放大：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;持有周期&lt;/th&gt;
+&lt;th&gt;推荐筛选优先级&lt;/th&gt;
+&lt;th&gt;理由&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;短线 / 频繁交易&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;溢价率 &amp;gt; 价差/成交 &amp;gt; 规模 &amp;gt; 费率&lt;/td&gt;
+&lt;td&gt;单次溢价 2% 远大于一年费率 1%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;长期持有 5 年+&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;溢价率 ≈ 费率 &amp;gt; 价差/成交 &amp;gt; 规模&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;0.3% 的费率差，10 年累计就是 3% 复利损失&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;举个数：管理费 0.5% vs 0.8% 看起来只差 0.3%，但持有 10 年后净值差距约 &lt;strong&gt;3.0%&lt;/strong&gt;，持有 20 年差距约 &lt;strong&gt;6.1%&lt;/strong&gt;。这已经超过单次买入溢价的影响。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以建议是&lt;/strong&gt;：选基金时优先比较费率，&lt;strong&gt;择时买入时&lt;/strong&gt;重点盯溢价率。两件事不要混。&lt;/p&gt;
+&lt;h2 id=&#34;九-a-股场内纳斯达克100-etf-怎么选&#34;&gt;九、 A 股场内纳斯达克100 ETF 怎么选？&lt;/h2&gt;
+&lt;p&gt;除了 &lt;strong&gt;纳斯达克ETF华夏（513300）&lt;/strong&gt;，A 股场内还有不少纳斯达克100 ETF。以下规模和费率为写作时公开资料口径（规模多为 2026-03-31 附近数据），仅用于比较，买入前请以基金公告和交易软件实时数据为准。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;基金公司&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;规模特征&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;管理费 + 托管费&lt;/th&gt;
+&lt;th&gt;简评&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;159941&lt;/td&gt;
+&lt;td&gt;广发&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;最大&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.80% + 0.20%&lt;/td&gt;
+&lt;td&gt;流动性强，但费率较高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;513100&lt;/td&gt;
+&lt;td&gt;国泰&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;很大&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.60% + 0.20%&lt;/td&gt;
+&lt;td&gt;老牌沪市产品&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;513300&lt;/td&gt;
+&lt;td&gt;华夏&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;较大&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.60% + 0.20%&lt;/td&gt;
+&lt;td&gt;当前常见选择，规模和流动性都不错&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159501&lt;/td&gt;
+&lt;td&gt;嘉实&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;较大&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.50% + 0.10%&lt;/td&gt;
+&lt;td&gt;低费率且规模靠前，综合性价比较好&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159632&lt;/td&gt;
+&lt;td&gt;华安&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;较大&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.60% + 0.20%&lt;/td&gt;
+&lt;td&gt;规模不错，费率普通&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159659&lt;/td&gt;
+&lt;td&gt;招商&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等偏大&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.50% + 0.15%&lt;/td&gt;
+&lt;td&gt;低费率梯队&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159513&lt;/td&gt;
+&lt;td&gt;大成&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.80% + 0.20%&lt;/td&gt;
+&lt;td&gt;费率偏高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;513110&lt;/td&gt;
+&lt;td&gt;华泰柏瑞&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.80% + 0.20%&lt;/td&gt;
+&lt;td&gt;费率偏高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159696&lt;/td&gt;
+&lt;td&gt;易方达&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.50% + 0.10%&lt;/td&gt;
+&lt;td&gt;低费率梯队&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159660&lt;/td&gt;
+&lt;td&gt;汇添富&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.50% + 0.15%&lt;/td&gt;
+&lt;td&gt;低费率梯队&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;513390&lt;/td&gt;
+&lt;td&gt;博时&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.50% + 0.15%&lt;/td&gt;
+&lt;td&gt;低费率梯队&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;513870&lt;/td&gt;
+&lt;td&gt;富国&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;较小&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.50% + 0.10%&lt;/td&gt;
+&lt;td&gt;费率低，但规模相对小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单说：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;流动性优先&lt;/strong&gt;：看 &lt;code&gt;159941&lt;/code&gt;、&lt;code&gt;513100&lt;/code&gt;、&lt;code&gt;513300&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;低费率优先&lt;/strong&gt;：看 &lt;code&gt;159501&lt;/code&gt;、&lt;code&gt;159696&lt;/code&gt;、&lt;code&gt;513870&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;综合平衡&lt;/strong&gt;：&lt;code&gt;159501&lt;/code&gt; 值得重点比较，因为它费率低，规模也不小。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当前持有 513300&lt;/strong&gt;：没有明显问题，但它不是最低费率。如果溢价不高、交易顺手，可以继续；如果想优化成本，可以把 &lt;code&gt;159501&lt;/code&gt; 加入观察列表。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;十-a-股场内标普500-etf-怎么选&#34;&gt;十、 A 股场内标普500 ETF 怎么选？&lt;/h2&gt;
+&lt;p&gt;标普500的场内产品比纳斯达克100少一些，主要是这几只。以下规模和费率同样是写作时公开资料口径（规模多为 2026-03-31 附近数据），买入前请以实时数据为准：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;基金公司&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;规模特征&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;管理费 + 托管费&lt;/th&gt;
+&lt;th&gt;简评&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;513500&lt;/td&gt;
+&lt;td&gt;博时&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;最大&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.60% + 0.20%&lt;/td&gt;
+&lt;td&gt;流动性最好，适合作为核心选择&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;513650&lt;/td&gt;
+&lt;td&gt;南方&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.60% + 0.15%&lt;/td&gt;
+&lt;td&gt;费率略低，规模第二梯队&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159655&lt;/td&gt;
+&lt;td&gt;华夏&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;中等&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.60% + 0.15%&lt;/td&gt;
+&lt;td&gt;费率略低，深市交易&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;159612&lt;/td&gt;
+&lt;td&gt;国泰&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;较小&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.60% + 0.15%&lt;/td&gt;
+&lt;td&gt;规模偏小，需重点看成交和价差&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;161125&lt;/td&gt;
+&lt;td&gt;易方达 LOF&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;较小&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.80% + 0.20%&lt;/td&gt;
+&lt;td&gt;LOF，不是 ETF，普通场内定投优先级不高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果只选一只标普500，我仍然倾向于 &lt;strong&gt;513500&lt;/strong&gt;。它不是费率最低，但规模最大、成立时间久、流动性最好。对长期定投来说，稳定性比省那一点点费率更重要。&lt;/p&gt;
+&lt;p&gt;如果你买入金额不大，并且能确认 &lt;code&gt;513650&lt;/code&gt; 或 &lt;code&gt;159655&lt;/code&gt; 的实时溢价低、成交充足、买卖价差小，也可以作为低成本替代。&lt;/p&gt;
+&lt;h2 id=&#34;十一-我的最终配置建议&#34;&gt;十一、 我的最终配置建议&lt;/h2&gt;
+&lt;p&gt;如果你现在主要通过 A 股账户参与美股，我会把策略简化成三句话：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;核心资产用标普500&lt;/strong&gt;：优先 &lt;code&gt;513500&lt;/code&gt;，或者比较 &lt;code&gt;513650&lt;/code&gt;、&lt;code&gt;159655&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;增强收益用纳斯达克100&lt;/strong&gt;：优先比较 &lt;code&gt;513300&lt;/code&gt;、&lt;code&gt;159501&lt;/code&gt;、&lt;code&gt;159941&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每次买入先看溢价率&lt;/strong&gt;：高溢价时别急，宁愿等下一天。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一个普通人的长期配置可以这样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;70% 标普500 ETF + 30% 纳斯达克100 ETF
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你风险承受能力较低，就改成：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;80% 标普500 ETF + 20% 纳斯达克100 ETF
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你更激进，也不要轻易超过：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;60% 标普500 ETF + 40% 纳斯达克100 ETF
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;真正决定长期收益的，不是你在十几只 ETF 里挑中了哪一只，而是你能不能做到三件事：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不在高溢价时冲动买；&lt;/li&gt;
+&lt;li&gt;不因为短期下跌停止定投；&lt;/li&gt;
+&lt;li&gt;不因为短期上涨频繁止盈。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;十二-如果只买不卖长期可能变成多少钱&#34;&gt;十二、 如果只买不卖，长期可能变成多少钱？&lt;/h2&gt;
+&lt;p&gt;如果你把标普500和纳斯达克100都当作长期资产，只买不卖，那么它们确实更像是一个 &lt;strong&gt;个人版养老账户&lt;/strong&gt;：年轻时持续买入，中年以后继续持有，临近退休再逐步降低波动。&lt;/p&gt;
+&lt;p&gt;但这里有一个前提：&lt;strong&gt;下面所有数字都只是复利测算，不是收益承诺。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;美股指数的长期收益不是每年稳定发 8% 或 10%，而是可能经历很多次大涨大跌之后，最终在长期维度上呈现一个平均结果。真实路径可能是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前 3 年不赚钱；&lt;/li&gt;
+&lt;li&gt;某一年突然跌 30%；&lt;/li&gt;
+&lt;li&gt;后面几年又连续上涨；&lt;/li&gt;
+&lt;li&gt;最终 10 年、15 年拉开差距。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了更直观，我们用四档年化收益率做测算：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;年化收益率&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;5年累计收益&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;10年累计收益&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;15年累计收益&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;20年累计收益&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;27.6%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;62.9%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;107.9%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;165.3%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;46.9%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;115.9%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;217.2%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;366.1%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;61.1%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;159.4%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;317.7%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;572.7%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;76.2%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;210.6%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;447.4%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;864.6%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果还是用 &lt;strong&gt;50万元本金&lt;/strong&gt; 做例子，不追加投入，只买入并长期持有，结果大致是（&lt;strong&gt;名义值&lt;/strong&gt;）：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;年化收益率&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;5年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;10年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;15年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;20年后&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;63.8万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;81.4万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;104.0万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;132.7万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;73.5万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;108.0万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;158.6万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;233.0万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;80.5万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;129.7万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;208.9万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;336.4万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;88.1万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;155.3万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;273.7万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;482.3万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;但这些都是 &lt;strong&gt;名义金额&lt;/strong&gt;。规划退休时，你真正能买到的东西是 &lt;strong&gt;实际购买力&lt;/strong&gt;。按 CPI 长期 3% 折算，同一张表的&amp;quot;今天的钱&amp;quot;价值是：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;年化收益率（名义）&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;5年后实际&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;10年后实际&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;15年后实际&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;20年后实际&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;55.0万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;60.6万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;66.7万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;73.5万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;63.4万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;80.3万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;101.8万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;129.0万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;69.4万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;96.5万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;134.1万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;186.3万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;76.0万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;115.5万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;175.7万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;267.0万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;差距巨大：表面上 5% 年化、20 年后 132 万看着不少，&lt;strong&gt;实际购买力其实只有今天的 73 万出头&lt;/strong&gt;——也就是说，扣掉通胀几乎没赚到什么。&lt;/p&gt;
+&lt;p&gt;这张表最重要的不是某个具体数字，而是两个事实：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;时间越长，收益差距越不是线性扩大，而是指数级拉开。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跑赢通胀&lt;/strong&gt; 才是真正的及格线。年化 5% 在 3% 通胀下，实际收益只有约 2%；年化 8% 才相当于实际 5%。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;5 年时，年化 8% 和 10% 的差距只有 7 万左右；20 年后，名义差距超过 100 万、实际差距也接近 60 万。这就是为什么长期投资最重要的是 &lt;strong&gt;尽早开始、持续投入、减少折腾&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;如果你每个月还继续定投，结果会更明显。&lt;/p&gt;
+&lt;p&gt;先看 &lt;strong&gt;不算初始本金，只计算每月定投&lt;/strong&gt; 的结果。假设长期年化收益率为 8%，每月月末投入一次：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;每月定投金额&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;5年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;10年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;15年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;20年后&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;14.7万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;36.6万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;69.2万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;117.8万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;36.7万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;91.5万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;173.0万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;294.5万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;58.8万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;146.4万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;276.8万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;471.2万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;73.5万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;182.9万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;346.0万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;589.0万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注意，这张表里有两个关键点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;投入金额是线性增加的，但最终资产不是线性体感。定投时间越长，后期复利贡献越明显。&lt;/li&gt;
+&lt;li&gt;前 5 年看起来差距不夸张，真正拉开差距的是 10 年以后。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果再叠加前面那笔 &lt;strong&gt;50万元初始本金&lt;/strong&gt;，年化 8% 的情况下，结果会变成：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;初始50万 + 每月定投&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;5年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;10年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;15年后&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;20年后&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;每月 2000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;88.2万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;144.6万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;227.8万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;350.8万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;每月 5000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;110.2万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;199.5万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;331.6万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;527.5万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;每月 8000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;132.3万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;254.4万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;435.4万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;704.2万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;每月 10000 元&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;147.0万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;290.9万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;504.6万&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;822.0万&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果年化只有 5%，结果会低不少；如果长期能做到 10% 甚至 12%，结果会高很多。但普通人做计划时，不建议直接用最乐观假设。更稳妥的方式是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;用 5% 做保守预期
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;用 8% 做中性预期
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;用 10% 做偏乐观预期
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样即使未来市场没有想象中好，你也不会因为预期过高而中途放弃。&lt;/p&gt;
+&lt;h3 id=&#34;这算不算养老基金&#34;&gt;这算不算养老基金？&lt;/h3&gt;
+&lt;p&gt;从投资思路上看，算。&lt;/p&gt;
+&lt;p&gt;它和养老基金的共同点是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;都是长期资金；&lt;/li&gt;
+&lt;li&gt;都依赖复利；&lt;/li&gt;
+&lt;li&gt;都不追求短期买卖；&lt;/li&gt;
+&lt;li&gt;都需要用时间换收益。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但它和真正的养老基金也有区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;没有强制锁定&lt;/strong&gt;：你随时能卖，所以更考验自律。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;没有自动降风险机制&lt;/strong&gt;：临近退休时，需要自己把一部分股票资产转向债券、货币基金或现金。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;没有税收优惠&lt;/strong&gt;：普通 A 股账户买 QDII ETF，不等同于养老金账户。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;波动更大&lt;/strong&gt;：标普500和纳斯达克100都是股票资产，不适合把未来 1 ~ 3 年要用的钱放进去。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，更准确的说法是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这不是制度意义上的养老基金，而是普通人可以自己搭建的“养老型投资组合”。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;年轻时可以股票比例高一些，比如标普500 + 纳斯达克100 合计占 70% ~ 90%；越接近退休，越要逐步降低波动，把部分资产转到债券、货币基金或现金类资产里。&lt;/p&gt;
+&lt;p&gt;最理想的状态不是一辈子永远满仓股票，而是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;积累期：多买指数，少看波动
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;成熟期：继续持有，适度再平衡
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;退休前：逐步降低股票比例
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;退休后：靠股债组合和现金流支撑生活
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样，它才真正从“买基金”变成“给未来的自己发养老金”。&lt;/p&gt;
+&lt;h3 id=&#34;一个被严重低估的风险序列收益风险sequence-of-returns-risk&#34;&gt;一个被严重低估的风险：序列收益风险（Sequence-of-Returns Risk）&lt;/h3&gt;
+&lt;p&gt;退休规划里有一个比&amp;quot;长期年化多少&amp;quot;更致命的变量——&lt;strong&gt;大跌发生在哪一年&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;举一个被广泛引用的极端例子（数据来源：Wade Pfau, Retirement Researcher 系列研究）：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同样是 30 年期间内年化 7% 的市场，&lt;strong&gt;两位退休者在前 10 年的回报顺序相反&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;退休者 A：前 10 年遇到牛市（年化 +12%），后 20 年遇到熊市（年化 +4%）&lt;/li&gt;
+&lt;li&gt;退休者 B：前 10 年遇到熊市（年化 +4%），后 20 年遇到牛市（年化 +12%）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;即使两人 30 年总年化都是 7%，&lt;strong&gt;在每年定额提取生活费的情况下，退休者 B 的账户在 20 年内就被取空了，而退休者 A 还剩下原始本金的 50% 以上&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原因是：退休者 B 在前 10 年既要忍受下跌、又要持续卖出份额支付生活费，相当于在低点割肉。等市场反弹时，账户里能受益的份额已经少了一大截。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对策（glide path 滑翔曲线）&lt;/strong&gt;：临近退休前 5–10 年，逐步把股票仓位降下来，建立 1–3 年生活费的&amp;quot;现金缓冲池&amp;quot;，避免在大跌中被迫卖股票：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;年龄段&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;推荐股票比例&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;现金/短债比例&lt;/th&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;25–40&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;80–95%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5–20%&lt;/td&gt;
+&lt;td&gt;积累期，最大化复利&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;40–55&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;70–85%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;15–30%&lt;/td&gt;
+&lt;td&gt;成熟期，开始引入股债再平衡&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;55–60&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;60–70%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;30–40%&lt;/td&gt;
+&lt;td&gt;退休前 5 年，主动降低波动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;60–65&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;50–60%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;40–50%&lt;/td&gt;
+&lt;td&gt;退休前夜，准备 2–3 年生活费现金池&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;65+&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;40–60%&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;40–60%&lt;/td&gt;
+&lt;td&gt;退休后，按 4% 法则提取，遇大跌先动用现金池&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;4% 法则（William Bengen, 1994）：退休首年提取本金的 4%，此后每年按通胀调整。在美国历史数据、30 年退休期、60/40 股债组合这个前提下，回测成功率很高。但它是 &lt;strong&gt;美国历史经验&lt;/strong&gt;，不是中国投资者的安全承诺。考虑到人民币支出、汇率波动、平均寿命延长和未来收益可能低于美股历史，&lt;strong&gt;用 3–3.5% 更稳妥&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也就是说，&amp;ldquo;长期满仓股票&amp;quot;是积累期的最优解，&lt;strong&gt;不是终生最优解&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;十三-参考资料与证据&#34;&gt;十三、 参考资料与证据&lt;/h2&gt;
+&lt;p&gt;本文很多结论来自公开研究，列在这里方便你自己复核——&lt;strong&gt;不要因为某个观点听起来有道理就相信，请回到原始数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;关于dca-vs-lump-sum&#34;&gt;关于&amp;quot;DCA vs Lump Sum&amp;rdquo;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Vanguard (2012)&lt;/strong&gt;, &lt;em&gt;Dollar-Cost Averaging Just Means Taking Risk Later&lt;/em&gt;. 论文比较了美国（1926–2011）、英国、澳大利亚三大市场的 12 个月 DCA vs Lump Sum 表现，结论：Lump Sum 在约 2/3 的滚动窗口里跑赢 DCA，平均超额约 2.3%。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nick Maggiulli (2019)&lt;/strong&gt;, &lt;em&gt;Even God Couldn&amp;rsquo;t Beat Dollar-Cost Averaging&lt;/em&gt;, Of Dollars and Data. 用上帝视角的择时者对照 DCA，结论：约 70% 的滚动窗口里 DCA 跑赢&amp;quot;完美抄底&amp;quot;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Maggiulli, Nick (2022)&lt;/strong&gt;, &lt;em&gt;Just Keep Buying&lt;/em&gt; (中译《持续买入》)。系统总结了上述结论与背后的数学。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关于错过最佳交易日的代价&#34;&gt;关于&amp;quot;错过最佳交易日的代价&amp;quot;&lt;/h3&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Hartford Funds&lt;/strong&gt;, &lt;em&gt;The Cost of Market Timing&lt;/em&gt;. 历年更新版本均显示，1993–2023 标普 500 错过最好的 10/20/30 天，年化分别从 ~9.8% 跌到 ~5.6% / ~3.0% / ~1.6%。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;J.P. Morgan&lt;/strong&gt;, &lt;em&gt;Guide to Retirement&lt;/em&gt;（年度更新）。用类似口径反复验证&amp;quot;最好的几天往往紧挨着最差的几天&amp;quot;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关于零售投资者实际收益-vs-基金本身收益&#34;&gt;关于&amp;quot;零售投资者实际收益 vs 基金本身收益&amp;quot;&lt;/h3&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;strong&gt;DALBAR&lt;/strong&gt;, &lt;em&gt;Quantitative Analysis of Investor Behavior (QAIB)&lt;/em&gt;（每年发布）。过去 30 年，美国普通基金投资者实际年化比所投基金本身年化要低约 3–4%，主要原因是高买低卖。这是&amp;quot;行为缺口（behavior gap）&amp;ldquo;的核心证据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关于全球长期股票收益&#34;&gt;关于&amp;quot;全球长期股票收益&amp;rdquo;&lt;/h3&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Credit Suisse / UBS Global Investment Returns Yearbook&lt;/strong&gt;（Dimson, Marsh, Staunton, 年度更新）。1900–2023 年全球主要市场的真实股票收益（扣通胀）：美国 6.6%，英国 5.4%，德国 3.3%，意大利 2.0%，日本 1.9%，全球加权平均约 5.2%。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Jeremy Siegel&lt;/strong&gt;, &lt;em&gt;Stocks for the Long Run&lt;/em&gt; (第六版, 2022)。系统论证了 200 年时间维度上美股 ~6.7% 实际年化的稳定性，但也明确提示其他国家显著低于此。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关于再平衡&#34;&gt;关于&amp;quot;再平衡&amp;quot;&lt;/h3&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Vanguard (2010, 多次更新)&lt;/strong&gt;, &lt;em&gt;Best practices for portfolio rebalancing&lt;/em&gt;. 阈值再平衡（±5%）或年度再平衡，长期可稳定提升约 0.3–0.5% 年化的风险调整收益。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关于4-法则与序列收益风险&#34;&gt;关于&amp;quot;4% 法则与序列收益风险&amp;quot;&lt;/h3&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;&lt;strong&gt;William Bengen (1994)&lt;/strong&gt;, &lt;em&gt;Determining Withdrawal Rates Using Historical Data&lt;/em&gt;, Journal of Financial Planning. 4% 法则的原始论文。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Wade Pfau&lt;/strong&gt;, &lt;em&gt;Retirement Planning Guidebook&lt;/em&gt; 与博客 retirementresearcher.com。系统讨论了 sequence-of-returns risk、glide path、降低提取率（3–3.5%）等修正。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trinity Study (Cooley, Hubbard, Walz, 1998)&lt;/strong&gt;, &lt;em&gt;Retirement Spending: Choosing a Sustainable Withdrawal Rate&lt;/em&gt;. 4% 法则的经典验证。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关于-a-股-qdii-etf-与跨境产品&#34;&gt;关于 A 股 QDII ETF 与跨境产品&lt;/h3&gt;
+&lt;ol start=&#34;13&#34;&gt;
+&lt;li&gt;&lt;strong&gt;中国证监会&lt;/strong&gt;《公开募集证券投资基金运作指引》（最新版）。基金分红的合规性框架。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集思录&lt;/strong&gt;、&lt;strong&gt;Wind&lt;/strong&gt;、&lt;strong&gt;天天基金&lt;/strong&gt; 等公开数据平台：可实时查询 IOPV、溢价率、规模、费率，本文所有 ETF 数据请以这些平台 &lt;strong&gt;当日实时数据&lt;/strong&gt; 为准。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;提醒&#34;&gt;提醒&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上述所有研究都基于 &lt;strong&gt;过去&lt;/strong&gt; 的数据。&lt;strong&gt;美国是过去 120 年里表现最好的发达国家市场&lt;/strong&gt;，把这个样本当成&amp;quot;未来一定如此&amp;quot;是常见的认知偏差。日本日经 225 用了 35 年才回到 1989 年高点，这同样是真实历史的一部分。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
+&lt;p&gt;投资不是比谁更聪明，而是比谁更耐心。&lt;/p&gt;
+&lt;p&gt;选择标普500，选择纳斯达克100，选择定投，本质上都是选择一种生活方式：&lt;strong&gt;把复杂的波动交给市场，把简单的生活留给自己。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;十年后，当你看着账户里的复利结果时，你会感谢今天开始“躺平”的自己。&lt;/p&gt;
+- https://terryren.github.io/posts/misc/sp500-dca-vs-timing/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>旧笔记本改造 AI 自动化服务器：HP ZHAN 99 安装 Ubuntu Desktop 24.04 LTS</title>
+        <link>https://terryren.github.io/posts/misc/ubuntu-desktop-ai-server-hp-zhan99/</link>
+        <pubDate>Mon, 27 Apr 2026 17:30:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/misc/ubuntu-desktop-ai-server-hp-zhan99/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/misc/ubuntu-desktop-ai-server-hp-zhan99/ -&lt;p&gt;手里有一台 2018 年左右的 &lt;strong&gt;HP ZHAN 99 移动工作站&lt;/strong&gt;，配置如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU：Intel i5-8300H，4 核 8 线程&lt;/li&gt;
+&lt;li&gt;内存：已升级到 32GB&lt;/li&gt;
+&lt;li&gt;显卡：Intel UHD 630 + NVIDIA Quadro P600&lt;/li&gt;
+&lt;li&gt;硬盘：256GB SSD + 1TB 数据盘&lt;/li&gt;
+&lt;li&gt;原系统：Windows 10&lt;/li&gt;
+&lt;li&gt;当前用途：代理程序、虚拟机、轻量服务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这台机器已经不算新，但作为一台常开的个人服务器仍然很合适。尤其是 32GB 内存，对于 Docker、n8n、Playwright、AI Agent、自动化脚本来说已经比较宽裕。&lt;/p&gt;
+&lt;p&gt;最开始考虑继续在 Windows 10 上跑虚拟机、WSL 或各种 Agent，但实际体验并不理想。老笔记本跑虚拟机有额外开销，而很多 AI Agent、自动化工具、Docker 服务本身更偏向 Linux 环境。因此最终更推荐的方案是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;单系统安装 Ubuntu Desktop 24.04 LTS
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 256GB SSD 做系统盘
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 1TB 数据盘挂载到 /data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Docker / SSH / Tailscale / n8n / AI Agent
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这篇文章记录完整安装和初始化过程。&lt;/p&gt;
+&lt;h2 id=&#34;1---为什么选择-ubuntu-desktop-2404-lts&#34;&gt;1 - 为什么选择 Ubuntu Desktop 24.04 LTS&lt;/h2&gt;
+&lt;p&gt;如果只是纯服务器，Ubuntu Server 会更轻。但这台机器是笔记本，有屏幕、键盘、独立显卡，后续可能需要跑浏览器自动化、Playwright、远程桌面、图形化排障，所以这里选择 &lt;strong&gt;Ubuntu Desktop 24.04 LTS&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;选择 Desktop 版本的主要原因：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图形界面方便排障&lt;/li&gt;
+&lt;li&gt;浏览器、代理、远程桌面配置更直观&lt;/li&gt;
+&lt;li&gt;对 NVIDIA 驱动支持较好&lt;/li&gt;
+&lt;li&gt;软件资料多，遇到问题容易搜索&lt;/li&gt;
+&lt;li&gt;仍然可以通过 SSH 当服务器使用&lt;/li&gt;
+&lt;li&gt;后续可以安装 Docker、n8n、AI Agent、开发环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ubuntu 24.04 LTS 是长期支持版本，适合长期使用，不需要频繁升级系统。&lt;/p&gt;
+&lt;h2 id=&#34;2---安装前准备&#34;&gt;2 - 安装前准备&lt;/h2&gt;
+&lt;h3 id=&#34;21-备份数据&#34;&gt;2.1 备份数据&lt;/h3&gt;
+&lt;p&gt;单系统安装 Ubuntu 的含义是：&lt;strong&gt;清掉原来的 Windows，只保留 Ubuntu&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;安装前一定要备份：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;桌面文件&lt;/li&gt;
+&lt;li&gt;下载目录&lt;/li&gt;
+&lt;li&gt;文档目录&lt;/li&gt;
+&lt;li&gt;浏览器书签&lt;/li&gt;
+&lt;li&gt;代理软件配置&lt;/li&gt;
+&lt;li&gt;SSH 密钥&lt;/li&gt;
+&lt;li&gt;项目代码&lt;/li&gt;
+&lt;li&gt;D 盘重要资料&lt;/li&gt;
+&lt;li&gt;软件授权信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果 1TB 数据盘里有重要文件，但不确定安装时是否会误删，建议先全部备份到移动硬盘、NAS 或另一台电脑。&lt;/p&gt;
+&lt;p&gt;最安全的做法是：&lt;strong&gt;安装系统前，把重要数据全部拷贝到外置硬盘&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;22-准备-u-盘&#34;&gt;2.2 准备 U 盘&lt;/h3&gt;
+&lt;p&gt;准备一个容量至少 8GB 的 U 盘，建议 16GB 或更大。&lt;/p&gt;
+&lt;p&gt;注意：制作系统安装盘会格式化 U 盘，所以 U 盘里的原有文件也要提前备份。&lt;/p&gt;
+&lt;h3 id=&#34;23-下载-ubuntu-desktop-2404-lts-镜像&#34;&gt;2.3 下载 Ubuntu Desktop 24.04 LTS 镜像&lt;/h3&gt;
+&lt;p&gt;如果 Ubuntu 官网访问不稳定，可以直接使用清华大学开源软件镜像站：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04/&#34;&gt;https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载 &lt;code&gt;Ubuntu 24.04 LTS Desktop&lt;/code&gt; 的 ISO 文件。&lt;/p&gt;
+&lt;p&gt;下载后文件名通常类似：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ubuntu-24.04.x-desktop-amd64.iso
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中 &lt;code&gt;amd64&lt;/code&gt; 表示 64 位 PC 版本，并不是 AMD CPU 专用，Intel CPU 也使用这个版本。&lt;/p&gt;
+&lt;p&gt;下载完成后，建议顺手下载同目录下的 &lt;code&gt;SHA256SUMS&lt;/code&gt;，核对 ISO 文件校验值，避免镜像下载过程中损坏。&lt;/p&gt;
+&lt;h2 id=&#34;3---制作-ubuntu-系统安装-u-盘&#34;&gt;3 - 制作 Ubuntu 系统安装 U 盘&lt;/h2&gt;
+&lt;p&gt;如果现在还在 Windows 10 上，可以使用 Rufus 制作启动盘。&lt;/p&gt;
+&lt;h3 id=&#34;31-下载-rufus&#34;&gt;3.1 下载 Rufus&lt;/h3&gt;
+&lt;p&gt;访问：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://rufus.ie&#34;&gt;https://rufus.ie&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载 Rufus 便携版即可，不需要安装。&lt;/p&gt;
+&lt;h3 id=&#34;32-使用-rufus-写入镜像&#34;&gt;3.2 使用 Rufus 写入镜像&lt;/h3&gt;
+&lt;p&gt;插入 U 盘，打开 Rufus。&lt;/p&gt;
+&lt;p&gt;推荐设置如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设备：选择你的 U 盘&lt;/li&gt;
+&lt;li&gt;引导类型：选择刚下载的 Ubuntu ISO&lt;/li&gt;
+&lt;li&gt;分区类型：GPT&lt;/li&gt;
+&lt;li&gt;目标系统：UEFI&lt;/li&gt;
+&lt;li&gt;文件系统：FAT32&lt;/li&gt;
+&lt;li&gt;卷标：保持默认即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后点击“开始”。&lt;/p&gt;
+&lt;p&gt;如果 Rufus 提示使用 ISO 模式或 DD 模式，通常选择：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;以 ISO 镜像模式写入
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;等待写入完成即可。&lt;/p&gt;
+&lt;h2 id=&#34;4---调整-bios-启动设置&#34;&gt;4 - 调整 BIOS 启动设置&lt;/h2&gt;
+&lt;p&gt;HP 笔记本进入 BIOS 或启动菜单的方法通常是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开机后连续按 &lt;code&gt;Esc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;按 &lt;code&gt;F9&lt;/code&gt; 进入启动设备选择&lt;/li&gt;
+&lt;li&gt;按 &lt;code&gt;F10&lt;/code&gt; 进入 BIOS 设置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建议先进入 BIOS 检查几个选项。&lt;/p&gt;
+&lt;h3 id=&#34;41-开启虚拟化&#34;&gt;4.1 开启虚拟化&lt;/h3&gt;
+&lt;p&gt;找到类似选项：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Virtualization Technology
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Intel VT-x
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Enabled
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这对 Docker、虚拟化、部分自动化服务都有帮助。&lt;/p&gt;
+&lt;h3 id=&#34;42-secure-boot&#34;&gt;4.2 Secure Boot&lt;/h3&gt;
+&lt;p&gt;Ubuntu 通常可以在 Secure Boot 开启时安装，但 NVIDIA 驱动有时会麻烦一些。&lt;/p&gt;
+&lt;p&gt;为了减少折腾，可以考虑：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Secure Boot: Disabled
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果更重视安全，也可以保留开启，但后续安装 NVIDIA 驱动时可能需要额外注册 MOK 密钥。&lt;/p&gt;
+&lt;h3 id=&#34;43-启动模式&#34;&gt;4.3 启动模式&lt;/h3&gt;
+&lt;p&gt;建议使用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;UEFI
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不要使用 Legacy BIOS 模式。&lt;/p&gt;
+&lt;h2 id=&#34;5---从-u-盘启动-ubuntu-安装程序&#34;&gt;5 - 从 U 盘启动 Ubuntu 安装程序&lt;/h2&gt;
+&lt;p&gt;插入制作好的 Ubuntu 启动 U 盘。&lt;/p&gt;
+&lt;p&gt;开机后连续按：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Esc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;F9
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在启动菜单中选择类似：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;UEFI: USB Disk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;进入 Ubuntu 安装界面后，一般会看到两个选项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Try Ubuntu&lt;/li&gt;
+&lt;li&gt;Install Ubuntu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果担心硬件兼容性，可以先选择 &lt;code&gt;Try Ubuntu&lt;/code&gt; 试用一下，确认键盘、触控板、鼠标、网卡、屏幕显示都正常。&lt;/p&gt;
+&lt;p&gt;如果没问题，再点击桌面上的 &lt;code&gt;Install Ubuntu&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;6---安装-ubuntu-desktop-2404-lts&#34;&gt;6 - 安装 Ubuntu Desktop 24.04 LTS&lt;/h2&gt;
+&lt;h3 id=&#34;61-选择语言&#34;&gt;6.1 选择语言&lt;/h3&gt;
+&lt;p&gt;中文或英文都可以。&lt;/p&gt;
+&lt;p&gt;如果习惯搜索英文报错，系统语言可以选英文；如果主要日常使用，选中文也没问题。&lt;/p&gt;
+&lt;h3 id=&#34;62-键盘布局&#34;&gt;6.2 键盘布局&lt;/h3&gt;
+&lt;p&gt;如果不确定，默认英文键盘即可：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;English (US)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后续进系统后可以再添加中文输入法。&lt;/p&gt;
+&lt;h3 id=&#34;63-网络连接&#34;&gt;6.3 网络连接&lt;/h3&gt;
+&lt;p&gt;建议安装时连接 Wi-Fi 或网线。&lt;/p&gt;
+&lt;p&gt;有网络的好处是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以下载更新&lt;/li&gt;
+&lt;li&gt;可以安装第三方驱动&lt;/li&gt;
+&lt;li&gt;可以减少安装后补驱动的麻烦&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;64-安装类型&#34;&gt;6.4 安装类型&lt;/h3&gt;
+&lt;p&gt;如果确定要单系统安装，选择类似：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Erase disk and install Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;也就是“清除磁盘并安装 Ubuntu”。&lt;/p&gt;
+&lt;p&gt;这一步非常关键：&lt;strong&gt;它会删除目标磁盘上的原系统和数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;如果机器里有 256GB SSD 和 1TB 数据盘，建议把系统安装到 256GB SSD 上。&lt;/p&gt;
+&lt;p&gt;安装器可能会显示磁盘名称，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/dev/nvme0n1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/dev/sda
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一般来说：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NVMe SSD 常见名称：&lt;code&gt;/dev/nvme0n1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SATA 硬盘或 SSD 常见名称：&lt;code&gt;/dev/sda&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果不确定哪个是 SSD，可以根据容量判断：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;约 256GB 的盘：系统盘&lt;/li&gt;
+&lt;li&gt;约 1TB 的盘：数据盘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建议先只选择 256GB SSD 安装系统，1TB 数据盘安装完成后再手动挂载为 &lt;code&gt;/data&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;65-是否手动分区&#34;&gt;6.5 是否手动分区&lt;/h3&gt;
+&lt;p&gt;新手不建议手动分区。&lt;/p&gt;
+&lt;p&gt;直接选择：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Erase disk and install Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;让 Ubuntu 自动分区即可。&lt;/p&gt;
+&lt;p&gt;如果想手动分区，可以参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;EFI 分区：512MB，FAT32，挂载 &lt;code&gt;/boot/efi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;根分区 &lt;code&gt;/&lt;/code&gt;：剩余 SSD 空间，ext4&lt;/li&gt;
+&lt;li&gt;swap：使用默认 swapfile，不一定单独分区&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于 32GB 内存的机器，默认 swapfile 通常就够了。&lt;/p&gt;
+&lt;h3 id=&#34;66-创建用户&#34;&gt;6.6 创建用户&lt;/h3&gt;
+&lt;p&gt;设置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户名&lt;/li&gt;
+&lt;li&gt;电脑名&lt;/li&gt;
+&lt;li&gt;登录密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;电脑名可以设置成：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ai-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后续局域网访问会比较直观。&lt;/p&gt;
+&lt;h3 id=&#34;67-等待安装完成&#34;&gt;6.7 等待安装完成&lt;/h3&gt;
+&lt;p&gt;安装通常需要 10 到 30 分钟。&lt;/p&gt;
+&lt;p&gt;完成后系统会提示重启。重启时拔掉 U 盘，避免再次进入安装程序。&lt;/p&gt;
+&lt;h2 id=&#34;7---安装后的基础设置&#34;&gt;7 - 安装后的基础设置&lt;/h2&gt;
+&lt;p&gt;进入 Ubuntu 后，先打开终端。&lt;/p&gt;
+&lt;h3 id=&#34;71-切换-ubuntu-软件源到清华镜像&#34;&gt;7.1 切换 Ubuntu 软件源到清华镜像&lt;/h3&gt;
+&lt;p&gt;如果安装镜像使用的是清华镜像，安装系统后也建议把 Ubuntu 软件源切换到清华镜像。否则后面的 &lt;code&gt;apt update&lt;/code&gt;、&lt;code&gt;apt install&lt;/code&gt; 仍然可能走默认官方源，在国内环境下容易慢或失败。&lt;/p&gt;
+&lt;p&gt;Ubuntu 24.04 LTS 的系统代号是 &lt;code&gt;noble&lt;/code&gt;。Ubuntu 24.04 默认使用 Deb822 格式的软件源配置，文件通常是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/etc/apt/sources.list.d/ubuntu.sources
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;先备份原配置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;写入清华镜像源：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tee /etc/apt/sources.list.d/ubuntu.sources &amp;gt; /dev/null &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;lt;&amp;lt;&amp;#39;EOF&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;Types: deb
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;Suites: noble noble-updates noble-backports noble-security
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;Components: main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;EOF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果后续想恢复默认源，可以把备份文件复制回来：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo cp /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;72-更新系统&#34;&gt;7.2 更新系统&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt upgrade -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;重启一次：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;73-安装常用工具&#34;&gt;7.3 安装常用工具&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install -y git curl wget vim htop tmux unzip build-essential ca-certificates gnupg lsb-release net-tools
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这些工具后面配置开发环境、Docker、Agent 都会用到。&lt;/p&gt;
+&lt;h3 id=&#34;74-安装-ssh-服务&#34;&gt;7.4 安装 SSH 服务&lt;/h3&gt;
+&lt;p&gt;如果要把这台电脑当服务器，SSH 必装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install -y openssh-server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl &lt;span style=&#34;color:#658b00&#34;&gt;enable&lt;/span&gt; ssh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start ssh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看本机 IP：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hostname -I
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以后可以从另一台电脑连接：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh 用户名@服务器IP
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh terry@192.168.1.100
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;8---安装-nvidia-驱动&#34;&gt;8 - 安装 NVIDIA 驱动&lt;/h2&gt;
+&lt;p&gt;这台机器有 NVIDIA Quadro P600，Ubuntu 通常能识别。&lt;/p&gt;
+&lt;p&gt;可以在图形界面中打开：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Software &amp;amp; Updates
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;进入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Additional Drivers
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;选择推荐的 NVIDIA 专有驱动，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvidia-driver-535
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvidia-driver-550
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装后重启。&lt;/p&gt;
+&lt;p&gt;也可以用命令查看推荐驱动：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ubuntu-drivers devices
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;自动安装推荐驱动：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ubuntu-drivers autoinstall
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;重启后验证：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvidia-smi
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果能看到 Quadro P600 和驱动信息，说明安装成功。&lt;/p&gt;
+&lt;p&gt;需要注意的是，Quadro P600 通常显存不大，大概率是 4GB。它可以用来做轻量 GPU 加速，但不适合作为本地大模型主力显卡。&lt;/p&gt;
+&lt;h2 id=&#34;9---清空并挂载-1tb-数据盘&#34;&gt;9 - 清空并挂载 1TB 数据盘&lt;/h2&gt;
+&lt;p&gt;我第一次安装时不小心把 Ubuntu 装到了 1TB 机械硬盘上，后面重新安装才把系统放回 SSD。这样会导致 1TB 盘里也残留 Ubuntu 的 EFI 启动程序，BIOS 启动菜单里可能看到两个 &lt;code&gt;ubuntu&lt;/code&gt; 启动项。&lt;/p&gt;
+&lt;p&gt;最终目标是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;256GB SSD：只做 Ubuntu 系统盘
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1TB 机械硬盘：清空所有数据，重新作为 /data 数据盘
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;下面的操作会清空 1TB 盘上的所有数据，包括旧 Ubuntu 分区和旧 EFI 启动分区。执行前一定要确认这块盘里没有需要保留的文件。&lt;/p&gt;
+&lt;p&gt;先查看磁盘和挂载情况：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lsblk -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;你可能会看到类似：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvme0n1       238G
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─nvme0n1p1   vfat   /boot/efi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─nvme0n1p2   ext4   /
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sda           931G
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─sda1        vfat
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─sda2        ext4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里的关键是确认：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当前系统根目录 &lt;code&gt;/&lt;/code&gt; 在 SSD 上，例如 &lt;code&gt;/dev/nvme0n1p2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;当前 &lt;code&gt;/boot/efi&lt;/code&gt; 也在 SSD 上，例如 &lt;code&gt;/dev/nvme0n1p1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;1TB 机械硬盘是 &lt;code&gt;/dev/sda&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果 &lt;code&gt;/&lt;/code&gt; 或 &lt;code&gt;/boot/efi&lt;/code&gt; 还在 &lt;code&gt;/dev/sda&lt;/code&gt; 上，说明当前系统仍然依赖 1TB 盘，不能继续清空。&lt;/p&gt;
+&lt;p&gt;确认 1TB 盘是 &lt;code&gt;/dev/sda&lt;/code&gt; 之后，先清除旧文件系统和分区签名：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo wipefs -a /dev/sda
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后重建 GPT 分区表，并把整块盘建成一个 ext4 数据分区：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo parted /dev/sda --script mklabel gpt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo parted /dev/sda --script mkpart primary ext4 0% 100%
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkfs.ext4 -L data /dev/sda1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里格式化的是 &lt;code&gt;/dev/sda1&lt;/code&gt;，不是 &lt;code&gt;/dev/sda&lt;/code&gt;。这样更符合常规用法：&lt;code&gt;/dev/sda&lt;/code&gt; 是整块磁盘，&lt;code&gt;/dev/sda1&lt;/code&gt; 是数据分区。&lt;/p&gt;
+&lt;p&gt;创建挂载目录：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir -p /data
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看新分区 UUID：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo blkid /dev/sda1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;记录输出里的 &lt;code&gt;UUID&lt;/code&gt;，然后编辑 &lt;code&gt;/etc/fstab&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo vim /etc/fstab
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加一行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;UUID=你的UUID /data ext4 defaults 0 2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;测试挂载：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mount -a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;df -h
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果能看到 &lt;code&gt;/data&lt;/code&gt;，说明挂载成功。&lt;/p&gt;
+&lt;p&gt;给当前用户权限：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chown -R &lt;span style=&#34;color:#00688b&#34;&gt;$USER&lt;/span&gt;:&lt;span style=&#34;color:#00688b&#34;&gt;$USER&lt;/span&gt; /data
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后续可以把项目、日志、下载、模型、备份都放到 &lt;code&gt;/data&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果清空 1TB 盘后 BIOS 里仍然看到多余的 &lt;code&gt;ubuntu&lt;/code&gt; 启动项，那通常是主板 NVRAM 里残留的启动记录，不一定是磁盘上还有启动文件。可以在当前 Ubuntu 系统里查看：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo efibootmgr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输出可能类似：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Boot0001* ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Boot0003* ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果能确认其中一个是旧 1TB 盘留下的启动项，可以删除对应编号。例如删除 &lt;code&gt;Boot0003&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo efibootmgr -b &lt;span style=&#34;color:#b452cd&#34;&gt;0003&lt;/span&gt; -B
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这一步要谨慎，只删除确认无用的启动项。如果不确定，可以先保留；只要 BIOS 里把 SSD 上的 Ubuntu 放在第一启动顺序，系统也能正常启动。&lt;/p&gt;
+&lt;h2 id=&#34;10---安装-docker&#34;&gt;10 - 安装 Docker&lt;/h2&gt;
+&lt;p&gt;Docker 是后续跑 n8n、数据库、自动化服务的基础。&lt;/p&gt;
+&lt;p&gt;前面已经把 Ubuntu 系统源切到清华镜像。Docker 建议也使用清华 Docker CE 镜像，这样后续安装 &lt;code&gt;docker-ce&lt;/code&gt;、&lt;code&gt;docker compose&lt;/code&gt; 会更稳定。&lt;/p&gt;
+&lt;p&gt;先安装依赖：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install -y ca-certificates curl gnupg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加 Docker GPG key。优先使用 Docker 官方 key：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo install -m &lt;span style=&#34;color:#b452cd&#34;&gt;0755&lt;/span&gt; -d /etc/apt/keyrings
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chmod a+r /etc/apt/keyrings/docker.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果官方地址访问不稳定，或者上面的 &lt;code&gt;curl&lt;/code&gt; 长时间无响应，可以改用清华 Docker CE 镜像里的 GPG key：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -f /etc/apt/keyrings/docker.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chmod a+r /etc/apt/keyrings/docker.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加清华 Docker CE 软件源：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;deb [arch=&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;$(&lt;/span&gt;dpkg --print-architecture&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt; signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;$(&lt;/span&gt;. /etc/os-release &amp;amp;&amp;amp; &lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$VERSION_CODENAME&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt; stable&amp;#34;&lt;/span&gt; | &lt;span style=&#34;color:#cd5555&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&lt;/span&gt;  sudo tee /etc/apt/sources.list.d/docker.list &amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;确认当前系统代号是 &lt;code&gt;noble&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;. /etc/os-release &amp;amp;&amp;amp; &lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$VERSION_CODENAME&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果输出不是 &lt;code&gt;noble&lt;/code&gt;，说明当前系统不是 Ubuntu 24.04 LTS，需要确认是否下载或安装错版本。&lt;/p&gt;
+&lt;p&gt;安装 Docker：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;把当前用户加入 docker 组：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo usermod -aG docker &lt;span style=&#34;color:#00688b&#34;&gt;$USER&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注销或重启后验证：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker version
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;11---安装-nodejspythonuv&#34;&gt;11 - 安装 Node.js、Python、uv&lt;/h2&gt;
+&lt;p&gt;很多 AI Agent、自动化工具都依赖 Node.js 和 Python。&lt;/p&gt;
+&lt;h3 id=&#34;111-安装-nodejs-lts&#34;&gt;11.1 安装 Node.js LTS&lt;/h3&gt;
+&lt;p&gt;推荐使用 NodeSource：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install -y nodejs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果 NodeSource 脚本访问不稳定，可以先重试，或者临时使用 Ubuntu 仓库里的 &lt;code&gt;nodejs&lt;/code&gt; 包。不过 Ubuntu 仓库版本可能偏旧，长期跑 n8n 或前端工具时仍然更建议使用 Node.js LTS。&lt;/p&gt;
+&lt;p&gt;验证：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后，把 npm registry 切到国内镜像：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config &lt;span style=&#34;color:#658b00&#34;&gt;set&lt;/span&gt; registry https://registry.npmmirror.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm config get registry
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后续 &lt;code&gt;npm install&lt;/code&gt;、&lt;code&gt;npx&lt;/code&gt;、部分 AI Agent CLI 工具安装会更稳定。&lt;/p&gt;
+&lt;h3 id=&#34;112-安装-python-和-uv&#34;&gt;11.2 安装 Python 和 uv&lt;/h3&gt;
+&lt;p&gt;Ubuntu 自带 Python，但建议安装一些开发包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install -y python3 python3-pip python3-venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;把 pip 源切到清华 PyPI 镜像：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m pip config &lt;span style=&#34;color:#658b00&#34;&gt;set&lt;/span&gt; global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m pip config list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果遇到个别包在镜像同步期间暂时不可用，可以临时指定官方源安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m pip install 包名 -i https://pypi.org/simple
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装 uv（官方一键脚本）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -LsSf https://astral.sh/uv/install.sh | sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若 &lt;code&gt;astral.sh&lt;/code&gt; 在国内网络下拉取失败，而本机已有 SOCKS 代理（常见监听 &lt;code&gt;127.0.0.1:1080&lt;/code&gt;），可让 &lt;code&gt;curl&lt;/code&gt; 走代理再执行脚本。建议使用 &lt;code&gt;socks5h&lt;/code&gt;，表示 DNS 也经代理解析，访问国外域名时往往更稳：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -x socks5h://127.0.0.1:1080 -LsSf https://astral.sh/uv/install.sh | sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;代理若在局域网其他机器上，把地址改成例如 &lt;code&gt;socks5h://192.168.1.10:1080&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;p&gt;也可在当前终端里导出代理变量，再执行原命令。这样若安装脚本内部还会拉取其他资源，子进程也能继承代理：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;ALL_PROXY&lt;/span&gt;=socks5h://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;HTTPS_PROXY&lt;/span&gt;=socks5h://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;HTTP_PROXY&lt;/span&gt;=socks5h://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -LsSf https://astral.sh/uv/install.sh | sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若不放心直接管道执行，可先只看脚本前几行确认下载成功：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -x socks5h://127.0.0.1:1080 -LsSf https://astral.sh/uv/install.sh | sed -n &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;1,20p&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后若提示找不到 &lt;code&gt;uv&lt;/code&gt;，可执行 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 或新开一个终端，再运行 &lt;code&gt;uv --version&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果希望 uv 默认也走清华 PyPI 镜像，可以配置环境变量：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;export UV_DEFAULT_INDEX=&amp;#34;https://pypi.tuna.tsinghua.edu.cn/simple&amp;#34;&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;重开终端后验证：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;uv --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;12---安装-tailscale&#34;&gt;12 - 安装 Tailscale&lt;/h2&gt;
+&lt;p&gt;如果这台机器要长期放在家里或办公室，强烈建议安装 Tailscale。它可以让你在外网安全访问这台服务器，不需要公网 IP，也不需要复杂端口转发。&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://tailscale.com/install.sh | sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动并登录：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tailscale up
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;浏览器会打开认证页面，登录后这台机器就会加入你的私有网络。&lt;/p&gt;
+&lt;p&gt;以后可以直接通过 Tailscale IP SSH 连接它。&lt;/p&gt;
+&lt;h2 id=&#34;13---安装-n8n-自动化平台&#34;&gt;13 - 安装 n8n 自动化平台&lt;/h2&gt;
+&lt;p&gt;n8n 很适合做自动化流程，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定时任务&lt;/li&gt;
+&lt;li&gt;Webhook&lt;/li&gt;
+&lt;li&gt;调用 AI API&lt;/li&gt;
+&lt;li&gt;处理表格和文件&lt;/li&gt;
+&lt;li&gt;连接数据库&lt;/li&gt;
+&lt;li&gt;调用脚本&lt;/li&gt;
+&lt;li&gt;消息通知&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;创建目录：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p /data/docker/n8n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; /data/docker/n8n
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建 &lt;code&gt;docker-compose.yml&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;n8n&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;n8nio/n8n:latest&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;n8n&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;unless-stopped&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;5678:5678&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- TZ=Asia/Shanghai&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- N8N_HOST=0.0.0.0&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- N8N_PORT=5678&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- N8N_PROTOCOL=http&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./n8n_data:/home/node/.n8n&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;浏览器访问：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;http://服务器IP:5678
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;http://192.168.1.100:5678
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;14---ai-agent-的定位建议&#34;&gt;14 - AI Agent 的定位建议&lt;/h2&gt;
+&lt;p&gt;这台机器适合做：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AI 自动化执行器&lt;/li&gt;
+&lt;li&gt;浏览器自动化主机&lt;/li&gt;
+&lt;li&gt;代码任务执行环境&lt;/li&gt;
+&lt;li&gt;文件处理服务器&lt;/li&gt;
+&lt;li&gt;n8n 工作流服务器&lt;/li&gt;
+&lt;li&gt;代理服务主机&lt;/li&gt;
+&lt;li&gt;远程开发环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但不建议把它定位成本地大模型服务器。&lt;/p&gt;
+&lt;p&gt;原因是 Quadro P600 显存有限，通常只有 4GB。它可以尝试跑一些小模型，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Qwen 1.5B / 3B&lt;/li&gt;
+&lt;li&gt;Llama 3.2 3B&lt;/li&gt;
+&lt;li&gt;DeepSeek Coder 1.3B&lt;/li&gt;
+&lt;li&gt;Phi mini&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但如果要跑 7B、14B、32B 模型，体验会比较一般，尤其是速度和显存都不理想。&lt;/p&gt;
+&lt;p&gt;更推荐的组合是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;本机负责执行任务
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;云端大模型负责推理
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Claude&lt;/li&gt;
+&lt;li&gt;OpenAI&lt;/li&gt;
+&lt;li&gt;DeepSeek&lt;/li&gt;
+&lt;li&gt;腾讯混元&lt;/li&gt;
+&lt;li&gt;Kimi&lt;/li&gt;
+&lt;li&gt;GLM&lt;/li&gt;
+&lt;li&gt;Qwen API&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样既稳定，又不会被本机 GPU 限制。&lt;/p&gt;
+&lt;h2 id=&#34;15---代理程序迁移&#34;&gt;15 - 代理程序迁移&lt;/h2&gt;
+&lt;p&gt;如果原来 Windows 上跑了代理程序，迁移到 Linux 前需要确认：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;是否有 Linux 版本&lt;/li&gt;
+&lt;li&gt;是否有 Docker 版本&lt;/li&gt;
+&lt;li&gt;配置文件能否导出&lt;/li&gt;
+&lt;li&gt;是否支持 systemd 开机自启&lt;/li&gt;
+&lt;li&gt;是否需要 Web 管理界面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常见选择包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sing-box&lt;/li&gt;
+&lt;li&gt;mihomo&lt;/li&gt;
+&lt;li&gt;v2ray&lt;/li&gt;
+&lt;li&gt;xray&lt;/li&gt;
+&lt;li&gt;clash-meta/mihomo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建议把代理配置文件放到：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/data/proxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样重装系统或迁移服务时比较方便。&lt;/p&gt;
+&lt;h2 id=&#34;16---推荐目录结构&#34;&gt;16 - 推荐目录结构&lt;/h2&gt;
+&lt;p&gt;建议把 1TB 数据盘规划成这样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ├── docker
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  │   ├── n8n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  │   ├── postgres
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  │   └── redis
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ├── projects
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ├── scripts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ├── logs
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ├── models
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ├── downloads
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ├── backup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  └── proxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样系统盘保持干净，数据集中在 &lt;code&gt;/data&lt;/code&gt;，后续备份也简单。&lt;/p&gt;
+&lt;h2 id=&#34;17---常用维护命令&#34;&gt;17 - 常用维护命令&lt;/h2&gt;
+&lt;p&gt;查看系统资源：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;htop
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看磁盘空间：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;df -h
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 Docker 容器：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker ps
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 Docker 日志：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker logs -f 容器名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 NVIDIA 显卡：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvidia-smi
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看 SSH 状态：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl status ssh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看开机时间：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;uptime
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;18---最终推荐软件清单&#34;&gt;18 - 最终推荐软件清单&lt;/h2&gt;
+&lt;p&gt;这台 HP ZHAN 99 改造完成后，建议安装：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu Desktop 24.04 LTS&lt;/li&gt;
+&lt;li&gt;NVIDIA 驱动&lt;/li&gt;
+&lt;li&gt;OpenSSH Server&lt;/li&gt;
+&lt;li&gt;Tailscale&lt;/li&gt;
+&lt;li&gt;Docker / Docker Compose&lt;/li&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;Node.js LTS&lt;/li&gt;
+&lt;li&gt;Python 3 / uv&lt;/li&gt;
+&lt;li&gt;n8n&lt;/li&gt;
+&lt;li&gt;Playwright&lt;/li&gt;
+&lt;li&gt;代理程序&lt;/li&gt;
+&lt;li&gt;AI Agent，例如 OpenClaw、Hermes Agent 或其他 CLI Agent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;19---总结&#34;&gt;19 - 总结&lt;/h2&gt;
+&lt;p&gt;这台 2018 年的 HP ZHAN 99 虽然已经不是新机器，但 &lt;code&gt;i5-8300H + 32GB 内存 + Quadro P600 + SSD + 1TB 数据盘&lt;/code&gt; 的组合，仍然非常适合改造成一台个人 AI 自动化服务器。&lt;/p&gt;
+&lt;p&gt;相比继续使用 Windows 10 加虚拟机，直接安装 Ubuntu Desktop 24.04 LTS 有几个明显优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;性能更好&lt;/li&gt;
+&lt;li&gt;环境更接近 AI Agent 的原生运行环境&lt;/li&gt;
+&lt;li&gt;Docker、Node、Python、Playwright 更容易配置&lt;/li&gt;
+&lt;li&gt;更适合长期常开&lt;/li&gt;
+&lt;li&gt;远程管理更方便&lt;/li&gt;
+&lt;li&gt;后续扩展 n8n、Agent、自动化脚本更自然&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最终推荐架构：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ubuntu Desktop 24.04 LTS 裸机安装
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 256GB SSD 做系统盘
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 1TB 数据盘挂载到 /data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Docker / n8n / Tailscale / SSH
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 云端大模型 API
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 本机负责自动化执行
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这不是一台强大的本地大模型服务器，但它非常适合作为个人 AI 自动化基础设施的核心节点。&lt;/p&gt;
+- https://terryren.github.io/posts/misc/ubuntu-desktop-ai-server-hp-zhan99/ - Terry</description>
+        </item>
     
     
     
@@ -186,71 +1640,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;max-file&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置后重新启动容器（&lt;code&gt;docker-compose up -d&lt;/code&gt;），Docker 将会自动帮您管理日志轮转。&lt;/p&gt;
 - https://terryren.github.io/posts/lang/shell/docker-logs-clean/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>普通人的财务自由之路：关于标普500定投、做T与抄底的终极答案</title>
-        <link>https://terryren.github.io/posts/misc/sp500-dca-vs-timing/</link>
-        <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/misc/sp500-dca-vs-timing/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/misc/sp500-dca-vs-timing/ -&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
-&lt;p&gt;手里有50万，十年后能变多少？是每天盯着K线做T，还是苦苦等待暴跌抄底？本文将用数据告诉你，为什么“躺平”往往赢过“瞎折腾”，并给出一套适合普通人的“80/20 智能定投”实战策略。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;一-相信复利时间的魔法&#34;&gt;一、 相信复利：时间的魔法&lt;/h2&gt;
-&lt;p&gt;让我们先算一笔账。&lt;/p&gt;
-&lt;p&gt;如果你现在手握 &lt;strong&gt;50万元&lt;/strong&gt; 本金，投入标普500指数（或其他年化约10%的长期增长资产），并且在接下来的 &lt;strong&gt;10年&lt;/strong&gt; 里什么都不做，只是持有。&lt;/p&gt;
-&lt;p&gt;十年后，这笔钱会变成 &lt;strong&gt;129.69 万元&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;你不需要看盘，不需要懂技术指标，甚至不需要关心美联储加息降息。单纯靠企业盈利的增长和时间的复利，你的资产就自然增值了近 80 万。这就是投资的第一性原理。&lt;/p&gt;
-&lt;h2 id=&#34;二-别做t赚成长的钱别赚波动的钱&#34;&gt;二、 别做T：赚“成长”的钱，别赚“波动”的钱&lt;/h2&gt;
-&lt;p&gt;很多人不满足于年化10%，总想通过“高抛低吸”（做T）来跑赢大盘。但残酷的数据告诉我们：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;定投是正和博弈&lt;/strong&gt;：你赚的是优秀企业业绩增长的钱，长期看胜率接近 100%。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;做T是负和博弈&lt;/strong&gt;：你赚的是交易对手犯错的钱，扣除手续费和点差，长期期望值为负。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;美股长牛的特征是“急涨慢跌”。很多关键涨幅往往集中在极短的几天内。一旦你因为贪图几个点的差价卖出了，大概率会“卖飞”，从而踏空随后而来的主升浪。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;对于非职业交易员，做T的结局通常是：一顿操作猛如虎，一看收益二点五。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;三-别等暴跌上帝也无法战胜定投&#34;&gt;三、 别等暴跌：上帝也无法战胜定投&lt;/h2&gt;
-&lt;p&gt;“现在的价格太高了，我要攒着钱，等大跌了再一把梭哈。”——这是最常见的心理误区。&lt;/p&gt;
-&lt;p&gt;著名的金融研究《即使是上帝也无法战胜定投》(Even God Couldn&amp;rsquo;t Beat Dollar-Cost Averaging) 指出：&lt;strong&gt;“傻瓜式定投”通常跑赢“攒钱等暴跌”。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;原因有两个：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;踏空成本&lt;/strong&gt;：在你苦等暴跌的两年里，市场可能已经涨了30%。哪怕后来跌了20%，价格依然比你当初想买的时候贵。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;现金拖累（Cash Drag）&lt;/strong&gt;：手持现金等待，意味着你的资金长期处于低收益状态，严重拉低了总回报。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;结论：Time in the market beats timing the market.（在市场中的时间胜过预测市场的时间）。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;四-终极策略核心定投--卫星抄底&#34;&gt;四、 终极策略：核心定投 + 卫星抄底&lt;/h2&gt;
-&lt;p&gt;为了在“不错过涨幅”和“抓住暴跌”之间找到平衡，我们推荐 &lt;strong&gt;80/20 智能定投策略&lt;/strong&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;1-资金配比&#34;&gt;1. 资金配比&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;80% 核心仓位&lt;/strong&gt;：雷打不动的每月定投。无论涨跌，发工资就买。这保证了你永远在车上，享受复利。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;20% 卫星仓位&lt;/strong&gt;：购买短债或货币基金（如 SGOV），作为“子弹库”，专门等待黑天鹅。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-抄底法则金字塔式加仓&#34;&gt;2. 抄底法则（金字塔式加仓）&lt;/h3&gt;
-&lt;p&gt;别在这个区间（0% ~ -10%）浪费子弹，这只是正常波动。真正的加仓点位如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;回撤 -10%&lt;/strong&gt;：打出 &lt;strong&gt;20%&lt;/strong&gt; 子弹。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;回撤 -15%&lt;/strong&gt;：打出 &lt;strong&gt;30%&lt;/strong&gt; 子弹。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;回撤 -20%&lt;/strong&gt;（及以上）：打出 &lt;strong&gt;50%&lt;/strong&gt; 子弹 (All-in)。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;3-动态平衡&#34;&gt;3. 动态平衡&lt;/h3&gt;
-&lt;p&gt;如果市场连涨3年不跌怎么办？没关系，你的80%仓位在为你赚钱。每半年检查一次，如果卫星仓位占比过低或过高，适当通过定投金额调整，将其拉回 20% 左右。&lt;/p&gt;
-&lt;h2 id=&#34;五-细节优化月投-vs-周投&#34;&gt;五、 细节优化：月投 vs 周投&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;千万不要把一个月的钱拆成四份按周投。&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;数学上&lt;/strong&gt;：资金在这个月里闲置的时间变长了，效率降低。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;心理上&lt;/strong&gt;：操作越频繁，越容易受到市场情绪干扰，产生“择时”的杂念。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;黄金法则&lt;/strong&gt;：钱什么时候到手，就什么时候投。
-如果是月薪族，设置发薪日的次日自动扣款，是坚持定投最轻松的姿势。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
-&lt;p&gt;投资不是比谁更聪明，而是比谁更耐心。&lt;/p&gt;
-&lt;p&gt;选择标普500，选择定投，其实是选择了一种生活方式：&lt;strong&gt;把复杂的波动交给市场，把简单的生活留给自己。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;十年后，当你看着账户里的 129 万时，你会感谢今天开始“躺平”的自己。&lt;/p&gt;
-- https://terryren.github.io/posts/misc/sp500-dca-vs-timing/ - Terry</description>
         </item>
     
     
@@ -2756,85 +4145,6 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看 每个容器进程的 内存、CPU、IO&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker stats --format &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.MemPerc}}\t{{.PIDs}}&amp;#34;&lt;/span&gt; --no-stream
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://terryren.github.io/posts/architect/basis/docker-2/ - Terry</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>网易 MUMU12 模拟器 - 1</title>
-        <link>https://terryren.github.io/posts/architect/io/mumu-1/</link>
-        <pubDate>Tue, 17 Sep 2024 13:06:00 +0800</pubDate>
-        
-        <guid>https://terryren.github.io/posts/architect/io/mumu-1/</guid>
-        <description>The Sound of Music https://terryren.github.io/posts/architect/io/mumu-1/ -&lt;h3 id=&#34;adb-基本信息&#34;&gt;ADB 基本信息&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;ADB&lt;/code&gt; 是 &lt;code&gt;Android Debug Bridge&lt;/code&gt; 的简称&lt;/p&gt;
-&lt;h4 id=&#34;adb-调试端口&#34;&gt;ADB 调试端口&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;设置&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;问题诊断&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;网络信息\ADB调试端口&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;abd-shell&#34;&gt;ABD Shell&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; /d C:&lt;span style=&#34;color:#cd5555&#34;&gt;\P&lt;/span&gt;rogram Files&lt;span style=&#34;color:#cd5555&#34;&gt;\N&lt;/span&gt;etease&lt;span style=&#34;color:#cd5555&#34;&gt;\M&lt;/span&gt;uMu Player 12&lt;span style=&#34;color:#cd5555&#34;&gt;\s&lt;/span&gt;hell
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看 已链接的 设备列表&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb devices
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 链接 MUMU 模拟器&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb connect 127.0.0.1:16384
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;导入-mitm-证书&#34;&gt;导入 MITM 证书&lt;/h3&gt;
-&lt;h4 id=&#34;ca-证书安装目录&#34;&gt;CA 证书安装目录&lt;/h4&gt;
-&lt;p&gt;找到本机已经安装的 &lt;code&gt;MITM CA 证书&lt;/code&gt;, 默认安装路径 &lt;code&gt;C:\Users\xxx\.mitmproxy&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;生成-andorid-系统证书&#34;&gt;生成 Andorid 系统证书&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;从 &lt;strong&gt;Andorid 7&lt;/strong&gt; 开始, &lt;code&gt;App&lt;/code&gt; 会忽略用户导入的证书，因此需要安装到 &lt;code&gt;系统证书目录&lt;/code&gt;, 系统证书通常是 &lt;code&gt;hash.0&lt;/code&gt; 格式&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;找到 &lt;code&gt;mitmproxy-ca-cert.cer&lt;/code&gt; 证书文件 此证书适合 &lt;code&gt;Andorid&lt;/code&gt; 系统&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;找到 证书 的 Hash值&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;建议在Linux相关机器执行如下命令&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openssl x509 -inform PEM -subject_hash_old -in ~/mitmproxy-ca-cert.cer | head -1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# c8750f0d&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;重命名证书&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp mitmproxy-ca-cert.cer c8750f0d.0
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;导入证书&#34;&gt;导入证书&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 需要重启 adb kill-server adb start-server&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb reboot
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 启用 Root 模式&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb root
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb connect 127.0.0.1:16384
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 上传文件&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb push C:&lt;span style=&#34;color:#cd5555&#34;&gt;\U&lt;/span&gt;sers&lt;span style=&#34;color:#cd5555&#34;&gt;\x&lt;/span&gt;xx&lt;span style=&#34;color:#cd5555&#34;&gt;\.&lt;/span&gt;mitmproxy&lt;span style=&#34;color:#cd5555&#34;&gt;\c&lt;/span&gt;8750f0d.0 /system/etc/security/cacerts
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 修改权限&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chmod 664 /system/etc/security/cacerts/c8750f0d.0&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;设置-mitm-代理&#34;&gt;设置 MITM 代理&lt;/h3&gt;
-&lt;h4 id=&#34;设置代理&#34;&gt;设置代理&lt;/h4&gt;
-&lt;p&gt;**开启 &lt;code&gt;mitmweb.exe&lt;/code&gt; **&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 看看本机IP&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ipconfig /all
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看代理&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell settings get global http_proxy
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 设置模拟器代理IP&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell settings put global http_proxy 192.168.31.178:8080
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看代理&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell settings get global http_proxy
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;打开App验证流量&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&#34;取消代理&#34;&gt;取消代理&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 无需重启&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell settings put global http_proxy :0
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 需要重启&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell settings delete global http_proxy
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell settings delete global global_http_proxy_host
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;adb shell settings delete global global_http_proxy_port
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://mumu.163.com/mac/&#34;&gt;MUMU 12 下载&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://mitmproxy.org/downloads/#10.4.2/&#34;&gt;MITM Proxy&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.mitmproxy.org/stable/concepts-certificates/&#34;&gt;MITM Proxy Cert&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.mitmproxy.org/stable/howto-install-system-trusted-ca-android/&#34;&gt;MITM Proxy CA Cert On Android&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/m0_46607055/article/details/137638350&#34;&gt;BP 抓取 MUMU 12的设置&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://mumu.163.com/help/20240814/40912_1174291.html&#34;&gt;Charles 抓包&lt;/a&gt;&lt;/p&gt;
-- https://terryren.github.io/posts/architect/io/mumu-1/ - Terry</description>
         </item>
     
     

@@ -7,13 +7,103 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 May 2026 18:55:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QDII ETF</title>
+      <link>https://terryren.github.io/tags/qdii-etf/</link>
+      <pubDate>Fri, 01 May 2026 18:55:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/qdii-etf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>标普500</title>
+      <link>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</link>
+      <pubDate>Fri, 01 May 2026 18:55:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>财务自由</title>
+      <link>https://terryren.github.io/tags/%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1/</link>
+      <pubDate>Fri, 01 May 2026 18:55:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>定投</title>
+      <link>https://terryren.github.io/tags/%E5%AE%9A%E6%8A%95/</link>
+      <pubDate>Fri, 01 May 2026 18:55:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E5%AE%9A%E6%8A%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>纳斯达克100</title>
+      <link>https://terryren.github.io/tags/%E7%BA%B3%E6%96%AF%E8%BE%BE%E5%85%8B100/</link>
+      <pubDate>Fri, 01 May 2026 18:55:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E7%BA%B3%E6%96%AF%E8%BE%BE%E5%85%8B100/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>投资策略</title>
+      <link>https://terryren.github.io/tags/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</link>
+      <pubDate>Fri, 01 May 2026 18:55:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AI</title>
+      <link>https://terryren.github.io/tags/ai/</link>
+      <pubDate>Mon, 27 Apr 2026 17:30:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Docker</title>
       <link>https://terryren.github.io/tags/docker/</link>
-      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Apr 2026 17:30:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://terryren.github.io/tags/linux/</link>
+      <pubDate>Mon, 27 Apr 2026 17:30:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://terryren.github.io/tags/ubuntu/</link>
+      <pubDate>Mon, 27 Apr 2026 17:30:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自动化</title>
+      <link>https://terryren.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+      <pubDate>Mon, 27 Apr 2026 17:30:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</guid>
       <description></description>
     </item>
     
@@ -32,42 +122,6 @@
       <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
       
       <guid>https://terryren.github.io/tags/%E8%BF%90%E7%BB%B4/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>标普500</title>
-      <link>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</link>
-      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/%E6%A0%87%E6%99%AE500/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>财务自由</title>
-      <link>https://terryren.github.io/tags/%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1/</link>
-      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>定投</title>
-      <link>https://terryren.github.io/tags/%E5%AE%9A%E6%8A%95/</link>
-      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/%E5%AE%9A%E6%8A%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>投资策略</title>
-      <link>https://terryren.github.io/tags/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</link>
-      <pubDate>Mon, 01 Dec 2025 10:00:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</guid>
       <description></description>
     </item>
     
@@ -261,15 +315,6 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://terryren.github.io/tags/linux/</link>
-      <pubDate>Mon, 16 Sep 2024 10:06:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>磁盘</title>
       <link>https://terryren.github.io/tags/%E7%A3%81%E7%9B%98/</link>
       <pubDate>Mon, 16 Sep 2024 10:06:00 +0800</pubDate>
@@ -374,15 +419,6 @@
       <pubDate>Tue, 16 Jul 2024 13:06:00 +0800</pubDate>
       
       <guid>https://terryren.github.io/tags/minio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AI</title>
-      <link>https://terryren.github.io/tags/ai/</link>
-      <pubDate>Wed, 24 Apr 2024 13:06:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/tags/ai/</guid>
       <description></description>
     </item>
     
