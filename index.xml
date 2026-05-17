@@ -917,6 +917,7 @@
 &lt;li&gt;后续迁移到更强的机器也更自然&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如果你之前已经像我一样把旧笔记本改造成 Ubuntu AI 自动化服务器，那么 Hermes Agent 就是很自然的下一步：系统负责常驻，Docker 负责隔离，Hermes Agent 负责把 AI 能力接到自动化工作流里。&lt;/p&gt;
+&lt;p&gt;若系统盘较小、另有挂载在 &lt;code&gt;/data&lt;/code&gt; 的数据盘，安装时建议直接把 &lt;code&gt;HERMES_HOME&lt;/code&gt; 指到数据盘（详见 &lt;a href=&#34;#hermes-data-disk&#34;&gt;6.1 节&lt;/a&gt;），避免 &lt;code&gt;venv&lt;/code&gt;、会话和日志占满根分区。&lt;/p&gt;
 &lt;h2 id=&#34;3---官方安装方式&#34;&gt;3 - 官方安装方式&lt;/h2&gt;
 &lt;p&gt;Hermes Agent 官方文档给出的 Linux / macOS / WSL2 安装方式是一行命令：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
@@ -1004,6 +1005,7 @@
 &lt;li&gt;独立的普通用户账户&lt;/li&gt;
 &lt;li&gt;稳定的网络和电源&lt;/li&gt;
 &lt;li&gt;定期备份目录&lt;/li&gt;
+&lt;li&gt;若系统盘偏小：提前挂载数据盘（如 &lt;code&gt;/data&lt;/code&gt;），安装时设置 &lt;code&gt;HERMES_HOME=/data/hermes&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Hermes Agent 不要求这些全部存在，但对于常驻 AI Agent 服务器来说，它们会显著提升可维护性。&lt;/p&gt;
 &lt;h3 id=&#34;52-不建议一开始用-root-安装&#34;&gt;5.2 不建议一开始用 root 安装&lt;/h3&gt;
@@ -1051,16 +1053,26 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;~/.hermes/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;官方配置文档列出的典型结构如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;~/.hermes/
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── config.yaml     # 模型、终端后端、TTS、压缩等普通配置
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── .env            # API Key、Bot Token 等敏感信息
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── auth.json       # OAuth 凭据
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── SOUL.md         # Agent 的默认身份和表达风格
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── memories/       # 长期记忆
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── skills/         # Agent 创建和复用的技能
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── cron/           # 定时任务
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── sessions/       # 消息网关会话
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── logs/           # 日志
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里有一个很重要的原则：&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── config.yaml          # 模型、终端后端、TTS、压缩等普通配置
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── .env                 # API Key、Bot Token 等敏感信息
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── auth.json            # OAuth 凭据
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── SOUL.md              # Agent 的默认身份和表达风格
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── hermes-agent/        # 源码 + Python 虚拟环境（venv，体积最大）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── node/                # 安装器自带的 Node.js 运行时
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── node_modules/        # 浏览器自动化等 npm 依赖
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── memories/            # 长期记忆
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── skills/              # Agent 创建和复用的技能
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── cron/                # 定时任务
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── sessions/            # 消息网关会话（含 state.db，会持续增长）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── logs/                # 日志
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── image_cache/         # 图片缓存
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── audio_cache/         # 音频缓存
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;此外，安装器还会在用户主目录下占用一些&lt;strong&gt;不在&lt;/strong&gt; &lt;code&gt;~/.hermes/&lt;/code&gt; 内的空间，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;~/.cache/ms-playwright/   # Chromium（浏览器工具，约 200–400 MB）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;~/.cache/uv/              # uv 包下载缓存
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;~/.local/share/uv/python/ # uv 管理的 Python 解释器
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若启用 Docker backend，镜像与容器数据通常在 &lt;code&gt;/var/lib/docker&lt;/code&gt;，也不计入 &lt;code&gt;~/.hermes/&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;这里有一个很重要的原则：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;API Key、Bot Token、密码等敏感信息放进 &lt;code&gt;~/.hermes/.env&lt;/code&gt;；模型、终端后端、工具开关等普通配置放进 &lt;code&gt;~/.hermes/config.yaml&lt;/code&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1071,7 +1083,123 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes config check
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes config migrate
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中 &lt;code&gt;hermes config set&lt;/code&gt; 会尽量把配置写到正确的位置：敏感信息写入 &lt;code&gt;.env&lt;/code&gt;，普通配置写入 &lt;code&gt;config.yaml&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;7---选择合适的-terminal-backend&#34;&gt;7 - 选择合适的 Terminal Backend&lt;/h2&gt;
+&lt;h3 id=&#34;hermes-data-disk&#34;&gt;6.1 将数据目录迁移到大容量磁盘（/data）&lt;/h3&gt;
+&lt;p&gt;个人服务器常见布局是：&lt;strong&gt;系统盘较小&lt;/strong&gt;（几十 GB），&lt;strong&gt;数据盘挂载在 &lt;code&gt;/data&lt;/code&gt;&lt;/strong&gt;。Hermes Agent 安装后很容易占满系统盘——尤其是 &lt;code&gt;hermes-agent/venv&lt;/code&gt;、Playwright 的 Chromium、以及长期运行的 &lt;code&gt;sessions/&lt;/code&gt; 和 &lt;code&gt;logs/&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;官方支持通过环境变量 &lt;code&gt;HERMES_HOME&lt;/code&gt; 指定数据根目录；安装脚本也支持 &lt;code&gt;--hermes-home&lt;/code&gt;。推荐把&lt;strong&gt;整个 Hermes 数据目录&lt;/strong&gt;迁到 &lt;code&gt;/data&lt;/code&gt;，而不是只拆某几个子目录。&lt;/p&gt;
+&lt;h4 id=&#34;哪些占用空间大&#34;&gt;哪些占用空间大&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;位置&lt;/th&gt;
+&lt;th&gt;典型体积&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.hermes/hermes-agent/venv/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;数百 MB～数 GB&lt;/td&gt;
+&lt;td&gt;Python 依赖，通常最大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.cache/ms-playwright/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;约 200–400 MB&lt;/td&gt;
+&lt;td&gt;Chromium（浏览器工具）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.local/share/uv/python/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;约 50–100 MB/版本&lt;/td&gt;
+&lt;td&gt;uv 管理的 Python&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.cache/uv/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;视更新而定&lt;/td&gt;
+&lt;td&gt;uv 下载缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.hermes/node/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;约 50–80 MB&lt;/td&gt;
+&lt;td&gt;安装器自带的 Node.js&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.hermes/node_modules/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;数十～百余 MB&lt;/td&gt;
+&lt;td&gt;agent-browser 等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.hermes/sessions/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;持续增长&lt;/td&gt;
+&lt;td&gt;会话与 &lt;code&gt;state.db&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.hermes/logs/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;持续增长&lt;/td&gt;
+&lt;td&gt;运行日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~/.hermes/image_cache/&lt;/code&gt;、&lt;code&gt;audio_cache/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;视使用而定&lt;/td&gt;
+&lt;td&gt;媒体缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Docker 数据目录&lt;/td&gt;
+&lt;td&gt;视镜像而定&lt;/td&gt;
+&lt;td&gt;使用 docker backend 时，常见为 &lt;code&gt;/var/lib/docker&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;config.yaml&lt;/code&gt;、&lt;code&gt;.env&lt;/code&gt;、&lt;code&gt;memories/&lt;/code&gt;、&lt;code&gt;skills/&lt;/code&gt; 等配置文件和文本数据一般不大，随 &lt;code&gt;HERMES_HOME&lt;/code&gt; 一起迁移即可。&lt;/p&gt;
+&lt;h4 id=&#34;推荐做法整包迁到-data&#34;&gt;推荐做法：整包迁到 &lt;code&gt;/data&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;新安装&lt;/strong&gt;（尚未执行过安装脚本）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir -p /data/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chown &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$USER&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$USER&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt; /data/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;HERMES_HOME&lt;/span&gt;=/data/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash -s -- --hermes-home /data/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后，在 &lt;code&gt;~/.bashrc&lt;/code&gt;（若用 zsh 则 &lt;code&gt;~/.zshrc&lt;/code&gt;）中固定：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;HERMES_HOME&lt;/span&gt;=/data/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;已安装&lt;/strong&gt;（从默认的 &lt;code&gt;~/.hermes&lt;/code&gt; 迁出）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 1. 先停止网关（若在运行）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 2. 迁移目录（将 hermes 换成你的实际用户名）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mv ~/.hermes /data/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 3. 建立软链接，兼容少数仍写死 ~/.hermes 的代码路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ln -s /data/hermes ~/.hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 4. 写入环境变量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;export HERMES_HOME=/data/hermes&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 5. 若 gateway 以 systemd 运行，需确保服务也带上 HERMES_HOME&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#    可重新执行 hermes gateway install，或手动编辑 unit 后 daemon-reload&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway install
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway start
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes doctor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;~/.local/bin/hermes&lt;/code&gt; 只是启动器，体积很小，可继续留在系统盘。&lt;/p&gt;
+&lt;h4 id=&#34;可单独迁到-data-的相关缓存&#34;&gt;可单独迁到 /data 的相关缓存&lt;/h4&gt;
+&lt;p&gt;若系统盘仍紧张，下列目录不在 &lt;code&gt;HERMES_HOME&lt;/code&gt; 内，可额外指向 &lt;code&gt;/data&lt;/code&gt;（写入 shell 配置，并确保 &lt;strong&gt;gateway 的 systemd 服务&lt;/strong&gt;同样继承这些变量）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# uv 缓存&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;UV_CACHE_DIR&lt;/span&gt;=/data/cache/uv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Playwright Chromium&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;PLAYWRIGHT_BROWSERS_PATH&lt;/span&gt;=/data/playwright
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 迁移后在新路径执行一次：npx playwright install chromium&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Docker（若大量使用 docker backend）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 在 /etc/docker/daemon.json 中设置 &amp;#34;data-root&amp;#34;: &amp;#34;/data/docker&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;不需要浏览器工具时可省空间&#34;&gt;不需要浏览器工具时可省空间&lt;/h4&gt;
+&lt;p&gt;若不需要浏览器自动化，安装时可跳过 Chromium：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash -s -- --skip-browser --hermes-home /data/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;迁移前检查占用&#34;&gt;迁移前检查占用&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;du -sh ~/.hermes ~/.hermes/*/ ~/.cache/ms-playwright ~/.cache/uv ~/.local/share/uv 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker system df   &lt;span style=&#34;color:#228b22&#34;&gt;# 若使用 docker backend&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ubuntu 常驻服务器推荐布局：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;系统盘：Ubuntu + ~/.local/bin/hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;数据盘 /data/hermes：HERMES_HOME（配置、记忆、venv、会话、日志）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;数据盘 /data/docker：Docker 镜像与容器（可选）
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;7---选择合适的-terminal-backend&#34;&gt;7 - 选择合适的 Terminal Backend&lt;/h2&gt;
 &lt;p&gt;Hermes Agent 执行命令时，需要选择命令到底在哪里运行。官方文档把这个能力称为 terminal backend。&lt;/p&gt;
 &lt;p&gt;常见选择如下：&lt;/p&gt;
 &lt;table&gt;
@@ -1207,13 +1335,42 @@
 &lt;li&gt;&lt;code&gt;FEISHU_ALLOWED_USERS&lt;/code&gt; 建议一定配置，避免任何能接触到 bot 的人都能使用 Agent。&lt;/li&gt;
 &lt;li&gt;群聊中默认只有 @ 到机器人时才会触发，适合放在日常群里。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;添加其他飞书用户&#34;&gt;添加其他飞书用户&lt;/h4&gt;
+&lt;p&gt;Hermes 默认不会对所有人开放，需要把对方的 &lt;strong&gt;飞书 &lt;code&gt;open_id&lt;/code&gt;&lt;/strong&gt;（形如 &lt;code&gt;ou_xxx&lt;/code&gt;）加入白名单。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式一：编辑 allowlist（最常用）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;~/.hermes/.env&lt;/code&gt;（若设置了 &lt;code&gt;HERMES_HOME&lt;/code&gt; 则在其下的 &lt;code&gt;.env&lt;/code&gt;）中追加，多个 ID 用英文逗号分隔：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;FEISHU_ALLOWED_USERS&lt;/span&gt;=ou_你的id,ou_同事A,ou_同事B
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或用命令写入（会自动落到 &lt;code&gt;.env&lt;/code&gt;）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes config &lt;span style=&#34;color:#658b00&#34;&gt;set&lt;/span&gt; FEISHU_ALLOWED_USERS ou_xxx,ou_yyy,ou_zzz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改后需重启 gateway。若使用系统级 systemd 服务：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway restart --system
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;如何获取对方的 &lt;code&gt;open_id&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;让对方先给机器人发私聊；在网关日志 &lt;code&gt;~/.hermes/logs/&lt;/code&gt; 或 &lt;code&gt;journalctl -u hermes-gateway -f&lt;/code&gt; 中查看 sender 信息。&lt;/li&gt;
+&lt;li&gt;在&lt;strong&gt;已授权&lt;/strong&gt;的会话里发送 &lt;code&gt;/whoami&lt;/code&gt;，Hermes 会返回当前用户标识。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;群聊说明&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;私聊：发送者须在 &lt;code&gt;FEISHU_ALLOWED_USERS&lt;/code&gt; 中。&lt;/li&gt;
+&lt;li&gt;群聊：一般需 &lt;strong&gt;@ 机器人&lt;/strong&gt;；且当 &lt;code&gt;FEISHU_GROUP_POLICY=allowlist&lt;/code&gt;（默认）时，发送者也须在白名单内。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更细的「按群、按人」规则可在 &lt;code&gt;config.yaml&lt;/code&gt; 的 &lt;code&gt;platforms.feishu.extra.group_rules&lt;/code&gt; 中配置，参见官方 &lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/user-guide/messaging/feishu&#34;&gt;Feishu / Lark 文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式二：DM Pairing（免手填 ID）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;适合家人或小团队：对方私聊机器人会收到配对码，你在服务器上批准：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes pairing list
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes pairing approve feishu XKGH5N7P   &lt;span style=&#34;color:#228b22&#34;&gt;# 以实际显示的配对码为准&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;详见 &lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/user-guide/messaging/#dm-pairing-alternative-to-allowlists&#34;&gt;Messaging Gateway - DM Pairing&lt;/a&gt;。若 &lt;code&gt;approve feishu&lt;/code&gt; 报错，可执行 &lt;code&gt;hermes pairing --help&lt;/code&gt; 查看当前版本支持的平台名。&lt;/p&gt;
+&lt;h4 id=&#34;修改飞书应用与机器人显示名称&#34;&gt;修改飞书应用与机器人显示名称&lt;/h4&gt;
+&lt;p&gt;这&lt;strong&gt;不在 Hermes 里配置&lt;/strong&gt;，需在 &lt;strong&gt;飞书开放平台&lt;/strong&gt; 修改：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 &lt;a href=&#34;https://open.feishu.cn/&#34;&gt;飞书开放平台&lt;/a&gt;（国际版用 &lt;a href=&#34;https://open.larksuite.com/&#34;&gt;Lark&lt;/a&gt;）。&lt;/li&gt;
+&lt;li&gt;进入对应应用 → &lt;strong&gt;凭证与基础信息 / 应用信息&lt;/strong&gt; → 修改&lt;strong&gt;应用名称&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;用户侧看到的&lt;strong&gt;机器人名称&lt;/strong&gt;、头像、描述等，在 &lt;strong&gt;应用能力 → 机器人&lt;/strong&gt; 相关页面中设置（以控制台当前菜单为准）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;环境变量 &lt;code&gt;FEISHU_BOT_NAME&lt;/code&gt; 仅用于 Hermes 在自动识别失败时辅助 &lt;strong&gt;@ 提及检测&lt;/strong&gt;，&lt;strong&gt;不会&lt;/strong&gt;改变飞书客户端里显示的机器人名称。&lt;/p&gt;
 &lt;p&gt;配置完成后启动网关：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果希望网关长期运行，在 Ubuntu 服务器上可以安装为 systemd 服务：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway install
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway start
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway status
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果是 macOS，则会走 launchd：&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若希望网关在 Ubuntu 上&lt;strong&gt;开机自启、SSH 断开后仍运行&lt;/strong&gt;，不要只用默认的 &lt;code&gt;hermes gateway install&lt;/code&gt;（用户级服务），而应使用 &lt;a href=&#34;#gateway-systemd&#34;&gt;10.3 节&lt;/a&gt; 的 &lt;strong&gt;system 级安装&lt;/strong&gt;。macOS 仍用 launchd：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway install
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway start
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway status
@@ -1331,13 +1488,14 @@
 &lt;h3 id=&#34;102-ubuntu-2404-lts-推荐方案&#34;&gt;10.2 Ubuntu 24.04 LTS 推荐方案&lt;/h3&gt;
 &lt;p&gt;Ubuntu 服务器上推荐：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;普通用户 hermes 安装
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ ~/.hermes 独立保存配置和记忆
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Docker backend 处理陌生代码
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ HERMES_HOME=/data/hermes（系统盘小时；否则默认 ~/.hermes）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Docker backend 处理陌生代码（Docker data-root 也可放 /data）
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Tailscale / SSH 远程维护
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ gateway 接飞书 / 企业微信 / Telegram / Discord
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ sudo hermes gateway install --system --run-as-user &amp;lt;用户&amp;gt;（开机自启）
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ allowlist 限制用户
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ cron 做定时任务
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 定期备份 ~/.hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 定期备份 $HERMES_HOME（或 ~/.hermes）
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果这台机器是家里的旧笔记本或迷你主机，可以把它定位成：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;个人 AI 自动化服务器
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;= Ubuntu 24.04 LTS
@@ -1347,6 +1505,54 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Hermes Agent
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ n8n / 其他自动化工具
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Hermes Agent 负责自然语言入口、记忆、工具调用和任务拆解；Docker 负责隔离执行；Tailscale 负责安全远程访问；n8n 负责传统工作流编排。这样比把所有事情都堆给一个工具更稳定。&lt;/p&gt;
+&lt;h3 id=&#34;gateway-systemd&#34;&gt;10.3 Ubuntu 上 Gateway 的 systemd 服务&lt;/h3&gt;
+&lt;p&gt;在 Ubuntu 常驻服务器上，消息网关需要 &lt;strong&gt;7×24 运行&lt;/strong&gt;。Hermes 支持两种 Linux systemd 安装方式：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方式&lt;/th&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;单元文件位置&lt;/th&gt;
+&lt;th&gt;重启后&lt;/th&gt;
+&lt;th&gt;SSH 登出后&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;用户级&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hermes gateway install&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;~/.config/systemd/user/hermes-gateway*.service&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;需开启 linger&lt;/td&gt;
+&lt;td&gt;可能停止&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;系统级&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo hermes gateway install --system --run-as-user 用户名&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/etc/systemd/system/hermes-gateway*.service&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;可随系统启动&lt;/td&gt;
+&lt;td&gt;不受影响&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;个人 VPS / 无头服务器&lt;strong&gt;推荐系统级&lt;/strong&gt;，仍以普通用户身份跑进程（配置、&lt;code&gt;.env&lt;/code&gt; 仍在该用户的 &lt;code&gt;~/.hermes&lt;/code&gt; 或 &lt;code&gt;HERMES_HOME&lt;/code&gt; 下）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo /home/terry/.local/bin/hermes gateway install --system --run-as-user terry
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway start --system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway status --system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# install 通常已执行 systemctl enable；若需手动：sudo systemctl enable hermes-gateway&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--run-as-user terry&lt;/code&gt; 表示 systemd 以用户 &lt;code&gt;terry&lt;/code&gt; 运行 gateway，&lt;strong&gt;不是&lt;/strong&gt;以 root 跑 Agent；&lt;code&gt;FEISHU_*&lt;/code&gt; 等配置仍读取 &lt;code&gt;/home/terry/.hermes/&lt;/code&gt;（或该用户的 &lt;code&gt;HERMES_HOME&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;系统级服务&lt;strong&gt;一般不需要&lt;/strong&gt; &lt;code&gt;sudo loginctl enable-linger&lt;/code&gt;（那是用户级服务在 SSH 断开后可能退出时才需要）。&lt;/li&gt;
+&lt;li&gt;日常 &lt;code&gt;start&lt;/code&gt; / &lt;code&gt;stop&lt;/code&gt; / &lt;code&gt;restart&lt;/code&gt; / &lt;code&gt;status&lt;/code&gt; 须带 &lt;strong&gt;&lt;code&gt;sudo&lt;/code&gt; 与 &lt;code&gt;--system&lt;/code&gt;&lt;/strong&gt;，否则会操作到用户级服务或报未安装。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;重启后是否自动运行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;install --system&lt;/code&gt; 会 &lt;code&gt;enable&lt;/code&gt; 单元并设置 &lt;code&gt;WantedBy=multi-user.target&lt;/code&gt;，重启后 systemd 应自动拉起 gateway。验证：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;systemctl is-enabled hermes-gateway
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway status --system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo journalctl -u hermes-gateway -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若数据目录已迁到 &lt;code&gt;/data/hermes&lt;/code&gt;，须先为 &lt;strong&gt;terry&lt;/strong&gt; 配置好 &lt;code&gt;HERMES_HOME&lt;/code&gt;，再&lt;strong&gt;重新执行&lt;/strong&gt;一次 &lt;code&gt;gateway install --system --run-as-user terry&lt;/code&gt;，否则 unit 里可能仍指向旧的 &lt;code&gt;~/.hermes&lt;/code&gt;（见 &lt;a href=&#34;#hermes-data-disk&#34;&gt;6.1 节&lt;/a&gt;）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不要同时保留两套服务&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若既装过 &lt;code&gt;hermes gateway install&lt;/code&gt;（无 &lt;code&gt;--system&lt;/code&gt;），又装了 &lt;code&gt;--system&lt;/code&gt;，两个 unit 可能同时存在，会导致 start/stop 行为混乱，甚至争抢同一飞书 &lt;code&gt;app_id&lt;/code&gt;。判断与清理见 &lt;a href=&#34;#gateway-user-vs-system&#34;&gt;11.10 节&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;11---常见问题&#34;&gt;11 - 常见问题&lt;/h2&gt;
 &lt;h3 id=&#34;111-hermes-command-not-found&#34;&gt;11.1 hermes: command not found&lt;/h3&gt;
 &lt;p&gt;先重新打开终端，或者执行：&lt;/p&gt;
@@ -1364,7 +1570,8 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes config &lt;span style=&#34;color:#658b00&#34;&gt;set&lt;/span&gt; OPENROUTER_API_KEY your_key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;也可以重新运行完整向导：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes setup
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;113-ubuntu-缺少-git&#34;&gt;11.3 Ubuntu 缺少 Git&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若使用 &lt;strong&gt;DeepSeek&lt;/strong&gt; 且 &lt;code&gt;hermes doctor&lt;/code&gt; 仍提示 &lt;code&gt;Check DEEPSEEK_API_KEY in .env&lt;/code&gt;，见 &lt;a href=&#34;#hermes-doctor-deepseek&#34;&gt;11.11 节&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;113-ubuntu-缺少-git&#34;&gt;11.3 Ubuntu 缺少 Git&lt;/h3&gt;
 &lt;p&gt;执行：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install -y git
@@ -1394,8 +1601,10 @@
 &lt;li&gt;&lt;code&gt;~/.hermes/logs/&lt;/code&gt; 下是否有错误日志&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;117-飞书机器人不响应&#34;&gt;11.7 飞书机器人不响应&lt;/h3&gt;
-&lt;p&gt;先确认网关在运行：&lt;/p&gt;
+&lt;p&gt;先确认网关在运行（若用系统级服务须加 &lt;code&gt;--system&lt;/code&gt;）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway status
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 或&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway status --system
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果是前台运行，则看当前终端日志：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后检查：&lt;/p&gt;
@@ -1409,9 +1618,99 @@
 &lt;h3 id=&#34;118-微信群里--机器人没反应&#34;&gt;11.8 微信群里 @ 机器人没反应&lt;/h3&gt;
 &lt;p&gt;这不一定是 Hermes Agent 配置问题。个人微信适配器使用 iLink bot identity，官方文档说明普通微信群事件经常不会投递给这个 bot identity。&lt;/p&gt;
 &lt;p&gt;如果私聊可用、群聊不可用，优先判断为 iLink 侧限制。更稳定的方案是改用飞书或企业微信。&lt;/p&gt;
+&lt;h3 id=&#34;119-系统盘空间不足--hermes-占满磁盘&#34;&gt;11.9 系统盘空间不足 / Hermes 占满磁盘&lt;/h3&gt;
+&lt;p&gt;先用 &lt;code&gt;du&lt;/code&gt; 确认占用（见 &lt;a href=&#34;#hermes-data-disk&#34;&gt;6.1 节&lt;/a&gt;），再按是否已安装选择：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;未安装&lt;/strong&gt;：&lt;code&gt;--hermes-home /data/hermes&lt;/code&gt; 安装，并 &lt;code&gt;export HERMES_HOME=/data/hermes&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;已安装&lt;/strong&gt;：停 gateway → &lt;code&gt;mv ~/.hermes /data/hermes&lt;/code&gt; → &lt;code&gt;ln -s /data/hermes ~/.hermes&lt;/code&gt; → 写入 shell 与 systemd 的 &lt;code&gt;HERMES_HOME&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Playwright、uv 缓存、Docker 镜像可额外迁到 &lt;code&gt;/data&lt;/code&gt;（见 6.1 节「可单独迁到 /data 的相关缓存」）。不需要浏览器工具时，重装可加 &lt;code&gt;--skip-browser&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;gateway-user-vs-system&#34;&gt;11.10 如何判断是否装过用户级 gateway&lt;/h3&gt;
+&lt;p&gt;若曾执行过 &lt;code&gt;hermes gateway install&lt;/code&gt;（&lt;strong&gt;无&lt;/strong&gt; &lt;code&gt;--system&lt;/code&gt;），会在用户目录留下 systemd 单元；与 &lt;code&gt;install --system&lt;/code&gt; 并存时可能冲突。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;检查单元文件是否存在&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 用户级（无 --system 时生成）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls -l ~/.config/systemd/user/hermes-gateway*.service 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 系统级（--system 时生成）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ls -l /etc/systemd/system/hermes-gateway*.service 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;结果&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;仅有 &lt;code&gt;~/.config/systemd/user/...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;只装过用户级&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仅有 &lt;code&gt;/etc/systemd/system/...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;只装过系统级&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;两处都有&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;两套都装过，建议清理用户级&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;都没有&lt;/td&gt;
+&lt;td&gt;未装 systemd，可能只用前台 &lt;code&gt;hermes gateway&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;用 Hermes / systemctl 辅助判断&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway status
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway status --system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;systemctl --user list-unit-files &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hermes-gateway*&amp;#39;&lt;/span&gt; 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;systemctl list-unit-files &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hermes-gateway*&amp;#39;&lt;/span&gt; 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若同时存在 user 与 system 单元，&lt;code&gt;hermes gateway status&lt;/code&gt; 可能提示 &lt;em&gt;Both user and system gateway services are installed&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;只保留系统级时的清理（在对应 Linux 用户下）&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway uninstall
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;系统级服务继续用 &lt;code&gt;sudo hermes gateway … --system&lt;/code&gt; 管理，勿卸载 system 单元。&lt;/p&gt;
+&lt;h3 id=&#34;hermes-doctor-deepseek&#34;&gt;11.11 hermes doctor 与 DeepSeek 配置&lt;/h3&gt;
+&lt;p&gt;按 &lt;a href=&#34;https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/hermes&#34;&gt;DeepSeek 官方 Hermes 接入说明&lt;/a&gt; 完成 &lt;code&gt;hermes setup&lt;/code&gt; 后，若 &lt;code&gt;hermes doctor&lt;/code&gt; 摘要仍出现例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1. Check DEEPSEEK_API_KEY in .env
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2. Run &amp;#39;hermes setup&amp;#39; to configure missing API keys for full tool access
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;两条提示含义不同：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;摘要&lt;/th&gt;
+&lt;th&gt;常见原因&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Check DEEPSEEK_API_KEY&lt;/td&gt;
+&lt;td&gt;已读到变量，但请求 &lt;code&gt;https://api.deepseek.com/v1/models&lt;/code&gt; 返回 &lt;strong&gt;401&lt;/strong&gt;（密钥无效或格式错误）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Run hermes setup … full tool access&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;可选工具&lt;/strong&gt;（搜索、TTS 等）缺其他 API Key，与 DeepSeek 对话模型可分开处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;核对 DeepSeek 密钥&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;必须写在 &lt;code&gt;~/.hermes/.env&lt;/code&gt;（或 &lt;code&gt;HERMES_HOME&lt;/code&gt; 对应目录），变量名 exactly：&lt;code&gt;DEEPSEEK_API_KEY=sk-...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;勿只写在项目目录 &lt;code&gt;.env&lt;/code&gt;；注意值两侧不要多余引号或空格&lt;/li&gt;
+&lt;li&gt;推荐：&lt;code&gt;hermes config set DEEPSEEK_API_KEY sk-你的密钥&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;独立验证密钥（与 doctor 相同接口）&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -sS -o /tmp/ds_models.json -w &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;%{http_code}\n&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&lt;/span&gt;  -H &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Authorization: Bearer 你的KEY&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://api.deepseek.com/v1/models&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;返回 &lt;code&gt;200&lt;/code&gt; 表示密钥有效；&lt;code&gt;401&lt;/code&gt; 请到 &lt;a href=&#34;https://platform.deepseek.com/api_keys&#34;&gt;DeepSeek API Keys&lt;/a&gt; 重新创建。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;看完整 doctor 输出&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes doctor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 &lt;strong&gt;◆ API Connectivity&lt;/strong&gt; 中查看 DeepSeek 一行（&lt;code&gt;invalid API key&lt;/code&gt; / HTTP 状态）；在 &lt;strong&gt;◆ Tool Availability&lt;/strong&gt; 中查看带 &lt;code&gt;missing XXX_API_KEY&lt;/code&gt; 的工具，对应第二条摘要。&lt;/p&gt;
 &lt;h2 id=&#34;12---参考命令速查&#34;&gt;12 - 参考命令速查&lt;/h2&gt;
 &lt;p&gt;安装：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装到数据盘 &lt;code&gt;/data&lt;/code&gt;（Ubuntu 常驻服务器推荐）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash -s -- --hermes-home /data/hermes
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;初始化：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes setup
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动聊天：&lt;/p&gt;
@@ -1424,6 +1723,13 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes tools
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置消息平台：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes gateway setup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Gateway 系统级服务（Ubuntu 常驻，用户 terry 示例）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway install --system --run-as-user terry
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway start --system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo hermes gateway status --system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo journalctl -u hermes-gateway -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;飞书用户白名单：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes config &lt;span style=&#34;color:#658b00&#34;&gt;set&lt;/span&gt; FEISHU_ALLOWED_USERS ou_xxx,ou_yyy
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看配置：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hermes config
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编辑配置：&lt;/p&gt;
@@ -1439,11 +1745,13 @@
 &lt;p&gt;如果你希望把它变成真正可用的个人 AI 自动化服务器，我更推荐 Ubuntu 24.04 LTS：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ubuntu 24.04 LTS
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 普通用户安装 Hermes Agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ HERMES_HOME 放 /data（系统盘较小时）
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Docker backend 做隔离
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Tailscale / SSH 做远程访问
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Gateway 接飞书 / 企业微信
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ sudo hermes gateway install --system --run-as-user &amp;lt;用户&amp;gt;（开机自启）
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ Allowlist 控制访问权限
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 定期备份 ~/.hermes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+ 定期备份 $HERMES_HOME
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Hermes Agent 最值得关注的地方，不是“又多了一个 AI 聊天工具”，而是它把 &lt;strong&gt;长期记忆、技能沉淀、工具调用、消息入口、定时任务和沙箱执行&lt;/strong&gt; 放到了一套系统里。&lt;/p&gt;
 &lt;p&gt;对个人来说，这更像是一个可以长期培养的 AI 助手；对服务器来说，它则是一个自然语言驱动的自动化入口。&lt;/p&gt;
 &lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
@@ -1453,6 +1761,9 @@
 &lt;li&gt;&lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/getting-started/installation&#34;&gt;Installation Guide&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/user-guide/configuration&#34;&gt;Configuration&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/user-guide/security&#34;&gt;Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/user-guide/messaging/&#34;&gt;Messaging Gateway&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/user-guide/messaging/feishu&#34;&gt;Feishu / Lark&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/hermes&#34;&gt;DeepSeek 接入 Hermes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://hermes-agent.nousresearch.com/docs/guides/tips&#34;&gt;Tips &amp;amp; Best Practices&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/NousResearch/Hermes-Agent&#34;&gt;NousResearch/Hermes-Agent GitHub 仓库&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
