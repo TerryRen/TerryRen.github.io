@@ -1,0 +1,338 @@
+#!/bin/bash
+# ====================================================
+# 监听端口与进程信息查询
+# 用法:
+#   ./listen_ports.sh              # 每行一条绑定（FAMILY / IFACE 区分）
+#   ./listen_ports.sh -m           # 按协议+端口合并（可选）
+#   ./listen_ports.sh -t / -u / -p 8080
+# ====================================================
+
+set -euo pipefail
+
+FILTER_PROTO=""
+FILTER_PORT=""
+MERGE=false
+
+declare -A DOCKER_MAP=()
+declare -A IP4_IFACE IP6_IFACE
+declare -A ROW_STATE ROW_PORT ROW_PID ROW_USER ROW_NAME ROW_CONTAINER ROW_PATH ROW_LOCALS ROW_FAMILY ROW_IFACE ROW_SORT
+
+usage() {
+    cat <<'EOF'
+用法: listen_ports.sh [选项]
+
+选项:
+  -m          合并同协议+端口（LOCAL / FAMILY / IFACE 逗号分隔）
+  -t          仅 TCP（LISTEN）
+  -u          仅 UDP（UNCONN）
+  -p PORT     仅指定端口号
+  -h, --help  显示帮助
+
+说明:
+  同 PORT 多行：常为 ipv4(0.0.0.0) 与 ipv6([::]) 各监听一次。
+  IFACE 为绑定 IP 所属网卡；0.0.0.0 / [::] 为 all（全部网卡）。
+  多卡分别绑定不同 IP 时，每 IP 一行并显示对应网卡名。
+EOF
+}
+
+while getopts ":mtup:h-:" opt; do
+    case "$opt" in
+        m) MERGE=true ;;
+        t) FILTER_PROTO="tcp" ;;
+        u) FILTER_PROTO="udp" ;;
+        p) FILTER_PORT="$OPTARG" ;;
+        h) usage; exit 0 ;;
+        -)
+            case "${OPTARG}" in
+                help) usage; exit 0 ;;
+                *) echo "未知选项: --${OPTARG}"; usage; exit 1 ;;
+            esac
+            ;;
+        \?) echo "未知选项: -$OPTARG"; usage; exit 1 ;;
+        :) echo "选项 -$OPTARG 需要参数"; usage; exit 1 ;;
+    esac
+done
+
+if ! command -v ss >/dev/null 2>&1; then
+    echo "错误: 未找到 ss 命令，请安装 iproute2 包。" >&2
+    exit 1
+fi
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo "提示: 当前非 root，部分系统服务的 PID/路径可能显示为 '-'，建议 sudo 运行。" >&2
+fi
+
+# 从 ip addr 构建 IP -> 网卡名 映射（支持多网卡）
+load_iface_map() {
+    local iface cidr ip
+
+    IP4_IFACE=()
+    IP6_IFACE=()
+
+    command -v ip >/dev/null 2>&1 || return 0
+
+    while read -r iface cidr; do
+        [ -n "$iface" ] && [ -n "$cidr" ] || continue
+        ip="${cidr%%/*}"
+        [ -n "$ip" ] || continue
+        IP4_IFACE[$ip]=$iface
+    done < <(ip -o -4 addr show 2>/dev/null | awk '{print $2, $4}')
+
+    while read -r iface cidr; do
+        [ -n "$iface" ] && [ -n "$cidr" ] || continue
+        ip="${cidr%%/*}"
+        ip="${ip%%%*}"   # 去掉 zone，如 fe80::1%eth0
+        [ -n "$ip" ] || continue
+        IP6_IFACE[$ip]=$iface
+    done < <(ip -o -6 addr show 2>/dev/null | awk '{print $2, $4}')
+}
+
+load_docker_map() {
+    local cid name line host_port proto_spec proto key existing
+
+    DOCKER_MAP=()
+    command -v docker >/dev/null 2>&1 || return 0
+
+    while read -r cid; do
+        [ -n "$cid" ] || continue
+        name=$(docker inspect --format '{{.Name}}' "$cid" 2>/dev/null | sed 's#^/##')
+        [ -n "$name" ] || continue
+
+        while IFS= read -r line; do
+            [[ "$line" == \|* ]] || continue
+            host_port=${line#|}
+            host_port=${host_port%%|*}
+            proto_spec=${line##*|}
+            proto=${proto_spec##*/}
+            [ -n "$host_port" ] && [ -n "$proto" ] || continue
+            key="${proto}:${host_port}"
+            existing="${DOCKER_MAP[$key]:-}"
+            if [ -n "$existing" ] && [ "$existing" != "$name" ]; then
+                DOCKER_MAP[$key]="${existing},${name}"
+            else
+                DOCKER_MAP[$key]="$name"
+            fi
+        done < <(docker inspect --format \
+            '{{range $p, $bindings := .NetworkSettings.Ports}}{{if $bindings}}{{range $b := $bindings}}|{{$b.HostPort}}|{{$p}}{{"\n"}}{{end}}{{end}}{{end}}' \
+            "$cid" 2>/dev/null)
+    done < <(docker ps -q 2>/dev/null)
+}
+
+lookup_docker_container() {
+    local proto="$1" port="$2"
+    [ -n "$port" ] || { echo "-"; return; }
+    echo "${DOCKER_MAP[${proto}:${port}]:--}"
+}
+
+# 根据 LOCAL 解析网卡：具体 IP 查表；0.0.0.0 / [::] / * 为 all
+lookup_iface() {
+    local addr="$1" family="$2" ip iface
+
+    case "$family" in
+        ipv4)
+            if [[ "$addr" == 0.0.0.0:* ]] || [[ "$addr" == \**:* ]]; then
+                echo "all"
+                return
+            fi
+            ip="${addr%%:*}"
+            iface="${IP4_IFACE[$ip]:--}"
+            ;;
+        ipv6)
+            if [[ "$addr" == \[::\]:* ]]; then
+                echo "all"
+                return
+            fi
+            if [[ "$addr" == \[*\]:* ]]; then
+                ip="${addr#\[}"
+                ip="${ip%%\]*}"
+                ip="${ip%%%*}"
+                iface="${IP6_IFACE[$ip]:--}"
+            else
+                iface="-"
+            fi
+            ;;
+        *)
+            echo "-"
+            return
+            ;;
+    esac
+
+    if [ "$iface" = "-" ] && command -v ip >/dev/null 2>&1 && [[ "$ip" == *.* || "$ip" == *:* ]]; then
+        iface=$(ip -o route get "$ip" 2>/dev/null | sed -n 's/.* dev \([^ ]*\).*/\1/p' | head -1)
+        [ -n "$iface" ] || iface="-"
+    fi
+    echo "$iface"
+}
+
+extract_pid() {
+    sed -n 's/.*pid=\([0-9][0-9]*\).*/\1/p' | head -1
+}
+
+extract_port() {
+    local addr="$1"
+    if [[ "$addr" == \[*\]:* ]]; then
+        echo "${addr##*:}"
+        return
+    fi
+    if [[ "$addr" == *:* ]]; then
+        echo "${addr##*:}"
+        return
+    fi
+    echo "$addr"
+}
+
+detect_family() {
+    local addr="$1"
+    if [[ "$addr" == \[*\]* ]]; then
+        echo "ipv6"
+        return
+    fi
+    if [[ "$addr" == \**:* ]] || [[ "$addr" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+: ]]; then
+        echo "ipv4"
+        return
+    fi
+    echo "?"
+}
+
+family_sort_key() {
+    case "$1" in
+        ipv4) echo 1 ;;
+        ipv6) echo 2 ;;
+        any)  echo 3 ;;
+        *)    echo 9 ;;
+    esac
+}
+
+proc_name() {
+    local pid="$1"
+    [[ "$pid" =~ ^[0-9]+$ ]] || { echo "-"; return; }
+    if [ -r "/proc/$pid/comm" ]; then
+        tr -d '\0' < "/proc/$pid/comm" 2>/dev/null || echo "-"
+    else
+        ps -p "$pid" -o comm= 2>/dev/null | tr -d ' ' || echo "-"
+    fi
+}
+
+proc_path() {
+    local pid="$1"
+    [[ "$pid" =~ ^[0-9]+$ ]] || { echo "-"; return; }
+    if [ -r "/proc/$pid/exe" ]; then
+        readlink -f "/proc/$pid/exe" 2>/dev/null || echo "(无权限)"
+    else
+        echo "-"
+    fi
+}
+
+proc_user() {
+    local pid="$1"
+    [[ "$pid" =~ ^[0-9]+$ ]] || { echo "-"; return; }
+    ps -p "$pid" -o user= 2>/dev/null | awk '{print $1}' || echo "-"
+}
+
+append_unique() {
+    local base="$1" item="$2"
+    [ -z "$item" ] || [ "$item" = "-" ] && { echo "$base"; return; }
+    [ -z "$base" ] || [ "$base" = "-" ] && { echo "$item"; return; }
+    [[ ",$base," == *",$item,"* ]] && { echo "$base"; return; }
+    echo "${base}, ${item}"
+}
+
+SS_ARGS=(-H -n)
+case "$FILTER_PROTO" in
+    tcp) SS_ARGS+=(-tlnp) ;;
+    udp) SS_ARGS+=(-ulnp) ;;
+    *)   SS_ARGS+=(-tulnp) ;;
+esac
+
+print_header() {
+    printf "%-5s %-6s %-10s %-8s %-22s %-6s %-8s %-10s %-12s %-18s %s\n" \
+        "PROTO" "FAMILY" "IFACE" "STATE" "LOCAL" "PORT" "PID" "USER" "NAME" "CONTAINER" "PATH"
+    printf "%s\n" "------------------------------------------------------------------------------------------------------------------------------------------------------------"
+}
+
+print_row() {
+    printf "%-5s %-6s %-10s %-8s %-22s %-6s %-8s %-10s %-12s %-18s %s\n" \
+        "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" "${10}" "${11}"
+}
+
+merge_row() {
+    local key="$1" proto="$2" family="$3" iface="$4" state="$5" local_addr="$6" port="$7"
+    local pid="$8" user="$9" name="${10}" container="${11}" path="${12}"
+
+    if [ -z "${ROW_PORT[$key]:-}" ]; then
+        ROW_SORT[$key]=$(printf '%05d' "${port:-0}")
+        ROW_STATE[$key]="$state"
+        ROW_PORT[$key]="$port"
+        ROW_PID[$key]="$pid"
+        ROW_USER[$key]="$user"
+        ROW_NAME[$key]="$name"
+        ROW_CONTAINER[$key]="$container"
+        ROW_PATH[$key]="$path"
+        ROW_LOCALS[$key]="$local_addr"
+        ROW_FAMILY[$key]="$family"
+        ROW_IFACE[$key]="$iface"
+        return
+    fi
+
+    ROW_LOCALS[$key]=$(append_unique "${ROW_LOCALS[$key]}" "$local_addr")
+    ROW_FAMILY[$key]=$(append_unique "${ROW_FAMILY[$key]}" "$family")
+    ROW_IFACE[$key]=$(append_unique "${ROW_IFACE[$key]}" "$iface")
+    ROW_PID[$key]=$(append_unique "${ROW_PID[$key]}" "$pid")
+}
+
+load_iface_map
+load_docker_map
+
+declare -a OUT_ROWS=()
+
+while IFS= read -r line; do
+    [ -n "$line" ] || continue
+
+    proto=$(awk '{print $1}' <<<"$line")
+    state=$(awk '{print $2}' <<<"$line")
+    local_addr=$(awk '{print $5}' <<<"$line")
+    port=$(extract_port "$local_addr")
+    family=$(detect_family "$local_addr")
+    iface=$(lookup_iface "$local_addr" "$family")
+    pid=$(echo "$line" | extract_pid)
+    [ -n "$pid" ] || pid="-"
+    user=$(proc_user "$pid")
+    name=$(proc_name "$pid")
+    path=$(proc_path "$pid")
+    container=$(lookup_docker_container "$proto" "$port")
+
+    [ -n "$FILTER_PORT" ] && [ "$port" != "$FILTER_PORT" ] && continue
+
+    if [ "$MERGE" = true ]; then
+        merge_row "${proto}:${port}" "$proto" "$family" "$iface" "$state" "$local_addr" "$port" \
+            "$pid" "$user" "$name" "$container" "$path"
+    else
+        fsort=$(family_sort_key "$family")
+        sort_port=$(printf '%05d' "${port:-0}")
+        OUT_ROWS+=("${sort_port}|${fsort}|${proto}|${family}|${iface}|${state}|${local_addr}|${port}|${pid}|${user}|${name}|${container}|${path}")
+    fi
+done < <(ss "${SS_ARGS[@]}" 2>/dev/null)
+
+print_header
+
+if [ "$MERGE" = true ]; then
+    while read -r key; do
+        [ -n "$key" ] || continue
+        print_row "${key%%:*}" "${ROW_FAMILY[$key]}" "${ROW_IFACE[$key]}" "${ROW_STATE[$key]}" \
+            "${ROW_LOCALS[$key]}" "${ROW_PORT[$key]}" "${ROW_PID[$key]}" "${ROW_USER[$key]}" \
+            "${ROW_NAME[$key]}" "${ROW_CONTAINER[$key]}" "${ROW_PATH[$key]}"
+    done < <(
+        for key in "${!ROW_PORT[@]}"; do
+            printf '%s|%s\n' "${ROW_SORT[$key]}" "$key"
+        done | sort -t'|' -k1,1n | cut -d'|' -f2-
+    )
+else
+    if [ "${#OUT_ROWS[@]}" -gt 0 ]; then
+        printf '%s\n' "${OUT_ROWS[@]}" | sort -t'|' -k1,1n -k2,2n | while IFS='|' read -r _ _ proto family iface state local_addr port pid user name container path; do
+            print_row "$proto" "$family" "$iface" "$state" "$local_addr" "$port" "$pid" "$user" "$name" "$container" "$path"
+        done
+    fi
+fi
+
+echo ""
+echo "说明: IFACE=网卡；all 表示监听所有网卡(0.0.0.0/[::])；绑定具体 IP 时显示 eth0 等。多卡多 IP 各占一行。"

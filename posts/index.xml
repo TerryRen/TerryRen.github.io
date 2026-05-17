@@ -7,7 +7,44 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Fri, 01 May 2026 18:55:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>查看服务器监听端口及对应进程</title>
+      <link>https://terryren.github.io/posts/lang/shell/listen-ports-1/</link>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/listen-ports-1/</guid>
+      <description>排查「某个端口被谁占用」「服务到底监听在哪些地址」是日常运维的高频场景。手工组合 netstat、lsof、ps 既慢又容易漏掉 UDP 或 IPv6。
+下面是一个可直接保存使用的 Bash 脚本：以 ss 为主数据源，从 /proc 补全进程的 PID、USER、NAME、PATH；对 Docker 发布端口，额外解析 CONTAINER 容器名（docker-proxy 时尤其有用）。
+脚本功能 列出所有监听套接字：TCP（LISTEN）与 UDP（UNCONN），含 IPv4 / IPv6。 关联进程信息：PID、运行用户、进程名、可执行文件绝对路径（readlink /proc/$pid/exe）。 关联 Docker 容器：通过 docker inspect 的端口映射，显示宿主机端口对应的 CONTAINER 名称。 FAMILY 列：标明 ipv4 / ipv6；同一 PORT 两行常为 v4、v6 各监听一次。 IFACE 列（网卡）：由 ip addr 将绑定 IP 映射到 eth0、bond0 等；0.0.0.0 / [::] 显示 all。多网卡分别绑定 192.168.1.10:80 与 10.0.0.5:80 时各占一行并显示不同网卡。 可选过滤：-t / -u / -p；-m 合并同协议+端口（默认不合并）。 排序输出：按端口号、再按 FAMILY 排序。 依赖说明 命令 用途 常见安装 ss 读取套接字与 users:(.</description>
+    </item>
+    
+    <item>
+      <title>APISIX - 2 - 网关优化</title>
+      <link>https://terryren.github.io/posts/web/nginx/apisix-2/</link>
+      <pubDate>Fri, 15 May 2026 13:56:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/nginx/apisix-2/</guid>
+      <description>前置条件 已安装 Docker，Docker Compose 用于部署 etcd 和 APISIX 已安装 curl，用于验证 APISIX 是否安装成功 采用 APISIX 的 3.2.2 LTS 长期支持版本，APISIX Dashboard 的 3.0.0 版本，etcd 的 3.5.11 版本 配置 APISIX 固定 IP 桥接模式 配置 APISIX 绑定到 443 &amp;amp; 80 端口；
+安装 1. 下载文件 初始化相关配置，添加 apisix-dashboard 配置文件夹 dashboard_conf 以及文件
+cd ~ git clone https://github.com/apache/apisix-docker.git cd apisix-docker/example mkdir dashboard_conf cd ~ cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf mkdir apisix cp -r apisix-docker/example/* apisix rm -rf apisix-docker 2. apisix-dashboard 注意修改 conf.</description>
+    </item>
+    
+    <item>
+      <title>个人 AI Agent 服务器实战：Mac 与 Ubuntu 24.04 LTS 安装 Hermes Agent</title>
+      <link>https://terryren.github.io/posts/misc/hermes-agent-macos-ubuntu-2404/</link>
+      <pubDate>Tue, 12 May 2026 22:10:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/misc/hermes-agent-macos-ubuntu-2404/</guid>
+      <description>摘要 这篇文章记录如何在 macOS 和 Ubuntu Desktop 24.04 LTS 上安装 Hermes Agent，并给出一套更适合个人使用和长期运行的配置建议。
+Hermes Agent 是 Nous Research 开源的 AI Agent。它不是单纯的聊天机器人，也不是绑定在 IDE 里的代码助手，而是一个可以长期运行在你自己电脑、服务器、VPS 或容器环境里的自治 Agent。它支持：
+CLI 对话 长期记忆 自动生成和复用技能 定时任务 Telegram、Discord、Slack、飞书、企业微信、微信、钉钉、Email 等消息入口 Web 搜索、浏览器自动化、语音、图片等工具 local、Docker、SSH、Singularity、Modal、Daytona 等执行后端 如果你只是想在自己电脑上试用，Mac 是最方便的入口。如果你希望 Agent 长期在线、能跑定时任务、能接消息机器人、能作为个人自动化服务器使用，Ubuntu 24.04 LTS 更适合作为生产环境。
+1 - Hermes Agent 适合解决什么问题 现在的 AI 工具大致可以分成三类：
+网页聊天工具，比如 ChatGPT、Claude、Gemini。 IDE 编程助手，比如 Cursor、GitHub Copilot。 常驻型 Agent，比如 Hermes Agent。 前两类工具更像“你打开它，它帮你处理当前问题”。Hermes Agent 的定位更偏向“你把它部署在自己的环境里，它逐渐记住你的项目、偏好、流程，并通过 CLI、消息平台或定时任务持续工作”。
+举几个更适合 Hermes Agent 的场景：
+每天早上定时汇总新闻、项目状态或服务器状态 通过 Telegram 给家里的 Ubuntu 服务器发送任务 让 Agent 记住某个项目的构建、测试、部署流程 在 Docker 沙箱里分析陌生代码仓库 用 SSH 后端连接远程机器执行任务 把常用的多步操作沉淀成 skill，下次直接复用 所以，它不是替代 Cursor 的工具，而是补上了“长期运行、跨平台入口、自动化、记忆和定时任务”这一块。</description>
+    </item>
+    
     <item>
       <title>普通人的财务自由之路：关于标普500、纳斯达克100定投与抄底的终极答案</title>
       <link>https://terryren.github.io/posts/misc/sp500-dca-vs-timing/</link>
@@ -184,17 +221,6 @@ ABD Shell cd /d C:\Program Files\Netease\MuMu Player 12\shell # 查看 已链接
       <guid>https://terryren.github.io/posts/architect/basis/apache-elastic-search-1/</guid>
       <description>部署 ES 8.11.4 创建目录 es mkdir -p /mnt/es mkdir -p /mnt/es/plugins mkdir -p /mnt/es/data mkdir -p /mnt/es/logs mkdir -p /mnt/es/kib/data 创建 .env 文件 .env 文件内容如下
 # Password for the &amp;#39;elastic&amp;#39; user (at least 6 characters) # 注意不要全数字 ELASTIC_PASSWORD=changeme # Password for the &amp;#39;kibana_system&amp;#39; user (at least 6 characters) # 注意不要全数字，否则KIBANA可能验证出错 KIBANA_PASSWORD=changeme # Version of Elastic products STACK_VERSION=8.11.4 # Set the cluster name CLUSTER_NAME=es-docker-cluster # Set to &amp;#39;basic&amp;#39; or &amp;#39;trial&amp;#39; to automatically start the 30-day trial LICENSE=basic # Increase or decrease based on the available host memory (in bytes) MEM_LIMIT=2g # Project namespace (defaults to the current folder name if not set) COMPOSE_PROJECT_NAME=es 创建 docker-compose.</description>
-    </item>
-    
-    <item>
-      <title>APISIX - 2 - 网关优化</title>
-      <link>https://terryren.github.io/posts/web/nginx/apisix-2/</link>
-      <pubDate>Mon, 26 Aug 2024 13:56:00 +0800</pubDate>
-      
-      <guid>https://terryren.github.io/posts/web/nginx/apisix-2/</guid>
-      <description>前置条件 已安装 Docker，Docker Compose 用于部署 etcd 和 APISIX 已安装 curl，用于验证 APISIX 是否安装成功 采用 APISIX 的 3.2.2 LTS 长期支持版本，APISIX Dashboard 的 3.0.0 版本，etcd 的 3.5.11 版本 配置 APISIX 固定 IP 桥接模式 配置 APISIX 绑定到 443 &amp;amp; 80 端口；
-安装 1. 下载文件 初始化相关配置，添加 apisix-dashboard 配置文件夹 dashboard_conf 以及文件
-cd ~ git clone https://github.com/apache/apisix-docker.git cd apisix-docker/example mkdir dashboard_conf cd ~ cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf mkdir apisix cp -r apisix-docker/example/* apisix rm -rf apisix-docker 2. apisix-dashboard 注意修改 conf.</description>
     </item>
     
     <item>

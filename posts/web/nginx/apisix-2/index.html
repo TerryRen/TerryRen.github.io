@@ -20,8 +20,8 @@
 <meta property="og:description" content="APISIX网关搭建" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://terryren.github.io/posts/web/nginx/apisix-2/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-08-26T13:56:00+08:00" />
-<meta property="article:modified_time" content="2024-08-26T13:56:00+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="article:published_time" content="2026-05-15T13:56:00+08:00" />
+<meta property="article:modified_time" content="2026-05-15T13:56:00+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
@@ -378,8 +378,8 @@ if (!doNotTrack) {
 						
 						
 							<li>
-								<a href="#10-%e7%bd%91%e7%bb%9c%e9%98%b2%e7%81%ab%e5%a2%99" class="nav-10-网络防火墙">
-									10. 网络防火墙
+								<a href="#10-%e7%bd%91%e7%bb%9c%e9%98%b2%e7%81%ab%e5%a2%99%e4%b8%8e-ufw-docker" class="nav-10-网络防火墙与-ufw-docker">
+									10. 网络防火墙与 ufw-docker
 								</a>
 							</li>
 						
@@ -473,7 +473,7 @@ if (!doNotTrack) {
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2024-08-26 13:56
+                            2026-05-15 13:56
                         </time>
                         
 
@@ -579,10 +579,101 @@ if (!doNotTrack) {
 </span></span></span></code></pre></div><h4 id="3-apisix">3. apisix</h4>
 <p>默认情况下 <code>apisix</code> 使用 <code>9080</code> 和 <code>9443</code> 当作服务入口，端口修改参考如下：</p>
 <ol>
-<li>修改 <code>apisix_conf/config.yaml</code> 文件中 HTTP默认端口为<code>80</code>，HTTPS默认端口为<code>443</code></li>
-<li>修改 <code>docker-compose.yml</code> 文件中 添加<code>80</code>、<code>443</code>两个端口映射</li>
-<li>启用 <code>9092</code> Admin API端口，修改 <code>admin_key</code> 的 <code>key</code></li>
+<li>修改 <code>apisix_conf/config.yaml</code> 文件中 HTTP 默认端口为 <code>80</code>，HTTPS 默认端口为 <code>443</code></li>
+<li>修改 <code>docker-compose.yml</code> 文件中添加 <code>80</code>、<code>443</code> 两个端口映射</li>
+<li>按需修改 <code>deployment.admin.admin_key</code> 中的 <code>key</code>（用于 <strong>Admin API</strong> 鉴权，与 Dashboard 登录无关）</li>
 </ol>
+<h5 id="配置文件说明">配置文件说明</h5>
+<p>本部署涉及两份独立配置，职责不同：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>挂载到</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apisix_conf/config.yaml</code></td>
+<td>APISIX 网关进程</td>
+<td>数据面监听、Admin/Control API、etcd 连接</td>
+</tr>
+<tr>
+<td><code>dashboard_conf/conf.yaml</code></td>
+<td>APISIX Dashboard</td>
+<td>Web 控制台与 Manager API（<code>:9000</code>）、etcd 连接</td>
+</tr>
+</tbody>
+</table>
+<p><code>apisix_conf/config.yaml</code> 主要块含义：</p>
+<ul>
+<li><strong><code>apisix</code></strong>：网关数据面。<code>node_listen</code> / <code>ssl.listen</code> 为对外转发入口（本文改为 <code>80</code> / <code>443</code>）；<code>enable_control</code> + <code>control.port: 9092</code> 为 <strong>Control API</strong>（健康检查、调试等），不是 Admin API。</li>
+<li><strong><code>deployment.admin</code></strong>：<strong>Admin API</strong> 的 IP 白名单（<code>allow_admin</code>）与 API Key（<code>admin_key</code>）。默认监听 <strong>9180</strong>（本文 <code>docker-compose</code> 未映射该端口，仅容器内可用）。</li>
+<li><strong><code>deployment.etcd</code></strong>：APISIX 从 etcd 拉取/同步路由等配置；<code>prefix: /apisix</code> 须与 Dashboard 写入路径一致。</li>
+<li><strong><code>plugin_attr.prometheus</code></strong>：指标导出端口 <code>9091</code>。</li>
+</ul>
+<p>常见端口对照（本文 compose 是否映射见 <code>docker-compose.yml</code> 注释）：</p>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>组件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80 / 443</td>
+<td>APISIX</td>
+<td>业务流量入口</td>
+</tr>
+<tr>
+<td>9180</td>
+<td>APISIX</td>
+<td>Admin API（REST 管理配置）</td>
+</tr>
+<tr>
+<td>9092</td>
+<td>APISIX</td>
+<td>Control API（需 <code>enable_control: true</code>）</td>
+</tr>
+<tr>
+<td>9091</td>
+<td>APISIX</td>
+<td>Prometheus 指标</td>
+</tr>
+<tr>
+<td>9000</td>
+<td>Dashboard</td>
+<td>Web UI + Manager API</td>
+</tr>
+<tr>
+<td>2379</td>
+<td>etcd</td>
+<td>配置存储</td>
+</tr>
+</tbody>
+</table>
+<h5 id="admin-api-与-dashboard-的关系">Admin API 与 Dashboard 的关系</h5>
+<p><strong>二者无直接调用关系。</strong> Dashboard 不通过 APISIX 的 Admin API（9180）读写配置，而是用自己的 Manager API（9000）<strong>直接读写 etcd</strong>；APISIX 与 Dashboard 是两条并行的管理路径，最终都落在同一 etcd 前缀 <code>/apisix</code> 上，由 APISIX 监听 etcd 变更后热加载。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>                    ┌─────────────────┐
+</span></span><span style="display:flex;"><span>  curl / 运维脚本 ──►│ Admin API :9180 │──┐
+</span></span><span style="display:flex;"><span>                    └─────────────────┘  │
+</span></span><span style="display:flex;"><span>                                         ▼
+</span></span><span style="display:flex;"><span>  浏览器 :9000 ──► ┌──────────┐    ┌────────┐    ┌─────────┐
+</span></span><span style="display:flex;"><span>                   │ Dashboard │───►│  etcd  │◄───│ APISIX  │
+</span></span><span style="display:flex;"><span>                   └──────────┘    └────────┘    └─────────┘
+</span></span><span style="display:flex;"><span>                                         ▲              │
+</span></span><span style="display:flex;"><span>                                         └──────────────┘
+</span></span><span style="display:flex;"><span>                                           配置同步
+</span></span></code></pre></div><p>因此：</p>
+<ul>
+<li><strong>仅使用 Dashboard</strong>：只要 Dashboard 与 APISIX 都能访问同一 etcd，<strong>不必</strong>对外暴露 9180，也<strong>不必</strong>为 Dashboard 单独启用 Admin API。</li>
+<li><strong>使用 Admin API</strong>（如 <code>curl</code> 创建路由）：需要 <code>deployment.admin</code> 配置正确，且客户端能访问 9180；与 Dashboard 是否运行无关。</li>
+<li><strong>鉴权分离</strong>：Dashboard 登录账号在 <code>dashboard_conf/conf.yaml</code> 的 <code>authentication.users</code>；Admin API 使用 <code>admin_key</code> 中的 <code>key</code> 作为请求头 <code>X-API-KEY</code>，两套凭证互不通用。</li>
+<li><strong>共享项</strong>：同一 etcd 地址、<code>/apisix</code> 前缀；改 <code>admin_key</code> 只影响 Admin API，不影响 Dashboard 登录。</li>
+</ul>
 <p><a href="/files/apisix-2/apisix_conf/config.yaml" download>apisix_conf/config.yaml</a>，内容如下：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#228b22">#</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#228b22"># Licensed to the Apache Software Foundation (ASF) under one or more</span><span style="color:#bbb">
@@ -783,13 +874,109 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>docker network ls
 </span></span><span style="display:flex;"><span><span style="color:#228b22"># 查看网络细节</span>
 </span></span><span style="display:flex;"><span>docker network inspect apisix_apisix
-</span></span></code></pre></div><h4 id="10-网络防火墙">10. 网络防火墙</h4>
+</span></span></code></pre></div><h4 id="10-网络防火墙与-ufw-docker">10. 网络防火墙与 ufw-docker</h4>
+<h5 id="为何-ufw-拦不住-docker-端口">为何 UFW 拦不住 Docker 端口</h5>
+<p>Docker 发布端口（<code>docker-compose</code> 中的 <code>ports:</code>，等价于 <code>-p 0.0.0.0:2379:2379</code>）时，会在 <strong>iptables 的 <code>DOCKER</code> 链</strong>里插入转发规则，流量往往 <strong>不经过</strong> UFW 常用的 <code>ufw-user-input</code>。因此：</p>
+<ul>
+<li><code>sudo ufw deny 2379</code> <strong>通常无法</strong>阻止外网访问映射到宿主机的 <code>2379</code>（etcd）；</li>
+<li><code>sudo ufw allow from 172.25.0.0/16</code> 也 <strong>不能</strong> 替代「按容器/按端口」的对外暴露控制。</li>
+</ul>
+<p>这是 Docker 与 UFW 的已知行为，详见 <a href="https://github.com/moby/moby/issues/4737">moby#4737</a>。<strong>不要</strong>用 <code>--iptables=false</code> 关掉 Docker 网络（会导致容器无法出网、需手工维护各网桥规则）。</p>
+<h5 id="推荐ufw-docker">推荐：ufw-docker</h5>
+<p><a href="https://github.com/chaifeng/ufw-docker">ufw-docker</a> 在 <code>/etc/ufw/after.rules</code> 中挂接 <code>DOCKER-USER</code> 链，让 UFW 能管理「是否允许公网访问已发布的容器端口」，且 <strong>无需关闭 Docker 的 iptables</strong>。</p>
+<p><strong>安装</strong>（Ubuntu 等已启用 UFW 的主机；以下命令与当前 <code>ufw-docker</code> 自带 <code>help</code> 一致）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#228b22"># 1）预览将写入 UFW 的规则（可选，改配置前先 check）</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker check
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 仅针对本文 compose 自定义网桥</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker check --docker-subnets 172.25.0.0/16
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 或自动探测本机所有 Docker network 子网</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker check --docker-subnets
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 2）安装脚本、man 页，并写入 /etc/ufw/after.rules（会备份原文件）</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker install --system
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 与上式二选一：指定子网（推荐与 compose 中 subnet 一致）</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker install --system --docker-subnets 172.25.0.0/16
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 或自动探测所有 Docker 网段（增删 docker network 后需重新 install）</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker install --system --docker-subnets
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 3）可选：安装 systemd 服务，容器 IP 变化时自动 reload 规则</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker install-service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw reload
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 若 reload 后规则未生效，可重启主机</span>
+</span></span></code></pre></div><p>未使用 <code>--system</code> 时，也可手动下载脚本后执行 <code>ufw-docker install</code>（行为相同，但不安装 man 页）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo wget -O /usr/local/bin/ufw-docker <span style="color:#cd5555">\
+</span></span></span><span style="display:flex;"><span><span style="color:#cd5555"></span>  https://github.com/chaifeng/ufw-docker/raw/master/ufw-docker
+</span></span><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/ufw-docker
+</span></span><span style="display:flex;"><span>sudo ufw-docker install --docker-subnets 172.25.0.0/16
+</span></span></code></pre></div><p>安装后默认：<strong>公网无法访问</strong>任何 <code>ports:</code> 映射的端口；容器之间、宿主机经私网段访问容器仍正常。未指定 <code>--docker-subnets</code> 时，默认信任 <code>10.0.0.0/8</code>、<code>172.16.0.0/12</code>、<code>192.168.0.0/16</code>（本文 <code>172.25.0.0/16</code> 已包含在 <code>172.16.0.0/12</code> 内）。</p>
+<p><strong>按需对外暴露</strong>（参数为 <strong><code>docker ps</code> 中的容器名</strong> + <strong>容器内端口</strong>，不是宿主机映射端口；多网卡容器可在末尾加网络名，如 <code>default</code>）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps --format <span style="color:#cd5555">&#39;{{.Names}}&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 示例名因 compose 项目名而异，以下用 &lt;apisix&gt;、&lt;dashboard&gt; 占位，请替换为实际名称</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker list &lt;apisix&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 开放该容器全部已发布端口</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker allow &lt;apisix&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 仅开放容器内 80、443（推荐写全 /tcp）</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker allow &lt;apisix&gt; 80/tcp
+</span></span><span style="display:flex;"><span>sudo ufw-docker allow &lt;apisix&gt; 443/tcp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 容器挂在多个 network 时指定网络（help 示例中的 default）</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker allow &lt;apisix&gt; 80/tcp default
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># Dashboard 仅在内网管理时不要 allow；需要时再：</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker allow &lt;dashboard&gt; 9000/tcp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 撤销</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker delete allow &lt;apisix&gt; 80/tcp
+</span></span><span style="display:flex;"><span>sudo ufw-docker delete allow &lt;apisix&gt;
+</span></span></code></pre></div><p><strong>不要</strong>对 etcd 容器执行 <code>ufw-docker allow</code>；<code>2379:2379</code> 在安装 ufw-docker 后默认不对公网开放。勿用 <code>ufw allow/deny 2379</code> 代替（对 Docker 映射端口通常无效）。</p>
+<p><strong>常用维护命令</strong>（与 <code>ufw-docker help</code> 一致）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ufw-docker check                         <span style="color:#228b22"># 检查 after.rules 是否已集成</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker status                        <span style="color:#228b22"># 当前放行的转发规则</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker reload                        <span style="color:#228b22"># 容器 IP 变更后重载</span>
+</span></span><span style="display:flex;"><span>sudo ufw-docker list &lt;容器名&gt;                  <span style="color:#228b22"># 列出某容器相关规则</span>
+</span></span></code></pre></div><p>底层也可用 UFW 自带的 <code>ufw route</code>（按<strong>容器端口</strong>匹配所有映射了该端口的容器）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ufw route allow proto tcp from any to any port <span style="color:#b452cd">80</span>
+</span></span></code></pre></div><p>Docker Swarm 场景使用 <code>ufw-docker service allow/delete</code>；本文单机 compose 不需要。</p>
+<h5 id="与本文-compose-的对应关系">与本文 compose 的对应关系</h5>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th><code>ports</code> 映射</th>
+<th>建议公网策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apisix</td>
+<td>80、443</td>
+<td><code>ufw-docker allow … 80/tcp</code>、<code>443/tcp</code></td>
+</tr>
+<tr>
+<td>apisix-dashboard</td>
+<td>9000</td>
+<td>仅内网管理时 <strong>不</strong> allow；需公网访问再 allow 9000</td>
+</tr>
+<tr>
+<td>etcd</td>
+<td>2379</td>
+<td><strong>禁止</strong>公网；生产环境可去掉 <code>ports</code> 仅保留 bridge 访问</td>
+</tr>
+<tr>
+<td>web1 / web2</td>
+<td>9081、9082</td>
+<td>测试用，生产一般不对公网 allow</td>
+</tr>
+</tbody>
+</table>
+<h5 id="ufw-常规命令宿主机自身端口">UFW 常规命令（宿主机自身端口）</h5>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ufw status numbered
 </span></span><span style="display:flex;"><span><span style="color:#228b22">#sudo ufw delete 3</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># deny etcd</span>
-</span></span><span style="display:flex;"><span>sudo ufw deny <span style="color:#b452cd">2379</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># allow apisix access all port</span>
-</span></span><span style="display:flex;"><span>sudo ufw allow from 172.25.0.0/16
+</span></span><span style="display:flex;"><span>sudo ufw <span style="color:#658b00">enable</span>
 </span></span></code></pre></div><h3 id="参考文档">参考文档</h3>
 <p><a href="https://apisix.apache.org/zh/docs/apisix/getting-started/README/">官方入门文档</a></p>
 <p><a href="https://apisix.apache.org/zh/docs/apisix/installation-guide/">APISIX 安装指南</a></p>
@@ -798,10 +985,11 @@ if (!doNotTrack) {
 <p><a href="https://terryren.github.io/posts/web/crypto/certification/" title="Certification-相关">Certification</a></p>
 <p><a href="https://blog.csdn.net/johar99/article/details/113651925">Docker 自定义桥接ip</a></p>
 <p><a href="https://blog.csdn.net/harryhare/article/details/83317987">TCP 网络状态图</a></p>
+<p><a href="https://github.com/chaifeng/ufw-docker">ufw-docker - 修复 Docker 绕过 UFW</a></p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2024-08-26</p>
+		    <p style="color:#777;">最后修改于 2026-05-15</p>
                     
                 </div>
             </div>
@@ -810,14 +998,14 @@ if (!doNotTrack) {
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/posts/architect/basis/apache-elastic-search-1/">
-			下回<br>Elastic Search - 安装
+                <a class="newer-posts" href="/posts/lang/shell/listen-ports-1/">
+			下回<br>查看服务器监听端口及对应进程
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/posts/architect/misc/kpi-okr-1/">
-			上回<br>KPI &#43; OKR
+                <a class="older-posts" href="/posts/misc/hermes-agent-macos-ubuntu-2404/">
+			上回<br>个人 AI Agent 服务器实战：Mac 与 Ubuntu 24.04 LTS 安装 Hermes Agent
                 </a>
                 
             </nav>
@@ -1151,8 +1339,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#10-%e7%bd%91%e7%bb%9c%e9%98%b2%e7%81%ab%e5%a2%99" class="nav-10-网络防火墙">
-									10. 网络防火墙
+								<a href="#10-%e7%bd%91%e7%bb%9c%e9%98%b2%e7%81%ab%e5%a2%99%e4%b8%8e-ufw-docker" class="nav-10-网络防火墙与-ufw-docker">
+									10. 网络防火墙与 ufw-docker
 								</a>
 							</li>
 						

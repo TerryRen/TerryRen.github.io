@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://terryren.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>查看服务器监听端口及对应进程</title>
+      <link>https://terryren.github.io/posts/lang/shell/listen-ports-1/</link>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://terryren.github.io/posts/lang/shell/listen-ports-1/</guid>
+      <description>排查「某个端口被谁占用」「服务到底监听在哪些地址」是日常运维的高频场景。手工组合 netstat、lsof、ps 既慢又容易漏掉 UDP 或 IPv6。
+下面是一个可直接保存使用的 Bash 脚本：以 ss 为主数据源，从 /proc 补全进程的 PID、USER、NAME、PATH；对 Docker 发布端口，额外解析 CONTAINER 容器名（docker-proxy 时尤其有用）。
+脚本功能 列出所有监听套接字：TCP（LISTEN）与 UDP（UNCONN），含 IPv4 / IPv6。 关联进程信息：PID、运行用户、进程名、可执行文件绝对路径（readlink /proc/$pid/exe）。 关联 Docker 容器：通过 docker inspect 的端口映射，显示宿主机端口对应的 CONTAINER 名称。 FAMILY 列：标明 ipv4 / ipv6；同一 PORT 两行常为 v4、v6 各监听一次。 IFACE 列（网卡）：由 ip addr 将绑定 IP 映射到 eth0、bond0 等；0.0.0.0 / [::] 显示 all。多网卡分别绑定 192.168.1.10:80 与 10.0.0.5:80 时各占一行并显示不同网卡。 可选过滤：-t / -u / -p；-m 合并同协议+端口（默认不合并）。 排序输出：按端口号、再按 FAMILY 排序。 依赖说明 命令 用途 常见安装 ss 读取套接字与 users:(.</description>
+    </item>
+    
     <item>
       <title>清理 Docker 容器日志脚本</title>
       <link>https://terryren.github.io/posts/lang/shell/docker-logs-clean/</link>

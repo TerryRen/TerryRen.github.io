@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hermes Agent on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/hermes-agent/</link>
+    <description>Recent content in Hermes Agent on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Tue, 12 May 2026 22:10:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/hermes-agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人 AI Agent 服务器实战：Mac 与 Ubuntu 24.04 LTS 安装 Hermes Agent</title>
+      <link>https://terryren.github.io/posts/misc/hermes-agent-macos-ubuntu-2404/</link>
+      <pubDate>Tue, 12 May 2026 22:10:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/misc/hermes-agent-macos-ubuntu-2404/</guid>
+      <description>摘要 这篇文章记录如何在 macOS 和 Ubuntu Desktop 24.04 LTS 上安装 Hermes Agent，并给出一套更适合个人使用和长期运行的配置建议。
+Hermes Agent 是 Nous Research 开源的 AI Agent。它不是单纯的聊天机器人，也不是绑定在 IDE 里的代码助手，而是一个可以长期运行在你自己电脑、服务器、VPS 或容器环境里的自治 Agent。它支持：
+CLI 对话 长期记忆 自动生成和复用技能 定时任务 Telegram、Discord、Slack、飞书、企业微信、微信、钉钉、Email 等消息入口 Web 搜索、浏览器自动化、语音、图片等工具 local、Docker、SSH、Singularity、Modal、Daytona 等执行后端 如果你只是想在自己电脑上试用，Mac 是最方便的入口。如果你希望 Agent 长期在线、能跑定时任务、能接消息机器人、能作为个人自动化服务器使用，Ubuntu 24.04 LTS 更适合作为生产环境。
+1 - Hermes Agent 适合解决什么问题 现在的 AI 工具大致可以分成三类：
+网页聊天工具，比如 ChatGPT、Claude、Gemini。 IDE 编程助手，比如 Cursor、GitHub Copilot。 常驻型 Agent，比如 Hermes Agent。 前两类工具更像“你打开它，它帮你处理当前问题”。Hermes Agent 的定位更偏向“你把它部署在自己的环境里，它逐渐记住你的项目、偏好、流程，并通过 CLI、消息平台或定时任务持续工作”。
+举几个更适合 Hermes Agent 的场景：
+每天早上定时汇总新闻、项目状态或服务器状态 通过 Telegram 给家里的 Ubuntu 服务器发送任务 让 Agent 记住某个项目的构建、测试、部署流程 在 Docker 沙箱里分析陌生代码仓库 用 SSH 后端连接远程机器执行任务 把常用的多步操作沉淀成 skill，下次直接复用 所以，它不是替代 Cursor 的工具，而是补上了“长期运行、跨平台入口、自动化、记忆和定时任务”这一块。</description>
+    </item>
+    
+  </channel>
+</rss>

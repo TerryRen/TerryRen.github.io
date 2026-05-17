@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html><head>
+<title>个人 AI Agent 服务器实战：Mac 与 Ubuntu 24.04 LTS 安装 Hermes Agent</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="G-ZE2B25M3ST">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="Hermes Agent 是 Nous Research 开源的长期自治 AI Agent，支持记忆、技能、定时任务、消息网关和多种沙箱后端。本文记录在 macOS 和 Ubuntu Desktop 24.04 LTS 上安装 Hermes Agent 的完整流程，并给出个人电脑与常驻服务器两种场景下的最佳实践。">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="个人 AI Agent 服务器实战：Mac 与 Ubuntu 24.04 LTS 安装 Hermes Agent" />
+<meta property="og:description" content="Hermes Agent 是 Nous Research 开源的长期自治 AI Agent，支持记忆、技能、定时任务、消息网关和多种沙箱后端。本文记录在 macOS 和 Ubuntu Desktop 24.04 LTS 上安装 Hermes Agent 的完整流程，并给出个人电脑与常驻服务器两种场景下的最佳实践。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://terryren.github.io/posts/misc/hermes-agent-macos-ubuntu-2404/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2026-05-12T22:10:00+08:00" />
+<meta property="article:modified_time" content="2026-05-12T22:10:00+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="个人 AI Agent 服务器实战：Mac 与 Ubuntu 24.04 LTS 安装 Hermes Agent"/>
+<meta name="twitter:description" content="Hermes Agent 是 Nous Research 开源的长期自治 AI Agent，支持记忆、技能、定时任务、消息网关和多种沙箱后端。本文记录在 macOS 和 Ubuntu Desktop 24.04 LTS 上安装 Hermes Agent 的完整流程，并给出个人电脑与常驻服务器两种场景下的最佳实践。"/>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE2B25M3ST"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZE2B25M3ST', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>console.log("Hello from 'layouts/partials/extended_head.html'")</script>
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    博客
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    订阅
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e6%91%98%e8%a6%81" class="nav-摘要">
+									摘要
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#1---hermes-agent-%e9%80%82%e5%90%88%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98" class="nav-1---hermes-agent-适合解决什么问题">
+									1 - Hermes Agent 适合解决什么问题
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2---mac-%e5%92%8c-ubuntu-%e5%ba%94%e8%af%a5%e6%80%8e%e4%b9%88%e9%80%89" class="nav-2---mac-和-ubuntu-应该怎么选">
+									2 - Mac 和 Ubuntu 应该怎么选
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#21-mac%e9%80%82%e5%90%88%e4%b8%aa%e4%ba%ba%e8%af%95%e7%94%a8%e5%92%8c%e6%97%a5%e5%b8%b8%e5%8a%a9%e6%89%8b" class="nav-21-mac适合个人试用和日常助手">
+									2.1 Mac：适合个人试用和日常助手
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22-ubuntu-2404-lts%e9%80%82%e5%90%88%e5%b8%b8%e9%a9%bb-ai-agent-%e6%9c%8d%e5%8a%a1%e5%99%a8" class="nav-22-ubuntu-2404-lts适合常驻-ai-agent-服务器">
+									2.2 Ubuntu 24.04 LTS：适合常驻 AI Agent 服务器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#3---%e5%ae%98%e6%96%b9%e5%ae%89%e8%a3%85%e6%96%b9%e5%bc%8f" class="nav-3---官方安装方式">
+									3 - 官方安装方式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#4---macos-%e5%ae%89%e8%a3%85-hermes-agent" class="nav-4---macos-安装-hermes-agent">
+									4 - macOS 安装 Hermes Agent
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#41-%e5%ae%89%e8%a3%85%e5%89%8d%e5%87%86%e5%a4%87" class="nav-41-安装前准备">
+									4.1 安装前准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42-apple-silicon-%e5%92%8c-intel-mac-%e7%9a%84-path-%e5%b7%ae%e5%bc%82" class="nav-42-apple-silicon-和-intel-mac-的-path-差异">
+									4.2 Apple Silicon 和 Intel Mac 的 PATH 差异
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#43-%e6%89%a7%e8%a1%8c%e5%ae%89%e8%a3%85" class="nav-43-执行安装">
+									4.3 执行安装
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#44-mac-%e4%b8%8a%e7%9a%84%e4%bd%bf%e7%94%a8%e5%bb%ba%e8%ae%ae" class="nav-44-mac-上的使用建议">
+									4.4 Mac 上的使用建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#5---ubuntu-2404-lts-%e5%ae%89%e8%a3%85-hermes-agent" class="nav-5---ubuntu-2404-lts-安装-hermes-agent">
+									5 - Ubuntu 24.04 LTS 安装 Hermes Agent
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#51-%e5%ae%89%e8%a3%85%e5%89%8d%e5%87%86%e5%a4%87" class="nav-51-安装前准备">
+									5.1 安装前准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#52-%e4%b8%8d%e5%bb%ba%e8%ae%ae%e4%b8%80%e5%bc%80%e5%a7%8b%e7%94%a8-root-%e5%ae%89%e8%a3%85" class="nav-52-不建议一开始用-root-安装">
+									5.2 不建议一开始用 root 安装
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#53-%e6%89%a7%e8%a1%8c%e5%ae%89%e8%a3%85%e5%92%8c%e5%88%9d%e5%a7%8b%e5%8c%96" class="nav-53-执行安装和初始化">
+									5.3 执行安装和初始化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#6---%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%92%8c%e6%95%b0%e6%8d%ae%e7%9b%ae%e5%bd%95" class="nav-6---配置文件和数据目录">
+									6 - 配置文件和数据目录
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#7---%e9%80%89%e6%8b%a9%e5%90%88%e9%80%82%e7%9a%84-terminal-backend" class="nav-7---选择合适的-terminal-backend">
+									7 - 选择合适的 Terminal Backend
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#71-%e6%9c%ac%e6%9c%ba%e5%bc%80%e5%8f%91local" class="nav-71-本机开发local">
+									7.1 本机开发：local
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#72-%e9%99%8c%e7%94%9f%e9%a1%b9%e7%9b%aedocker" class="nav-72-陌生项目docker">
+									7.2 陌生项目：Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#73-%e8%bf%9c%e7%a8%8b%e6%9c%ba%e5%99%a8ssh" class="nav-73-远程机器ssh">
+									7.3 远程机器：SSH
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#8---%e5%ae%89%e5%85%a8%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="nav-8---安全最佳实践">
+									8 - 安全最佳实践
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#81-%e4%b8%8d%e8%a6%81%e8%bd%bb%e6%98%93%e5%bc%80%e5%90%af-yolo-%e6%a8%a1%e5%bc%8f" class="nav-81-不要轻易开启-yolo-模式">
+									8.1 不要轻易开启 YOLO 模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#82-%e9%99%8c%e7%94%9f%e4%bb%a3%e7%a0%81%e4%bc%98%e5%85%88%e6%94%be%e8%bf%9b-docker" class="nav-82-陌生代码优先放进-docker">
+									8.2 陌生代码优先放进 Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#83-%e6%b6%88%e6%81%af%e6%9c%ba%e5%99%a8%e4%ba%ba%e5%bf%85%e9%a1%bb%e9%85%8d%e7%bd%ae-allowlist" class="nav-83-消息机器人必须配置-allowlist">
+									8.3 消息机器人必须配置 allowlist
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#84-api-key-%e4%b8%8d%e8%a6%81%e5%86%99%e8%bf%9b%e9%a1%b9%e7%9b%ae%e7%9b%ae%e5%bd%95" class="nav-84-api-key-不要写进项目目录">
+									8.4 API Key 不要写进项目目录
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#85-%e5%ae%9a%e6%9c%9f%e6%a3%80%e6%9f%a5%e9%85%8d%e7%bd%ae" class="nav-85-定期检查配置">
+									8.5 定期检查配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#9---%e4%b8%ad%e5%9b%bd%e5%a4%a7%e9%99%86%e5%9c%b0%e5%8c%ba%e6%b6%88%e6%81%af%e5%85%a5%e5%8f%a3%e6%80%8e%e4%b9%88%e9%80%89" class="nav-9---中国大陆地区消息入口怎么选">
+									9 - 中国大陆地区消息入口怎么选
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#91-%e9%a3%9e%e4%b9%a6%e5%a4%a7%e9%99%86%e5%9c%b0%e5%8c%ba%e6%9c%80%e6%8e%a8%e8%8d%90" class="nav-91-飞书大陆地区最推荐">
+									9.1 飞书：大陆地区最推荐
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#92-%e4%bc%81%e4%b8%9a%e5%be%ae%e4%bf%a1%e9%80%82%e5%90%88%e5%85%ac%e5%8f%b8%e5%92%8c%e6%ad%a3%e5%bc%8f%e5%9b%a2%e9%98%9f" class="nav-92-企业微信适合公司和正式团队">
+									9.2 企业微信：适合公司和正式团队
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#93-%e4%b8%aa%e4%ba%ba%e5%be%ae%e4%bf%a1%e8%83%bd%e7%94%a8%e4%bd%86%e4%b8%8d%e5%bb%ba%e8%ae%ae%e4%bd%9c%e4%b8%ba%e4%b8%bb%e5%85%a5%e5%8f%a3" class="nav-93-个人微信能用但不建议作为主入口">
+									9.3 个人微信：能用，但不建议作为主入口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#94-%e9%92%89%e9%92%89%e5%b7%b2%e6%9c%89%e9%92%89%e9%92%89%e7%bb%84%e7%bb%87%e6%97%b6%e5%86%8d%e9%80%89" class="nav-94-钉钉已有钉钉组织时再选">
+									9.4 钉钉：已有钉钉组织时再选
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#95-%e6%88%91%e7%9a%84%e6%9c%80%e7%bb%88%e5%bb%ba%e8%ae%ae" class="nav-95-我的最终建议">
+									9.5 我的最终建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#10---%e6%88%91%e7%9a%84%e6%8e%a8%e8%8d%90%e9%83%a8%e7%bd%b2%e6%96%b9%e5%bc%8f" class="nav-10---我的推荐部署方式">
+									10 - 我的推荐部署方式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#101-mac-%e6%8e%a8%e8%8d%90%e6%96%b9%e6%a1%88" class="nav-101-mac-推荐方案">
+									10.1 Mac 推荐方案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#102-ubuntu-2404-lts-%e6%8e%a8%e8%8d%90%e6%96%b9%e6%a1%88" class="nav-102-ubuntu-2404-lts-推荐方案">
+									10.2 Ubuntu 24.04 LTS 推荐方案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#11---%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98" class="nav-11---常见问题">
+									11 - 常见问题
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#111-hermes-command-not-found" class="nav-111-hermes-command-not-found">
+									11.1 hermes: command not found
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#112-api-key-not-set" class="nav-112-api-key-not-set">
+									11.2 API key not set
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#113-ubuntu-%e7%bc%ba%e5%b0%91-git" class="nav-113-ubuntu-缺少-git">
+									11.3 Ubuntu 缺少 Git
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#114-%e5%ae%89%e8%a3%85%e8%84%9a%e6%9c%ac%e6%89%a7%e8%a1%8c%e5%be%88%e6%85%a2" class="nav-114-安装脚本执行很慢">
+									11.4 安装脚本执行很慢
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#115-mac-%e4%b8%8a-docker-backend-%e6%89%be%e4%b8%8d%e5%88%b0-docker" class="nav-115-mac-上-docker-backend-找不到-docker">
+									11.5 Mac 上 Docker backend 找不到 docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#116-%e6%b6%88%e6%81%af%e7%bd%91%e5%85%b3%e6%97%a0%e6%b3%95%e4%bd%bf%e7%94%a8" class="nav-116-消息网关无法使用">
+									11.6 消息网关无法使用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#117-%e9%a3%9e%e4%b9%a6%e6%9c%ba%e5%99%a8%e4%ba%ba%e4%b8%8d%e5%93%8d%e5%ba%94" class="nav-117-飞书机器人不响应">
+									11.7 飞书机器人不响应
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#118-%e5%be%ae%e4%bf%a1%e7%be%a4%e9%87%8c--%e6%9c%ba%e5%99%a8%e4%ba%ba%e6%b2%a1%e5%8f%8d%e5%ba%94" class="nav-118-微信群里--机器人没反应">
+									11.8 微信群里 @ 机器人没反应
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#12---%e5%8f%82%e8%80%83%e5%91%bd%e4%bb%a4%e9%80%9f%e6%9f%a5" class="nav-12---参考命令速查">
+									12 - 参考命令速查
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#13---%e6%80%bb%e7%bb%93" class="nav-13---总结">
+									13 - 总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="nav-参考资料">
+									参考资料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://terryren.github.io/">
+            The Sound of Music
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://terryren.github.io/">
+        <div class="single-column-header-title">The Sound of Music</div>
+        
+        <div class="single-column-header-subtitle">知行合一</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    个人 AI Agent 服务器实战：Mac 与 Ubuntu 24.04 LTS 安装 Hermes Agent
+                    
+                    <div class="post-subtitle">
+                        Hermes Agent 是 Nous Research 开源的长期自治 AI Agent，支持记忆、技能、定时任务、消息网关和多种沙箱后端。本文记录在 macOS 和 Ubuntu Desktop 24.04 LTS 上安装 Hermes Agent 的完整流程，并给出个人电脑与常驻服务器两种场景下的最佳实践。
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2026-05-12 22:10
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E6%9D%82%E8%B0%88">杂谈</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/hermes-agent">Hermes Agent</a>
+                                &nbsp;
+                            
+                                <a href="/tags/ai-agent">AI Agent</a>
+                                &nbsp;
+                            
+                                <a href="/tags/macos">macOS</a>
+                                &nbsp;
+                            
+                                <a href="/tags/ubuntu">Ubuntu</a>
+                                &nbsp;
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96">自动化</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="摘要">摘要</h2>
+<p>这篇文章记录如何在 <strong>macOS</strong> 和 <strong>Ubuntu Desktop 24.04 LTS</strong> 上安装 <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a>，并给出一套更适合个人使用和长期运行的配置建议。</p>
+<p>Hermes Agent 是 Nous Research 开源的 AI Agent。它不是单纯的聊天机器人，也不是绑定在 IDE 里的代码助手，而是一个可以长期运行在你自己电脑、服务器、VPS 或容器环境里的自治 Agent。它支持：</p>
+<ul>
+<li>CLI 对话</li>
+<li>长期记忆</li>
+<li>自动生成和复用技能</li>
+<li>定时任务</li>
+<li>Telegram、Discord、Slack、飞书、企业微信、微信、钉钉、Email 等消息入口</li>
+<li>Web 搜索、浏览器自动化、语音、图片等工具</li>
+<li>local、Docker、SSH、Singularity、Modal、Daytona 等执行后端</li>
+</ul>
+<p>如果你只是想在自己电脑上试用，<strong>Mac 是最方便的入口</strong>。如果你希望 Agent 长期在线、能跑定时任务、能接消息机器人、能作为个人自动化服务器使用，<strong>Ubuntu 24.04 LTS 更适合作为生产环境</strong>。</p>
+<hr>
+<h2 id="1---hermes-agent-适合解决什么问题">1 - Hermes Agent 适合解决什么问题</h2>
+<p>现在的 AI 工具大致可以分成三类：</p>
+<ol>
+<li>网页聊天工具，比如 ChatGPT、Claude、Gemini。</li>
+<li>IDE 编程助手，比如 Cursor、GitHub Copilot。</li>
+<li>常驻型 Agent，比如 Hermes Agent。</li>
+</ol>
+<p>前两类工具更像“你打开它，它帮你处理当前问题”。Hermes Agent 的定位更偏向“你把它部署在自己的环境里，它逐渐记住你的项目、偏好、流程，并通过 CLI、消息平台或定时任务持续工作”。</p>
+<p>举几个更适合 Hermes Agent 的场景：</p>
+<ul>
+<li>每天早上定时汇总新闻、项目状态或服务器状态</li>
+<li>通过 Telegram 给家里的 Ubuntu 服务器发送任务</li>
+<li>让 Agent 记住某个项目的构建、测试、部署流程</li>
+<li>在 Docker 沙箱里分析陌生代码仓库</li>
+<li>用 SSH 后端连接远程机器执行任务</li>
+<li>把常用的多步操作沉淀成 skill，下次直接复用</li>
+</ul>
+<p>所以，它不是替代 Cursor 的工具，而是补上了“长期运行、跨平台入口、自动化、记忆和定时任务”这一块。</p>
+<h2 id="2---mac-和-ubuntu-应该怎么选">2 - Mac 和 Ubuntu 应该怎么选</h2>
+<h3 id="21-mac适合个人试用和日常助手">2.1 Mac：适合个人试用和日常助手</h3>
+<p>如果你平时主要在 Mac 上工作，先在 Mac 上安装 Hermes Agent 是最省事的。它适合：</p>
+<ul>
+<li>本地 CLI 对话</li>
+<li>研究文档</li>
+<li>管理本机项目</li>
+<li>轻量脚本自动化</li>
+<li>体验 memory、skills、tools 等功能</li>
+</ul>
+<p>Mac 的优势是日常使用方便，终端、浏览器、剪贴板、开发工具都在同一台机器上。但它的缺点也很明显：电脑合上、关机、断网之后，Agent 就无法长期在线。</p>
+<h3 id="22-ubuntu-2404-lts适合常驻-ai-agent-服务器">2.2 Ubuntu 24.04 LTS：适合常驻 AI Agent 服务器</h3>
+<p>如果你已经有一台旧笔记本、迷你主机、NAS、VPS 或云服务器，Ubuntu 24.04 LTS 更适合跑 Hermes Agent。</p>
+<p>Ubuntu 的优势是：</p>
+<ul>
+<li>可以 7x24 小时运行</li>
+<li>适合配合 SSH、Tailscale、Docker 使用</li>
+<li>适合挂定时任务和消息网关</li>
+<li>环境更接近服务器和容器生态</li>
+<li>后续迁移到更强的机器也更自然</li>
+</ul>
+<p>如果你之前已经像我一样把旧笔记本改造成 Ubuntu AI 自动化服务器，那么 Hermes Agent 就是很自然的下一步：系统负责常驻，Docker 负责隔离，Hermes Agent 负责把 AI 能力接到自动化工作流里。</p>
+<h2 id="3---官方安装方式">3 - 官方安装方式</h2>
+<p>Hermes Agent 官方文档给出的 Linux / macOS / WSL2 安装方式是一行命令：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+</span></span></code></pre></div><p>安装完成后，重新加载 shell 配置，然后进入初始化向导：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.bashrc
+</span></span><span style="display:flex;"><span>hermes setup
+</span></span></code></pre></div><p>如果你使用的是 zsh，则执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.zshrc
+</span></span><span style="display:flex;"><span>hermes setup
+</span></span></code></pre></div><p>官方安装器会自动处理大部分依赖，包括：</p>
+<ul>
+<li><code>uv</code></li>
+<li>Python 3.11</li>
+<li>Node.js 22</li>
+<li><code>ripgrep</code></li>
+<li><code>ffmpeg</code></li>
+<li>Hermes Agent 仓库</li>
+<li>Python 虚拟环境</li>
+<li>全局 <code>hermes</code> 命令</li>
+<li>LLM Provider 初始化配置</li>
+</ul>
+<p>官方文档也说明，唯一需要提前确认的是 <strong>Git 可用</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git --version
+</span></span></code></pre></div><p>如果这个命令能正常输出版本号，通常就可以开始安装。</p>
+<h2 id="4---macos-安装-hermes-agent">4 - macOS 安装 Hermes Agent</h2>
+<h3 id="41-安装前准备">4.1 安装前准备</h3>
+<p>Mac 上建议先准备好 Xcode Command Line Tools：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xcode-select --install
+</span></span></code></pre></div><p>如果你还没有安装 Homebrew，建议先安装。Hermes Agent 官方安装器不一定强依赖 Homebrew，但对于长期使用 Mac 开发环境来说，Homebrew 基本是必备工具。</p>
+<p>确认 Git 可用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git --version
+</span></span></code></pre></div><p>如果 Git 不存在，通常安装 Xcode Command Line Tools 后就会有。</p>
+<h3 id="42-apple-silicon-和-intel-mac-的-path-差异">4.2 Apple Silicon 和 Intel Mac 的 PATH 差异</h3>
+<p>Apple Silicon Mac 上，Homebrew 默认路径通常是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/opt/homebrew/bin
+</span></span></code></pre></div><p>Intel Mac 上，Homebrew 默认路径通常是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/usr/local/bin
+</span></span></code></pre></div><p>安装完成后如果遇到 <code>hermes: command not found</code>，优先检查 shell 配置是否加载了 <code>~/.local/bin</code>，以及当前终端是否重新打开过。</p>
+<p>可以执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#00688b">$PATH</span>
+</span></span><span style="display:flex;"><span>ls -l ~/.local/bin/hermes
+</span></span></code></pre></div><p>如果 <code>~/.local/bin/hermes</code> 存在，但命令找不到，通常就是 PATH 没刷新。</p>
+<h3 id="43-执行安装">4.3 执行安装</h3>
+<p>运行官方安装命令：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+</span></span></code></pre></div><p>安装完成后，如果你使用 zsh：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.zshrc
+</span></span></code></pre></div><p>然后运行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes setup
+</span></span></code></pre></div><p>初始化时重点关注：</p>
+<ul>
+<li>选择 LLM Provider</li>
+<li>配置 API Key</li>
+<li>选择默认模型</li>
+<li>配置启用的工具</li>
+<li>是否启用消息网关</li>
+</ul>
+<p>第一次安装后建议立刻跑一次诊断：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes doctor
+</span></span></code></pre></div><p>如果缺少依赖、PATH 未生效或配置不完整，<code>hermes doctor</code> 会给出更明确的提示。</p>
+<h3 id="44-mac-上的使用建议">4.4 Mac 上的使用建议</h3>
+<p>Mac 上建议把 Hermes Agent 当作“个人本机助手”使用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes
+</span></span></code></pre></div><p>常用命令包括：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes model          <span style="color:#228b22"># 重新选择模型</span>
+</span></span><span style="display:flex;"><span>hermes tools          <span style="color:#228b22"># 配置启用哪些工具</span>
+</span></span><span style="display:flex;"><span>hermes config         <span style="color:#228b22"># 查看配置</span>
+</span></span><span style="display:flex;"><span>hermes config edit    <span style="color:#228b22"># 编辑配置</span>
+</span></span><span style="display:flex;"><span>hermes doctor         <span style="color:#228b22"># 检查环境</span>
+</span></span></code></pre></div><p>如果只是本机日常使用，默认 local backend 就够了。但要注意：local backend 代表 Agent 执行命令时拥有和你当前用户一样的文件权限。因此，不要随便让它在本机跑陌生项目里的危险命令。</p>
+<h2 id="5---ubuntu-2404-lts-安装-hermes-agent">5 - Ubuntu 24.04 LTS 安装 Hermes Agent</h2>
+<h3 id="51-安装前准备">5.1 安装前准备</h3>
+<p>Ubuntu 24.04 LTS 上建议先更新系统：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt upgrade -y
+</span></span></code></pre></div><p>安装基础依赖：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install -y curl git build-essential ca-certificates
+</span></span></code></pre></div><p>确认 Git 可用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git --version
+</span></span></code></pre></div><p>如果这台机器是长期运行的个人服务器，我还建议提前准备：</p>
+<ul>
+<li>SSH</li>
+<li>Tailscale</li>
+<li>Docker</li>
+<li>独立的普通用户账户</li>
+<li>稳定的网络和电源</li>
+<li>定期备份目录</li>
+</ul>
+<p>Hermes Agent 不要求这些全部存在，但对于常驻 AI Agent 服务器来说，它们会显著提升可维护性。</p>
+<h3 id="52-不建议一开始用-root-安装">5.2 不建议一开始用 root 安装</h3>
+<p>官方安装文档提到，Hermes Agent 支持普通用户安装和 root-mode 安装。</p>
+<p>普通用户安装时：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>代码目录：~/.hermes/hermes-agent/
+</span></span><span style="display:flex;"><span>命令位置：~/.local/bin/hermes
+</span></span><span style="display:flex;"><span>数据目录：~/.hermes/
+</span></span></code></pre></div><p>root-mode 安装时：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>代码目录：/usr/local/lib/hermes-agent/
+</span></span><span style="display:flex;"><span>命令位置：/usr/local/bin/hermes
+</span></span><span style="display:flex;"><span>数据目录：/root/.hermes/
+</span></span></code></pre></div><p>我更推荐个人用户先用 <strong>普通用户安装</strong>。原因很简单：</p>
+<ul>
+<li>权限边界更清晰</li>
+<li>不容易污染系统目录</li>
+<li>配置、日志、记忆、会话都在当前用户的 <code>~/.hermes/</code></li>
+<li>后续迁移和备份更方便</li>
+</ul>
+<p>除非你明确需要给多用户共享一套系统级 Hermes Agent，否则不要一上来就：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl ... | sudo bash
+</span></span></code></pre></div><p>更稳妥的做法是新建一个普通用户，例如：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo adduser hermes
+</span></span><span style="display:flex;"><span>sudo usermod -aG sudo hermes
+</span></span></code></pre></div><p>然后切换到这个用户下安装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>su - hermes
+</span></span><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+</span></span></code></pre></div><h3 id="53-执行安装和初始化">5.3 执行安装和初始化</h3>
+<p>在 Ubuntu 上运行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+</span></span></code></pre></div><p>安装完成后加载 shell 配置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.bashrc
+</span></span></code></pre></div><p>进入初始化向导：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes setup
+</span></span></code></pre></div><p>然后执行诊断：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes doctor
+</span></span></code></pre></div><p>如果要重新选择模型：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes model
+</span></span></code></pre></div><p>如果要配置工具：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes tools
+</span></span></code></pre></div><p>如果要配置消息平台：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway setup
+</span></span></code></pre></div><h2 id="6---配置文件和数据目录">6 - 配置文件和数据目录</h2>
+<p>Hermes Agent 的主要数据都在：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>~/.hermes/
+</span></span></code></pre></div><p>官方配置文档列出的典型结构如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>~/.hermes/
+</span></span><span style="display:flex;"><span>├── config.yaml     # 模型、终端后端、TTS、压缩等普通配置
+</span></span><span style="display:flex;"><span>├── .env            # API Key、Bot Token 等敏感信息
+</span></span><span style="display:flex;"><span>├── auth.json       # OAuth 凭据
+</span></span><span style="display:flex;"><span>├── SOUL.md         # Agent 的默认身份和表达风格
+</span></span><span style="display:flex;"><span>├── memories/       # 长期记忆
+</span></span><span style="display:flex;"><span>├── skills/         # Agent 创建和复用的技能
+</span></span><span style="display:flex;"><span>├── cron/           # 定时任务
+</span></span><span style="display:flex;"><span>├── sessions/       # 消息网关会话
+</span></span><span style="display:flex;"><span>└── logs/           # 日志
+</span></span></code></pre></div><p>这里有一个很重要的原则：</p>
+<blockquote>
+<p>API Key、Bot Token、密码等敏感信息放进 <code>~/.hermes/.env</code>；模型、终端后端、工具开关等普通配置放进 <code>~/.hermes/config.yaml</code>。</p>
+</blockquote>
+<p>可以用命令修改配置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes config
+</span></span><span style="display:flex;"><span>hermes config edit
+</span></span><span style="display:flex;"><span>hermes config <span style="color:#658b00">set</span> KEY VALUE
+</span></span><span style="display:flex;"><span>hermes config check
+</span></span><span style="display:flex;"><span>hermes config migrate
+</span></span></code></pre></div><p>其中 <code>hermes config set</code> 会尽量把配置写到正确的位置：敏感信息写入 <code>.env</code>，普通配置写入 <code>config.yaml</code>。</p>
+<h2 id="7---选择合适的-terminal-backend">7 - 选择合适的 Terminal Backend</h2>
+<p>Hermes Agent 执行命令时，需要选择命令到底在哪里运行。官方文档把这个能力称为 terminal backend。</p>
+<p>常见选择如下：</p>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>命令运行位置</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local</td>
+<td>当前机器</td>
+<td>个人本机使用、可信项目</td>
+</tr>
+<tr>
+<td>docker</td>
+<td>Docker 容器</td>
+<td>陌生代码、安全隔离、CI/CD</td>
+</tr>
+<tr>
+<td>ssh</td>
+<td>远程服务器</td>
+<td>控制远程主机或更强机器</td>
+</tr>
+<tr>
+<td>modal / daytona</td>
+<td>云端沙箱</td>
+<td>临时云计算、可暂停环境</td>
+</tr>
+<tr>
+<td>singularity</td>
+<td>Singularity / Apptainer 容器</td>
+<td>HPC 或共享服务器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="71-本机开发local">7.1 本机开发：local</h3>
+<p>默认就是 local。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">terminal</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">backend</span>:<span style="color:#bbb"> </span>local<span style="color:#bbb">
+</span></span></span></code></pre></div><p>这最方便，但也最需要谨慎。因为 Agent 拥有当前用户的文件访问权限。</p>
+<h3 id="72-陌生项目docker">7.2 陌生项目：Docker</h3>
+<p>如果你经常让 Agent 分析未知仓库、执行依赖安装、跑脚本，建议优先使用 Docker backend。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">terminal</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">backend</span>:<span style="color:#bbb"> </span>docker<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">docker_image</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;nikolaik/python-nodejs:python3.11-nodejs20&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">docker_mount_cwd_to_workspace</span>:<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">false</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">docker_run_as_host_user</span>:<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">false</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">container_cpu</span>:<span style="color:#bbb"> </span><span style="color:#b452cd">1</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">container_memory</span>:<span style="color:#bbb"> </span><span style="color:#b452cd">5120</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">container_persistent</span>:<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">true</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>Docker backend 的好处是隔离更强。官方文档提到，它会使用容器 namespace、cap-drop、no-new-privileges、PID 限制、tmpfs 限制等安全加固。对于个人服务器来说，这是非常值得开启的能力。</p>
+<p>需要注意的是：Docker backend 默认会复用一个长生命周期容器。同一个 Hermes 进程里的多个会话或子任务可能共享容器状态，所以并行任务写同一路径时仍然可能互相影响。</p>
+<h3 id="73-远程机器ssh">7.3 远程机器：SSH</h3>
+<p>如果你的 Hermes Agent 跑在 Mac 上，但希望命令实际在 Ubuntu 服务器上执行，可以考虑 SSH backend。</p>
+<p>典型配置需要设置远程主机和用户：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">TERMINAL_SSH_HOST</span>=my-server.example.com
+</span></span><span style="display:flex;"><span><span style="color:#00688b">TERMINAL_SSH_USER</span>=ubuntu
+</span></span></code></pre></div><p>这适合把 Mac 当入口，把 Ubuntu 当执行环境。</p>
+<p>不过如果你的目标是长期自动化，我更建议直接把 Hermes Agent 安装在 Ubuntu 服务器上，减少中间层。</p>
+<h2 id="8---安全最佳实践">8 - 安全最佳实践</h2>
+<p>Hermes Agent 很强，但越强的 Agent 越需要边界。尤其是它能执行命令、访问文件、连接消息平台、运行定时任务时，安全配置不能省。</p>
+<h3 id="81-不要轻易开启-yolo-模式">8.1 不要轻易开启 YOLO 模式</h3>
+<p>Hermes Agent 有危险命令审批机制。遇到递归删除、格式化磁盘、危险 SQL、写系统目录等操作时，会要求用户确认。</p>
+<p>官方也支持 <code>--yolo</code> 或 <code>/yolo</code> 这类跳过审批的模式，但我不建议在个人主机或服务器上长期使用。</p>
+<p>只有在下面两种情况下才考虑：</p>
+<ul>
+<li>一次性、可丢弃的 Docker 容器</li>
+<li>非常可信、经过测试的自动化环境</li>
+</ul>
+<h3 id="82-陌生代码优先放进-docker">8.2 陌生代码优先放进 Docker</h3>
+<p>如果 Agent 要处理陌生仓库，不要直接在宿主机 local backend 下运行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install
+</span></span><span style="display:flex;"><span>python setup.py
+</span></span><span style="display:flex;"><span>bash install.sh
+</span></span></code></pre></div><p>这些命令都有供应链风险。更好的做法是切到 Docker backend，让破坏范围限制在容器内。</p>
+<h3 id="83-消息机器人必须配置-allowlist">8.3 消息机器人必须配置 allowlist</h3>
+<p>Hermes Agent 支持 Telegram、Discord、Slack、飞书、企业微信、微信、钉钉等消息网关。这个能力很实用，但也很危险：如果别人能给你的 bot 发消息，就可能间接控制你的 Agent。</p>
+<p>所以不要设置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">GATEWAY_ALLOW_ALL_USERS</span>=<span style="color:#658b00">true</span>
+</span></span></code></pre></div><p>更推荐配置明确的用户 allowlist：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">TELEGRAM_ALLOWED_USERS</span>=<span style="color:#b452cd">123456789</span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">DISCORD_ALLOWED_USERS</span>=<span style="color:#b452cd">123456789012345678</span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">FEISHU_ALLOWED_USERS</span>=ou_xxxxxxxx
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WECOM_ALLOWED_USERS</span>=user-id-1,user-id-2
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WEIXIN_ALLOWED_USERS</span>=user_id_1,user_id_2
+</span></span><span style="display:flex;"><span><span style="color:#00688b">GATEWAY_ALLOWED_USERS</span>=<span style="color:#b452cd">123456789</span>
+</span></span></code></pre></div><p>如果你要给家人、朋友或团队成员使用，可以考虑官方提供的 DM pairing 机制，由你手动批准。</p>
+<h3 id="84-api-key-不要写进项目目录">8.4 API Key 不要写进项目目录</h3>
+<p>API Key 应放在：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>~/.hermes/.env
+</span></span></code></pre></div><p>不要写进项目里的 <code>.env</code>、README 或脚本，也不要提交到 Git。</p>
+<h3 id="85-定期检查配置">8.5 定期检查配置</h3>
+<p>升级后建议执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes config check
+</span></span><span style="display:flex;"><span>hermes config migrate
+</span></span><span style="display:flex;"><span>hermes doctor
+</span></span></code></pre></div><p>这可以检查配置缺失、迁移旧配置，并排查环境问题。</p>
+<h2 id="9---中国大陆地区消息入口怎么选">9 - 中国大陆地区消息入口怎么选</h2>
+<p>Hermes Agent 的消息网关支持很多平台。对中国大陆用户来说，最常见的选择不是 Telegram 或 Discord，而是 <strong>飞书、企业微信、微信、钉钉</strong>。</p>
+<p>我的建议是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>个人或小团队优先：飞书
+</span></span><span style="display:flex;"><span>企业办公环境优先：企业微信
+</span></span><span style="display:flex;"><span>只想接入个人微信：可以尝试 Weixin，但不要依赖微信群
+</span></span><span style="display:flex;"><span>已有钉钉组织：再考虑钉钉
+</span></span></code></pre></div><p>如果只能选一个，我更推荐 <strong>飞书</strong>。它的机器人能力更完整，官方文档里 Feishu/Lark 支持语音、图片、文件、线程、reaction、typing indicator 和 streaming；连接方式也推荐 WebSocket，不需要你准备公网域名或反向代理。</p>
+<h3 id="91-飞书大陆地区最推荐">9.1 飞书：大陆地区最推荐</h3>
+<p>飞书适合个人、家庭小团队、创业团队和知识管理场景。它的优势是：</p>
+<ul>
+<li>国内访问稳定</li>
+<li>Bot 能力比较完整</li>
+<li>支持私聊和群聊</li>
+<li>群聊里默认需要 @ 机器人，误触发少</li>
+<li>WebSocket 模式不需要公网回调地址</li>
+<li>可以作为 cron 定时任务的 home chat</li>
+</ul>
+<p>最简单的配置方式是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway setup
+</span></span></code></pre></div><p>然后选择 <strong>Feishu / Lark</strong>，按提示用飞书手机端扫码或手动填写应用信息。</p>
+<p>如果手动配置，核心变量大致是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">FEISHU_APP_ID</span>=cli_xxx
+</span></span><span style="display:flex;"><span><span style="color:#00688b">FEISHU_APP_SECRET</span>=secret_xxx
+</span></span><span style="display:flex;"><span><span style="color:#00688b">FEISHU_DOMAIN</span>=feishu
+</span></span><span style="display:flex;"><span><span style="color:#00688b">FEISHU_CONNECTION_MODE</span>=websocket
+</span></span><span style="display:flex;"><span><span style="color:#00688b">FEISHU_ALLOWED_USERS</span>=ou_xxx,ou_yyy
+</span></span><span style="display:flex;"><span><span style="color:#00688b">FEISHU_HOME_CHANNEL</span>=oc_xxx
+</span></span></code></pre></div><p>这里有几个关键点：</p>
+<ul>
+<li><code>FEISHU_DOMAIN=feishu</code> 表示使用中国大陆飞书；国际版 Lark 才用 <code>lark</code>。</li>
+<li><code>FEISHU_CONNECTION_MODE=websocket</code> 是更推荐的方式，不需要公网 URL。</li>
+<li><code>FEISHU_ALLOWED_USERS</code> 建议一定配置，避免任何能接触到 bot 的人都能使用 Agent。</li>
+<li>群聊中默认只有 @ 到机器人时才会触发，适合放在日常群里。</li>
+</ul>
+<p>配置完成后启动网关：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway
+</span></span></code></pre></div><p>如果希望网关长期运行，在 Ubuntu 服务器上可以安装为 systemd 服务：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway install
+</span></span><span style="display:flex;"><span>hermes gateway start
+</span></span><span style="display:flex;"><span>hermes gateway status
+</span></span></code></pre></div><p>如果是 macOS，则会走 launchd：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway install
+</span></span><span style="display:flex;"><span>hermes gateway start
+</span></span><span style="display:flex;"><span>hermes gateway status
+</span></span></code></pre></div><h3 id="92-企业微信适合公司和正式团队">9.2 企业微信：适合公司和正式团队</h3>
+<p>企业微信适合已经在企业微信里办公的团队，尤其是需要组织架构、成员权限和企业内部群的场景。</p>
+<p>Hermes Agent 的 WeCom adapter 使用企业微信 AI Bot WebSocket 网关，优点是：</p>
+<ul>
+<li>不需要公网 webhook</li>
+<li>支持私聊和群聊</li>
+<li>支持图片、文件、语音、视频等媒体</li>
+<li>可以配置 DM 和群聊访问策略</li>
+<li>可以做更细的 per-group sender allowlist</li>
+</ul>
+<p>推荐配置方式仍然是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway setup
+</span></span></code></pre></div><p>选择 <strong>WeCom</strong> 后，可以扫码创建 Bot，或者手动在企业微信管理后台创建 AI Bot。</p>
+<p>手动配置时核心变量是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">WECOM_BOT_ID</span>=your-bot-id
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WECOM_SECRET</span>=your-secret
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WECOM_ALLOWED_USERS</span>=user_id_1,user_id_2
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WECOM_HOME_CHANNEL</span>=chat_id
+</span></span></code></pre></div><p>如果要限制群聊：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">WECOM_DM_POLICY</span>=allowlist
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WECOM_GROUP_POLICY</span>=allowlist
+</span></span></code></pre></div><p>企业微信更适合“正式组织内的 AI 助手”，而不是个人随手用。它的权限体系更重，但长期运行会更可控。</p>
+<h3 id="93-个人微信能用但不建议作为主入口">9.3 个人微信：能用，但不建议作为主入口</h3>
+<p>Hermes Agent 也支持 Weixin，也就是个人微信。它通过腾讯 iLink Bot API 接入，使用二维码登录，消息通过 long-polling 获取，所以不需要公网 webhook。</p>
+<p>配置方式：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway setup
+</span></span></code></pre></div><p>选择 <strong>Weixin</strong>，然后用微信扫码登录。</p>
+<p>初始化后，通常会在 <code>~/.hermes/.env</code> 里保存或需要配置类似变量：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">WEIXIN_ACCOUNT_ID</span>=your-account-id
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WEIXIN_DM_POLICY</span>=allowlist
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WEIXIN_ALLOWED_USERS</span>=user_id_1,user_id_2
+</span></span><span style="display:flex;"><span><span style="color:#00688b">WEIXIN_HOME_CHANNEL</span>=chat_id
+</span></span></code></pre></div><p>个人微信接入最大的优点是：微信是国内最常用的 IM，手机上随时可用。</p>
+<p>但它的问题也很明确：官方文档说明 QR 登录连接的是 iLink bot identity，不是一个完全可脚本化的普通个人微信号。因此：</p>
+<ul>
+<li>多数情况下私聊 DM 更可靠</li>
+<li>普通微信群不一定能正常收到事件</li>
+<li>@ 扫码登录的个人微信号，不等于 @ iLink bot</li>
+<li>群消息是否能到达 Hermes，取决于 iLink 是否返回事件</li>
+</ul>
+<p>所以我不建议把个人微信作为主要生产入口。它适合作为“给自己发消息”的轻量入口，不适合作为团队群机器人。</p>
+<h3 id="94-钉钉已有钉钉组织时再选">9.4 钉钉：已有钉钉组织时再选</h3>
+<p>Hermes Agent 也支持 DingTalk。钉钉在企业和学校里仍然常见，但如果你没有现成钉钉组织，我不建议为了 Hermes Agent 专门迁移过去。</p>
+<p>选择钉钉的理由通常是：</p>
+<ul>
+<li>公司或学校已经用钉钉</li>
+<li>组织权限和通知都在钉钉里</li>
+<li>你希望 Hermes Agent 进入现有办公群</li>
+</ul>
+<p>如果是从零开始搭个人 AI 助手，飞书通常更顺手。</p>
+<h3 id="95-我的最终建议">9.5 我的最终建议</h3>
+<p>如果你的目标是“中国大陆地区可长期使用的个人 AI Agent”，我建议这样选：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐入口</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>个人长期使用</td>
+<td>飞书</td>
+<td>稳定、能力完整、WebSocket 不需要公网</td>
+</tr>
+<tr>
+<td>家庭或小团队</td>
+<td>飞书</td>
+<td>群聊 @ 触发，权限简单</td>
+</tr>
+<tr>
+<td>公司内部使用</td>
+<td>企业微信</td>
+<td>组织权限和企业群更自然</td>
+</tr>
+<tr>
+<td>只想在微信里私聊</td>
+<td>个人微信</td>
+<td>使用方便，但群聊限制多</td>
+</tr>
+<tr>
+<td>已经重度使用钉钉</td>
+<td>钉钉</td>
+<td>接入现有组织即可</td>
+</tr>
+</tbody>
+</table>
+<p>我的实际部署会选：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Ubuntu 24.04 LTS 常驻服务器
+</span></span><span style="display:flex;"><span>+ Hermes Agent
+</span></span><span style="display:flex;"><span>+ Docker backend
+</span></span><span style="display:flex;"><span>+ 飞书 WebSocket Gateway
+</span></span><span style="display:flex;"><span>+ FEISHU_ALLOWED_USERS allowlist
+</span></span><span style="display:flex;"><span>+ /sethome 接收定时任务结果
+</span></span><span style="display:flex;"><span>+ Tailscale / SSH 远程维护
+</span></span></code></pre></div><p>这样既符合国内网络环境，又不用暴露公网 webhook，也方便以后把日报、监控、备份、提醒等任务都交给 Agent。</p>
+<h2 id="10---我的推荐部署方式">10 - 我的推荐部署方式</h2>
+<h3 id="101-mac-推荐方案">10.1 Mac 推荐方案</h3>
+<p>Mac 上推荐：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>普通用户安装
+</span></span><span style="display:flex;"><span>+ local backend
+</span></span><span style="display:flex;"><span>+ CLI 使用为主
+</span></span><span style="display:flex;"><span>+ 少量本机自动化
+</span></span><span style="display:flex;"><span>+ 需要处理陌生代码时临时切 Docker backend
+</span></span></code></pre></div><p>适合的使用方式：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes
+</span></span><span style="display:flex;"><span>hermes -c
+</span></span><span style="display:flex;"><span>hermes model
+</span></span><span style="display:flex;"><span>hermes tools
+</span></span></code></pre></div><p>Mac 上不要追求 7x24 小时运行，把它当作日常工作台即可。</p>
+<h3 id="102-ubuntu-2404-lts-推荐方案">10.2 Ubuntu 24.04 LTS 推荐方案</h3>
+<p>Ubuntu 服务器上推荐：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>普通用户 hermes 安装
+</span></span><span style="display:flex;"><span>+ ~/.hermes 独立保存配置和记忆
+</span></span><span style="display:flex;"><span>+ Docker backend 处理陌生代码
+</span></span><span style="display:flex;"><span>+ Tailscale / SSH 远程维护
+</span></span><span style="display:flex;"><span>+ gateway 接飞书 / 企业微信 / Telegram / Discord
+</span></span><span style="display:flex;"><span>+ allowlist 限制用户
+</span></span><span style="display:flex;"><span>+ cron 做定时任务
+</span></span><span style="display:flex;"><span>+ 定期备份 ~/.hermes
+</span></span></code></pre></div><p>如果这台机器是家里的旧笔记本或迷你主机，可以把它定位成：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>个人 AI 自动化服务器
+</span></span><span style="display:flex;"><span>= Ubuntu 24.04 LTS
+</span></span><span style="display:flex;"><span>+ Docker
+</span></span><span style="display:flex;"><span>+ SSH
+</span></span><span style="display:flex;"><span>+ Tailscale
+</span></span><span style="display:flex;"><span>+ Hermes Agent
+</span></span><span style="display:flex;"><span>+ n8n / 其他自动化工具
+</span></span></code></pre></div><p>Hermes Agent 负责自然语言入口、记忆、工具调用和任务拆解；Docker 负责隔离执行；Tailscale 负责安全远程访问；n8n 负责传统工作流编排。这样比把所有事情都堆给一个工具更稳定。</p>
+<h2 id="11---常见问题">11 - 常见问题</h2>
+<h3 id="111-hermes-command-not-found">11.1 hermes: command not found</h3>
+<p>先重新打开终端，或者执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.bashrc
+</span></span></code></pre></div><p>zsh 用户执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.zshrc
+</span></span></code></pre></div><p>再检查：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls -l ~/.local/bin/hermes
+</span></span><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#00688b">$PATH</span>
+</span></span></code></pre></div><p>如果 <code>~/.local/bin/hermes</code> 存在但命令不可用，基本就是 PATH 没包含 <code>~/.local/bin</code>。</p>
+<h3 id="112-api-key-not-set">11.2 API key not set</h3>
+<p>执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes model
+</span></span></code></pre></div><p>或者通过配置命令写入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes config <span style="color:#658b00">set</span> OPENROUTER_API_KEY your_key
+</span></span></code></pre></div><p>也可以重新运行完整向导：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes setup
+</span></span></code></pre></div><h3 id="113-ubuntu-缺少-git">11.3 Ubuntu 缺少 Git</h3>
+<p>执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install -y git
+</span></span><span style="display:flex;"><span>git --version
+</span></span></code></pre></div><h3 id="114-安装脚本执行很慢">11.4 安装脚本执行很慢</h3>
+<p>安装器需要下载依赖、克隆仓库、安装 Python 和 Node.js 相关组件。国内网络环境下可能会慢。</p>
+<p>建议：</p>
+<ul>
+<li>确认 GitHub 访问稳定</li>
+<li>不要中途关闭终端</li>
+<li>如果失败，先看报错，不要反复盲目重跑</li>
+<li>安装完成后用 <code>hermes doctor</code> 定位问题</li>
+</ul>
+<h3 id="115-mac-上-docker-backend-找不到-docker">11.5 Mac 上 Docker backend 找不到 docker</h3>
+<p>先确认 Docker Desktop 已安装并正在运行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker version
+</span></span></code></pre></div><p>Apple Silicon Mac 上如果 PATH 没包含 Docker 命令路径，也可能导致 Hermes Agent 找不到 Docker。先在普通终端里确认 <code>docker version</code> 正常，再回到 Hermes Agent 配置。</p>
+<h3 id="116-消息网关无法使用">11.6 消息网关无法使用</h3>
+<p>先执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway setup
+</span></span></code></pre></div><p>然后检查：</p>
+<ul>
+<li>Bot Token 是否正确</li>
+<li>allowlist 是否配置</li>
+<li>当前用户 ID 是否在 allowlist 内</li>
+<li>服务器是否能访问对应平台</li>
+<li><code>~/.hermes/logs/</code> 下是否有错误日志</li>
+</ul>
+<h3 id="117-飞书机器人不响应">11.7 飞书机器人不响应</h3>
+<p>先确认网关在运行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway status
+</span></span></code></pre></div><p>如果是前台运行，则看当前终端日志：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway
+</span></span></code></pre></div><p>然后检查：</p>
+<ul>
+<li><code>FEISHU_DOMAIN</code> 是否设置为 <code>feishu</code></li>
+<li><code>FEISHU_CONNECTION_MODE</code> 是否为 <code>websocket</code></li>
+<li><code>FEISHU_APP_ID</code> 和 <code>FEISHU_APP_SECRET</code> 是否正确</li>
+<li>当前发送者的 open_id 是否在 <code>FEISHU_ALLOWED_USERS</code></li>
+<li>群聊里是否 @ 了机器人</li>
+</ul>
+<h3 id="118-微信群里--机器人没反应">11.8 微信群里 @ 机器人没反应</h3>
+<p>这不一定是 Hermes Agent 配置问题。个人微信适配器使用 iLink bot identity，官方文档说明普通微信群事件经常不会投递给这个 bot identity。</p>
+<p>如果私聊可用、群聊不可用，优先判断为 iLink 侧限制。更稳定的方案是改用飞书或企业微信。</p>
+<h2 id="12---参考命令速查">12 - 参考命令速查</h2>
+<p>安装：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+</span></span></code></pre></div><p>初始化：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes setup
+</span></span></code></pre></div><p>启动聊天：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes
+</span></span></code></pre></div><p>继续上次会话：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes -c
+</span></span></code></pre></div><p>选择模型：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes model
+</span></span></code></pre></div><p>配置工具：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes tools
+</span></span></code></pre></div><p>配置消息平台：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes gateway setup
+</span></span></code></pre></div><p>查看配置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes config
+</span></span></code></pre></div><p>编辑配置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes config edit
+</span></span></code></pre></div><p>检查环境：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes doctor
+</span></span></code></pre></div><p>检查配置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes config check
+</span></span></code></pre></div><p>迁移配置：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hermes config migrate
+</span></span></code></pre></div><h2 id="13---总结">13 - 总结</h2>
+<p>如果你只是想快速体验 Hermes Agent，Mac 上一行命令安装，然后 <code>hermes setup</code> 就能开始。</p>
+<p>如果你希望把它变成真正可用的个人 AI 自动化服务器，我更推荐 Ubuntu 24.04 LTS：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Ubuntu 24.04 LTS
+</span></span><span style="display:flex;"><span>+ 普通用户安装 Hermes Agent
+</span></span><span style="display:flex;"><span>+ Docker backend 做隔离
+</span></span><span style="display:flex;"><span>+ Tailscale / SSH 做远程访问
+</span></span><span style="display:flex;"><span>+ Gateway 接飞书 / 企业微信
+</span></span><span style="display:flex;"><span>+ Allowlist 控制访问权限
+</span></span><span style="display:flex;"><span>+ 定期备份 ~/.hermes
+</span></span></code></pre></div><p>Hermes Agent 最值得关注的地方，不是“又多了一个 AI 聊天工具”，而是它把 <strong>长期记忆、技能沉淀、工具调用、消息入口、定时任务和沙箱执行</strong> 放到了一套系统里。</p>
+<p>对个人来说，这更像是一个可以长期培养的 AI 助手；对服务器来说，它则是一个自然语言驱动的自动化入口。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://hermes-agent.nousresearch.com/">Hermes Agent 官网</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/">Hermes Agent Documentation</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/installation">Installation Guide</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/configuration">Configuration</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/security">Security</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/guides/tips">Tips &amp; Best Practices</a></li>
+<li><a href="https://github.com/NousResearch/Hermes-Agent">NousResearch/Hermes-Agent GitHub 仓库</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2026-05-12</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/web/nginx/apisix-2/">
+			下回<br>APISIX - 2 - 网关优化
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/misc/sp500-dca-vs-timing/">
+			上回<br>普通人的财务自由之路：关于标普500、纳斯达克100定投与抄底的终极答案
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+                <p style="opacity: 0.6" align="center">
+                    <small>此篇文章的评论功能已经停用。</small>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://terryren.github.io/">
+    
+        <div class="nav-title">
+            The Sound of Music
+        </div>
+        
+        <div class="nav-subtitle">
+            知行合一
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                博客
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                订阅
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e6%91%98%e8%a6%81" class="nav-摘要">
+									摘要
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#1---hermes-agent-%e9%80%82%e5%90%88%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98" class="nav-1---hermes-agent-适合解决什么问题">
+									1 - Hermes Agent 适合解决什么问题
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2---mac-%e5%92%8c-ubuntu-%e5%ba%94%e8%af%a5%e6%80%8e%e4%b9%88%e9%80%89" class="nav-2---mac-和-ubuntu-应该怎么选">
+									2 - Mac 和 Ubuntu 应该怎么选
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#21-mac%e9%80%82%e5%90%88%e4%b8%aa%e4%ba%ba%e8%af%95%e7%94%a8%e5%92%8c%e6%97%a5%e5%b8%b8%e5%8a%a9%e6%89%8b" class="nav-21-mac适合个人试用和日常助手">
+									2.1 Mac：适合个人试用和日常助手
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22-ubuntu-2404-lts%e9%80%82%e5%90%88%e5%b8%b8%e9%a9%bb-ai-agent-%e6%9c%8d%e5%8a%a1%e5%99%a8" class="nav-22-ubuntu-2404-lts适合常驻-ai-agent-服务器">
+									2.2 Ubuntu 24.04 LTS：适合常驻 AI Agent 服务器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#3---%e5%ae%98%e6%96%b9%e5%ae%89%e8%a3%85%e6%96%b9%e5%bc%8f" class="nav-3---官方安装方式">
+									3 - 官方安装方式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#4---macos-%e5%ae%89%e8%a3%85-hermes-agent" class="nav-4---macos-安装-hermes-agent">
+									4 - macOS 安装 Hermes Agent
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#41-%e5%ae%89%e8%a3%85%e5%89%8d%e5%87%86%e5%a4%87" class="nav-41-安装前准备">
+									4.1 安装前准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42-apple-silicon-%e5%92%8c-intel-mac-%e7%9a%84-path-%e5%b7%ae%e5%bc%82" class="nav-42-apple-silicon-和-intel-mac-的-path-差异">
+									4.2 Apple Silicon 和 Intel Mac 的 PATH 差异
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#43-%e6%89%a7%e8%a1%8c%e5%ae%89%e8%a3%85" class="nav-43-执行安装">
+									4.3 执行安装
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#44-mac-%e4%b8%8a%e7%9a%84%e4%bd%bf%e7%94%a8%e5%bb%ba%e8%ae%ae" class="nav-44-mac-上的使用建议">
+									4.4 Mac 上的使用建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#5---ubuntu-2404-lts-%e5%ae%89%e8%a3%85-hermes-agent" class="nav-5---ubuntu-2404-lts-安装-hermes-agent">
+									5 - Ubuntu 24.04 LTS 安装 Hermes Agent
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#51-%e5%ae%89%e8%a3%85%e5%89%8d%e5%87%86%e5%a4%87" class="nav-51-安装前准备">
+									5.1 安装前准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#52-%e4%b8%8d%e5%bb%ba%e8%ae%ae%e4%b8%80%e5%bc%80%e5%a7%8b%e7%94%a8-root-%e5%ae%89%e8%a3%85" class="nav-52-不建议一开始用-root-安装">
+									5.2 不建议一开始用 root 安装
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#53-%e6%89%a7%e8%a1%8c%e5%ae%89%e8%a3%85%e5%92%8c%e5%88%9d%e5%a7%8b%e5%8c%96" class="nav-53-执行安装和初始化">
+									5.3 执行安装和初始化
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#6---%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%92%8c%e6%95%b0%e6%8d%ae%e7%9b%ae%e5%bd%95" class="nav-6---配置文件和数据目录">
+									6 - 配置文件和数据目录
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#7---%e9%80%89%e6%8b%a9%e5%90%88%e9%80%82%e7%9a%84-terminal-backend" class="nav-7---选择合适的-terminal-backend">
+									7 - 选择合适的 Terminal Backend
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#71-%e6%9c%ac%e6%9c%ba%e5%bc%80%e5%8f%91local" class="nav-71-本机开发local">
+									7.1 本机开发：local
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#72-%e9%99%8c%e7%94%9f%e9%a1%b9%e7%9b%aedocker" class="nav-72-陌生项目docker">
+									7.2 陌生项目：Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#73-%e8%bf%9c%e7%a8%8b%e6%9c%ba%e5%99%a8ssh" class="nav-73-远程机器ssh">
+									7.3 远程机器：SSH
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#8---%e5%ae%89%e5%85%a8%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="nav-8---安全最佳实践">
+									8 - 安全最佳实践
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#81-%e4%b8%8d%e8%a6%81%e8%bd%bb%e6%98%93%e5%bc%80%e5%90%af-yolo-%e6%a8%a1%e5%bc%8f" class="nav-81-不要轻易开启-yolo-模式">
+									8.1 不要轻易开启 YOLO 模式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#82-%e9%99%8c%e7%94%9f%e4%bb%a3%e7%a0%81%e4%bc%98%e5%85%88%e6%94%be%e8%bf%9b-docker" class="nav-82-陌生代码优先放进-docker">
+									8.2 陌生代码优先放进 Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#83-%e6%b6%88%e6%81%af%e6%9c%ba%e5%99%a8%e4%ba%ba%e5%bf%85%e9%a1%bb%e9%85%8d%e7%bd%ae-allowlist" class="nav-83-消息机器人必须配置-allowlist">
+									8.3 消息机器人必须配置 allowlist
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#84-api-key-%e4%b8%8d%e8%a6%81%e5%86%99%e8%bf%9b%e9%a1%b9%e7%9b%ae%e7%9b%ae%e5%bd%95" class="nav-84-api-key-不要写进项目目录">
+									8.4 API Key 不要写进项目目录
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#85-%e5%ae%9a%e6%9c%9f%e6%a3%80%e6%9f%a5%e9%85%8d%e7%bd%ae" class="nav-85-定期检查配置">
+									8.5 定期检查配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#9---%e4%b8%ad%e5%9b%bd%e5%a4%a7%e9%99%86%e5%9c%b0%e5%8c%ba%e6%b6%88%e6%81%af%e5%85%a5%e5%8f%a3%e6%80%8e%e4%b9%88%e9%80%89" class="nav-9---中国大陆地区消息入口怎么选">
+									9 - 中国大陆地区消息入口怎么选
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#91-%e9%a3%9e%e4%b9%a6%e5%a4%a7%e9%99%86%e5%9c%b0%e5%8c%ba%e6%9c%80%e6%8e%a8%e8%8d%90" class="nav-91-飞书大陆地区最推荐">
+									9.1 飞书：大陆地区最推荐
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#92-%e4%bc%81%e4%b8%9a%e5%be%ae%e4%bf%a1%e9%80%82%e5%90%88%e5%85%ac%e5%8f%b8%e5%92%8c%e6%ad%a3%e5%bc%8f%e5%9b%a2%e9%98%9f" class="nav-92-企业微信适合公司和正式团队">
+									9.2 企业微信：适合公司和正式团队
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#93-%e4%b8%aa%e4%ba%ba%e5%be%ae%e4%bf%a1%e8%83%bd%e7%94%a8%e4%bd%86%e4%b8%8d%e5%bb%ba%e8%ae%ae%e4%bd%9c%e4%b8%ba%e4%b8%bb%e5%85%a5%e5%8f%a3" class="nav-93-个人微信能用但不建议作为主入口">
+									9.3 个人微信：能用，但不建议作为主入口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#94-%e9%92%89%e9%92%89%e5%b7%b2%e6%9c%89%e9%92%89%e9%92%89%e7%bb%84%e7%bb%87%e6%97%b6%e5%86%8d%e9%80%89" class="nav-94-钉钉已有钉钉组织时再选">
+									9.4 钉钉：已有钉钉组织时再选
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#95-%e6%88%91%e7%9a%84%e6%9c%80%e7%bb%88%e5%bb%ba%e8%ae%ae" class="nav-95-我的最终建议">
+									9.5 我的最终建议
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#10---%e6%88%91%e7%9a%84%e6%8e%a8%e8%8d%90%e9%83%a8%e7%bd%b2%e6%96%b9%e5%bc%8f" class="nav-10---我的推荐部署方式">
+									10 - 我的推荐部署方式
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#101-mac-%e6%8e%a8%e8%8d%90%e6%96%b9%e6%a1%88" class="nav-101-mac-推荐方案">
+									10.1 Mac 推荐方案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#102-ubuntu-2404-lts-%e6%8e%a8%e8%8d%90%e6%96%b9%e6%a1%88" class="nav-102-ubuntu-2404-lts-推荐方案">
+									10.2 Ubuntu 24.04 LTS 推荐方案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#11---%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98" class="nav-11---常见问题">
+									11 - 常见问题
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#111-hermes-command-not-found" class="nav-111-hermes-command-not-found">
+									11.1 hermes: command not found
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#112-api-key-not-set" class="nav-112-api-key-not-set">
+									11.2 API key not set
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#113-ubuntu-%e7%bc%ba%e5%b0%91-git" class="nav-113-ubuntu-缺少-git">
+									11.3 Ubuntu 缺少 Git
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#114-%e5%ae%89%e8%a3%85%e8%84%9a%e6%9c%ac%e6%89%a7%e8%a1%8c%e5%be%88%e6%85%a2" class="nav-114-安装脚本执行很慢">
+									11.4 安装脚本执行很慢
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#115-mac-%e4%b8%8a-docker-backend-%e6%89%be%e4%b8%8d%e5%88%b0-docker" class="nav-115-mac-上-docker-backend-找不到-docker">
+									11.5 Mac 上 Docker backend 找不到 docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#116-%e6%b6%88%e6%81%af%e7%bd%91%e5%85%b3%e6%97%a0%e6%b3%95%e4%bd%bf%e7%94%a8" class="nav-116-消息网关无法使用">
+									11.6 消息网关无法使用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#117-%e9%a3%9e%e4%b9%a6%e6%9c%ba%e5%99%a8%e4%ba%ba%e4%b8%8d%e5%93%8d%e5%ba%94" class="nav-117-飞书机器人不响应">
+									11.7 飞书机器人不响应
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#118-%e5%be%ae%e4%bf%a1%e7%be%a4%e9%87%8c--%e6%9c%ba%e5%99%a8%e4%ba%ba%e6%b2%a1%e5%8f%8d%e5%ba%94" class="nav-118-微信群里--机器人没反应">
+									11.8 微信群里 @ 机器人没反应
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#12---%e5%8f%82%e8%80%83%e5%91%bd%e4%bb%a4%e9%80%9f%e6%9f%a5" class="nav-12---参考命令速查">
+									12 - 参考命令速查
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#13---%e6%80%bb%e7%bb%93" class="nav-13---总结">
+									13 - 总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="nav-参考资料">
+									参考资料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>
