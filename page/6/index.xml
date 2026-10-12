@@ -1,0 +1,24 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Sound of Music</title>
+    <link>https://terryren.github.io/</link>
+    <description>Recent content on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Sun, 11 Oct 2026 21:00:00 +0800</lastBuildDate>
+    
+        <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </channel>
+</rss> 

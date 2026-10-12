@@ -1,0 +1,2319 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Sound of Music</title>
+    <link>https://terryren.github.io/</link>
+    <description>Recent content on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Sun, 11 Oct 2026 21:00:00 +0800</lastBuildDate>
+    
+        <atom:link href="https://terryren.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Windows - 系统 - 垃圾清理 - 脚本</title>
+        <link>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</link>
+        <pubDate>Sat, 03 Feb 2024 15:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/lang/shell/win/bat-clear-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ -&lt;p&gt;&lt;strong&gt;清理系统垃圾&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; off
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除系统垃圾文件，请稍等......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\ServiceProfiles\NetworkService\AppData\Local\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\Windows\ServiceProfiles\LocalService\AppData\Local\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*._mp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.gid
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.chk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\*.old
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%systemdrive%&lt;/span&gt;\recycled\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\*.bak
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\prefetch\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;rd&lt;/span&gt; /s /q &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\temp &amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;md&lt;/span&gt;  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\temp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\cookies\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\AppData\Local\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\AppData\Local\CrashDumps\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temporary Internet Files\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\Local Settings\Temp\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;\recent\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\system32\dllcache\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除浏览器缓存，请稍等......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\AppData\Local\Google\Chrome\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%userprofile%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\AppData\Local\Microsoft\Edge\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 正在清除驱动在安装时留下的解压文件，请稍等......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%SystemDrive%&lt;/span&gt;\AMD\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\Intel\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\NVIDIA\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q  &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\Prog\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 清理 Windows 更新缓存
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;net stop wuauserv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#00688b&#34;&gt;%windir%&lt;/span&gt;\SoftwareDistribution\Download\*.*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;net start wuauserv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt; 清除系统垃圾完成！
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;echo&lt;/span&gt;. &amp;amp; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;pause&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;给 C 盘减负：&lt;code&gt;.cursor&lt;/code&gt; 目录联接&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将 Cursor 配置/缓存目录放到 D 盘，在 C 盘用户目录下用目录联接指过去，可减轻 C 盘占用。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;关闭 Cursor&lt;/strong&gt;，避免占用 &lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在 D 盘建好目标目录（示例：&lt;code&gt;D:\你的用户名\.cursor&lt;/code&gt;），把原 &lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt; 里的内容&lt;strong&gt;剪切&lt;/strong&gt;到该目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;删除&lt;/strong&gt; C 盘侧已空的 &lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt; 文件夹（必须是真实目录，不能残留同名文件夹，否则 &lt;code&gt;mklink&lt;/code&gt; 会失败）。&lt;/li&gt;
+&lt;li&gt;以&lt;strong&gt;管理员身份&lt;/strong&gt;打开「命令提示符」或 PowerShell，执行下面的联接命令（将 &lt;code&gt;{user}&lt;/code&gt; 换成你的 Windows 登录名；也可用下方带 &lt;code&gt;%USERNAME%&lt;/code&gt; 的写法）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 需要管理员&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;mklink&lt;/span&gt; /D &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%USERPROFILE%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\.cursor&amp;#34;&lt;/span&gt; D:\{user}\.cursor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若希望路径随当前用户名自动展开，可用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 需要管理员（目标目录须已存在且已迁入数据）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;mklink&lt;/span&gt; /D &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%USERPROFILE%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\.cursor&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%USERNAME%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\.cursor&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;清理 &lt;code&gt;Windows\Installer&lt;/code&gt;（孤儿补丁缓存）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C:\Windows\Installer&lt;/code&gt; 存放已安装程序的 &lt;code&gt;.msi&lt;/code&gt; / &lt;code&gt;.msp&lt;/code&gt; 补丁缓存，通常体积巨大（10–20 GB+）。其中一部分是&amp;quot;孤儿文件&amp;quot;——对应的程序已卸载，但缓存未被清除。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;此目录&lt;strong&gt;不可直接删除&lt;/strong&gt;，否则会导致程序无法卸载或修复。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原先常用的第三方工具 PatchCleaner（homedev.com.au）已停止维护、官网下线。目前建议通过&lt;strong&gt;系统自带磁盘清理&lt;/strong&gt;来处理：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 管理员运行 - 先配置清理项（勾选全部，尤其&amp;#34;Windows 更新清理&amp;#34;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cleanmgr /d C /sageset:1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 再执行清理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cleanmgr /d C /sagerun:1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;清理 &lt;code&gt;Windows\WinSxS&lt;/code&gt;（组件存储）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;WinSxS（Windows Side-by-Side）是 Windows 的&lt;strong&gt;组件存储&lt;/strong&gt;，位于 &lt;code&gt;C:\Windows\WinSxS&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;为什么体积大？&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 按&lt;strong&gt;组件 + 版本号&lt;/strong&gt;管理系统文件。每次系统更新，新旧版本都保留在 WinSxS 中以便回滚。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C:\Windows\System32&lt;/code&gt; 等目录下的 DLL 实际上是&lt;strong&gt;硬链接&lt;/strong&gt;指向 WinSxS 中的文件。资源管理器和 SpaceSniffer 会&lt;strong&gt;重复计算&lt;/strong&gt;硬链接体积，所以报告值比实际独占空间大（通常只有报告值的 40%–60%）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;查看真实占用：&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 管理员运行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dism.exe /Online /Cleanup-Image /AnalyzeComponentStore
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输出示例：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;组件存储（WinSxS）的大小:          12.35 GB
+与 Windows 共享:                    8.10 GB    ← 硬链接重复部分，不算真正占用
+备份和已禁用的功能:                 1.52 GB
+缓存和临时数据:                     0.73 GB
+可以推荐清理的组件数:              是
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;DISM 清理命令：&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;DISM（Deployment Image Servicing and Management）是 Windows 内置的镜像服务工具，&lt;code&gt;/Cleanup-Image&lt;/code&gt; 子命令用于清理组件存储中&lt;strong&gt;被新版取代的旧版本组件文件&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 温和清理（保留回滚能力，可回收 1-2 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dism.exe /Online /Cleanup-Image /StartComponentCleanup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 深度清理（以当前更新为基线，永久删除旧版本，不可回滚旧更新，可回收 2-5 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;行为&lt;/th&gt;
+&lt;th&gt;回滚能力&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/StartComponentCleanup&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除被取代的旧版本组件&lt;/td&gt;
+&lt;td&gt;保留&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/StartComponentCleanup /ResetBase&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;以当前更新为新基线，永久删除所有旧版本&lt;/td&gt;
+&lt;td&gt;丧失（一般无影响）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;清理用户目录缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目录&lt;/th&gt;
+&lt;th&gt;清理方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Temp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;直接清空（已在上方脚本覆盖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\CrashDumps&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;直接清空（已在上方脚本覆盖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Google\Chrome\...\Cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;清空浏览器缓存（已在上方脚本覆盖）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Microsoft\Edge\...\Cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;同上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\.cursor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;建议 mklink 到 D 盘（见上方小节）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\NuGet\v3-cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;dotnet nuget locals all --clear&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%USERPROFILE%\AppData\Local\Microsoft\Visual Studio&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在 VS 中清理组件缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;清理 AppData 各应用缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;AppData\Local&lt;/code&gt; 是 C 盘用户目录中的&amp;quot;隐形大户&amp;quot;，以下按占用从大到小列出清理建议：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目录&lt;/th&gt;
+&lt;th&gt;大小&lt;/th&gt;
+&lt;th&gt;清理方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Outlook&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~4.3 GB&lt;/td&gt;
+&lt;td&gt;Outlook 离线缓存（OST），在 Outlook → 帐户设置 → 数据文件中，调整邮件保留时间为 3–6 个月&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Google\Chrome&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~3.1 GB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chrome://settings/clearBrowserData&lt;/code&gt; 清理缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;JetBrains&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~3.7 GB&lt;/td&gt;
+&lt;td&gt;IDE → File → Invalidate Caches；删除不再使用的旧版本目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Edge&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.4 GB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;edge://settings/clearBrowserData&lt;/code&gt; 清理缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Packages&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.7 GB&lt;/td&gt;
+&lt;td&gt;UWP 应用数据（含新版 Teams 等），通过 设置 → 应用 → 对应应用 → 重置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;NuGet&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.5 GB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;dotnet nuget locals all --clear&lt;/code&gt;（详见下方说明）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AndroidStudio*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.3 GB&lt;/td&gt;
+&lt;td&gt;不做 Android 开发可卸载；否则 &lt;code&gt;rd /s /q &amp;quot;%USERPROFILE%\.gradle\caches&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Postman&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~1.2 GB&lt;/td&gt;
+&lt;td&gt;Postman 设置中清理历史/响应缓存；不用可卸载&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\VisualStudio&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~887 MB&lt;/td&gt;
+&lt;td&gt;VS Installer → 更多 → 清理下载缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Office&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~716 MB&lt;/td&gt;
+&lt;td&gt;Office 缓存，一般不需手动清&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;YarnCache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~676 MB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;yarn cache clean&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Cursor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~686 MB&lt;/td&gt;
+&lt;td&gt;建议 mklink 到 D 盘（见上方小节）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AzureFunctionsTools&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~459 MB&lt;/td&gt;
+&lt;td&gt;不用可删：&lt;code&gt;rd /s /q &amp;quot;%LOCALAPPDATA%\AzureFunctionsTools&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Terminal Server Client&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~388 MB&lt;/td&gt;
+&lt;td&gt;RDP 位图缓存，可安全删除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;go-build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~294 MB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;go clean -cache&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Microsoft\Teams\Cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;~229 MB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;del /f /s /q &amp;quot;%LOCALAPPDATA%\Microsoft\Teams\Cache\*.*&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;快速清理脚本（可安全执行）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM === AppData 缓存清理 ===&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Yarn 缓存（~676 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yarn cache clean
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM NuGet 全部本地缓存（~1.5 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet nuget locals all --clear
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Go 编译缓存（~294 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;go clean -cache
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM RDP 位图缓存（~388 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Microsoft\Terminal Server Client\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Teams 旧版缓存（~229 MB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Microsoft\Teams\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Edge 缓存（~1.4 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Microsoft\Edge\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM Chrome 缓存（~3.1 GB）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;del&lt;/span&gt; /f /s /q &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;%LOCALAPPDATA%&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;\Google\Chrome\User Data\Default\Cache\*.*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;NuGet 缓存迁移说明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;NuGet.config&lt;/code&gt; 中设置 &lt;code&gt;globalPackagesFolder&lt;/code&gt; 只控制&lt;strong&gt;包文件本体&lt;/strong&gt;的存放位置，NuGet 还有三个独立缓存仍然留在 C 盘：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;缓存目录&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;th&gt;受 &lt;code&gt;globalPackagesFolder&lt;/code&gt; 控制？&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AppData\Local\NuGet\v3-cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;HTTP 响应缓存（包元数据、搜索结果等 API 响应）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;否&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;AppData\Local\NuGet\plugins-cache&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;认证插件缓存（凭据提供程序等）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;否&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Temp\NuGetScratch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;临时工作目录（安装/还原过程中的中间文件）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;否&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;globalPackagesFolder&lt;/code&gt; 指向的目录&lt;/td&gt;
+&lt;td&gt;包文件本体（.nupkg + 解压内容）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;是&lt;/strong&gt; ✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;要将这三个缓存也迁到 D 盘，需要设置&lt;strong&gt;系统环境变量&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;REM 管理员运行 - 永久设置系统环境变量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;setx NUGET_HTTP_CACHE_PATH &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\AppData\nuget\v3-cache&amp;#34;&lt;/span&gt; /M
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;setx NUGET_PLUGINS_CACHE_PATH &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\AppData\nuget\plugins-cache&amp;#34;&lt;/span&gt; /M
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;setx NUGET_SCRATCH &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;D:\AppData\nuget\scratch&amp;#34;&lt;/span&gt; /M
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置后，先清理旧缓存再重启：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dotnet nuget locals all --clear
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;常用磁盘分析工具&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TreeSize Free&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;作用: 图形化展示各文件夹/文件占用空间，支持按大小排序，快速找出大文件/大目录。&lt;/li&gt;
+&lt;li&gt;官网下载: &lt;a href=&#34;https://www.jam-software.com/treesize_free&#34;&gt;https://www.jam-software.com/treesize_free&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SpaceSniffer&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;作用: 以「矩形块」方式直观展示磁盘空间占用情况，适合快速定位&amp;quot;空间杀手&amp;quot;。&lt;/li&gt;
+&lt;li&gt;官网下载: &lt;a href=&#34;http://www.uderzo.it/main_products/space_sniffer&#34;&gt;http://www.uderzo.it/main_products/space_sniffer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+- https://terryren.github.io/posts/lang/shell/win/bat-clear-1/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Maven - 优化</title>
+        <link>https://terryren.github.io/posts/lang/java/maven/</link>
+        <pubDate>Sat, 03 Feb 2024 13:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/lang/java/maven/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/lang/java/maven/ -&lt;p&gt;&lt;strong&gt;优化本地仓库地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;默认情况下，Maven本地包存放在&lt;code&gt;${home}/.m2/repository&lt;/code&gt;，一般在Windows系统的&lt;code&gt;C&lt;/code&gt;盘，会影响系统性能，建议迁移到其他磁盘&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/maven-optimize-1.png&#34; alt=&#34;Maven-1 alt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;修改&lt;code&gt;repository&lt;/code&gt;配置，可采用aliyun等加速网站&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://terryren.github.io/images/lang/java/maven-optimize-2.png&#34; alt=&#34;Maven-1 alt&#34;&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/lang/java/maven/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>APISIX - 1 - 网关搭建</title>
+        <link>https://terryren.github.io/posts/web/nginx/apisix-1/</link>
+        <pubDate>Thu, 01 Feb 2024 13:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/web/nginx/apisix-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/web/nginx/apisix-1/ -&lt;h3 id=&#34;前置条件&#34;&gt;前置条件&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;已安装 Docker，Docker Compose 用于部署 etcd 和 APISIX
+已安装 curl，用于验证 APISIX 是否安装成功&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
+&lt;h4 id=&#34;1-下载文件&#34;&gt;1. 下载文件&lt;/h4&gt;
+&lt;p&gt;初始化相关配置，添加&lt;code&gt;apisix-dashboard&lt;/code&gt;配置文件夹以及文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; ~
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/apache/apisix-docker.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; apisix-docker/example
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir dashboard_conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; ~
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp apisix-docker/all-in-one/apisix-dashboard/conf.yaml apisix-docker/example/dashboard_conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir apisix
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp -r apisix-docker/example/* apisix
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf apisix-docker
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2-apisix-dashboard&#34;&gt;2. apisix-dashboard&lt;/h4&gt;
+&lt;p&gt;注意修改&lt;code&gt;conf.etcd.endpoints&lt;/code&gt;为apisix可访问的地址&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/files/apisix/dashboard/config.yaml&#34; download&gt;dashboard_conf/config.yaml&lt;/a&gt;，内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Licensed to the Apache Software Foundation (ASF) under one or more&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# contributor license agreements.  See the NOTICE file distributed with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# this work for additional information regarding copyright ownership.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# The ASF licenses this file to You under the Apache License, Version 2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# (the &amp;#34;License&amp;#34;); you may not use this file except in compliance with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# the License.  You may obtain a copy of the License at&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#     http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# distributed under the License is distributed on an &amp;#34;AS IS&amp;#34; BASIS,&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# See the License for the specific language governing permissions and&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# limitations under the License.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;conf&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;listen&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;host&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;0.0.0.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# `manager api` listening ip or host name&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9000&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# `manager api` listening port&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;endpoints&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# supports defining multiple etcd host addresses for an etcd cluster&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- http://etcd:2379&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# etcd basic auth info&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# username: &amp;#34;root&amp;#34;    # ignore etcd username if not enable etcd auth&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# password: &amp;#34;123456&amp;#34;  # ignore etcd password if not enable etcd auth&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;log&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;error_log&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;level: warn       # supports levels, lower to higher&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;debug, info, warn, error, panic, fatal&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;file_path&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;logs/error.log &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# supports relative path, absolute path, standard output&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# such as: logs/error.log, /tmp/logs/error.log, /dev/stdout, /dev/stderr&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;authentication&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;secret&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;secret             &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# secret for jwt token generation.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# NOTE: Highly recommended to modify this value to protect `manager api`.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                        &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# if it&amp;#39;s default value, when `manager api` start, it will generate a random string to replace it.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;expire_time&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;3600&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# jwt token expire time, in second&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;users&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;username&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;admin  &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# username and password for login `manager api`&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;password&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;xxxx-todo&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;username&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;user&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;password&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;xxxx-todo&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;plugin_attr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;prometheus&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;export_addr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ip&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9091&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;3-apisix&#34;&gt;3. apisix&lt;/h4&gt;
+&lt;p&gt;默认情况下apisix使用&lt;code&gt;9080&lt;/code&gt;和&lt;code&gt;9443&lt;/code&gt;当作服务入口，端口修改参考如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改&lt;code&gt;apisix_conf/config.yaml&lt;/code&gt; 文件中 HTTP默认端口为&lt;code&gt;80&lt;/code&gt;，HTTPS默认端口为&lt;code&gt;443&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改``docker-compose.yml&lt;code&gt; 文件中 添加&lt;/code&gt;80&lt;code&gt;、&lt;/code&gt;443`两个端口映射&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/files/apisix/apisix/config.yaml&#34; download&gt;apisix_conf/config.yaml&lt;/a&gt;，内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Licensed to the Apache Software Foundation (ASF) under one or more&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# contributor license agreements.  See the NOTICE file distributed with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# this work for additional information regarding copyright ownership.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# The ASF licenses this file to You under the Apache License, Version 2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# (the &amp;#34;License&amp;#34;); you may not use this file except in compliance with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# the License.  You may obtain a copy of the License at&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#     http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# distributed under the License is distributed on an &amp;#34;AS IS&amp;#34; BASIS,&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# See the License for the specific language governing permissions and&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# limitations under the License.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;node_listen&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9080&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;              &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# APISIX listening port&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;enable_ipv6&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;enable_control&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;control&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ip&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9092&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;deployment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;admin&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;allow_admin&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;               &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# https://nginx.org/en/docs/http/ngx_http_access_module.html#allow&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#b452cd&#34;&gt;0.0.0.0&lt;/span&gt;/0             &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# We need to restrict ip access rules for security. 0.0.0.0/0 is for test.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;admin_key&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;key&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;edd1c9f034335f136f87ad84b625c8f1&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;role: admin                 # admin&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;manage all configuration data&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;viewer&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;key&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;4054f7cf07e344346cd3f287985e76a2&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;role&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;viewer&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;host&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;                           &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# it&amp;#39;s possible to define multiple etcd hosts addresses of the same etcd cluster.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;http://etcd:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# multiple etcd address&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;prefix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/apisix&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;               &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# apisix configurations prefix&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;timeout&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;30&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;                     &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 30 seconds&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;plugin_attr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;prometheus&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;export_addr&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ip&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;port&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;9091&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;4-docker-compose&#34;&gt;4. docker-compose&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;如果服务器内存不足，建议&lt;code&gt;docker-compose.yml&lt;/code&gt;中的移除&lt;code&gt;prometheus&lt;/code&gt;以及&lt;code&gt;grafana&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加节点&lt;code&gt;apisix-dashboard&lt;/code&gt;，用于可视化管理网关&lt;/li&gt;
+&lt;li&gt;etcd的数据映射到本地docker磁盘，可通过命令查看&lt;code&gt;sudo ls /var/lib/docker/volumes/apisix_etcd_data/_data&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/files/apisix/docker-compose.yml&#34; download&gt;docker-compose.yml&lt;/a&gt;，内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Licensed to the Apache Software Foundation (ASF) under one or more&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# contributor license agreements.  See the NOTICE file distributed with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# this work for additional information regarding copyright ownership.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# The ASF licenses this file to You under the Apache License, Version 2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# (the &amp;#34;License&amp;#34;); you may not use this file except in compliance with&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# the License.  You may obtain a copy of the License at&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#     http://www.apache.org/licenses/LICENSE-2.0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Unless required by applicable law or agreed to in writing, software&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# distributed under the License is distributed on an &amp;#34;AS IS&amp;#34; BASIS,&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# See the License for the specific language governing permissions and&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# limitations under the License.&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix-dashboard&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apache/apisix-dashboard:3.0.0-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- etcd&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;##network_mode: host&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9000:9000/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;apache/apisix:${APISIX_IMAGE_TAG:-3.8.0-debian}&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;depends_on&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- etcd&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;##network_mode: host&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9180:9180/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9080:9080/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9091:9091/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9443:9443/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9092:9092/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bitnami/etcd:3.5.11&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- etcd_data:/bitnami/etcd&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ETCD_ENABLE_V2&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ALLOW_NONE_AUTHENTICATION&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ETCD_ADVERTISE_CLIENT_URLS&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;http://etcd:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ETCD_LISTEN_CLIENT_URLS&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;http://0.0.0.0:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;2379:2379/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;web1&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;nginx:1.19.0-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./upstream/web1.conf:/etc/nginx/nginx.conf&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9081:80/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- NGINX_PORT=80&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;web2&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;nginx:1.19.0-alpine&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- ./upstream/web2.conf:/etc/nginx/nginx.conf&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;9082:80/tcp&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;- NGINX_PORT=80&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;networks&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;apisix&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;driver&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;bridge&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;etcd_data&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;driver&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;local&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;5-启动&#34;&gt;5. 启动&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;docker-compose -p APISIX up -d&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;6-验证&#34;&gt;6. 验证&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;网关验证&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;curl &amp;quot;http://127.0.0.1:9080&amp;quot; --head&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;验证面板&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;http://127.0.0.1:9000/dashboard&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;7-停止&#34;&gt;7. 停止&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;docker-compose -p APISIX down&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;8-清理&#34;&gt;8. 清理&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm apisix-dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm apisix
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm web1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker rm web2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker network rm apisix
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/gtamas/etcdmanager/releases/tag/1.2.0&#34;&gt;etcd manager&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;9-网络&#34;&gt;9. 网络&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看docker网络&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker network ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 查看网络细节&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker network inspect apisix_apisix
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;参考文档&#34;&gt;参考文档&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://apisix.apache.org/zh/docs/apisix/getting-started/README/&#34;&gt;官方入门文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://apisix.apache.org/zh/docs/apisix/installation-guide/&#34;&gt;APISIX 安装指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/posts/web/nginx/nginx-1/&#34; title=&#34;Nginx-静态网站&#34;&gt;Nginx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://terryren.github.io/posts/web/crypto/certification/&#34; title=&#34;Certification-相关&#34;&gt;Certification&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/johar99/article/details/113651925&#34;&gt;Docker 自定义桥接ip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/harryhare/article/details/83317987&#34;&gt;TCP 网络状态图&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/web/nginx/apisix-1/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>密码学 - 数字证书</title>
+        <link>https://terryren.github.io/posts/web/crypto/certification/</link>
+        <pubDate>Sat, 14 Oct 2023 13:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/web/crypto/certification/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/web/crypto/certification/ -&lt;h1 id=&#34;pki&#34;&gt;PKI&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;公开密钥基础建设（Public Key Infrastructure），是一组由硬件、软件、参与者、管理政策与流程组成的基础架构，其目的在于创造、管理、分配、使用、存储以及撤销数字证书，
+从而建立一个安全的网络环境，数字证书最常见的格式有X.509，X.509又称之为PKIX。
+在计算机界，有各种密码学标准，它们表示了如何在计算机中计算、存储、传输（等）各种算法，这些标准由 RSA、IEFT、PKIX、ITU-T、ISO 等标准组织机构编写, CA中心普遍采用的规范是X.509系列和PKCS系列&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;ca&#34;&gt;CA&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;证书颁发机构&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;csr&#34;&gt;CSR&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;证书签名请求&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;crl&#34;&gt;CRL&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;证书吊销列表&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;ocsp&#34;&gt;OCSP&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在线证书状态协议&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;pkcs&#34;&gt;PKCS&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;公钥私钥加密-密码学标准（Public Key Cryptography Standards, PKCS），此一标准的设计与发布皆由 &lt;code&gt;RSA&lt;/code&gt; 资讯安全公司（英语：RSA Security）所制定
+包括了证书申请、证书更新、证书作废表发布、扩展证书内容以及数字签名、数字信封的格式等方面的一系列相关协议。它定义了一系列从PKCS#1到PKCS#15的标准&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;pkcs1&#34;&gt;pkcs1&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PKCS #1，RSA Cryptography Standard，定义了RSA Public Key和Private Key数学属性和格式，详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc8017&#34;&gt;RFC8017&lt;/a&gt;
+定义了RSA的数理基础、公/私钥格式，以及加/解密、签/验章的流程。1.5版本曾经遭到攻击&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl genrsa -out key.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Private Key Format&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PRIVATE KEY-----
+BASE64Encoded
+-----END RSA PRIVATE KEY-----
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Public Key Format&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN RSA PUBLIC KEY-----
+BASE64Encoded
+-----END RSA PUBLIC KEY-----
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs7&#34;&gt;pkcs7&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参见RFC 2315。规范了以公开密钥基础设施（PKI）所产生之签名/密文之格式。其目的一样是为了拓展数字证书的应用。
+其中，包含了S/MIME与CMS。
+主要用来存储签名或者加密后的数据,如证书或者CRL。
+PKCS7可以用二进制的DER格式存储，也可以使用PEM格式存储。Windows中PKCS7通常使用&lt;code&gt;.p7b&lt;/code&gt;文件扩展名&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;‑‑‑‑‑BEGIN PKCS7‑‑‑‑‑
+
+‑‑‑‑‑END PKCS7‑‑‑‑‑
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PKCS7的文件从PEM格式转换成为DER格式&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -outform DER -out file.der
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;文件中提取出所有的证书到另外一个文件&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs7 -in file.pem -print_certs -out certs.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs8&#34;&gt;pkcs8&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PKCS #8，Private-Key Information Syntax Standard，详细的描述了私钥的存储格式。用于加密、非加密地存储Private Certificate Keypairs（不限于RSA），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5958&#34;&gt;RFC5858&lt;/a&gt;
+Apache读取证书私钥的标准。主要用来存储私钥。私钥首先会使用PKCS #5的标准进行加密，然后&lt;code&gt;Base64&lt;/code&gt;编码，转换成为&lt;code&gt;PEM&lt;/code&gt;格式存储&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一个非加密 ECC 私钥的 PKCS#8&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQglQanBRiYVPX7F2Rd
+4CqyjEN0K4qfHw4tM/yMIh21wamhRANCAARsxaI4jT1b8zbDlFziuLngPcExbYzz
+ePAHUmgWL/ZCeqlODF/l/XvimkjaWC2huu1OSWB9EKuG+mKFY2Y5k+vF
+-----END PRIVATE KEY-----
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;一个加密 PKCS#8 私钥的 PEM 格式&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN ENCRYPTED PRIVATE KEY-----
+Base64 xxxxxx
+-----END ENCRYPTED PRIVATE KEY-----
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;RSA 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in rsa-private-key.pem -outform PEM -nocrypt -out rsa-private-key-pkcs8.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;ECC 私钥转换为 PKCS#8&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs8 -topk8 -inform PEM -in ecc-private-key.pem -outform PEM -nocrypt -out ecc-private-key-pkcs8.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pkcs12&#34;&gt;pkcs12&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;定义了包含私钥（Private Keys）与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。PKCS12文件的扩展名是&lt;code&gt;.p12&lt;/code&gt;、&lt;code&gt;.pfx&lt;/code&gt;、&lt;code&gt;.jks&lt;/code&gt;。
+PKCS12可以看做是PKCS7的扩展，PKCS12可以额外存储私钥、证书、私钥、CRL
+Private Keys和Public Key Certificates是复数形式，这意味着PKCS #12文件实际上是一个Keystore，PKCS #12文件可以被用做Java Key Store（JKS），详见&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc7292&#34;&gt;RFC7292&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;将PKCS12格式转换成为PEM&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;从PEM到PKCS12&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;x509&#34;&gt;X509&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;X.509是ITU-T标准化部门基于他们之前的ASN.1定义的一套证书标准，在X.500基础上进行了功能增强
+X.509是在1988年发布的。X.509证书由用户公共密钥和用户标识符组成。此外还包括版本号、证书序列号、CA标识符、签名算法标识、签发者名称、证书有效期等信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Certificate Format&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN CERTIFICATE-----
+BASE64Encoded
+-----END CERTIFICATE-----
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Certificate Subject Public Key Info&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-----BEGIN PUBLIC KEY-----
+BASE64Encoded
+-----END PUBLIC KEY-----
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;asn1&#34;&gt;ASN.1&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在电信和计算机网络领域，ASN.1（Abstract Syntax Notation One) 是一套标准，是描述数据的表示、编码、传输、解码的灵活的记法。
+它提供了一套正式、无歧义和精确的规则以描述独立于特定计算机硬件的对象结构。
+ASN.1是ISO和ITU-T的联合标准，最初是1984年的CCITT X.409:1984的一部分。由于其广泛应用，1988年ASN.1移到独立标准X.208，1995年进行全面修订后变成X.680系列标准&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;pem&#34;&gt;PEM&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PEM文件是一个文本文件，其内容是以“ – BEGIN -” 开头，中间内容是DER文件的Base64编码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;查看文本证书内容&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.pem -text -noout
+openssl x509 -in cert.cer -text -noout
+openssl x509 -in cert.crt -text -noout
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;PEM-To-DER&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -outform der-out cert.der
+openssl rsa -in key.pem -outform der -out key.der
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;der&#34;&gt;DER&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DER表示证书的内容是用二进制进行编码的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;查看二进制证书内容&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.der -inform der -text -noout
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;DER-To-PEM&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;openssl x509 -in cert.crt -inform der -outform pem -out cert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/543707056&#34;&gt;密码学标准 - X.509 与 PKCS 系列&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0%E5%9F%BA%E7%A4%8E%E5%BB%BA%E8%A8%AD&#34;&gt;PKI-1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/30136885&#34;&gt;PKI-2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A0%87%E5%87%86#&#34;&gt;PKCS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/X.509&#34;&gt;X.509&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.1&#34;&gt;X.509-RFC5280&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/Pem%E6%A0%BC%E5%BC%8F&#34;&gt;Pem&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/zh-cn/ASN.1&#34;&gt;ASN.1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/HKnight/p/16851786.html&#34;&gt;证书认证原理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chanjarster.github.io/post/x509-pkcs-file-formats/&#34;&gt;X.509、PKCS文件格式介绍&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/bc32cbfe49e7&#34;&gt;常见的PKI标准(X.509、PKCS)及证书相关介绍&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/web/crypto/certification/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>英语时态</title>
+        <link>https://terryren.github.io/posts/misc/english/grammar/verb-tenses/</link>
+        <pubDate>Sat, 12 Aug 2023 15:19:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/misc/english/grammar/verb-tenses/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/misc/english/grammar/verb-tenses/ -&lt;p&gt;12 Tensens&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Simple&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Continuous&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Perfect&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Perfect Continuous&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Past&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;1.1&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;1.2&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;1.3&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;1.4&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Present&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;2.1&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;2.2&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;2.3&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;2.4&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Future&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;3.1&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;3.2&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;3.3&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;code&gt;3.4&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;1-past&#34;&gt;1 Past&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What happened.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;11-past-simple&#34;&gt;1.1 Past Simple&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We use the past simple to talk about something that happened at a specific time in the past.&lt;/p&gt;
+&lt;p&gt;We can&amp;rsquo;t change it.&lt;/p&gt;
+&lt;p&gt;We often use or imply expressions like yesterday, last week, last month.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For All The People&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sound like &lt;code&gt;/t/&lt;/code&gt; or &lt;code&gt;/id/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/verb+ed/&lt;/code&gt; , except&amp;hellip; (buy &amp;ndash;&amp;gt; bought; sell &amp;ndash;&amp;gt; sold; speak &amp;ndash;&amp;gt; spoke; put &amp;ndash;&amp;gt; put)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/Did/&lt;/code&gt; &amp;hellip; &lt;code&gt;/verb/&lt;/code&gt; &amp;hellip;&lt;code&gt;?&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It rained.
+It didn&amp;#39;t rain.
+Did it rain? 
+Did you like football in the middle school?
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;12-past-continuous&#34;&gt;1.2 Past Continuous&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Talk about a continuous action that happened in the past at the same time as another continuous action.&lt;/p&gt;
+&lt;p&gt;A continuous action in the past that was interrupted with a shorter action.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/was/&lt;/code&gt; or &lt;code&gt;/wasn&#39;t/&lt;/code&gt;) + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(The Second Person) &lt;code&gt;/were/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It was raining.
+It wasn&amp;#39;t raining.
+Was it raining?
+I was tidying the house while she was cooking.
+You were playing football while i was watching TV.
+The kids were playing while i was working.
+I was reading when the phone rang.
+She was working when I got home.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;13-past-perfect&#34;&gt;1.3 Past Perfect&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When we&amp;rsquo;re talking about two actions that happened in the past, we use this tense to talk about the action that happened first.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/had/&lt;/code&gt; or &lt;code&gt;/hadn&#39;t/&lt;/code&gt;) +  &lt;code&gt;/verb+ed/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It had rained.
+It hadn&amp;#39;t rained.
+Had it rained?
+I had heared the news before you told me.
+I had lived in Beijing before i started learning english.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;14-past-perfect-continuous&#34;&gt;1.4 Past Perfect Continuous&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Here we have 2 actions that happened in the past.
+The first one is a continuous action that started and finished before the second one started.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/had/&lt;/code&gt; or &lt;code&gt;/hadn&#39;t/&lt;/code&gt;) + &lt;code&gt;/been/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It had been raining.
+It hadn&amp;#39;t been raining.
+Had it been raining.
+I&amp;#39;d been looking for a job for months before I decided to start a business.
+She had been feeling sick most mornings, so she went to see a doctor.
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;2-present&#34;&gt;2 Present&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is happening now.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;21-present-simple&#34;&gt;2.1 Present Simple&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We use this to talk about things that happen in general, routines, facts.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a really common tense.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/verb/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/Do/&lt;/code&gt; &amp;hellip; &lt;code&gt;/verb/&lt;/code&gt;  &amp;hellip; &lt;code&gt;?&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(The Third Person) &lt;code&gt;/verb+s/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(The Third Person) &lt;code&gt;/Does/&lt;/code&gt; &amp;hellip; &lt;code&gt;/verb/&lt;/code&gt;  &amp;hellip; ?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It rains.
+It doesn&amp;#39;t rain. 
+Does it rain?
+Do you like football?
+Does she like basketball?
+I get up at 7 o&amp;#39;clock every day.
+We leave the house at 8:30 am.
+She plays the violin.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;22-present-continuous&#34;&gt;2.2 Present Continuous&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Talk about things that are Happening right now.&lt;/p&gt;
+&lt;p&gt;Talk about temporary things&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/am/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/are/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(The Third Person) &lt;code&gt;/is/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;I am explaining the present continuous.
+You are watching a video.
+She is living in New York.
+It is raining.
+It is&amp;#39;t raining.
+Is it raining?
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;23-present-perfect&#34;&gt;2.3 Present Perfect&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;An action that happened in a &lt;code&gt;time period&lt;/code&gt; that haven&amp;rsquo;t finished&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An action that happened in the past, but it has a real clear effect on the present.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/have/&lt;/code&gt; or &lt;code&gt;/haven&#39;t/&lt;/code&gt;) + &lt;code&gt;/verb+ed/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(The Third Person) (&lt;code&gt;/has/&lt;/code&gt; or &lt;code&gt;/hasn&#39;t/&lt;/code&gt;) + &lt;code&gt;/verb+ed/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It has rained.
+It has&amp;#39;t rained.
+Has it rained?
+I have spoken to him 3 times today.
+I have been to Canada twice.
+Call an ambulance. This man has fallen!
+I&amp;#39;ve lost my sunglasses. Can i borrow yours?
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;24-present-perfect-continuous&#34;&gt;2.4 Present Perfect Continuous&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Basically, we use this tense to talk about a continuous action that started at a specific time in the past and is still ture now.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/have/&lt;/code&gt; or &lt;code&gt;/haven&#39;t/&lt;/code&gt;) + &lt;code&gt;/been/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(The Third Person) (&lt;code&gt;/has/&lt;/code&gt; or &lt;code&gt;/hasn&#39;t/&lt;/code&gt;)  + &lt;code&gt;/been/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It has been raining.
+It hasn&amp;#39;t been raining.
+Has it been raining?
+I have been teaching english on Youtube for 6 years.
+He has been studying medicine since last year.
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;3-future&#34;&gt;3 Future&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What will happen in the future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;31-future-simple&#34;&gt;3.1 Future Simple&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What will happen in the future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/will/&lt;/code&gt; + &lt;code&gt;/verb/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(&lt;code&gt;/will not/&lt;/code&gt; or &lt;code&gt;/won&#39;t/&lt;/code&gt;) + &lt;code&gt;/verb/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It will rain.
+It will not rain.
+It won&amp;#39;t rain.
+Will it rain?
+He will get?
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;32-future-continuous&#34;&gt;3.2 Future Continuous&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A continuous action that will be happening at a specific time in the future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/will/&lt;/code&gt; or &lt;code&gt;/won&#39;t/&lt;/code&gt;) + &lt;code&gt;/be/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It will be raining.
+It won&amp;#39;t be raining.
+Will it be raining?
+I will be sleeping when you come home.
+I&amp;#39;ll be driving at 11 pm.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;33-future-perfect&#34;&gt;3.3 Future Perfect&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;So when we&amp;rsquo;re talking about two actions that happen in the future, we use this tense to express which action will happen first.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/will/&lt;/code&gt; or &lt;code&gt;/won&#39;t/&lt;/code&gt;) + &lt;code&gt;/have/&lt;/code&gt; + &lt;code&gt;/verb+ed/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It will have rained.
+It won&amp;#39;t have rained.
+Will it have rained?
+By the time he wakes up, Jack will have brought him presents.
+He will have made dinner, when they get home.
+I will have left the house, if you come after 2 pm.
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;34-future-perfect-continuous&#34;&gt;3.4 Future Perfect Continuous&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We use this tense to talk about the duration that we expect something to happen until a specific moment in the future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Form&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;code&gt;/will/&lt;/code&gt; or &lt;code&gt;/won&#39;t/&lt;/code&gt;) + &lt;code&gt;/have/&lt;/code&gt; + &lt;code&gt;/been/&lt;/code&gt; + &lt;code&gt;/verb+ing/&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;It will have been raining.
+It won&amp;#39;t have been raining.
+Will it have been raining?
+In the 2030, i will have been working here for 15 years.
+You will have been cooking for 3 hours when i get back.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=cGb4qwKV-to&#34;&gt;Reference#1&lt;/a&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=8hPtgyZVgb0&#34;&gt;Reference#2&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/misc/english/grammar/verb-tenses/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>一周减脂餐</title>
+        <link>https://terryren.github.io/posts/misc/health/health-eat-1/</link>
+        <pubDate>Tue, 04 Apr 2023 14:38:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/misc/health/health-eat-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/misc/health/health-eat-1/ -&lt;blockquote&gt;
+&lt;p&gt;中午工作餐，一碗米饭，油腻少吃&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;星期一&#34;&gt;星期一&lt;/h3&gt;
+&lt;h4 id=&#34;早餐&#34;&gt;早餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;杯牛奶&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2&lt;/code&gt;片全麦面包&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个水煮蛋 | 五谷膳食&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;晚餐&#34;&gt;晚餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份蔬菜 | &lt;code&gt;1&lt;/code&gt;个玉米&lt;/li&gt;
+&lt;li&gt;苹果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;星期二&#34;&gt;星期二&lt;/h3&gt;
+&lt;h4 id=&#34;早餐-1&#34;&gt;早餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;五谷杂粮 (大米 | 小麦 | 高粱 | 大豆 | 玉米)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;晚餐-1&#34;&gt;晚餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;地瓜&lt;/li&gt;
+&lt;li&gt;橙子&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;星期三&#34;&gt;星期三&lt;/h3&gt;
+&lt;h4 id=&#34;早餐-2&#34;&gt;早餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;杯牛奶&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个蒸玉米&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个水煮蛋 | 荷包蛋&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;晚餐-2&#34;&gt;晚餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份蔬份菜&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份山药泥&lt;/li&gt;
+&lt;li&gt;鸭梨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;星期四&#34;&gt;星期四&lt;/h3&gt;
+&lt;h4 id=&#34;早餐-3&#34;&gt;早餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;大米粥&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个包子&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个水煮蛋&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;晚餐-3&#34;&gt;晚餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份土豆泥&lt;/li&gt;
+&lt;li&gt;火龙果&lt;/li&gt;
+&lt;li&gt;橘子&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;星期五&#34;&gt;星期五&lt;/h3&gt;
+&lt;h4 id=&#34;早餐-4&#34;&gt;早餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;杯牛奶&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份煎鸡蛋&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个地瓜 | 南瓜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;晚餐-4&#34;&gt;晚餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份五谷杂粮&lt;/li&gt;
+&lt;li&gt;猕猴桃&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;星期六&#34;&gt;星期六&lt;/h3&gt;
+&lt;h4 id=&#34;早餐-5&#34;&gt;早餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;杯牛奶&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份煎鸡蛋&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个地瓜 | 南瓜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;晚餐-5&#34;&gt;晚餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个玉米&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份蔬份菜&lt;/li&gt;
+&lt;li&gt;核桃 | 杏仁&lt;/li&gt;
+&lt;li&gt;火龙果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;星期日&#34;&gt;星期日&lt;/h3&gt;
+&lt;h4 id=&#34;早餐-6&#34;&gt;早餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份纯燕麦片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份煎鸡蛋&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个地瓜 | 南瓜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;午餐&#34;&gt;午餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;白虾 | 基围虾&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2&lt;/code&gt;份蔬份菜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;晚餐-6&#34;&gt;晚餐&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;个玉米&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;份蔬份菜&lt;/li&gt;
+&lt;li&gt;橙子&lt;/li&gt;
+&lt;li&gt;火龙果&lt;/li&gt;
+&lt;/ul&gt;
+- https://terryren.github.io/posts/misc/health/health-eat-1/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>中国历史纪年简表</title>
+        <link>https://terryren.github.io/posts/misc/his/his-table/</link>
+        <pubDate>Mon, 03 Apr 2023 15:19:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/misc/his/his-table/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/misc/his/his-table/ -&lt;h1 id=&#34;三皇五帝&#34;&gt;三皇五帝&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;伏羲&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;炎帝&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;黄帝&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;尧&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;舜&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;夏&#34;&gt;夏&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;禹之子启建夏 世袭制取代禅让 启死 五子争权
+历经太康失国 后羿代夏 少康中兴事件 末期至
+桀 内政不修外患不断 商汤征讨于鸣条 夏朝亡&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;470&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前2070─1600年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;安邑&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;山西夏县&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;商&#34;&gt;商&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;商汤 子姓名履 其始祖契曾辅佐大禹 封于商地
+汤王灭夏桀 建商朝 盘庚迁都于殷 故又称殷朝
+殷墟著名出土文物 甲骨文 司母戊鼎 四羊方尊&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;550&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前1601─1046年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;毫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南商丘&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;周&#34;&gt;周&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;周文王之子周武王讨伐殷纣于牧野 纣自焚鹿台
+周都镐京 施行 【&lt;code&gt;分封亲戚以藩屏周&lt;/code&gt;】
+公元前841年出现共和行政 史称共和元年 公元前206年覆&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;西周&#34;&gt;西周&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;周朝东迁之前史称西周 历12王 至公元前771年
+宣王之子幽王被犬戎人杀于骊山之下 西周灭亡 【&lt;code&gt;烽火戏诸侯&lt;/code&gt;】&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;275&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前1046─771年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;镐京&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;东周&#34;&gt;东周&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;幽王太子宣臼由镐京迁周都于洛邑 史称为东周&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;515&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前770─256年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;洛邑&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南洛阳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;春秋&#34;&gt;春秋&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;春秋时期 周王朝衰败 诸侯争霸 致使战乱四起&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;295&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前770─476年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;战国&#34;&gt;战国&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;韩、赵、魏 三家分晋，战国开启
+中国社会由奴隶制进入封建社会 出现战国七雄&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;255&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前475─221年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;秦&#34;&gt;秦&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;秦于战国七雄中崛起吞并六国 首建集权制帝国
+嬴政称始皇帝 定都咸阳 统一文字货币度量衡
+有焚书坑儒修长城等史事 因暴政致秦二世而亡&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前221─206年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;咸阳&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西咸阳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;汉&#34;&gt;汉&lt;/h1&gt;
+&lt;h2 id=&#34;西汉&#34;&gt;西汉&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;刘邦垓下之战 灭掉项羽 称帝于长安 史称西汉&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;215&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元前206─公元8年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;长安&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;新莽&#34;&gt;新莽&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;公元8年底 王莽篡夺汉位称帝 改国号曰【&lt;code&gt;新&lt;/code&gt;】&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元9─25年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;常安&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;东汉&#34;&gt;东汉&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;刘秀灭掉王莽 夺回政权 并建都洛阳 史称东汉&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;196&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元25─220年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;洛阳&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南洛阳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;三国&#34;&gt;三国&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;东汉后期 曹操挟天子以令诸侯 出现三国鼎立|&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;曹魏&#34;&gt;曹魏&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;220年 曹丕废汉献帝而称帝 追尊曹操为魏武帝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;46&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元220─265年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;洛阳&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南洛阳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;蜀汉&#34;&gt;蜀汉&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;221年 诸葛亮扶佐刘备称帝 国【&lt;code&gt;汉&lt;/code&gt;】史称蜀汉&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;44&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元221─263年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;成都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;四川成都&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;孙吴&#34;&gt;孙吴&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;222年 孙权也在武昌称帝 国号【&lt;code&gt;吴&lt;/code&gt;】史称东吴&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;59&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元222─280年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;建业&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;晋&#34;&gt;晋&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;司马炎废魏 于洛阳称帝 建晋 结束了三国鼎立&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;西晋&#34;&gt;西晋&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自司马炎建晋至愍帝司马邺终 共4帝 史称西晋&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;53&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元265─317年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;洛阳&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南洛阳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;东晋&#34;&gt;东晋&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;八王作乱 胡人起兵 晋宗室退守江东 史称东晋&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;104&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元317─420年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;建康&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;五胡十六国&#34;&gt;五胡十六国&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;胡首领纷纷建国并与东晋对峙 史称五胡十六国&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;135&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元304─439年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;南北朝&#34;&gt;南北朝&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;东晋五胡十六国后 中国进入南北分裂对峙阶段&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;南朝&#34;&gt;南朝&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;南方先后有宋齐梁陈四个政权更迭 史称为南朝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;朝代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;宋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;60&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元420─479年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;建康&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;齐&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;24&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元479─502年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;建康&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;梁&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;56&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元502─557年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;建康&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陈&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;33&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元557─589年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;建康&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;北朝&#34;&gt;北朝&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;北方历经北魏东魏西魏北齐北周政权 史称北朝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;朝代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北魏&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;149&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元386─534年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;洛阳&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南洛阳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;东魏&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;17&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元534─550年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;邺&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南临漳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;西魏&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;22&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元535─556年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;长安&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北齐&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;28&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元550─577年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;邺&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南临漳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北周&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;25&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元557─581年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;长安&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;隋&#34;&gt;隋&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;北周外戚杨坚夺位 建隋朝 灭陈粱 重新统一全国
+隋炀帝奢腐致义军四起 后被部将刺杀 隋灭&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;38&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元581─618年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;大兴&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;唐&#34;&gt;唐&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;隋炀帝被杀 隋恭帝禅位李渊 改国号唐 都长安
+李世民统一大唐继位天下升平 史称【&lt;code&gt;贞观之治&lt;/code&gt;】&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;290&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元618─907年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;长安&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;武周&#34;&gt;武周&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;天授元年 武则天废睿宗称帝 自名武曌,国号周
+705年   宰相张柬之乘武则天病危 拥立中宗复位&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;21&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元684─705年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;长安&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;陕西西安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;五代十国&#34;&gt;五代十国&lt;/h1&gt;
+&lt;h2 id=&#34;五代&#34;&gt;五代&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;唐末出现宦官籓镇之乱及黄巢起义 朱全忠篡唐建后粱
+又历经【&lt;code&gt;唐晋汉周&lt;/code&gt;】更替  史称为五代&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;朝代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;后梁&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;17&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元907─923年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;汴&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南开封&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;后唐&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;14&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元923─936年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;洛阳&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南洛阳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;后晋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元936─947年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;汴&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南开封&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;后汉&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元947─950年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;汴&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南开封&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;后周&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元951─960年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;汴&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南开封&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;十国&#34;&gt;十国&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;五代 乃中原五个王朝 此期前后 南方分別产生
+十个割据政权 史称十国  辽和西夏于同期并存&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;朝代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;杨吴&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;36&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元902-937年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;扬州&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏扬州&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;前蜀&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;19&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元907-925年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;成都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;四川成都&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;吴越&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;72&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元907-978年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;杭州&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;浙江杭州&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;马楚&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;25&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元927-951年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;长沙&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;湖南长沙&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;南汉&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;55&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元917-971年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;兴王府&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;广东广州&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;闽国&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;37&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元909-945年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;长乐&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;福建福州&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;南平&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;40&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元924-963年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;荆州&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;湖北荆州&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;后蜀&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;32&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元934-965年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;成都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;四川成都&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;南唐&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;39&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元937-975年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;金陵&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;江苏南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北汉&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;29&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元951-979年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;太原&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;山西太原&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;宋&#34;&gt;宋&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;后周大将赵匡胤 陈桥兵变 取得帝位 更号建宋
+终结唐末五代十国局面 再次统一政权  历九帝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;北宋&#34;&gt;北宋&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因金军入侵而京都南迁之前的宋王朝 称为北宋&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;168&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元960─1127年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;开封&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;河南开封&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;南宋&#34;&gt;南宋&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;金兵犯宋 宋蒙靖康之耻 高宗南渡后 偏安一隅&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;150&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1127─1276年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;临安&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;浙江临安&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;辽&#34;&gt;辽&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;契丹民族发源于赤峰 唐末907年后 耶律阿保机趁中原之乱 统一契丹建国
+统治北方达300余年&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;契丹&#34;&gt;契丹&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;916年 耶律阿保机统一契丹族各部后,建契丹国&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;41&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元907─947年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;皇都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;辽宁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;辽国&#34;&gt;辽国&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;947年 改契丹国号为辽 与宋朝对峙  灭于女真&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;179&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元947─1125年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;皇都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;辽宁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;西辽&#34;&gt;西辽&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;辽亡 耶律大石西迁重建  至1211年被篡位而止&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;87&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1125─1211年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;皇都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;辽宁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;大理&#34;&gt;大理&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;317&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元937─1254年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;太和城&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;云南大理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;西夏&#34;&gt;西夏&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;195&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1032─1227年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;兴庆府&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;宁夏银川&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;金&#34;&gt;金&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;女真族源于黑龙江一带鱼猎为生 因反抗辽的奴役而叛乱
+完颜阿骨打建金国  与后宋联手灭辽&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;120&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1115─1234年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;中都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;元&#34;&gt;元&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1206年 铁木真统一蒙古各部落进位为帝国大汗
+其征服地域：西达黑海海滨 东括几乎整个东亚
+1227年灭掉西夏国 1234年又联手南宋灭掉金国
+1271年 忽必烈称帝 改国号为元 继续围攻南宋
+1276年 伯颜攻入临安 南宋亡 元朝被列入正史&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;朝代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;蒙古&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;66&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1206─1271年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;元朝&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;98&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1271─1368年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;大都&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;明&#34;&gt;明&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;元末 朝政腐败且横征暴敛  1351年郭子兴起义
+1368年 朱元璋应天府称帝建明 攻占大都 元亡明后期衰败
+清国占辽东 李自成入京称帝 明亡&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;276&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1368─1644年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;清&#34;&gt;清&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1616年, 努尔哈赤统一女真族建后金, 明末攻入辽东
+1636年, 皇太极称帝, 改金为清, 改族名满
+1644年, 吴三桂引清入关打败李自成, 清入正史&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;267&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1644─1911年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;民国&#34;&gt;民国&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1911年10月,孙中山发动辛亥革命,建中华民国&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;38&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1911─1949年&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;南京&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;南京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;中华人民共和国&#34;&gt;中华人民共和国&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;日寇投降, 毛泽东挥师解放全中国&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;历时&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;起始年代&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;都城&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;今地&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;公元1949年10月1日&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;北京&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;辅助记忆&#34;&gt;辅助记忆&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;三皇五帝始，尧舜禹相传；
+夏商与西周，东周分两段；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;春秋和战国，一统秦两汉；
+三分魏蜀吴，二晋前后沿；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;南北朝并立，隋唐五代传；
+宋元明清后，皇朝至此完。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/409390451&#34;&gt;引用-1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhonghuadiancang.com/guoxuezhishi/1317/&#34;&gt;引用-2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://baike.baidu.com/item/%E4%B8%89%E7%9A%87%E4%BA%94%E5%B8%9D/138427&#34;&gt;引用-3&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/misc/his/his-table/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Nginx - 1 - 单页面静态网站配置</title>
+        <link>https://terryren.github.io/posts/web/nginx/nginx-1/</link>
+        <pubDate>Fri, 10 Mar 2023 17:56:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/web/nginx/nginx-1/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/web/nginx/nginx-1/ -&lt;p&gt;刷新页面，默认重定向到Index.html&lt;/p&gt;
+&lt;p&gt;静态目录(static)，找不到默认404&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;server {
+  listen       8080;
+  server_name  localhost;
+
+  client_max_body_size 10m;
+  client_header_buffer_size 256k;
+  large_client_header_buffers 4 256k;
+
+  root /opt/vue;
+
+  location /faq {
+      default_type text/html;
+      return 200 &amp;#39;&amp;lt;!--faq--&amp;gt;&amp;#39;;
+  }
+
+  location /static/ {
+      try_files \$uri \$uri =404;
+  }
+
+  location / {
+      add_header Cache-Control &amp;#39;no-cache&amp;#39;;
+      try_files \$uri \$uri /index.html;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;附加问题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/sh2018/article/details/103430125&#34;&gt;400 Bad Request Request Header Or Cookie Too Large&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/4855?time__1311=n4%2BxnD0D9DBDy7DRDR2DBqOoUPqWq0QGTzreG4D&#34;&gt;Nginx配置不当可能导致的安全问题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ghosind.com/2020/08/14/react-404-after-reload&#34;&gt;React部署于Nginx环境中刷新后404解决方案&lt;/a&gt;&lt;/p&gt;
+- https://terryren.github.io/posts/web/nginx/nginx-1/ - Terry</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>开篇之作</title>
+        <link>https://terryren.github.io/posts/my-dao-post/</link>
+        <pubDate>Wed, 01 Mar 2023 10:00:00 +0800</pubDate>
+        
+        <guid>https://terryren.github.io/posts/my-dao-post/</guid>
+        <description>The Sound of Music https://terryren.github.io/posts/my-dao-post/ -&lt;p&gt;为人&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;至真&lt;/li&gt;
+&lt;li&gt;至善&lt;/li&gt;
+&lt;li&gt;至美&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;处事&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;道 (本质论)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;道生一、一生二、二生三、三生万物&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;法 (方法论)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;术之根本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;术 (技术论)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;闻道有先后、术业有专攻&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;器 (工具论)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工欲善其事、必先利其器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;势&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;顺势: 顺应行业发展&lt;/li&gt;
+&lt;li&gt;造势: 引领行业发展&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;志&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;目标导向&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+- https://terryren.github.io/posts/my-dao-post/ - Terry</description>
+        </item>
+    
+    
+    
+    
+  </channel>
+</rss> 

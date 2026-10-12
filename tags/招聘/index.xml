@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>招聘 on The Sound of Music</title>
+    <link>https://terryren.github.io/tags/%E6%8B%9B%E8%81%98/</link>
+    <description>Recent content in 招聘 on The Sound of Music</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Terry</copyright>
+    <lastBuildDate>Sat, 03 Oct 2026 09:20:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/%E6%8B%9B%E8%81%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>十城招聘首页对上了哪些职业</title>
+      <link>https://terryren.github.io/posts/misc/future/china-job-openings-by-function-2026/</link>
+      <pubDate>Sat, 03 Oct 2026 09:20:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/misc/future/china-job-openings-by-function-2026/</guid>
+      <description>2026 年 10 月 2 日，Boss 直聘十个城市首页的热招一共 810 条。职业按站点菜单的三级目录来认：一级 27 个，二级 139 个，菜单里的三级职业 848 个。菜单没有、但这批标题里反复出现的另列 5 个：银行大堂助理、口腔护士、医美护士、电商客服、台球前台。
+810 条拆成三份。475 条对上了目录，落在 127 个职业。227 条标题里没有目录中的职业名，仍按口号留下。108 条看得出职位名，目录里没有对应项，多数只出现 1 次，例如续保专员、财富经理、项目助理。下面的职业次数只算那 475 条。
+口号里如果写出了目录职业名，会贴上。按摩师、采耳师、模特、茶艺师、装卸工是这样补进来的。只碰到「免费培训」「提供电动车」「有温度的面包」这种片段的，不贴。
+这 475 条回答的是：这一天，这些城市首页上能叫出名字的格子，重复的是哪些职业。它不回答全国有多少人在业，也不回答哪个职业收入高。薪资栏在公开 HTML 里是空的，职位详情当天进了安全校验，没有继续打开，所以下文不报月薪。
+十个城市是北京、上海、广州、深圳、杭州、成都、武汉、西安、苏州、东莞。每个首页 9 个标签、每标签 9 条，标签由站点按城市给出。明细在仓库 research/job-market-2026/。另外 270 条「热门企业」偏向万人以上公司，没有混进下表。
+已识别的格子集中在十二个一级 一级 条数 出现过的职业 有热招的二级 / 该一级全部二级 零售/生活服务 103 29 11/11 教育培训 63 12 3/9 客服/运营 57 11 4/8 直播 40 6 2/2 人力/行政/法务 38 10 3/4 物流/仓储/司机 37 2 1/4 销售 30 13 8/12 技工/普工 26 4 3/4 影视/传媒 16 5 2/4 餐饮 14 9 4/5 互联网/AI 13 7 5/10 医疗健康 13 6 3/8 金融 10 3 1/6 财务/审计/税务 7 4 3/4 其余一级合计 8 条：市场/公关/广告 4、房地产/建筑 1、电子/电气/通信 1、设计 1、高级管理 1。</description>
+    </item>
+    
+  </channel>
+</rss>
