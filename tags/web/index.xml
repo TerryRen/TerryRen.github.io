@@ -7,7 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Terry</copyright>
-    <lastBuildDate>Fri, 15 May 2026 13:56:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Oct 2026 00:20:00 +0800</lastBuildDate><atom:link href="https://terryren.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>APISIX - 3 - etcd 暴露后配置被改写</title>
+      <link>https://terryren.github.io/posts/web/nginx/apisix-3/</link>
+      <pubDate>Thu, 29 Oct 2026 00:20:00 +0800</pubDate>
+      
+      <guid>https://terryren.github.io/posts/web/nginx/apisix-3/</guid>
+      <description>云厂商报挖矿时，先别把容器删掉。这套 APISIX 的入口是配置中心，不是网页上的登录框。etcd 没有认证，并且 2379 被映射到宿主机后，任何人只要能连上这个端口，就可以直接改网关配置。APISIX 会自己把新配置加载进来，不需要 Admin API 的密钥，也不需要 Dashboard 的密码。
+下面按一次真实排查来写：配置是怎么被写进去的，什么条件会触发执行，以及怎样清掉恶意配置、同时留下正式路由。文中的地址、账号和密钥都用占位符。不要把示例原样套到生产机器上。
+版本和上一篇相同：APISIX 3.2.2，Dashboard 3.0.0，etcd 3.5.11。Dashboard 不走 Admin API，它和 APISIX 一起读写 etcd 里的 /apisix 前缀。
+先看哪几个端口 这次能被写配置，同时满足了三件事：
+docker-compose.yml 里 etcd 有 ports: &amp;quot;2379:2379/tcp&amp;quot;，宿主机所有网卡都能接到这个端口。 环境变量 ALLOW_NONE_AUTHENTICATION 为 yes，etcd 不校验账号。 云安全组或宿主机防火墙没有拦住 2379。安全组一旦放行，容器映射会把端口直接送到 etcd。 Admin API 的 9180 可以一直不映射。示例配置里的 admin_key 也可以已经换成自己的值。这两处都改过，仍然挡不住。Dashboard 的 9000 同样危险，因为它也能写同一份 etcd，但它不是这次挖矿配置的写入点。
+用下面几条区分“端口开着”和“服务真的能用”。在服务器上执行：
+docker ps --format &amp;#39;table {{.Names}}\t{{.Ports}}&amp;#39; docker exec &amp;lt;etcd容器名&amp;gt; etcdctl auth status curl -m 3 http://127.0.0.1:2379/version auth status 里 Authentication Status: false，同时本机 curl 能返回 etcd 的版本 JSON，就说明认证没开，而且进程在应答。再到另一台机器上对公网地址请求 http://&amp;lt;主机&amp;gt;:2379/version。能返回同样的 JSON，说明安全组已经放行，不需要登录就能读配置。连接成功但长时间没有 HTTP 响应，只能说明链路奇怪，不能当成“端口是安全的”。</description>
+    </item>
+    
     <item>
       <title>APISIX - 2 - 网关优化</title>
       <link>https://terryren.github.io/posts/web/nginx/apisix-2/</link>

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html><head>
+<title>APISIX - 3 - etcd 暴露后配置被改写</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="G-ZE2B25M3ST">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="说明 APISIX 在 etcd 无认证且端口映射到宿主机时，配置如何被改写并在网关里执行，以及不删除正式路由的修复顺序。">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="APISIX - 3 - etcd 暴露后配置被改写" />
+<meta property="og:description" content="说明 APISIX 在 etcd 无认证且端口映射到宿主机时，配置如何被改写并在网关里执行，以及不删除正式路由的修复顺序。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://terryren.github.io/posts/web/nginx/apisix-3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2026-10-29T00:20:00+08:00" />
+<meta property="article:modified_time" content="2026-10-29T00:20:00+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="APISIX - 3 - etcd 暴露后配置被改写"/>
+<meta name="twitter:description" content="说明 APISIX 在 etcd 无认证且端口映射到宿主机时，配置如何被改写并在网关里执行，以及不删除正式路由的修复顺序。"/>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE2B25M3ST"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZE2B25M3ST', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>console.log("Hello from 'layouts/partials/extended_head.html'")</script>
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    博客
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    订阅
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%85%88%e7%9c%8b%e5%93%aa%e5%87%a0%e4%b8%aa%e7%ab%af%e5%8f%a3" class="nav-先看哪几个端口">
+									先看哪几个端口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae%e5%86%99%e8%bf%9b%e5%8e%bb%e4%b9%8b%e5%90%8e%e6%80%8e%e4%b9%88%e6%89%a7%e8%a1%8c" class="nav-配置写进去之后怎么执行">
+									配置写进去之后怎么执行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%85%a8%e5%b1%80%e8%a7%84%e5%88%99" class="nav-全局规则">
+									全局规则
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b9%9d%e6%9d%a1%e5%81%87%e8%b7%af%e7%94%b1" class="nav-九条假路由">
+									九条假路由
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%a4%e7%b1%bb%e9%83%bd%e8%a6%81%e5%88%a0" class="nav-两类都要删">
+									两类都要删
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%80%8e%e6%a0%b7%e7%a1%ae%e8%ae%a4%e5%b7%b2%e7%bb%8f%e8%a2%ab%e5%86%99%e8%bf%87" class="nav-怎样确认已经被写过">
+									怎样确认已经被写过
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bf%ae%e5%a4%8d%e6%97%b6%e6%80%8e%e4%b9%88%e6%94%b9-compose" class="nav-修复时怎么改-compose">
+									修复时怎么改 compose
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9a%82%e6%97%b6%e4%b8%8d%e8%83%bd%e9%87%8d%e5%bb%ba%e5%ae%b9%e5%99%a8%e6%97%b6" class="nav-暂时不能重建容器时">
+									暂时不能重建容器时
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#dashboard-%e5%af%86%e7%a0%81" class="nav-dashboard-密码">
+									Dashboard 密码
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%81%9a%e5%ae%8c%e5%90%8e%e7%9a%84%e5%a4%8d%e6%9f%a5" class="nav-做完后的复查">
+									做完后的复查
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%85%8d%e8%b4%a3%e5%a3%b0%e6%98%8e" class="nav-免责声明">
+									免责声明
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://terryren.github.io/">
+            The Sound of Music
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://terryren.github.io/">
+        <div class="single-column-header-title">The Sound of Music</div>
+        
+        <div class="single-column-header-subtitle">知行合一</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    APISIX - 3 - etcd 暴露后配置被改写
+                    
+                    <div class="post-subtitle">
+                        说明 APISIX 在 etcd 无认证且端口映射到宿主机时，配置如何被改写并在网关里执行，以及不删除正式路由的修复顺序。
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2026-10-29 00:20
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/web">Web</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/web">Web</a>
+                                &nbsp;
+                            
+                                <a href="/tags/apisix">APISIX</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E5%AE%89%E5%85%A8">安全</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>云厂商报挖矿时，先别把容器删掉。这套 APISIX 的入口是配置中心，不是网页上的登录框。etcd 没有认证，并且 <code>2379</code> 被映射到宿主机后，任何人只要能连上这个端口，就可以直接改网关配置。APISIX 会自己把新配置加载进来，不需要 Admin API 的密钥，也不需要 Dashboard 的密码。</p>
+<p>下面按一次真实排查来写：配置是怎么被写进去的，什么条件会触发执行，以及怎样清掉恶意配置、同时留下正式路由。文中的地址、账号和密钥都用占位符。不要把示例原样套到生产机器上。</p>
+<p>版本和<a href="/posts/web/nginx/apisix-2/">上一篇</a>相同：APISIX <code>3.2.2</code>，Dashboard <code>3.0.0</code>，etcd <code>3.5.11</code>。Dashboard 不走 Admin API，它和 APISIX 一起读写 etcd 里的 <code>/apisix</code> 前缀。</p>
+<h2 id="先看哪几个端口">先看哪几个端口</h2>
+<p>这次能被写配置，同时满足了三件事：</p>
+<ol>
+<li><code>docker-compose.yml</code> 里 etcd 有 <code>ports: &quot;2379:2379/tcp&quot;</code>，宿主机所有网卡都能接到这个端口。</li>
+<li>环境变量 <code>ALLOW_NONE_AUTHENTICATION</code> 为 <code>yes</code>，etcd 不校验账号。</li>
+<li>云安全组或宿主机防火墙没有拦住 <code>2379</code>。安全组一旦放行，容器映射会把端口直接送到 etcd。</li>
+</ol>
+<p>Admin API 的 <code>9180</code> 可以一直不映射。示例配置里的 <code>admin_key</code> 也可以已经换成自己的值。这两处都改过，仍然挡不住。Dashboard 的 <code>9000</code> 同样危险，因为它也能写同一份 etcd，但它不是这次挖矿配置的写入点。</p>
+<p>用下面几条区分“端口开着”和“服务真的能用”。在服务器上执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps --format <span style="color:#cd5555">&#39;table {{.Names}}\t{{.Ports}}&#39;</span>
+</span></span><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> &lt;etcd容器名&gt; etcdctl auth status
+</span></span><span style="display:flex;"><span>curl -m <span style="color:#b452cd">3</span> http://127.0.0.1:2379/version
+</span></span></code></pre></div><p><code>auth status</code> 里 <code>Authentication Status: false</code>，同时本机 <code>curl</code> 能返回 etcd 的版本 JSON，就说明认证没开，而且进程在应答。再到另一台机器上对公网地址请求 <code>http://&lt;主机&gt;:2379/version</code>。能返回同样的 JSON，说明安全组已经放行，不需要登录就能读配置。连接成功但长时间没有 HTTP 响应，只能说明链路奇怪，不能当成“端口是安全的”。</p>
+<p><code>80</code> 和 <code>443</code> 要留给正常业务。没有 SNI 时连 IP 的 <code>443</code> 会握手失败，这是 APISIX 没有默认证书，不是端口被封。</p>
+<h2 id="配置写进去之后怎么执行">配置写进去之后怎么执行</h2>
+<p>APISIX 启动后会监听 etcd 的 <code>/apisix</code> 前缀。前缀下的路由、上游、证书、全局规则一旦变化，网关热加载，不需要重启容器。</p>
+<p>因此触发链是：</p>
+<ol>
+<li>外部客户端连上 <code>2379</code>。没有认证时，读和写使用同一条路。</li>
+<li>客户端在 <code>/apisix/global_rules/</code> 或 <code>/apisix/routes/</code> 下写入新键。</li>
+<li>APISIX 收到变更，把对象装进当前配置。</li>
+<li>对象里如果带了 <code>serverless-pre-function</code>，其中的代码会在网关进程里、正式转发之前运行。</li>
+<li>全局规则对经过这台网关的请求都会走到这段逻辑。伪装成健康检查的路由则挂在特定路径上，用来反复触发。</li>
+</ol>
+<p>这次 etcd 里多出来 10 个对象，正式路由没有被改。这 10 个对象的插件都是 <code>serverless-pre-function</code>，执行阶段都是 <code>access</code>。</p>
+<p><code>access</code> 是 APISIX 选定路由之后、把请求转给上游之前。插件配置里是一段函数，网关在这个阶段直接执行。执行环境是 APISIX 容器里的 Nginx 进程。这套 compose 把容器用户设成了 root，所以函数能在容器里写文件、拉远程程序。它不需要再打 Admin API，也不需要登录 Dashboard。</p>
+<h3 id="全局规则">全局规则</h3>
+<p>全局规则不看路径和域名。请求只要进了这台网关，这条规则就会跑。键名是字母 <code>g</code> 加上机器公网地址（去掉点）。这是扫描器按目标机器自动生成的名字，不是在 Dashboard 里手工建的。</p>
+<p>函数的动作是：向外部地址的几个备用端口发请求，把返回内容写进容器的 <code>/tmp</code>，再执行。容器里能对上的文件是：</p>
+<ul>
+<li><code>/tmp/.kv</code>，大约 8.3MB，时间是 10 月 16 日，是拉下来的程序</li>
+<li><code>/tmp/.kw.sh</code> 和 <code>/tmp/.kx</code>，时间是 10 月 20 日，是配套脚本和再次投放的文件</li>
+</ul>
+<p>宿主机计划任务里没有这些名字。矿工程序只在 APISIX 容器里。机器刚启动时 CPU 可以是空的，因为函数要等下一次有人访问 <code>80</code> 或 <code>443</code> 才会再跑。只删 <code>/tmp</code> 里的文件不够。全局规则还在 etcd 里，下一次访问会再拉一次。</p>
+<h3 id="九条假路由">九条假路由</h3>
+<p>这 9 条都没有上游。它们被匹配到时，只执行函数。内容只有两种。名字和路径用来混进路由列表，并让扫描器回头确认已经写进去。</p>
+<table>
+<thead>
+<tr>
+<th>数量</th>
+<th>名字</th>
+<th>路径</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td><code>health-check</code></td>
+<td><code>/*</code></td>
+<td>任意路径都能匹配</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>healthcheck_</code> 加一串数字</td>
+<td><code>/pwned_</code> 加同一串数字</td>
+<td>只有访问这个探测路径才匹配</td>
+</tr>
+</tbody>
+</table>
+<p>3 条 <code>/*</code> 的函数相同，6 条 <code>/pwned_*</code> 的函数也相同，只是 ID 不同。这是同一种配置被重复写入，不是 9 套业务。<code>/*</code> 没有绑定域名，优先级又和普通路由一样。正常带域名、路径更具体的业务路由仍然会先被选中，所以站点看起来还能打开。<code>/pwned_*</code> 是扫描器自己来访问的确认地址，正常用户不会碰到。</p>
+<p>这些函数比全局规则更直白：在容器里写一条每分钟执行的计划任务，任务是下载脚本并运行，同时立刻再执行一次。计划任务写在容器内的 <code>/etc/cron.d</code>，不是宿主机。镜像里就算没有正常的 cron 服务，立刻执行的那一次仍然会跑。所以宿主机 <code>crontab</code> 是干净的，不能用来证明容器没被写过。</p>
+<h3 id="两类都要删">两类都要删</h3>
+<p>全局规则负责任何人访问网站就再投放一次。假路由负责扫描器访问特定路径，或误匹配到 <code>/*</code> 时，在容器里留下每分钟执行的任务。两边用的远程地址不是同一套，落地文件名也不同，所以同一个容器里会看到两拨痕迹。</p>
+<p>删除时只删这 10 个键。重建容器可以清掉 <code>/tmp</code> 里的文件。etcd 数据卷还在的话，这些键会跟着新容器再加载。只看宿主机 <code>crontab</code>，会得出没有中招的错误结论。</p>
+<p>正式业务的路由、上游和证书也在同一个前缀里。清理时要按键删除，不能把整个前缀或整个数据卷清掉。</p>
+<h2 id="怎样确认已经被写过">怎样确认已经被写过</h2>
+<p>先做快照，再查。快照文件放到宿主机，别只留在容器里：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> &lt;etcd容器名&gt; etcdctl snapshot save /tmp/etcd-before-clean.db
+</span></span><span style="display:flex;"><span>docker cp &lt;etcd容器名&gt;:/tmp/etcd-before-clean.db ./etcd-before-clean.db
+</span></span></code></pre></div><p>然后只列出键名，先不要把值打到终端历史里：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> &lt;etcd容器名&gt; etcdctl get /apisix/global_rules --prefix --keys-only
+</span></span><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> &lt;etcd容器名&gt; etcdctl get /apisix/routes --prefix --keys-only
+</span></span><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> &lt;etcd容器名&gt; etcdctl get /apisix --prefix | grep -c serverless-pre-function
+</span></span></code></pre></div><p>自己的配置里本来就没有 <code>serverless-pre-function</code> 时，计数应该是 <code>0</code>。大于 <code>0</code> 就要逐条对照：哪条全局规则不是自己建的，哪些路由的名字、路径对不上现有站点。常见伪装是“健康检查”之类的名字，路径则是通配，或者是一串不存在的探测路径。</p>
+<p>值要导出到文件再看，确认里面是不是在拉远程地址、写临时目录、执行下载下来的程序。确认是恶意对象后，只删除这些键：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> &lt;etcd容器名&gt; etcdctl del &lt;恶意键名&gt;
+</span></span></code></pre></div><p>删完再数一次 <code>serverless-pre-function</code>，并核对正式路由的键还在。路由 ID 是一长串数字，删除前把要留的 ID 抄下来。</p>
+<p>容器里的落地文件单独看。进入 APISIX 容器检查临时目录里异常的脚本和可执行文件，记下时间。这些文件随着容器重建会消失，但 etcd 里的键不会。</p>
+<h2 id="修复时怎么改-compose">修复时怎么改 compose</h2>
+<p>目标是：etcd 只留在 Compose 网络里给 APISIX 和 Dashboard 用，宿主机不再发布 <code>2379</code>。正式路由所在的数据卷保留。</p>
+<p>不要执行 <code>docker compose down -v</code>。<code>-v</code> 会删掉名为 <code>etcd_data</code> 的卷，正式路由、上游和证书一起没掉。</p>
+<p>修改前先复制一份 compose 文件。etcd 服务里要删掉整个 <code>ports</code> 段，而不是只把端口行注释掉。只注释列表项时，<code>ports:</code> 后面没有合法列表，<code>docker compose</code> 会直接拒绝启动。改完后的 etcd 服务类似：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">etcd</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">image</span>:<span style="color:#bbb"> </span>bitnami/etcd:3.5.11<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">restart</span>:<span style="color:#bbb"> </span>always<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- etcd_data:/bitnami/etcd<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">environment</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">ETCD_ENABLE_V2</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;yes&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">ALLOW_NONE_AUTHENTICATION</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;yes&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">ETCD_ADVERTISE_CLIENT_URLS</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;http://etcd:2379&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">ETCD_LISTEN_CLIENT_URLS</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;http://0.0.0.0:2379&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">networks</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">apisix</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#8b008b;font-weight:bold">ipv4_address</span>:<span style="color:#bbb"> </span><span style="color:#b452cd">172.25.0.2</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p><code>ETCD_LISTEN_CLIENT_URLS</code> 写成容器内的 <code>0.0.0.0</code> 只表示容器里的进程在监听。没有 <code>ports</code> 时，这个监听不会出现在宿主机网卡上。APISIX 仍通过网络别名 <code>http://etcd:2379</code> 访问。</p>
+<p>Dashboard 如果还要给内网用，把发布地址写成内网 IP，不要写成 <code>0.0.0.0</code>：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#8b008b;font-weight:bold">ports</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>- <span style="color:#cd5555">&#34;&lt;内网IP&gt;:9000:9000/tcp&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p><code>80</code> 和 <code>443</code> 保持原样。<code>9180</code> 继续不要映射。</p>
+<p>然后在 compose 目录执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up -d --force-recreate
+</span></span></code></pre></div><p>不要加 <code>-v</code>。重建后确认三件事：etcd 容器健康、正式路由键还在、宿主机上已经没有 <code>0.0.0.0:2379</code>。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker <span style="color:#658b00">exec</span> &lt;etcd容器名&gt; etcdctl endpoint health
+</span></span><span style="display:flex;"><span>ss -lnt | grep -E <span style="color:#cd5555">&#39;:2379|:9000&#39;</span> || <span style="color:#658b00">true</span>
+</span></span></code></pre></div><p><code>9000</code> 若按上面的写法，应只出现在内网地址上。从公网再访问一次 <code>2379</code> 的 <code>/version</code>，不应再得到版本 JSON。</p>
+<p><code>ALLOW_NONE_AUTHENTICATION</code> 这次先留着。认证一旦打开，APISIX 和 Dashboard 里都要补上同一套 etcd 账号，配错会导致网关读不到配置。端口已经不再发布到宿主机之后，优先保证业务连续；etcd 账号可以另排一次变更，不要和清恶意键、改端口放在同一次重启里。</p>
+<h2 id="暂时不能重建容器时">暂时不能重建容器时</h2>
+<p>有的机器上 APISIX 已经连续跑了很久，前面还挂着正在用的站点，不适合马上 <code>up --force-recreate</code>。这时可以先在 Docker 转发链上丢掉新进来的连接，容器和 etcd 数据都不动。</p>
+<p>规则要同时满足三条：从外网网卡进来、状态是新建连接、原始目标端口是 <code>2379</code> 或 Dashboard 的 <code>9000</code>。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00688b">IF</span>=<span style="color:#8b008b;font-weight:bold">$(</span>ip route get 1.1.1.1 | awk <span style="color:#cd5555">&#39;{for(i=1;i&lt;=NF;i++) if($i==&#34;dev&#34;){print $(i+1); exit}}&#39;</span><span style="color:#8b008b;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>iptables -I DOCKER-USER -i <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$IF</span><span style="color:#cd5555">&#34;</span> -p tcp -m conntrack --ctstate NEW --ctorigdstport <span style="color:#b452cd">2379</span> -j DROP
+</span></span><span style="display:flex;"><span>iptables -I DOCKER-USER -i <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$IF</span><span style="color:#cd5555">&#34;</span> -p tcp -m conntrack --ctstate NEW --ctorigdstport <span style="color:#b452cd">9000</span> -j DROP
+</span></span></code></pre></div><p><code>--ctstate NEW</code> 不能省。省掉之后，匹配的是“这台机器上曾经把某个连接的目标端口当成 <code>9000</code>”的全部转发流量。网关主动访问上游的 <code>9000</code> 时，回包也会被丢掉，经这台网关反代到 Dashboard 的域名会超时。加上 <code>NEW</code> 之后，只拦截从外网新发起的连接，已经建立的回包继续放行。</p>
+<p>改完立刻用正式域名访问一次 <code>80</code>/<code>443</code>，并在容器内执行 <code>etcdctl endpoint health</code>。业务请求和容器内访问 etcd 都应正常。</p>
+<p>这台机器上的其他发布端口，例如缓存、队列、业务进程自己的端口，不要按同样方式一刀切。那些端口可能被别的程序从内网使用。先逐个确认没有调用方，再决定是否关闭。</p>
+<p><code>DOCKER-USER</code> 里的规则在 Docker 重启后可能消失。把上述命令放进开机脚本，并等 <code>DOCKER-USER</code> 链出现后再插入。云安全组仍然要继续拒绝 <code>2379</code> 和公网 <code>9000</code>。安全组是持久控制，iptables 只是补上“安全组被误开”的那一层。</p>
+<p>UFW 的 <code>deny 2379</code> 经常挡不住 Docker 已经映射的端口，原因在<a href="/posts/web/nginx/apisix-2/">上一篇</a>里写过：发布端口走的是 Docker 自己的转发链。</p>
+<h2 id="dashboard-密码">Dashboard 密码</h2>
+<p>密码写在 <code>dashboard_conf/conf.yaml</code> 的 <code>authentication.users</code> 里，和 Admin API 的 <code>admin_key</code> 不是同一套。</p>
+<p>含有 <code>#</code> 的密码必须加引号。YAML 里 <code>#</code> 开头是注释，下面这种写法实际生效的只有井号前面的部分：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">password</span>:<span style="color:#bbb"> </span>place#holder<span style="color:#bbb">
+</span></span></span></code></pre></div><p>应写成：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#8b008b;font-weight:bold">password</span>:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;place#holder&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>同时把 <code>authentication</code> 下的 <code>secret</code> 从示例里的默认值换成一长串随机字符串。这个值用来签 Dashboard 的登录令牌。改完后只重启 Dashboard 容器，不要重启 APISIX：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker restart &lt;dashboard容器名&gt;
+</span></span></code></pre></div><p>再用登录接口做一次检查，确认返回成功且带有令牌。旧令牌会失效。检查命令里不要把密码写进可被别人翻到的历史文件；从已经改好的配置里读取即可。</p>
+<p>登录接口只需要在本机或内网地址上测。公网如果已经被前面的规则拦住，从公网测 <code>9000</code> 超时是预期结果。</p>
+<h2 id="做完后的复查">做完后的复查</h2>
+<p>按这个顺序看，避免只看一个端口就收工：</p>
+<ul>
+<li>宿主机不监听 <code>0.0.0.0:2379</code>，公网请求 <code>/version</code> 拿不到 etcd 的版本信息。</li>
+<li><code>etcdctl auth status</code> 仍然可以在容器内执行，<code>endpoint health</code> 为健康。</li>
+<li><code>/apisix/routes</code> 里自己的路由还在，<code>serverless-pre-function</code> 计数为 <code>0</code>。</li>
+<li>正式域名的 <code>80</code>、<code>443</code> 返回和修复前一致。反代到别的机器上的 Dashboard 时，确认该域名也能打开。</li>
+<li>Dashboard 只绑在内网地址，新密码可以登录，旧会话已退出。</li>
+<li>APISIX 容器的临时目录里没有新的异常可执行文件。</li>
+<li>没有执行过 <code>docker compose down -v</code>，etcd 数据卷还在。</li>
+</ul>
+<p><code>allow_admin</code> 若仍是 <code>0.0.0.0/0</code>，只要 <code>9180</code> 没有映射出来，外部还打不到 Admin API。以后如果有人把 <code>9180</code> 加回 <code>ports</code>，这行白名单会立刻变成全放行。示例里的 <code>admin_key</code> 只要还在配置文件里，就换成自己生成的值。</p>
+<p>同一套 compose 如果部署了多台，每台都要看 <code>2379</code> 有没有映射。安全组暂时挡住公网，只说明当前进不来，不说明 compose 是安全的。容器一直不重建时，用上面的 <code>DOCKER-USER</code> 规则先补上，再安排维护窗口去掉 <code>ports</code>。</p>
+<h2 id="免责声明">免责声明</h2>
+<p>本文只记录一次配置暴露后的排查和修复，用来核对端口、etcd 键和容器数据卷。它不能代替 Apache APISIX、etcd 的官方安全公告，也不能代替云厂商的安全组策略。恶意脚本和下载地址没有写入本文。<code>/tmp</code> 下的文件名只作为在自己容器里对照的标记。不要在不属于自己的系统上连接 <code>2379</code> 或写入 <code>/apisix</code>。生产变更前先做 etcd 快照，并在维护窗口验证正式站点。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2026-10-29</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/misc/health/office-diet-weight-loss-skip-lunch/">
+			上回<br>职场人控食减肥：食堂午餐很油，晚餐又要陪吃，中午可以不吃吗
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+                <p style="opacity: 0.6" align="center">
+                    <small>此篇文章的评论功能已经停用。</small>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://terryren.github.io/">
+    
+        <div class="nav-title">
+            The Sound of Music
+        </div>
+        
+        <div class="nav-subtitle">
+            知行合一
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                博客
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                订阅
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%85%88%e7%9c%8b%e5%93%aa%e5%87%a0%e4%b8%aa%e7%ab%af%e5%8f%a3" class="nav-先看哪几个端口">
+									先看哪几个端口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae%e5%86%99%e8%bf%9b%e5%8e%bb%e4%b9%8b%e5%90%8e%e6%80%8e%e4%b9%88%e6%89%a7%e8%a1%8c" class="nav-配置写进去之后怎么执行">
+									配置写进去之后怎么执行
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%85%a8%e5%b1%80%e8%a7%84%e5%88%99" class="nav-全局规则">
+									全局规则
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b9%9d%e6%9d%a1%e5%81%87%e8%b7%af%e7%94%b1" class="nav-九条假路由">
+									九条假路由
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%a4%e7%b1%bb%e9%83%bd%e8%a6%81%e5%88%a0" class="nav-两类都要删">
+									两类都要删
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%80%8e%e6%a0%b7%e7%a1%ae%e8%ae%a4%e5%b7%b2%e7%bb%8f%e8%a2%ab%e5%86%99%e8%bf%87" class="nav-怎样确认已经被写过">
+									怎样确认已经被写过
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bf%ae%e5%a4%8d%e6%97%b6%e6%80%8e%e4%b9%88%e6%94%b9-compose" class="nav-修复时怎么改-compose">
+									修复时怎么改 compose
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9a%82%e6%97%b6%e4%b8%8d%e8%83%bd%e9%87%8d%e5%bb%ba%e5%ae%b9%e5%99%a8%e6%97%b6" class="nav-暂时不能重建容器时">
+									暂时不能重建容器时
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#dashboard-%e5%af%86%e7%a0%81" class="nav-dashboard-密码">
+									Dashboard 密码
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%81%9a%e5%ae%8c%e5%90%8e%e7%9a%84%e5%a4%8d%e6%9f%a5" class="nav-做完后的复查">
+									做完后的复查
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%85%8d%e8%b4%a3%e5%a3%b0%e6%98%8e" class="nav-免责声明">
+									免责声明
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Terry
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>
